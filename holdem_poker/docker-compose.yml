@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+    # static server 
+    static_server:
+        build:
+            context: ./
+            args:
+                nginx_config_file: default.local.conf
+        container_name: static_server
+        image: static_server
+        ports:
+            - "443:443"
+            - "80:80"
+        volumes:
+            - ~/.poker/certs:/certs

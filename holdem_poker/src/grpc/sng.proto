@@ -1,0 +1,1521 @@
+syntax = "proto3";
+package poker;
+import "google/protobuf/empty.proto";
+
+service Sng{
+    rpc Test(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    
+    rpc GetStatus (GetStatusRequest) returns (GetStatusResult) {}
+    rpc MakeSng (MakeSngRequest) returns (MakeSngResponse) {}
+    rpc MakePlayerAction (MakePlayerActionRequest) returns (GetStatusResult) {}
+    
+    /**
+     * Tournament Services
+     */
+    rpc getTournaments(GetTournamentsRequest) returns (GetTournamentsResponse) {}
+    rpc joinTournament(JoinTournamentRequest) returns (JoinTournamentResponse) {}
+    rpc unregisterTournament(UnregisterTournamentRequest) returns (UnregisterTournamentResponse) {}
+    rpc cancelTournament(CancelTournamentRequest) returns (CancelTournamentResponse) {}
+
+    rpc getGameplayHistories(GetGameplayHistoriesRequest) returns (GetGameplayHistoriesResponse) {}
+    rpc getAllHandHistoryData(GetHandHistoryRequest) returns (GetHandHistoryResponse) {}
+    rpc getHandHistoryStat(GetHandHistoryRequest) returns (GetHandHistoryResponse) {}
+    rpc getHandHistoryData(GetHandHistoryRequest) returns (GetHandHistoryResponse) {}
+    rpc drawReplaceAction(DrawReplaceActionRequest) returns (GetStatusResult) {}
+    rpc drawAddAction(DrawAddActionRequest) returns (GetStatusResult) {}
+
+    rpc joinTournamentTempalte(JoinTournamentTemplateRequest) returns (JoinTournamentTemplateResponse) {}
+    rpc getTournamentTemplateDetail(GetTournamentTemplateDetailRequest) returns (GetTournamentTemplateDetailResponse) {}
+    rpc addTournamentTemplateToLobby(AddTournamentTemplateToLobbyRequest) returns (AddTournamentTemplateToLobbyResponse) {}
+    rpc removeTournamentTemplateFromLobby(RemoveTournamentTemplateFromLobbyRequest) returns (RemoveTournamentTemplateFromLobbyResponse) {}
+    rpc createTournamentTemplate(CreateTournamentTemplateRequest) returns (CreateTournamentTemplateResponse) {}
+    rpc getTournamentTemplateList(GetTournamentTemplateListRequest) returns (GetTournamentTemplateListResponse){}
+    rpc getLobbyTournamentTemplateList(GetLobbyTournamentTemplateListRequest) returns (GetLobbyTournamentTemplateListResponse) {}
+    rpc getTournamentTemplateBufferState(GetTournamentTemplateBufferStateRequest) returns (GetTournamentTemplateBufferStateResponse){}
+    rpc unsubscribeFromTournamentTemplateBuffer(UnsubscribeFromTournamentTemplateBufferRequest) returns (UnsubscribeFromTournamentTemplateBufferResponse) {}
+
+    rpc launchTournament(LaunchTournamentRequest) returns (LaunchTournamentResponse) {}
+    rpc Signup(SignupRequest) returns (SignupResult){}
+    rpc Login(LoginRequest) returns (LoginResult) {}
+    rpc Logout(LogoutRequest) returns (LogoutResult) {}
+    rpc makeDeposit(MakeDepositRequest) returns (MakeDepositResponse) {}
+    rpc makeWithdrawal(MakeWithdrawalRequest) returns (MakeWithdrawalResponse) {}
+    rpc getAccountStatements(AccountStatementsRequest) returns (AccountStatementsResponse) {}
+    rpc captureProcessedDeposit(CaptureDepositRequest) returns (CaptureDepositResponse) {}
+    rpc captureProcessedWithdrawal(CaptureWithdrawalRequest) returns (CaptureWithdrawalResponse) {}
+    rpc addPayoutStructure(AddPayoutStructureRequest) returns (AddPayoutStructureResponse) {}
+    rpc getPayoutStructure(GetPayoutStructureRequest) returns (GetPayoutStructureResponse) {}
+    rpc changePassword(ChangePasswordRequest) returns (ChangePasswordResponse) {}
+
+    // payment related grpc methods
+    rpc getClientToken(ClientTokenRequest) returns (ClientTokenResponse) {}
+    rpc vaultPaymentMethod(VaultPaymentMethodRequest) returns (VaultPaymentMethodResponse) {}
+
+    rpc validateExperian(SignupRequest) returns (SignupResult) {}
+    
+    rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse) {}
+    rpc MakeSngWithRandomUsers (MakeSngWithRandomUsersRequest) returns (GetStatusResult) {}
+
+    rpc GetRankings (GetRankingsRequest) returns (GetRankingsResult) {}
+
+    /* TODO:  Can't use until rr-grpc supports streaming responses */
+    rpc TableSubscribe (TableSubscribeRequest) returns (stream TableSubscribeResponse) {}
+
+    // send geolocation related data from client to server
+    rpc sendGeolocationData(GeolocationRequest) returns (GeolocationResult) {}
+
+    //search user by username
+    rpc searchUserByUsername(SearchUserRequest) returns (SearchUserResult) {}
+
+    rpc whitelistUser(WhitelistUserRequest) returns (WhitelistUserResult) {}
+
+    rpc acceptTOS(AcceptTOSRequest) returns (AcceptTOSResult) {}
+
+    rpc checkForUpdates(AccountUpdatesRequest) returns (AccountUpdatesResult) {}
+    rpc getWhitelistedUsers(WhitelistedUsersRequest) returns (WhitelistedUsersResult) {}
+    rpc removeWhitelistUser(WhitelistUserRequest) returns (WhitelistUserResult) {}
+
+    rpc getTournamentDetails(TournamentDetailsRequest) returns (TournamentDetailsResponse) {}
+    rpc getPlayerAccountBalance(PlayerAccountBalanceRequest) returns (PlayerAccountBalanceResult) {}
+    rpc getNextTournament(NextTournamentRequest) returns (NextTournamentResult) {}
+
+    rpc joinAnyTournament(JoinAnyTournamentRequest) returns (JoinAnyTournamentResult) {}
+    rpc unregisterAnyTournament(UnregisterAnyTournamentRequest) returns (UnregisterAnyTournamentResult) {}
+    rpc getJoinAnyTournamentStatus(JoinAnyTournamentStatusRequest) returns (JoinAnyTournamentStatusResult) {}
+    rpc getActiveJoinAnyTournaments(ActiveJoinAnyTournamentsRequest) returns (ActiveJoinAnyTournamentsResult) {}
+    rpc getJoinAnyUsersList(JoinAnyUsersListRequest) returns (JoinAnyUsersListResult) {}
+    rpc cancelJoinAnyTournament(CancelJoinAnyTournamentRequest) returns (CancelJoinAnyTournamentResult) {}
+    rpc cancelJoinAnyMultipleUsers(CancelJoinAnyUsersRequest) returns (CancelJoinAnyUsersResult) {}
+    rpc cancelJoinAnyAllUsers(JoinAnyTournamentStatusRequest) returns (CancelJoinAnyUsersResult) {}
+    rpc cancelTournaments(CancelTournamentsRequest) returns (CancelTournamentsResponse) {}
+    rpc addonPlayer(AddonPlayerRequest) returns (AddonPlayerResponse) {}
+    rpc setPrizeAsRevealed(PrizeRevealRequest) returns (PrizeRevealResponse) {}
+    
+    rpc getGeofenceData(GeofenceRequest) returns (GeofenceResponse) {}
+    rpc addGeofenceData(GeofenceAddRequest) returns (GeofenceAddResponse) {}
+    rpc updateGeofenceData(GeofenceUpdateRequest) returns (GeofenceUpdateResponse) {}
+    rpc removeGeofenceData(GeofenceRemoveRequest) returns (GeofenceRemoveResponse) {}
+    rpc whitelistUsersOnGeofence(GeofenceWhitelistRequest) returns (GeofenceWhitelistResponse) {}
+    rpc blacklistUsersOnGeofence(GeofenceBlacklistRequest) returns (GeofenceBlacklistResponse) {}
+    rpc whitelistClientsOnGeofence(GeofenceWhitelistRequest) returns (GeofenceWhitelistResponse) {}
+    rpc blacklistClientsOnGeofence(GeofenceBlacklistRequest) returns (GeofenceBlacklistResponse) {}
+    rpc getWhitelistedUsersonGeofence(GeofenceUsersRequest) returns (GeofenceUsersResponse) {}
+    rpc getBlacklistedUsersonGeofence(GeofenceUsersRequest) returns (GeofenceUsersResponse) {}
+    rpc setGeofenceGlobalRule(GeofenceGlobalRuleRequest) returns (GeofenceGlobalRuleResponse) {}
+    rpc getWhitelistedClientsonGeofence(GeofenceClientsRequest) returns (GeofenceClientsResponse) {}
+    rpc getBlacklistedClientsonGeofence(GeofenceClientsRequest) returns (GeofenceClientsResponse) {}
+    rpc setGeofenceClientGlobalRule(GeofenceClientGlobalRuleRequest) returns (GeofenceClientGlobalRuleResponse) {}
+    rpc getClients(WhitelistedClientsRequest) returns (WhitelistedClientsResult) {}    
+    
+    rpc updatePlayerAccountBalance(UpdateAccountBalanceRequest) returns (UpdateAccountBalanceResponse) {}
+
+    rpc rankHands(RankHandsRequest) returns (RankHandsResult){}
+    rpc getShuffledDeck(NewDeckRequest) returns (NewDeckResponse){}
+
+    rpc getUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse) {}
+    rpc updateUserInfo(UpdateUserInfoRequest) returns (UpdateUserInfoResponse) {}
+
+    rpc getGlobalSettings(GlobalSettingsRequest) returns (GlobalSettingsResponse) {}
+    rpc setGlobalSettings(GlobalSettingsRequest) returns (GlobalSettingsResponse) {}
+    rpc getPasswordResetLink(GetPasswordResetLinkRequest) returns (GetPasswordResetLinkResponse) {}
+    rpc fetchSecurityQuestions(FetchSecurityQuestionsRequest) returns (FetchSecurityQuestionsResponse) {}
+    rpc resetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {}
+    rpc verifyUserPassword(VerifyUserPasswordRequest) returns (VerifyUserPasswordResponse) {}
+    
+    rpc adminLogin(LoginRequest) returns (LoginResult) {}
+
+    rpc validateSecurityQuestionsForLogin(ValidateSecurityQuestionsRequest) returns (ValidateSecurityQuestionsResponse) {}
+
+    rpc checkIsEmailAvailable(IsEmailAvailableRequest) returns (IsEmailAvailableResponse){}
+
+    rpc startTournamentTableInstance(StartTournamentTableInstanceRequest) returns (StartTournamentTableInstanceResponse) {}
+
+    rpc tournamentPayoutStructure(TournamentDetailsRequest) returns (TournamentPayoutStructureResponse) {}
+    rpc getActiveUsers(ActiveUsersRequest) returns (ActiveUsersResult) {}
+
+    rpc getClientData(ClientRequest) returns (ClientResponse) {}
+    rpc addClientData(ClientAddRequest) returns (ClientAddResponse) {}
+    rpc updateClientData(ClientUpdateRequest) returns (ClientUpdateResponse) {}
+    rpc removeClientData(ClientRemoveRequest) returns (ClientRemoveResponse) {}
+
+    rpc getComponentPermissionData(ComponentPermissionRequest) returns (DataResponse) {}
+    rpc addComponentPermissionData(ComponentPermissionAddRequest) returns (StatusResponse) {}
+    rpc updateComponentPermissionData(ComponentPermissionUpdateRequest) returns (StatusResponse) {}
+    rpc removeComponentPermissionData(ComponentPermissionRemoveRequest) returns (StatusResponse) {}
+
+    rpc getAdminRoleData(AdminRoleRequest) returns (DataResponse) {}
+    rpc addAdminRoleData(AdminRoleAddRequest) returns (StatusResponse) {}
+    rpc updateAdminRoleData(AdminRoleUpdateRequest) returns (StatusResponse) {}
+    rpc removeAdminRoleData(AdminRoleRemoveRequest) returns (StatusResponse) {}
+
+    rpc getAdminRoles(AdminUpdateRequest) returns (DataResponse) {}
+
+    rpc getDistinctRole(AdminRoleRequest) returns (DataResponse) {}
+    rpc getAdmins(ActiveUsersRequest) returns (DataResponse) {}
+    rpc addAdminData(AdminAddRequest) returns (StatusResponse) {}
+    rpc updateAdminData(AdminUpdateRequest) returns (StatusResponse) {}
+    rpc removeAdminData(AdminRemoveRequest) returns (StatusResponse) {}
+
+    rpc getAmountInplay(google.protobuf.Empty) returns (FloatResponse) {}
+
+    rpc removeTournament(GetTournamentTemplateDetailRequest) returns (StatusResponse) {}
+    rpc updateTournament(UpdateTournamentTemplateRequest) returns (StatusResponse) {}
+
+    rpc getPlayerTournaments(PlayerTournamentRequest) returns (GetTournamentsResponse) {}
+
+    rpc simulateGames(SimulateGamesRequest) returns (StatusResponse) {}
+
+    rpc getPendingRequest(PendingDepositRequest) returns (DataResponse) {}
+    rpc getApprovedRequest(PendingDepositRequest) returns (DataResponse) {}
+    rpc actionOnPendingRequest(UpdatePendingRequest) returns (StatusResponse) {}
+
+    rpc getBotList(ActiveUsersRequest) returns (ActiveUsersResult) {}
+
+    rpc createMultipleUsers(CreateMultipleUsersRequest) returns (CreateMultipleUsersResult){}
+
+    rpc deletePrizePoolPayout(DeletePrizePoolStatusRequest) returns (DeletePrizePoolStatusResponse){}
+
+    rpc adminJoinAnyTournament(AdminJoinAnyTournamentRequest) returns (JoinAnyTournamentResult) {}
+
+
+    rpc getUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
+    rpc getAllUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
+    rpc setUiSettings(AllUiSettingsRequest) returns (UiSettingsResponse) {}
+    rpc deleteUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
+
+
+    rpc getThemes(ThemesRequest) returns (ThemesResponse) {}
+    rpc setTheme(ThemesRequest) returns (ThemesResponse) {}
+    rpc editTheme(EditThemesRequest) returns (ThemesResponse) {}
+    rpc deleteTheme(ThemesRequest) returns (ThemesResponse) {}
+    rpc getGeopoll(GeopollRequest) returns (GeopollResponse) {}
+
+    rpc updateSecurityQuestions(UpdateSecurityQuestionsRequest) returns (UpdateSecurityQuestionsResponse) {} 
+    rpc getUserSecurityQuestions(FetchSecurityQuestionsResponse) returns (FetchSecurityQuestionsResponse) {}
+    rpc updateCustomCss(CustomCssRequest) returns (CustomCssResponse) {}
+    rpc getCustomCss(CustomCssRequest) returns (CustomCssResponse) {}
+
+    rpc addPlayerMailingAddress(PlayerMailingAddressUpdateRequest) returns (PlayerMailingAddressStatusResponse) {}
+    rpc getPlayerMailingAddress(PlayerMailingAddressRequest) returns (PlayerMailingAddressResponse) {}
+    rpc getPlayerMailingAddresses(PlayerMailingAddressRequest) returns (PlayerMailingAddressesResponse) {}
+    rpc updatePlayerMailingAddress(PlayerMailingAddressUpdateRequest) returns (PlayerMailingAddressStatusResponse) {}
+    rpc getDefaultPlayerMailingAddress(PlayerMailingAddressRequest) returns (PlayerMailingAddressResponse) {}
+    rpc setDefaultPlayerMailingAddress(PlayerMailingAddressRequest) returns (PlayerMailingAddressStatusResponse) {}
+    rpc deletePlayerMailingAddress(PlayerMailingAddressRequest) returns (PlayerMailingAddressStatusResponse) {}
+
+    rpc getRandomSecurityQuestion(FetchSecurityQuestionsRequest) returns (FetchSecurityQuestionsResponse) {}
+    rpc answerSecurityQusetionAndVerifyPassword(AnswerVerifyPasswordRequest) returns (AnswerVerifyPasswordResponse) {}
+    rpc verifySSNLastFourDigits(VerifySSNLastFourRequest) returns (VerifySSNLastFourResponse) {}
+
+}
+
+message GetStatusRequest{
+    string tournament_instance_id = 1;
+}
+
+message GetStatusResult{
+    string tournament_instance_id = 1;
+    string game_meta = 2;
+    string game = 3;
+    repeated PlayerStatus players = 4;
+    string action_result = 5;
+    string tournament = 6;
+}
+
+message PlayerStatus {
+    string user_id = 1;
+    string meta = 2;
+    string name = 3;
+    string username = 4;
+    string chair = 5;
+    string chips = 6;
+    string is_my_turn = 7;
+    string my_turn_start_time = 8;
+    string md5 = 9;
+    string cards = 10;
+    string can_draw = 12;
+    string rank = 13;
+    string prize_payout = 14;
+    string additional_prize_payout = 15;
+    string additiona_prize_payout_percentage = 16;
+    string addons_used = 17;
+    string should_show_prize_revealer = 18;
+    string hand_description = 19;
+}
+
+message MakeSngRequest{
+    string tournament_id = 1;
+    string table_type = 2;
+    string small_blind_value = 3;
+    string table_timer = 4;
+    string game_type = 5;
+}
+
+message MakeSngResponse {
+    string result = 1;
+}
+
+message MakePlayerActionRequest{
+    string tournament_instance_id = 1;
+    string table_instance_id = 2;
+    string action = 3;
+    int32 bet = 4;
+    string latest_rtt = 5;
+    string is_auto = 6;
+}
+
+message GetTournamentsRequest {
+    bool user_only = 1;
+    bool is_for_money = 2;
+    repeated string buyin_low = 3;
+    repeated string buyin_high = 4;
+    repeated string status = 5; // 'registering' | 'running' | 'finished'
+    repeated string timer_low = 6; 
+    repeated string timer_high = 7;
+    repeated string limits = 8; //  'fixed' | 'pot_limit' | 'none'
+    repeated string openings = 9;   // 'one_open' | 'all_open' | 'all_occupied'
+    repeated string search_text = 10;   // search target.name or target.id
+    repeated string game_type = 11; // 'texas_holdem' | 'omaha' | 'five_card_stud' | 'five_card_draw'    
+    string pagination_curr_page = 12;
+    string pagination_items_per_page = 13;
+    bool all_tournaments = 14;
+    bool simulation_only = 15;
+    repeated string entry_fee_low = 16;
+    repeated string entry_fee_high = 17; 
+
+}
+
+message GetTournamentsResponse {
+    string result = 1;
+}
+
+message JoinTournamentRequest {
+    string tournament_instance_id = 1;
+    int32 addons_amount = 2;
+}
+
+message JoinTournamentResponse {
+    string result = 1;
+}
+
+message UnregisterTournamentRequest {
+    string tournament_instance_id = 1;
+}
+
+message UnregisterTournamentResponse {
+    string result = 1;
+}
+
+message CancelTournamentRequest {
+    string tournament_instance_id = 1;
+}
+
+message CancelTournamentResponse {
+    string result = 1;
+}
+
+message GetHandHistoryRequest {
+    string gameplay_history_id = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message GetHandHistoryResponse {
+    string result = 1; 
+}
+
+message GetGameplayHistoriesRequest {
+    string tournament_instance_id = 1;
+    string pagination_current_page = 8;
+    string pagination_items_per_page = 9;
+}
+
+message GetGameplayHistoriesResponse {
+    string result = 1;
+}
+
+message DrawAddActionRequest {
+    string draw_num = 1;
+}
+
+message DrawReplaceActionRequest {
+    string user_id = 1;
+    string tournament_instance_id = 2;
+    string table_instance_id = 3;
+    string latest_rtt = 4;
+    // explicitly state that player don't want to draw
+    bool skip_draw = 5;
+    // indexes of player cards field which the player wants to discard and replace with new drawn cards
+    repeated string change_idxs = 6;
+}
+
+message DrawActionResponse {
+
+}
+
+// Singup request message
+message SignupRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    string first_name = 4;
+    string last_name = 5;
+    string address = 6;
+    string city = 7;
+    string state = 8;
+    string zip = 9;
+    string ssn = 10;
+    string id_number = 11;
+    string id_state = 12;
+    string date_of_birth = 13;
+    string question1 = 14;
+    string answer1 = 15;
+    string question2 = 16;
+    string answer2 = 17;
+    string user_rewards_id = 18;
+    string phone = 19;
+
+}
+
+// Signup response message
+message SignupResult {
+    bool success = 1;
+    repeated string errors = 2;
+}
+
+// Login request message
+message LoginRequest {
+    string user_name = 1;
+    string password = 2;
+    string device_id = 3;
+    string remote_ip = 4;
+    map<string, string> extra_headers = 5;
+    string geolocation_data = 6;    // same format as GeolocationRequest.data field
+    string client = 7;
+}
+
+// Login response message
+message LoginResult {
+    string access_token = 1;
+    string user_id = 2;
+    string login_data = 3;
+    bool is_admin = 4;
+}
+
+// Logout request message
+message LogoutRequest {
+    string remote_ip = 1;
+    map<string, string> extra_headers = 2;
+}
+
+// Logout response message
+message LogoutResult {
+    bool success = 1;
+    repeated string errors = 2;
+}
+
+message MakeSngWithRandomUsersRequest{
+    string user_id = 1;
+}
+
+message GetUserByEmailRequest{
+    string email = 1;
+}
+
+message GetUserByEmailResponse{
+    string id = 1;
+    string name = 2;
+    string username = 3;
+    string cash_in_account = 4;
+}
+
+message TableSubscribeRequest {
+    string table_instance_id = 1;
+}
+message TableSubscribeResponse {
+    string table_state_id = 1;
+}
+
+message JoinTournamentTemplateRequest {
+    string tournament_template_id = 1;
+    string tournament_template_name = 2;
+    int32 addons_amount = 3;
+    string tournament_batch_id = 4;
+}
+
+message JoinTournamentTemplateResponse {
+    string result = 1;
+}
+
+message UnsubscribeFromTournamentTemplateBufferRequest {
+    string tournament_template_id = 1;
+}
+
+message UnsubscribeFromTournamentTemplateBufferResponse {
+    string result = 1;
+}
+
+message AddTournamentTemplateToLobbyRequest {
+    string tournament_template_id = 1;
+    bool is_visible_in_lobby = 2;
+    bool is_flash_mode = 3;
+    bool is_single_hand = 4;
+    bool has_additional_payout = 5;
+
+    // For Five Card Draw Only
+    bool is_turbo_mode = 6;
+}
+
+message AddTournamentTemplateToLobbyResponse {
+    string result = 1;
+}
+
+message RemoveTournamentTemplateFromLobbyRequest {
+    string tournament_template_id = 1;
+}
+
+message RemoveTournamentTemplateFromLobbyResponse {
+    string result = 1;
+}
+
+message GetTournamentTemplateDetailRequest {
+    string tournament_template_id = 1;
+}
+
+message GetTournamentTemplateDetailResponse {
+    string tournament_template_id = 1;
+    string tournament_tempalte_detail = 2;
+    string waiting_users = 3;
+}
+
+message CreateTournamentTemplateRequest{
+    string buyin = 1;
+    string buyin_chips = 2;
+    string min_prize_pool_value = 3;
+    string rake = 4;
+    string is_for_money = 5;
+    string rebuys_permitted = 6;
+    string addons_permitted = 7;
+    string addon_threshold = 8;
+    string rebuys_round_start = 9;
+    string rebuys_round_end = 10;
+    string addons_round_start = 11;
+    string addons_round_end = 12;
+    string scheduled_breaks = 13;
+    string time_limit_seconds = 14;
+    string pending_timeout_seconds = 15;
+    string min_players_per_table = 16;
+    string max_players_per_table = 17;
+    string blind_level_and_values =  18;
+    string small_blind_max_value = 19;
+    string table_timer = 20;
+    string tour_players_min = 21;
+    string tour_players_max = 22;
+    string type = 23;
+    string blinds_increase_interval_seconds = 24;
+    string blinds_increase_interval_rounds = 25;
+    string table_type = 26;
+    string table_max_num_raises = 27;
+    string rebalancing_table_algorithm = 28;
+    string status = 29;
+    string use_decimals = 30;
+    string name = 31;
+    string game_type = 32;
+    string flash_prize_pool_values = 33;
+    string additional_prize_pool_payout_id = 34;
+    string additional_payout_player = 35;
+    string prize_pool_payout_id = 36;
+    string use_additional_payout_only = 37;
+    string addon_chips = 38;
+    string unique_deck = 39;
+    string instant_payout = 40;
+    string tournament_image = 41;
+    string wildcards_enabled = 42;
+    string wildcard_value = 43;
+    string chips_in_penny = 44;
+    string pair_mixed_addon_players = 45;
+    string hard_cap_enabled = 46;
+    string username_privacy = 47;
+    string reveal_cards_after_action = 48;
+
+}
+message CreateTournamentTemplateResponse {
+    bool success = 1;
+}
+
+message GetTournamentTemplateListRequest { 
+    string filter = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message GetTournamentTemplateListResponse {
+    string result = 1;
+}
+
+message GetTournamentTemplateBufferStateRequest {
+    string tournament_template_id = 1;
+}
+
+message GetTournamentTemplateBufferStateResponse {
+    string result = 1;
+}
+
+message GetLobbyTournamentTemplateListRequest { 
+    repeated string status = 1;
+    repeated string buyin_low = 2;
+    repeated string buyin_high = 3;
+    repeated string timer_low = 4; 
+    repeated string timer_high = 5;
+    // 'Fixed' | 'Pot_limit' | 'None'
+    repeated string limits = 6;
+    // 'Texas_holdem' | 'Omaha' | 'Five_card_stud' | 'Five_card_draw'    
+    repeated string game_type = 7; 
+    string pagination_current_page = 8;
+    string pagination_items_per_page = 9;
+    repeated string entry_fee_low = 10;
+    repeated string entry_fee_high = 11; 
+}
+
+message GetLobbyTournamentTemplateListResponse {
+    string result = 1;
+}
+
+message LaunchTournamentRequest {
+    string tournament_template_ids_and_name = 1;
+}
+
+message LaunchTournamentResponse {
+    string result = 1;
+}
+
+message MakeDepositRequest {
+    string nonce = 1;   // optional: braintree client nonce token
+    string customer_id = 2; // optional: braintree associated customer id
+    string device_data = 3;  // optional: braintree client device data
+    double amount = 4;
+}
+
+message MakeDepositResponse {
+    bool success = 1;
+}
+
+message MakeWithdrawalRequest {
+    string nonce = 1;
+    string customer_id = 2; // optional: braintree client nonce token
+    string device_data = 3; // optional: braintree associated customer id
+    double amount = 4;  // optional: braintree client device data
+}
+
+message MakeWithdrawalResponse {
+    bool success = 1;
+}
+
+message AccountStatementsRequest {
+    string start_date = 1;
+    string end_date = 2;
+}
+
+message AccountStatementsResponse {
+    string adjustments = 1;
+    string sessions = 2;
+    string deposits = 3;
+    string withdrawals = 4;
+    string pending_deposits = 5;
+}
+
+// payment service messages
+message ClientTokenRequest {
+    string customer_id = 1; // optional: braintree associated customer id
+}
+
+message ClientTokenResponse {
+    string token = 1;   // client token needed to create braintree client sdk UI
+}
+
+message VaultPaymentMethodRequest {
+    string nonce = 1;
+}
+
+message VaultPaymentMethodResponse {
+    bool success = 1;
+}
+
+message CaptureDepositRequest {
+    string transaction_id = 1;  // braintree transaction id that can be used to verify transaction
+    bool is_id_from_graphql_api = 2;   // whether transaction id found from braintree graphql api
+}
+
+message CaptureDepositResponse {
+    bool success = 1;
+}
+
+message CaptureWithdrawalRequest {
+    string transaction_id = 1;  // braintree transaction id that can be used to verify transaction
+    bool is_id_from_graphql_api = 2;  // whether transaction id found from braintree graphql api
+    string deposit_type = 3;    // 'PayPal' | 'ApplePay' | 'CreditCard' | 'ACH' | 'Venmo'
+    // in case of 'CreditCard' deposit_type, institution should be specific credit card brand like mastercard, visa 
+    // in case of 'ACH' deposit_type, institution should be specific US bank name
+    // in case of 'PayPal', 'ApplePay', 'Venmo'  deposit_type, institution should be the same as the deposit_type
+    string institution = 4;   
+    // in case of 'CreditCard' and 'ACH' deposit_type, account_number should be last 4 digit of bank account number or credit card number
+    // in case of 'PayPal', 'ApplePay', 'Venmo' deposit_type, account_number should be id of the payment account  
+    string account_number = 5;
+    // in case of 'ACH' deposit_type, routing_number should be specific US bank routing number
+    // in case of other payments, routing_number should be 'N/A'
+    string routing_number = 6;
+}
+
+message CaptureWithdrawalResponse {
+    bool success = 1;
+}
+
+message GeolocationRequest {
+    // this field should be in the form of:
+    // {
+    //     "data": {
+    //         "location": {
+    //             "result": {
+    //                 "latitude": "",
+    //                 "longitude": ""
+    //             }
+    //         },
+    //         "device": {
+    //             "result": {
+    //                 "platform": "web|android|ios"
+    //             }
+    //         },
+    //         "version": {
+    //             "result": {
+    //                 "version": "25_0"
+    //             }
+    //         },
+    //         "root": {
+    //             "result": {
+    //                 "root1": false, //android field
+    //                 "root2": false, //android field
+    //                 "battery": "{"isPlugged:":false}", //android field
+    //                 "bash": false, //ios field
+    //                 "cydia_app": false, //ios field
+    //                 "cydia_package": false, //ios field
+    //                 "battery_state": "UNPLUGGED" //ios field
+    //             }
+    //         }
+    //     }
+    // }
+    string data = 1;
+}
+
+message GeolocationResult {
+    bool success = 1;
+    repeated string errors = 2;
+}
+
+message AddPayoutStructureRequest {
+    repeated PayoutOptions payouts = 1;
+}
+
+message PayoutOptions {
+    string num_players_min = 1;
+    string num_players_max = 2;
+    string percentages = 3;
+}
+
+message AddPayoutStructureResponse {
+    string result = 1; 
+}
+
+message GetPayoutStructureRequest {
+    string filter = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message GetPayoutStructureResponse {
+    string result = 1;
+}
+
+message ChangePasswordRequest {
+    string current_password = 1;
+    string new_password = 2;
+}
+
+message ChangePasswordResponse {
+    string result = 1;
+}
+
+message GetRankingsRequest{
+    string tournament_instance_id = 1;
+}
+
+message GetRankingsResult{
+    string tournament_instance_id = 1;
+    string payout_details = 2;
+    string total_payout = 3;
+}
+
+message SearchUserRequest {
+    string username = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message SearchUserResult {
+    string data = 1;
+}
+
+message WhitelistUserRequest {
+    string id = 1;
+}
+
+message WhitelistUserResult {
+    bool success = 1;
+    repeated string errors = 2;
+}
+
+message AcceptTOSRequest {
+    
+}
+
+message AcceptTOSResult {
+    bool success = 1;
+    repeated string errors = 2;
+}
+
+message AccountUpdatesRequest {
+
+}
+
+message AccountUpdatesResult {
+    string data = 1;
+}
+
+
+message WhitelistedUsersRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message WhitelistedUsersResult {
+    string data = 1;
+}
+
+message TournamentDetailsRequest{
+    string tournament_instance_id = 1;
+}
+
+message TournamentDetailsResponse{
+    string tournament_instance_id = 1;
+    string tournament_details = 2;
+    repeated PlayerStatus players = 3;
+}
+
+message PlayerAccountBalanceRequest {
+    string tournament_instance_id = 1;
+}
+
+message PlayerAccountBalanceResult {
+    double cash_in_account = 1;
+    double points_in_account = 2;
+    string gameplay_balance = 3;
+}
+
+message NextTournamentRequest {
+    string tournament_instance_id = 1;
+}
+
+message NextTournamentResult {
+    string tournament_instance_id = 1;
+}
+
+message JoinAnyTournamentRequest {
+    int32 limit = 1;
+    string game_type = 2;
+    string game_mode = 3;
+}
+
+message JoinAnyTournamentResult {
+    string result = 1;   
+}
+
+message UnregisterAnyTournamentRequest {
+    
+}
+
+message UnregisterAnyTournamentResult {
+    bool status = 1;
+    repeated string errors = 2;
+
+}
+
+
+message JoinAnyTournamentStatusRequest {
+
+}
+
+message JoinAnyTournamentStatusResult {
+    bool active = 1;
+    int32 tournaments_left = 2;
+    int32 total_tournaments = 3;
+    string join_any_status = 4;
+    string join_any_status_message = 5;
+    string join_any_game_type = 6;
+    string join_any_game_mode = 7;
+
+}
+
+message ActiveJoinAnyTournamentsRequest {
+
+}
+
+message ActiveJoinAnyTournamentsResult {
+    string data = 1;
+}
+
+message JoinAnyUsersListRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message JoinAnyUsersListResult {
+    string data = 1;
+}
+
+message CancelJoinAnyTournamentRequest {
+    string user_id = 1;
+}
+
+message CancelJoinAnyTournamentResult {
+    bool status = 1;
+    repeated string errors = 2;
+
+}
+
+message CancelJoinAnyUsersRequest {
+    repeated string user_ids = 1;
+}
+
+message CancelJoinAnyUsersResult {
+    bool status = 1;
+    repeated string errors = 2;
+}
+
+message CancelTournamentsRequest {
+    repeated string tournament_instance_ids = 1;
+}
+
+message CancelTournamentsResponse {
+    string result = 1;
+}
+
+message AddonPlayerRequest {
+    string tournament_instance_id = 1;
+}
+
+message AddonPlayerResponse {
+    string result = 1;
+}
+
+message PrizeRevealRequest {
+    string tournament_instance_id = 1;
+}
+
+message PrizeRevealResponse {
+    string result = 1;
+}
+
+message GeofenceRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message GeofenceResponse {
+    string data = 1;
+}
+
+message GeofenceAddRequest {
+    string name = 1;
+    string geofence_data = 2;
+}
+
+message GeofenceAddResponse {
+    string result = 1;
+}
+
+message GeofenceUpdateRequest {
+    string id = 1;
+    string name = 2;
+    string geofence_data = 3;
+    bool is_active = 4;
+}
+
+message GeofenceUpdateResponse {
+    string result = 1;
+}
+
+message GeofenceRemoveRequest {
+    string geofence_id = 1;
+}
+
+message GeofenceRemoveResponse {
+    string result = 1;
+}
+
+message GeofenceWhitelistRequest {
+    string  geofence_id = 1;
+    repeated string whitelist_ids = 2;
+}
+
+message GeofenceWhitelistResponse {
+    string result = 1;
+}
+
+message GeofenceBlacklistRequest {
+    string geofence_id = 1;
+    repeated string blacklist_ids = 2;
+}
+
+message GeofenceBlacklistResponse {
+    string result = 1;
+}
+
+message GeofenceUsersRequest {
+    string geofence_id = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message GeofenceUsersResponse {
+    string data = 1;
+}
+
+message GeofenceGlobalRuleRequest {
+    string geofence_id = 1;
+    bool blacklist_all = 2;
+}
+
+message GeofenceGlobalRuleResponse {
+    string result = 1;
+}
+
+
+message GeofenceUserGlobalRuleRequest {
+    string geofence_id = 1;
+    bool blacklist_all = 2;
+}
+
+message GeofenceUserGlobalRuleResponse {
+    string result = 1;
+}
+
+message GeofenceClientsRequest {
+    string geofence_id = 1;
+    string pagination_current_page = 2;
+    string pagination_items_per_page = 3;
+}
+
+message GeofenceClientsResponse {
+    string data = 1;
+}
+
+message GeofenceClientGlobalRuleRequest {
+    string geofence_id = 1;
+    bool blacklist_all = 2;
+}
+
+message GeofenceClientGlobalRuleResponse {
+    string result = 1;
+}
+
+
+message WhitelistedClientsRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message WhitelistedClientsResult {
+    string data = 1;
+}
+
+//rank hands requests
+message RankHandsRequest {
+    string player_hands = 1;
+    string table_cards = 2;
+    bool additional_checks = 3;
+    int32 wildcard_value = 4;
+}
+//rank hands result
+message RankHandsResult {
+    string success = 1;
+}
+
+message NewDeckRequest {
+    string newDeck = 1;
+}
+
+message NewDeckResponse {
+    string deck = 1;
+}
+
+
+message UpdateAccountBalanceRequest {
+    string user_id = 1;
+    double cash_amount = 2;
+    double points_amount = 3;
+    string update_message = 4;
+}
+
+message UpdateAccountBalanceResponse {
+    string user_id = 1;
+    double new_cash_in_account = 2;
+    double new_points_in_account = 3;
+}
+
+message GetUserInfoRequest {}
+
+message GetUserInfoResponse {
+    string first_name = 1;
+    string last_name = 2;
+    string email = 3;
+    string address = 4;
+    string date_of_birth = 5;
+    string phone = 6;
+    string user_rewards_id= 7;
+    double processing_fee_percentage = 8;
+    double processing_fee_value = 9;
+}
+
+message UpdateUserInfoRequest {
+    string email = 1;
+    string phone = 2;
+    string user_rewards_id = 3;
+
+}
+
+message UpdateUserInfoResponse {
+    string status = 1;
+}
+
+message GlobalSettingsRequest {
+    string key = 1;
+    string json_encoded_value = 2;
+}
+
+message GlobalSettingsResponse {
+    string result = 1;
+}
+
+message GetPasswordResetLinkRequest {
+    string email = 1;
+}
+
+message GetPasswordResetLinkResponse {
+    string status = 1;
+}
+
+message FetchSecurityQuestionsRequest {
+    string username = 1;
+}
+
+message FetchSecurityQuestionsResponse {
+    string questions = 1;
+}
+
+message ResetPasswordRequest {
+    string username = 1;
+    string answers = 2;
+    string new_password = 3;
+    string confirm_password = 4; 
+}
+
+message ResetPasswordResponse {
+    string status = 1;
+}
+
+message VerifyUserPasswordRequest {
+    string password = 1;
+}
+
+message VerifyUserPasswordResponse {
+    string status = 1;
+}
+
+message ValidateSecurityQuestionsRequest {
+    string user_name = 1;
+    string answers = 2;
+    string device_id = 3;
+    string remote_ip = 4;
+    map<string, string> extra_headers = 5;
+    string geolocation_data = 6;    // same format as GeolocationRequest.data field}
+}
+
+message ValidateSecurityQuestionsResponse {
+    string access_token = 1;
+    string user_id = 2;
+    string login_data = 3;
+    bool is_admin = 4;
+}
+
+message IsEmailAvailableRequest {
+    string email = 1;
+}
+
+message IsEmailAvailableResponse {
+    bool available = 1;
+}
+message StartTournamentTableInstanceRequest{
+    string tournament_instance_id = 1;
+    string addons = 2;
+}
+message StartTournamentTableInstanceResponse{
+    string success = 1;
+}
+
+message TournamentPayoutStructureResponse{
+    string structure = 1;
+}
+
+message ActiveUsersRequest {
+    
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+    string username = 3;
+}
+
+message ActiveUsersResult {
+    string data = 1;
+}
+
+
+
+message ClientRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message ClientResponse {
+    string data = 1;
+}
+
+message ClientAddRequest {
+    string name = 1;
+}
+
+message ClientAddResponse {
+    string result = 1;
+}
+
+message ClientUpdateRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message ClientUpdateResponse {
+    string result = 1;
+}
+
+message ClientRemoveRequest {
+    string client_id = 1;
+}
+
+message ClientRemoveResponse {
+    string result = 1;
+}
+
+
+message DataResponse {
+    string data = 1;
+}
+message StatusResponse {
+    string result = 1;
+}
+
+
+message ComponentPermissionRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+    string component = 3;
+}
+
+message ComponentPermissionAddRequest {
+    string component = 1;
+    string roles = 2;
+}
+
+message ComponentPermissionUpdateRequest {
+    string id = 1;
+    string component = 2;
+    string roles = 3;
+}
+
+
+message ComponentPermissionRemoveRequest {
+    string id = 1;
+}
+
+
+
+
+message AdminRoleRequest {
+    string pagination_current_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message AdminRoleAddRequest {
+    string admin_id = 1;
+    string role = 2;
+}
+
+message AdminRoleUpdateRequest {
+    string id = 1;
+    string admin_id = 2;
+    string role = 3;
+}
+
+message AdminRoleRemoveRequest {
+    string admin_id = 1;
+    string role = 2;
+}
+
+message AdminAddRequest {
+    string name = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+    
+}
+
+message AdminUpdateRequest {
+    string id = 1;
+    string name = 2;
+    string username = 3;
+    string email = 4;
+    string password = 5;
+
+}
+
+message AdminRemoveRequest {
+    string id = 1;
+}
+
+
+
+message UpdateTournamentTemplateRequest{
+    string buyin = 1;
+    string buyin_chips = 2;
+    string min_prize_pool_value = 3;
+    string rake = 4;
+    string is_for_money = 5;
+    string rebuys_permitted = 6;
+    string addons_permitted = 7;
+    string addon_threshold = 8;
+    string rebuys_round_start = 9;
+    string rebuys_round_end = 10;
+    string addons_round_start = 11;
+    string addons_round_end = 12;
+    string scheduled_breaks = 13;
+    string time_limit_seconds = 14;
+    string pending_timeout_seconds = 15;
+    string min_players_per_table = 16;
+    string max_players_per_table = 17;
+    string blind_level_and_values =  18;
+    string small_blind_max_value = 19;
+    string table_timer = 20;
+    string tour_players_min = 21;
+    string tour_players_max = 22;
+    string type = 23;
+    string blinds_increase_interval_seconds = 24;
+    string blinds_increase_interval_rounds = 25;
+    string table_type = 26;
+    string table_max_num_raises = 27;
+    string rebalancing_table_algorithm = 28;
+    string status = 29;
+    string use_decimals = 30;
+    string name = 31;
+    string game_type = 32;
+    string flash_prize_pool_values = 33;
+    string additional_prize_pool_payout_id = 34;
+    string additional_payout_player = 35;
+    string prize_pool_payout_id = 36;
+    string use_additional_payout_only = 37;
+    string addon_chips = 38;
+    string unique_deck = 39;
+    string instant_payout = 40;
+    string tournament_template_id = 41;
+    string tournament_image = 42;
+    string wildcards_enabled = 43;
+    string wildcard_value = 44;
+    string chips_in_penny = 45;
+    string pair_mixed_addon_players = 46;
+    string hard_cap_enabled = 47;
+    string username_privacy = 48;
+    string reveal_cards_after_action = 49;
+}
+
+message PlayerTournamentRequest {
+    repeated string search_text = 1;   // search target.name or target.id
+    repeated string game_type = 2; 
+    string pagination_curr_page = 3;
+    string pagination_items_per_page = 4;
+}
+
+message SimulateGamesRequest {
+    string tournament_template_id = 1;
+    string tournament_limit = 2;
+    string addons_amount = 3;
+    string no_of_players = 4;
+
+}
+
+
+message PendingDepositRequest {
+    string pagination_curr_page = 1;
+    string pagination_items_per_page = 2;
+}
+
+message UpdatePendingRequest {
+    string cashier_request_id = 1;
+    string action = 2;
+}
+
+//create multiple users request message
+message CreateMultipleUsersRequest {
+    string number_of_users = 1;
+}
+//create multiple users result message
+message CreateMultipleUsersResult {
+    bool success = 1;
+}
+
+
+message DeletePrizePoolStatusRequest {
+    string prize_pool_payout_id = 1;
+}
+
+message DeletePrizePoolStatusResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+message AdminJoinAnyTournamentRequest {
+    int32 limit = 1;
+    string user_id = 2;
+}
+
+message UiSettingsRequest {
+    string key = 1;
+}
+message AllUiSettingsRequest {
+    string json_encoded_data = 1;
+}
+message UiSettingsResponse {
+    string result = 1;
+}
+
+message ThemesRequest {
+    string name = 1;
+    string json_encoded_value = 2;
+}
+
+message EditThemesRequest {
+    string name = 1;
+    string json_encoded_value = 2;
+    string id = 3;
+}
+
+message ThemesResponse {
+    string result = 1;
+}
+
+message GeopollRequest {
+    string pagination_curr_page = 1;
+    string pagination_items_per_page = 2;
+    string session_data_id = 3;
+    string ip_address = 4;
+}
+
+message GeopollResponse {
+    string data = 1;
+}
+
+message UpdateSecurityQuestionsRequest {
+    string password = 1;
+    string question1 = 2;
+    string answer1 = 3;
+    string question2 = 4;
+    string answer2 = 5;
+}
+
+message UpdateSecurityQuestionsResponse {
+    bool success = 1;
+}
+
+
+message CustomCssRequest {
+    string data = 1;
+}
+
+message CustomCssResponse {
+    bool success = 1;
+    string data = 2;
+}
+
+message PlayerMailingAddressRequest {
+    string id = 1;
+}
+
+message PlayerMailingAddressUpdateRequest {
+    string id = 1;
+    string nickname = 2;
+    string address = 3;
+    string address_2 = 4;
+    string zip = 5;
+    string city = 6;
+    string state = 7;
+    string phone = 8;
+}
+
+message PlayerMailingAddressResponse {
+    string id = 1;
+    string nickname = 2;
+    string address = 3;
+    string address_2 = 4;
+    string zip = 5;
+    string city = 6;
+    string state = 7;
+    string phone = 8;
+    bool default = 9;
+}
+message PlayerMailingAddressStatusResponse {
+    string status = 1;
+    repeated string errors = 2;
+}
+
+message PlayerMailingAddressesResponse {
+    repeated PlayerMailingAddressResponse addresses = 1;
+}
+
+message AnswerVerifyPasswordRequest {
+    string security_question_id = 1;
+    string security_question_answer = 2;
+    string password = 3;
+}
+
+message AnswerVerifyPasswordResponse {
+    bool success = 1;
+}
+
+message VerifySSNLastFourRequest {
+    string last_four_digits = 1;
+    string password = 2;
+}
+
+message VerifySSNLastFourResponse {
+    bool success = 1;
+}
+
+
+message FloatResponse {
+    double data = 1;
+}

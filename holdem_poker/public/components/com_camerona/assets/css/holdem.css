@@ -1,0 +1,1393 @@
+
+html {
+    height: 100%;
+    margin-bottom: 1px;
+}
+body {
+    background-color: #000000;
+    color: #242424;
+    font-family: Arial;
+    font-size: 12px;
+    line-height: 135%;
+    margin: 0;
+    padding: 0;
+}
+html {
+    direction: ltr !important;
+}
+body {
+    direction: ltr !important;
+}
+.betting_info{display: none}
+.error_msg {
+    color: #990000;
+}
+
+.row1 > .disabled{
+	visibility:hidden;
+}
+.row2 > .disabled{
+	visibility:hidden;
+}
+.row3 > .disabled{
+	visibility:hidden;
+}
+.holdem_table {
+    height: 728px;
+    overflow: hidden;
+    position: relative;
+    width: 900px;
+}
+.holdem_table .sounds {
+	display: none;
+    height: 0;
+    width: 0;
+}
+.table_and_chairs {
+    left: 45px;
+    position: relative;
+    top: 70px;
+}
+.table_and_chairs .real_table {
+    position: relative;
+    width: 810px;
+    height:430px;
+    z-index: 3;
+}
+.table_and_chairs .chair {
+    position: absolute;
+    /* z-index: 2; */ /* edit: chair still under the table */
+}
+.table_and_chairs .chair img {
+    /* height: 150px;
+    width: 140px; */ /* edit: is messing with other div images */
+}
+.table_and_chairs .chair img.bottom_left_corner, .table_and_chairs .chair img.bottom_right_corner, .table_and_chairs .chair img.top_left_corner, .table_and_chairs .chair img.top_right_corner {
+    width: 140px;
+}
+.chair .avatar_marker {
+    height: 0;
+    position: relative;
+    width: 0;
+}
+.chair .cards_marker {
+    height: 0;
+    position: relative;
+    width: 0;
+}
+.chair .sitdown_marker {
+    height: 0;
+    position: relative;
+    width: 0;
+}
+.table_and_chairs .bottom {
+    top: 340px;
+}
+.table_and_chairs .left {
+    left: 220px;
+}
+.table_and_chairs .right {
+    left: 450px;
+}
+.table_and_chairs .center {
+    left: 340px;
+}
+.table_and_chairs .top {
+    top: -40px;
+}
+.table_and_chairs .left_top {
+    left: 280px;
+}
+.table_and_chairs .right_top {
+    left: 490px;
+}
+.holdem_table .table_and_chairs .top_far_right {
+	top:120px;
+	left: 760px;
+}
+.holdem_table .table_and_chairs .top_far_left {
+	left: 30px;
+	top: 120px;
+}
+.table_and_chairs .far_left {
+    left: 30px;
+	top: 300px;
+}
+.table_and_chairs .far_right {
+    left: 640px;
+	top: 450px;
+}
+.table_and_chairs .top_corner {
+    top: 0;
+}
+.table_and_chairs .middle {
+    top: 310px;
+}
+.table_and_chairs .middle_left {
+    left: 10px;
+}
+.table_and_chairs .middle_right {
+    left: 760px;
+}
+
+
+
+/* Avatar markers */
+.table_and_chairs .bottom .avatar_marker {
+    top: -145px;
+}
+.table_and_chairs .left .avatar_marker {
+	left: 20px;
+}
+.table_and_chairs .right .avatar_marker {
+	left: 20px;
+}
+.table_and_chairs .center .avatar_marker {
+    left: 15px;
+}
+.table_and_chairs .far_right .avatar_marker {
+	top: -120px;
+    left: 20px;
+}
+.table_and_chairs .far_left .avatar_marker {
+	top: -120px;
+    left: 14px;
+}
+.table_and_chairs .middle_right .avatar_marker {
+	left: 25px;
+}
+.table_and_chairs .middle_left .avatar_marker {
+	left: 15px;
+}
+.table_and_chairs .middle .avatar_marker {
+	top: -140px;
+}
+.table_and_chairs .top .avatar_marker {
+    top: -160px;
+}
+.table_and_chairs .top_far_right .avatar_marker {
+	left: 55px;
+}
+.table_and_chairs .top_far_left .avatar_marker {
+	top: -150px;
+}
+
+.table_and_chairs .top_far_right .avatar_marker {
+	top: -150px;
+	left: 25px;
+}
+
+.table_and_chairs .right_top .avatar_marker, .table_and_chairs .left_top .avatar_marker {
+    left: 20px;
+}
+/* End Avatar markers */
+
+
+
+.table_and_chairs .bottom .cards_marker {
+    top: -201px;
+}
+.table_and_chairs .left .cards_marker,
+.table_and_chairs .center .cards_marker,
+.table_and_chairs .right .cards_marker{
+  left: 70px;
+}
+.table_and_chairs .middle .cards_marker {
+    top: -107px;
+}
+.table_and_chairs .middle_left .cards_marker {
+	left: 106px;
+}
+.table_and_chairs .middle_right .cards_marker {
+    left: -100px;
+}
+.table_and_chairs .top_corner .cards_marker {
+    top: 0;
+}
+.table_and_chairs .far_right .cards_marker {
+    left: -10px;
+	top: -175px;
+}
+.table_and_chairs .far_left .cards_marker {
+    left: 95px;
+	top: -175px;
+}
+.holdem_table .table_and_chairs .top_far_left .cards_marker{
+	top:-30px;
+	left:95px;
+}
+.holdem_table .table_and_chairs .top_far_right .cards_marker {
+	top:-30px;
+	left: -100px;
+
+}
+.holdem_table .table_and_chairs .top .cards_marker {
+	top: -30px;
+}
+
+
+
+.table_and_chairs .bottom .sitdown_marker {
+    top: -120px;
+}
+.table_and_chairs .center .sitdown_marker {
+    left: 25px;
+}
+.table_and_chairs .left .sitdown_marker, .table_and_chairs .right .sitdown_marker {
+	left: 25px;
+}
+.table_and_chairs .middle .sitdown_marker {
+	top: -90px;
+}
+.table_and_chairs .middle_left .sitdown_marker {
+	left: 60px;
+}
+.table_and_chairs .top .sitdown_marker {
+	top: -70px;
+}
+.table_and_chairs .left_top .sitdown_marker {
+	left: 25px;
+}
+.table_and_chairs .right_top .sitdown_marker {
+	left: 25px;
+}
+.table_and_chairs .top_corner .sitdown_marker {
+	top: -70px;
+}
+.table_and_chairs .far_left .sitdown_marker {
+	left: 50px;
+}
+
+
+.table_and_chairs .betting_round_sum_marker{
+	position:initial;
+	z-index:40;
+}
+
+/*
+.table_and_chairs .bottom .betting_round_sum_marker{
+	top: -75px;
+}
+
+.table_and_chairs .center .betting_round_sum_marker, .table_and_chairs .left .betting_round_sum_marker, .table_and_chairs .right .betting_round_sum_marker{
+  left: 52px;
+}
+.table_and_chairs .far_right .betting_round_sum_marker {
+	top: -48px;
+	left: -30px;
+}
+.table_and_chairs .far_left .betting_round_sum_marker {
+	left: 145px;
+	top: -47px;
+}
+.table_and_chairs .middle .betting_round_sum_marker{
+	top: 60px;
+}
+.table_and_chairs .middle_left .betting_round_sum_marker{
+	left: 170px;
+}
+.table_and_chairs .middle_right .betting_round_sum_marker{
+    left: -50px;
+}
+.table_and_chairs .top_far_left .betting_round_sum_marker{
+    left: 160px;
+	top: 160px;
+}
+.table_and_chairs .top .betting_round_sum_marker{
+	top: 80px;
+}
+.table_and_chairs .top_left .betting_round_sum_marker{
+	left: 70px;
+	top: 150px;
+}
+.table_and_chairs .top_right .betting_round_sum_marker{
+	left: 70px;
+	top: 150px;
+}
+.table_and_chairs .top_far_right .betting_round_sum_marker{
+	top: 160px;
+	left: -20px;
+}
+*/
+
+.latest_action_marker{
+	position: absolute;
+}
+
+.countdown_marker {
+	position:absolute;
+	width:20px;
+	top:80px;
+	left:105px;
+	z-index:90;
+}
+
+.table_and_chairs .bottom_center .latest_action_marker {
+	top: 25px;
+	left: 0px;
+}
+
+.table_and_chairs .bottom_left .latest_action_marker {
+	top: -15px;
+	left: 5px;
+}
+.table_and_chairs .bottom_right .latest_action_marker {
+	top: 25px;
+	left: 5px;
+}
+
+.table_and_chairs .bottom_far_left .latest_action_marker{
+	top: 10px;
+	left: 27px;
+}
+
+.table_and_chairs .bottom_far_right .latest_action_marker {
+	top: 10px;
+	left: 42px;
+}
+
+.table_and_chairs .middle_left .latest_action_marker {
+	top: -10px;
+	left: 29px;
+}
+
+.table_and_chairs .middle_right .latest_action_marker {
+	top: -10px;
+	left: 38px;
+}
+
+.table_and_chairs .top_far_right .latest_action_marker {
+	top: -20px;
+	left: 80px;
+}
+.table_and_chairs .top_far_left .latest_action_marker {
+	top: -20px;
+	left: 0px;
+}
+
+.table_and_chairs .top_right .latest_action_marker {
+	top: 1px;
+	left: 110px;
+}
+
+.table_and_chairs .top_left .latest_action_marker {
+	top: 1px;
+	left: -34px;
+}
+
+.player_info .dealer {
+    background: url("../images/dealer.png") no-repeat scroll 0 0 transparent;
+    height: 22px;
+    width: 92px;
+    z-index:40;
+    left: 0;
+	top: 0;
+}
+
+.latest_action span {
+	position: relative;
+}
+
+.latest_action{
+	position:absolute;
+	z-index: 9;
+}
+
+.countdown {
+	display:none;
+	position:absolute;
+	z-index:120;
+	width:20px;
+
+}
+
+
+.sitdown {
+    background: none repeat scroll 0 0 white;
+    position: absolute;
+    z-index: 4;
+}
+
+.pots_container {
+	position: absolute;
+	left: 430px;
+	top: 180px;
+	z-index: 200;
+}
+
+.pots_container div { cursor: default; }
+
+.pot {
+	text-align: center;
+	font-size: 13px;
+    font-weight: bold;
+	left: 0px;
+	position: absolute;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    /* IE 5-7 */
+    filter: alpha(opacity=90);
+    /* Netscape */
+    -moz-opacity: 0.90;
+    /* Safari 1.x */
+    -khtml-opacity: 0.90;
+    /* Good browsers */
+    opacity: 0.90;
+}
+.pot_1,.pot_2,.pot_3,.pot_4,.pot_5,.pot_6,.pot_7,.pot_8,.pot_9,.pot_10{
+
+}
+
+/**
+ * created with:
+ * montage -mode concatenate -tile 0x1 -geometry 36x32 -background none chips__001.png chips__005.png chips__010.png chips__025.png chips_1.png chips_5.png chips_10.png chips_25.png chips_100.png chips_500.png chips_1000.png chips_5000.png chips_10000.png chips_50000.png chips_100000.png chips_500000.png allchips_normal.png
+ *
+ **/
+.chips {
+    position: absolute;
+    display: none;
+    width: 36px;
+    height: 32px;
+    left: -300px;
+    z-index: 9;
+    overflow: hidden;
+        
+    transition: top 2s, left 2s;
+    -webkit-transition: top 2s, left 2s;
+    -moz-transition: top 2s, left 2s;
+    -o-transition: top 2s, left 2s;
+}
+
+.chips img {
+	position: absolute;
+	width: 576px;
+}
+
+
+.card {
+    position: absolute;
+    width: 47px;
+    height: 64px;
+    left: 390px;
+    top: -507px;
+    z-index: 306;
+}
+
+.player_info_container {
+    position: absolute;
+    z-index: 305;
+}
+.player_info {
+    background: url("../images/player_info_bg_1.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    height: 100px;
+    padding: 2px;
+    width: 92px;
+	position:relative;
+	left:5px;
+	top:8px;
+    font-size: 11px;
+}
+.my_player_info {
+    background: url("../images/my_player_info_bg_1.png") no-repeat scroll 0 0 transparent;
+}
+.player_info_contents {
+    left: 12px;
+    position: relative;
+    top: 5px;
+}
+.player_name {
+    margin-top: -4px;
+}
+.player_info .player_img {
+	padding-top:12px;
+	padding-left:0px;
+	padding-bottom:5px;
+	position:relative;
+}
+.player_info .action {
+    height: 1em;
+}
+.player_info .indicators {
+    height: 15px;
+    position: absolute;
+    left: -13px;
+    top: -8px;
+    width: 92px;
+}
+.player_info .indicators div {
+	position: absolute;
+}
+
+.player_info .celebrity {
+		background: url('../images/Celbrity_Star_Icon_1.png');
+    z-index:41;
+		width:25px;
+		height:25px;
+		top:-5px;
+		left:0px;
+}
+.Profile_Rank_Icon{
+    position:absolute;
+    left:160px;
+    top:50px;
+
+}
+.player_timer_container {
+    border: 1px solid white;
+    height: 8px;
+    left: 14px;
+    position: absolute;
+    top: 81px;
+    width: 62px;
+    background: url('../images/slider_track_bg_1.png') repeat-x;
+}
+.player_timer {
+    background: url('../images/slider_bar_1.png') repeat-x;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+.active_player {
+    background: url("../images/active_player_glow_1.png") no-repeat scroll 0 0 transparent;
+}
+.winner{
+	background: url("../images/player_info_box_winner_1c.png") no-repeat scroll 0 0 transparent;
+}
+
+#table_box {
+    overflow: hidden;
+}
+.contentpane {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+#btnRaise {
+	position: absolute;
+	top: 0px;
+	left: 180px;
+	display:inline;
+}
+
+.arrow{
+display:none;
+}
+#currentRaise {
+	float: left;
+	width: 62px;
+	height:25px;
+	text-align:center;
+	position:relative;
+	top:2px;
+	left:2px
+}
+.raiseSliderContainer {
+	position: absolute;
+	top: 0px;
+	left: 50px;
+}
+.raiseSliderContainer #btnRaiseMinus {
+	position: absolute;
+	left: 27px;
+	padding: 10px;
+	padding-top:9px;
+	padding-bottom:9px;
+	width: 15px;
+	height: 15px;
+}
+.raiseSliderContainer #btnRaisePlus {
+	position: absolute;
+	left: 120px;
+	padding: 10px;
+	padding-top:9px;
+	padding-bottom:9px;
+	width: 15px;
+	height: 15px;
+}
+.raiseSliderContainer .slider{
+	position: absolute;
+	top: 15px;
+	left: 66px;
+	width: 97px;
+	z-index:0;
+}
+#bottom_right_controls .raiseSliderContainer .knob {
+	top: -13px;
+	width: 12px;
+	height: 33px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.modal {
+    left: 20%;
+    margin: 0;
+    position: absolute;
+    top: 30%;
+}
+
+#dialog_playersettings {
+	top: 10%;
+}
+
+#handhistory_dialog .modal-body {
+	height: 300px;
+	overflow: auto;
+}
+.modal-body h3{
+    font-size: 10pt;
+}
+.slider {
+    background: url('../images/slider_track_bg_1.png') repeat-x;
+    height: 10px;
+    margin: auto;
+    position: relative;
+    width: 250px;
+}
+.slider .knob {
+    height: 20px;
+    position: absolute;
+    top: -10px;
+    width: 20px;
+}
+.card1_left {
+    height: 64px;
+    left: 72px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 47px;
+    z-index: 100;
+}
+.card2_left {
+    height: 64px;
+    left: 123px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 47px;
+    z-index: 100;
+}
+.card1_right {
+    height: 64px;
+    left: 13px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 47px;
+    z-index: 100;
+}
+.card2_right {
+    height: 64px;
+    left: 65px;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+    width: 47px;
+    z-index: 100;
+}
+.big {
+    position: absolute;
+    visibility: hidden;
+    z-index: 120;
+}
+.table_chat_container {
+    /* position: absolute; */
+    top: 595px;
+    left: 50px;
+    background: none repeat scroll 0 0 white;
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 1px;
+    width: 320px;
+    /* height: 103px; */
+    z-index: 300;
+}
+.new_table_chat{
+ height:25px;
+ padding:4px;
+
+
+}
+.table_chat_container input {
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    color: #5A5A5A;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 99%;
+    z-index: 30;
+}
+.chat_name {
+    color: #7E7E7E;
+}
+.table_chat_log {
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+    font-size: 11px;
+    height: 70px;
+    line-height: 15px;
+    overflow: auto;
+    width: 310px;
+	padding:5px;
+
+}
+.time{
+	padding-right:5px;
+	color:grey;
+}
+.player_info .big_blind {
+    background: url("../images/bblind.png") no-repeat scroll 0 0 transparent;
+    height: 28px;
+    width: 28px;
+    top:48px;
+    left:67px;
+    z-index:200;
+
+}
+.player_info .small_blind {
+    background: url("../images/sblind.png") no-repeat scroll 0 0 transparent;
+    height: 28px;
+    width: 28px;
+    top:56px;
+    left:67px;
+    z-index:200;
+
+}
+.warning_msg {
+    color: #006600;
+}
+div.slider_box {
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px 5px 5px 5px;
+    opacity: 0.85;
+    padding: 5px;
+}
+div.slider_value {
+    color: #919191;
+    font-size: 9px;
+    height: 14px;
+    position: absolute;
+    text-align: center;
+    top: 8px;
+    width: 30px;
+    z-index: 2;
+}
+div.slider_container {
+    background: url("../images/bar_slider.png") repeat-x scroll 0 0 transparent;
+    height: 15px;
+}
+div.slider_knob {
+    background: url("../images/btn_slider.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 15px;
+    position: relative;
+    width: 8px;
+    z-index: 4;
+}
+.btnSubmit {
+    border: 1px solid #D9D9D9;
+    cursor: pointer;
+    padding: 3px 10px;
+}
+.game_action_controls_container {
+    background: url("../images/bottom_toolbar_bg_2.png") no-repeat scroll 0 0 transparent;
+    height: 220px;
+    left: 0;
+    position: absolute;
+    top: 575px;
+    width: 100%;
+}
+
+.game_options_container {
+	/* position: absolute; */
+	/* top: 595px; */
+	/* left: 10px; */
+	/* z-index: 5; */
+	width: 30px;
+}
+
+.disable_selection {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#btnAddon {
+    display:none;
+	position:relative;
+	top:-156px;
+    left:826px;
+    font-weight: bold;
+    width: 35px !important;
+}
+#btnHandhistory img {
+	margin-top:5px;
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+}
+#btnAddon img{
+	margin-top:5px;
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+
+}
+#btnAutomuck img{
+	margin-top:5px;
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+
+}
+.btnDealerChat img {
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+
+}
+#btnSpeaker img {
+	margin-top: 5px;
+    width: 30px;
+    height: 30px;
+	cursor:pointer;
+}
+#btnAutomuck input, .btnDealerChat input, #btnSpeaker input {
+	display: none;
+}
+#bottom_left_controls {
+    display: none;
+    left: 380px;
+    position: absolute;
+    top: 30px;
+    /* width: 200px; yared edit*/
+}
+#bottom_right_controls {
+    display: none;
+    left: 540px; /* yared edit */
+    position: absolute;
+    top: 30px;
+    width: 350px;
+}
+#bottom_left_controls .row1 {
+    position: relative;
+    height: 55px;
+}
+#bottom_left_controls .row2 {
+    position: relative;
+}
+#bottom_right_controls .row1 {
+    position: relative;
+    height: 55px;
+}
+#bottom_right_controls .row3 {
+    position: absolute;
+}
+#bottom_left_controls .btn, #bottom_right_controls .btn {
+    float: left;
+    font-size: 12px;
+    margin: 2px;
+    position: relative;
+}
+.controlBtn{
+	text-align:center;
+	padding:10px;
+}
+#btnPass {
+    width: 62px;
+}
+#btnCheck {
+    width: 62px;
+}
+#btnCheckFold {
+    width: 150px;
+}
+#btnMin{
+	width: 50px;
+}
+#btnRaiseMin{
+	width: 50px;
+}
+
+#btnHalfPot {
+	width: 50px;
+}
+#btnThreeQuarterPot {
+	width: 50px;
+}
+
+#btnFullPot {
+    width: 46px;
+}
+#btnAllIn {
+    width: 80px;
+}
+#btnRaise {
+    width: 55px;
+}
+#btnCallAny {
+	position:relative;
+	left: 0px;
+    width: 80px;
+}
+#btnCall {
+	position:relative;
+	left: 0px;
+    width: 80px;
+}
+.meta_game_controls {
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    width: 350px;
+}
+.meta_game_controls .btn {
+    float: left;
+    position: relative;
+}
+.community_cards {
+    height: 0;
+    position: absolute;
+    left: 395px;
+    top: 280px;
+    width: 0;
+    z-index: 306;
+}
+.flop1_marker {
+    left: 0;
+    position: absolute;
+}
+.flop2_marker {
+    left: 60px;
+    position: absolute;
+}
+.flop3_marker {
+    left: 120px;
+    position: absolute;
+}
+.turn_marker {
+    left: 180px;
+    position: absolute;
+}
+.river_marker {
+    left: 240px;
+    position: absolute;
+}
+
+.betting_round_sum {
+	position: absolute;
+	z-index: 1000;
+    font-size: 13px;
+    padding: 2px 6px 2px 6px;
+    margin: -100px 0px 0px 120px;
+}
+
+.autoUserAction_container {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.autoUserAction_container .autoUserAction {
+  position: relative;
+  top: 7px;
+}
+.autoUserAction{
+    display:none;
+}
+
+#table_finished, #tournament_pending, #table_paused_container {
+	width: 500px;
+	z-index: 1001;
+	height: 200px;
+	position: absolute;
+	left: 200px;
+	top: 150px;
+	background: white;
+}
+iframe {
+	overflow: hidden;
+}
+
+#table_finished_container .model-body {
+	height: 300px;
+	overflow: scroll;
+}
+.game_meta div{
+    margin-right: 5px;
+    margin-left: 0px;
+
+}
+.game_meta {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 10;
+	font-size: 10px;
+}
+
+.game_meta .clock {
+	display: inline;
+}
+
+.game_exception a{
+	color: #333;
+}
+
+.game_exception, .game_type_container, .table_denomination, .game_id_container, .table_id_container, .tournament_id_container, .time_remaining, .table_rake {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.game_meta .tournament_id_container {
+	display: none;
+}
+.game_meta .time_remaining {
+	display: none;
+}
+
+.decision_time_meta {
+    position: absolute;
+    left: 5px;
+    top: 550px;
+    z-index: 10;
+    font-size: 10px;
+    padding: 2px 4px;
+    color: #ccc;
+    line-height: normal;
+    cursor: default;
+}
+.balance {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-around;
+}
+.server_time_meta {
+    position: absolute;
+    right: 5px;
+    top: 550px;
+    z-index: 10;
+    font-size: 10px;
+    padding: 2px 4px;
+    color: #ccc;
+    line-height: normal;
+    cursor: default;
+}
+.server_time_meta .clock {
+    display: inline;
+}
+
+.tournament_popup .modal-body {
+	height: 300px;
+	overflow: auto;
+}
+.clearfix {
+	clear: both;
+}
+.connection_status {
+	width: 10px;
+	height: 10px;
+	border: 1px solid white;
+	position: absolute;
+	left: 62px;
+	top: 90px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+
+}
+.connection_status_0 {
+	background: lightgreen;
+}
+.connection_status_1 {
+	background: yellow;
+}
+.connection_status_2 {
+	background: red;
+}
+
+
+.rebuy_dialog {
+	z-index: 12000;
+}
+
+.alert-message {
+	z-index: 1000;
+}
+.name{
+	font-weight: bold;
+}
+.separator{
+	padding-right:5px;
+}
+#back_to_lobby, #btnStandUp, #btnSitOut, #btnAway{
+ font-size:11px;
+}
+.popover_close{
+position:relative;
+top:-40px;
+}
+.popover .inner{
+	width:185px;
+}
+.depressed{
+		filter: none;
+    background: url('../images/check_tick.png');
+	background-position: 0px 4px;
+    background-color: #cccccc ;
+    background-repeat: no-repeat;
+	-webkit-box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.depressed:hover{
+    background: url('../images/check_tick.png');
+	background-position: 0px 4px;
+    background-color: #cccccc ;
+    background-repeat: no-repeat;
+    -webkit-box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.75), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/**
+ * montage -mode concatenate -tile 0x1 -geometry 47x64 -background none back.png 52.png 51.png 50.png 49.png 48.png 47.png 46.png 45.png 44.png 43.png 42.png 41.png 40.png 39.png 38.png 37.png 36.png 35.png 34.png 33.png 32.png 31.png 30.png 29.png 28.png 27.png 26.png 25.png 24.png 23.png 22.png 21.png 20.png 19.png 18.png 17.png 16.png 15.png 14.png 13.png 12.png 11.png 10.png 9.png 8.png 7.png 6.png 5.png 4.png 3.png 2.png 1.png allcards_normal.png
+ *
+ **/
+/**
+ * To scale sizes, it's a two step process:
+ * native size of the card = 47x64
+ * 1. change .card's width/height
+ * 2. change '.card img' width to be proportional to the change made in step one; native size = 2491px
+ *
+ **/
+.card {
+	width: 44px;
+	height: 67px;
+    overflow: hidden;
+    
+    transition: top 1s, left 1s;
+    -webkit-transition: top 1s, left 1s;
+    -moz-transition: top 1s, left 1s;
+    -o-transition: top 1s, left 1s;
+}
+.card img {
+	position: absolute;
+	width: 2491px;
+}
+.card_back {
+	background-position: 0px 0px;
+}
+
+.not_part_of_winning_hand {
+	opacity: 0.5 !important;
+}
+
+.part_of_winning_hand {
+    top: -20px !important;
+    z-index: 310;   /* make it standout */
+    transition:all .2s;
+    transform:translateY(-5px)
+}
+
+.cached_assets {
+	display: none;
+}
+.disabled{}
+.btn{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.dealer_source{
+    color:blue;
+    font-style: italic;
+}
+.observer{
+    color:grey;
+}
+.in_game_title{
+    font-weight: bold;
+}
+.full_overview_btn{
+
+}
+
+#dialog_multifactor, .freeplay_check_dialog { z-index: 12000; }
+
+.card_0 img{
+    left: 0px;
+}
+.card_1 img{
+    left: -48px;
+}
+.card_2 img{
+    left: -96px;
+}
+.card_3 img{
+    left: -144px;
+}
+.card_4 img{
+    left: -192px;
+}
+.card_5 img{
+    left: -237px;
+}
+.card_6 img{
+    left: -285px;
+}
+.card_7 img{
+    left: -332px;
+}
+.card_8 img{
+    left: -379px;
+}
+.card_9 img{
+    left: -428px;
+}
+.card_10 img{
+    left: -471px;
+}
+.card_11 img{
+    left: -517px;
+}
+.card_12 img{
+    left: -568px;
+}
+.card_13 img{
+    left: -611px;
+}
+.card_14 img{
+    left: -659px;
+}
+.card_15 img{
+    left: -707px;
+}
+.card_16 img{
+    left: -753px;
+}
+.card_17 img{
+    left: -801px;
+}
+.card_18 img{
+    left: -848px;
+}
+.card_19 img{
+    left: -894px;
+}
+.card_20 img{
+    left: -942px;
+}
+.card_21 img{
+    left: -989px;
+}
+.card_22 img{
+    left: -1036px;
+}
+.card_23 img{
+    left: -1083px;
+}
+.card_24 img{
+    left: -1129px;
+}
+.card_25 img{
+    left: -1177px;
+}
+.card_26 img{
+    left: -1223px;
+}
+.card_27 img{
+    left: -1270px;
+}
+.card_28 img{
+    left: -1318px;
+}
+.card_29 img{
+    left: -1365px;
+}
+.card_30 img{
+    left: -1412px;
+}
+.card_31 img{
+    left: -1459px;
+}
+.card_32 img{
+    left: -1505px;
+}
+.card_33 img{
+    left: -1553px;
+}
+.card_34 img{
+    left: -1598px;
+}
+.card_35 img{
+    left: -1646px;
+}
+.card_36 img{
+    left: -1694px;
+}
+.card_37 img{
+    left: -1740px;
+}
+.card_38 img{
+    left: -1787px;
+}
+.card_39 img{
+    left: -1834px;
+}
+.card_40 img{
+    left: -1882px;
+}
+.card_41 img{
+    left: -1928px;
+}
+.card_42 img{
+    left: -1975px;
+}
+.card_43 img{
+    left: -2023px;
+}
+.card_44 img{
+    left: -2068px;
+}
+.card_45 img{
+    left: -2117px;
+}
+.card_46 img{
+    left: -2164px;
+}
+.card_47 img{
+    left: -2210px;
+}
+.card_48 img{
+    left: -2258px;
+}
+.card_49 img{
+    left: -2303px;
+}
+.card_50 img{
+    left: -2352px;
+}
+.card_51 img{
+    left: -2399px;
+}
+.card_52 img{
+    left: -2445px;
+}

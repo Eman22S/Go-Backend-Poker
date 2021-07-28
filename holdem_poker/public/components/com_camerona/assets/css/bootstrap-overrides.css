@@ -1,0 +1,35 @@
+input[type=checkbox], input[type=radio] {
+	margin: 0px;
+}
+
+/*
+.btn, .btn.primary {
+	background-image: none;
+	text-shadow: none;
+}
+
+*/
+
+/* Custom change to remove bootstrap floating for braintree dropin container */
+label {
+	float: initial;
+}
+
+/* These texts were black and will not work with dark theme background so changed to white */
+[data-braintree-id="methods-label"],
+[data-braintree-id="methods-edit"],
+[data-braintree-id="choose-a-way-to-pay"]{
+	color: white;
+}
+
+/* counter bootstrap css when label is used for form controls in material-ui */
+label {
+	padding-top: initial;
+	width: initial;
+	text-align: initial;
+}
+
+/* Fight bootstrap border for table */
+table td, table tbody th {
+	border-top: none; 
+}

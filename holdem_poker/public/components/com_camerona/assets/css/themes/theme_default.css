@@ -1,0 +1,10 @@
+.holdem_table {
+    background: url("../../images/themes/default/carpet_1.png") no-repeat scroll 0 0 transparent;
+}
+ .real_table {
+    background: url("../../images/themes/default/real_table.png");
+    width:860px !important;
+    position: relative;
+    right:20px;
+    bottom:5px;
+}
