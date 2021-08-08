@@ -2,3 +2,18 @@ syntax = "proto3";
 package services;
 import "google/protobuf/empty.proto";
 option go_package = "../services";
+
+service Sng {
+    rpc getAllUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
+    
+}
+
+message UiSettingsRequest {
+    string key = 1;
+}
+message AllUiSettingsRequest {
+    string json_encoded_data = 1;
+}
+message UiSettingsResponse {
+    string result = 1;
+}
