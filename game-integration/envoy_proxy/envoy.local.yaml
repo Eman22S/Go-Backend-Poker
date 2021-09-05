@@ -46,4 +46,4 @@ static_resources:
     http2_protocol_options: {}
     lb_policy: round_robin
     # address should be localhost for linux, but host.docker.internal for mac/win
-    hosts: [{ socket_address: { address: 127.0.0.1, port_value: 9001 }}]
+    hosts: [{ socket_address: { address: 127.0.0.1, port_value: 10000 }}]
