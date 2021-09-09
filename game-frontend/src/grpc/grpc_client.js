@@ -231,6 +231,10 @@ class GrpcClient {
     });
   }
 
+  call_streaming_grpc(method_name, request, opts = {}) {
+    return this.client[method_name](request, opts)
+  }
+
   signup(data, on_response, on_error) {
     let request = new SignupRequest();
     request.setUsername(data.username);
@@ -623,54 +627,16 @@ class GrpcClient {
     );
   }
 
-  subscribeTournamentState(tournament_id, table_id, on_change, on_err) {
+  subscribeTournamentState(tournament_id, table_id) {
     this.unSubscribeTournamentState();
     this.tournament_instance_id = tournament_id;
     this.table_instance_id = table_id;
-    console.log("GC: subscribing to: ", tournament_id);
+    // console.log("GC: subscribing to: ", tournament_id);
 
     let request = new GetStatusRequest();
     request.setTournamentInstanceId(tournament_id);
 
-    let this_grpc_client = this;
-    this.cancel_subscriptions = false;
-    this.grpc_responsed = true;
-    this.tournament_subscription_interval = setInterval(
-      function () {
-        console.log("GC: Subscription: grpc_responsed: ", this.grpc_responsed);
-        if (this_grpc_client.grpc_responsed) {
-          this_grpc_client.grpc_responsed = false;
-          console.log("GC: Subscription: calling getStatus...");
-          this.call_grpc(
-            "getStatus",
-            request,
-            function (response) {
-              console.log(response);
-              console.log("******************(((((((((((((((((");
-              let table_state = this_grpc_client.getExpectedTableState(
-                response
-              );
-              console.log(
-                "GC: Subscription: getStatus table state: ",
-                table_state
-              );
-              console.log(
-                "GC: Subscription: table_action: ",
-                table_state.game.table_action
-              );
-              console.log("GC: Subscription: bet: ", table_state.game.bet);
-              if (!this.cancel_subscriptions) {
-                on_change(table_state);
-                this.grpc_responsed = true;
-                console.log("GC: Subscription: grpc_responsed: set to true");
-              }
-            }.bind(this),
-            on_err
-          );
-        }
-      }.bind(this),
-      2000 // rate at which it asks for server
-    );
+    return this.call_streaming_grpc('getStatus', request)
   }
 
   unSubscribeTournamentState() {

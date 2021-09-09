@@ -139,7 +139,7 @@ function TableChat({ ...props }) {
           <span className="time"></span>
           <span className="message">Hand ID : 84406</span>
         </div>
-        {tableState.game?.bet.map((round_bet_data, game_turn) => (
+        {tableState.game?.bet?.map((round_bet_data, game_turn) => (
           <React.Fragment>
             {game_turn > 0 && (
               <div

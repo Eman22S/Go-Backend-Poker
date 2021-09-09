@@ -1002,7 +1002,7 @@ function GamePlayAlternate(props) {
                           
                         {/* bet action controls */}
                         <Grid item xs={7}>
-                            {(!(tableState?.game_meta?.is_turbo_mode === '1' && tableState?.game_meta?.game_type === 'five_card_draw')) && store.player && tableState && (
+                            {(!(tableState?.game_meta?.is_turbo_mode && tableState?.game_meta?.game_type === 'five_card_draw')) && store.player && tableState && (
                             <ActionControls
                                 on_new_table_state={on_new_table_state}
                                 on_draw_new_cards={startNextTable}

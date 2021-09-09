@@ -27,6 +27,6 @@ func main() {
 	}
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)
-	services.RegisterSngServer(grpcServer, services.PokerServer{})
+	services.RegisterSngServer(grpcServer, &services.Server{})
 	grpcServer.Serve(lis)
 }
