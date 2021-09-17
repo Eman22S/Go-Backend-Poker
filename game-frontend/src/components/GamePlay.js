@@ -55,6 +55,7 @@ import ExitToApp from '@material-ui/icons/ExitToApp';
 
 import md5 from "md5";
 import ActionControlsAlternate from "./fragments/ActionControlsAlternate";
+import { tranformData } from "./utils/data-transformer";
 
 
 // These error should be skipped when encountered
@@ -62,6 +63,27 @@ const SKIP_ERRORS = {
   COM_CAMERONA_OUT_OF_TURN_ACTION_RECEIVED: true, // out of turn action is handled by the backend enough
   COM_CAMERONA_HAND_NOT_IN_PROGRESS: true, // for now timer is creating this error because of latency
 };
+
+const camelToSnakeCase = str => str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`).replace('_list', '');
+
+const convertFieldsToSnakeCase = (objectVal) => {
+    let convertedObject = {}
+    Object.keys(objectVal).forEach(key => {
+        if (Array.isArray(objectVal[key])) {
+            convertedObject[camelToSnakeCase(key)] = objectVal[key].map(val => {
+                if (typeof val !== 'object') return val
+                return convertFieldsToSnakeCase(val)
+            })
+        }
+        else if (typeof objectVal[key] === 'object' && !Array.isArray(objectVal[key])) {
+            convertedObject[camelToSnakeCase(key)] = convertFieldsToSnakeCase(objectVal[key])
+        }
+        else {
+            convertedObject[camelToSnakeCase(key)] = objectVal[key]
+        }
+    })
+    return convertedObject
+}
 
 function GamePlay(props) {
 
@@ -464,7 +486,7 @@ function GamePlay(props) {
 
 
     const isPayoutMade = () =>{
-        return tableState?.game?.additional_payout_made_to[localUser.md5];
+        return tableState?.game?.additional_payout_made_to;
     }
 
 
@@ -494,7 +516,7 @@ function GamePlay(props) {
                 let type = table_types.find(
                 (type) => type.value === tableState.game_meta.table_type
                 );
-                title += `, ${type.label}`;
+                title += `, ${type?.label}`;
             }
         }
         document.title = title;
@@ -504,19 +526,21 @@ function GamePlay(props) {
     // subscribe to table state if starting table state found
     useEffect(() => {
         let startingTableState = store.startingTableState;
-        if (startingTableState) {
+        if (!startingTableState) {
         if (
-            startingTableState.game_meta?.tournament_instance_id &&
-            startingTableState.game_meta?.table_instance_id
+           1=== 1
         ) {
-            // setTableState(startingTableState);
-
-            grpc_client.subscribeTournamentState(
-            startingTableState.game_meta.tournament_instance_id,
-            startingTableState.game_meta.table_instance_id,
-            on_new_table_state,
-            (custom_msg) => custom_msg && showSnackBar(custom_msg)
-            );
+            console.log('all values', convertFieldsToSnakeCase({allValues: 2, subValue: {total: 5}}))
+           grpc_client
+           .subscribeTournamentState(1, 1)
+           .on('data', data => {
+               let grpc_data = convertFieldsToSnakeCase(data.toObject())
+               grpc_data = tranformData(grpc_data, 'tableState')
+               setTableState(grpc_data)
+           })
+           .on('error', err => {
+               console.log('the error is ', err)
+           })
         } else {
             console.error(
             "Starting Table State: can not be subscribed. Could not get tournament or table instance id."
@@ -579,6 +603,10 @@ function GamePlay(props) {
     const handleCancelledDialogClose = () => {
         history.push("/lobby");
     };
+
+    useEffect(() => {
+        updateStore("player",() => localUser)
+    },[])
 
     // get cards used by winners if exist
     const winners_cards = getWinnersCardsUsed(tableState);
@@ -1038,7 +1066,7 @@ function GamePlay(props) {
 
                         {/* bet action controls */}
                         <Grid item xs={7}>
-                            {(!(tableState?.game_meta?.is_turbo_mode === '1' && tableState?.game_meta?.game_type === 'five_card_draw')) && store.player && tableState && (
+                            {(!(tableState?.game_meta?.is_turbo_mode === '1' && tableState?.game_meta?.game_type === 'five_card_draw'))  && tableState && (
                             <ActionControlsAlternate
                                 on_new_table_state={on_new_table_state}
                                 on_draw_new_cards={startNextTable}

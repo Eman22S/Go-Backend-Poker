@@ -35,7 +35,6 @@ function getBettingRoundSum(game_turn, bet, player_md5) {
   if (!number_exists(game_turn) && !bet && !player_md5) {
     return null;
   }
-
   // if not round bets array exist, assume round sum as 0
   let bets_array = bet[game_turn];
   if (!bets_array) {

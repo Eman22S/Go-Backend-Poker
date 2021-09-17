@@ -1,11 +1,12 @@
 syntax = "proto3";
-package poker;
+package services;
 import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
 
 service Sng{
     rpc Test(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     
-    rpc GetStatus (GetStatusRequest) returns (GetStatusResult) {}
+    rpc getStatus (GetStatusRequest) returns (stream GetStatusResult) {}
     rpc MakeSng (MakeSngRequest) returns (MakeSngResponse) {}
     rpc MakePlayerAction (MakePlayerActionRequest) returns (GetStatusResult) {}
     
@@ -213,13 +214,302 @@ message GetStatusRequest{
     string tournament_instance_id = 1;
 }
 
-message GetStatusResult{
-    string tournament_instance_id = 1;
-    string game_meta = 2;
-    string game = 3;
-    repeated PlayerStatus players = 4;
-    string action_result = 5;
-    string tournament = 6;
+message GameMeta {
+    // dynamic fields
+    int64 server_time = 1;
+    bool is_hand_in_progress = 2;
+    
+    // static fields per table
+    bool is_tournament = 3;
+    string table_type = 4;  // texas_holdem | omaha | five_card_draw | five_card_stud
+    int64 tournament_instance_id = 5;
+    int64 table_instance_id = 6;
+    int64 gameplay_history_id = 7;
+    int32 timer = 8;
+    int32 max_num_players = 9;
+    float min_buyin = 10;
+    float max_buyin = 11;
+    bool is_for_money = 12;
+    int32 max_num_raises = 13;
+    bool use_decimals = 14;
+    bool is_random_seating_required = 15;
+
+    // fields from extended implementation
+    bool is_flash_mode = 16;
+    bool is_single_hand = 17;
+    bool is_turbo_mode = 18;
+    bool has_additional_payout = 19;
+
+    repeated BlindLevel blind_level_and_values = 20;
+    FlashPrizePoolValues flash_prize_pool_values = 21;
+    google.protobuf.Any additional_prize_pool_payout = 22;
+    bool flash_mode_status = 23;
+    bool use_additional_payout_only = 24;
+    google.protobuf.Any unique_deck = 25;
+    google.protobuf.Any instant_payout = 26;
+    string tournament_image = 27;
+    float addon_chips = 28;
+    bool wildcards_enabled = 29;
+    google.protobuf.Any wildcard_value = 30;
+    bool chips_in_penny = 31;
+    google.protobuf.Any pair_mixed_addon_players = 32;
+    bool hard_cap_enabled = 33;
+    bool username_privacy = 34;
+    bool reveal_cards_after_action = 35;
+    int32 cards_round = 36;
+    bool bring_in=37;
+    float bring_in_value=38;
+    string game_type = 39;
+    string status = 40;
+    string chip_to_money_ratio = 41;
+    int32 initial_small_blind = 42;
+    int32 small_blind_max_value = 43;
+    int32 user_id_that_is_up = 44;
+}
+
+message Game {
+    float rake = 1;
+    string table_action = 2;
+    string last_player_key_to_make_valid_raise = 3;
+    float last_valid_raise = 4;
+    float cur_raise = 5;
+    int32 bigblind = 6;
+    int32 smallblind = 7;
+    int32 game_turn = 8;
+    int32 round = 9;
+    google.protobuf.Any flop = 10;
+    google.protobuf.Any turn = 11;
+    google.protobuf.Any river = 12;
+    bool is_allin = 13;
+    google.protobuf.Any winners_dta = 14;
+    repeated Pot pot = 15;
+    Bet bet = 16;
+    string sb_player_key = 17;
+    string bb_player_key = 18;
+    bool blinds_announce = 19;
+    bool table_paused_html = 20;
+
+    // fields from extended implementation
+    repeated BlindLevel blind_level_and_values = 21;
+    google.protobuf.Any flash_prize_pool_values = 22;
+    google.protobuf.Any additional_prize_pool_payout = 23;
+    int64 additional_prize_pool_payout_id = 24;
+    int64 additional_payout_id = 25;
+    google.protobuf.Any additional_payout_hand = 26;
+    google.protobuf.Any additional_payout_made_to = 27;
+    google.protobuf.Any tounrament_batch_info = 28;
+    bool addons_used = 29;
+    int64 prize_pool_payout_id = 30;
+    bool use_additional_payout_only = 31;
+    bool flash_mode_status = 32;
+    int64 flash_mode_timer = 33;
+    google.protobuf.Any unique_deck = 34;
+    google.protobuf.Any instant_payout = 35;
+    string tournament_image = 36;
+    float addon_chips = 37;
+    bool wildcards_enabled = 38;
+    google.protobuf.Any wildcard_value = 39;
+    bool chips_in_penny = 40;
+    google.protobuf.Any pair_mixed_addon_players = 41;
+    bool hard_cap_enabled = 42;
+    bool username_privacy = 43;
+    bool reveal_cards_after_action = 44;
+    int32 cards_round = 45;
+    bool bring_in=46;
+    float bring_in_value=47;
+    repeated google.protobuf.Any winners_data = 48;
+    int32 dealer_chair = 49;
+    bool is_new_table_action_needed = 50;
+    repeated string tournament_batch_info = 51;
+    string table_turn_timeout_id = 52;
+}
+
+message Pot {
+    int32 total = 1;
+    repeated string playersIN = 2;
+}
+
+message Player {
+    int32 id = 32;
+    string name = 1;
+    string username = 2;
+    int32 chair = 3;
+    google.protobuf.Any thumb = 4;
+    string status = 5;
+    float chips = 6;
+    bool can_addon = 7;
+    bool can_raise = 8;
+    int64 latency = 9;
+    bool is_celebrity = 10;
+    float bet2do = 11;
+    int64 user_id = 12;
+    string md5 = 13;
+    string action = 14;
+    int64 score = 15;
+    bool is_dealer = 16;
+    bool is_myturn = 17;
+    int64 myturn_start_time = 18;
+    repeated int32 cards = 19;
+    bool is_allin = 20;
+    bool is_away = 21;
+
+    // fields from extended implementation
+    bool can_draw = 22;
+    bool should_show_prize_revealer = 23;
+    string hand_description = 24;
+    bool is_idle_hand = 25;
+    int32 idle_hand_count = 26;
+    float amount_raked = 27;
+    bool was_small_blind_missed = 28;
+    bool was_big_blind_missed = 29;
+    bool is_automuck_enabled = 30;
+    google.protobuf.Any resit_at_next_big_blind = 31;
+}
+
+message PayoutDetails {
+    string username = 1;
+    int32 user_id = 2;
+    int32 chair =  3;
+    int32 remaining_chips =4;
+    int32 rank = 5;
+    bool is_final = 6;
+    bool is_for_money = 7;
+    int32 payout = 8;
+    float payout_percentage = 9;
+    int32 flash_mode_payout = 10;
+    float flash_mode_payout_percentage =11;
+    google.protobuf.Any   additional_payout_hand = 12;
+    google.protobuf.Any  additional_payout_hand_initial = 13;
+    google.protobuf.Any additional_payout_winning_hand = 14;
+    google.protobuf.Any  additional_payout_hand_multiplier = 15;
+    int32 table_instance_id = 16;
+    float total_payout_amount = 17;
+}
+
+message BetValue {
+    string playerId = 1;
+    string betAmount = 2;
+    string description = 3;
+    string hash = 4;
+    int32 timestamp = 5;
+}
+
+message Street {
+    repeated BetValue betValues = 1;
+    int32 number = 2;
+}
+
+message Bet {
+    repeated Street streets = 1;
+}
+
+message FlashPrizePoolValues {
+    FlashPoolValue royal_flush = 1;
+    FlashPoolValue straight_flush = 2;
+    FlashPoolValue four_aces = 3;
+    FlashPoolValue four_fives_through_kings = 4;
+    FlashPoolValue four_twos_threes_or_fours = 5;
+    FlashPoolValue full_house = 6;
+    FlashPoolValue flush = 7;
+    FlashPoolValue straight = 8;
+    FlashPoolValue three_of_a_kind = 9;
+    FlashPoolValue two_pair = 10;
+    FlashPoolValue jacks_or_better = 11;
+    FlashPoolValue pair = 12;
+    FlashPoolValue one_jack_or_better = 13;
+    FlashPoolValue high_card = 14;
+    FlashPoolValue four_of_a_kind = 15;
+}
+
+message FlashPoolValue {
+    int32 prize = 1;
+    int32 timer = 2;
+}
+
+message PayoutDetail {
+    string username = 1;
+    int32 user_id = 2;
+    int32 chair =  3;
+    int32 remaining_chips =4;
+    int32 rank = 5;
+    bool is_final = 6;
+    bool is_for_money = 7;
+    int32 payout = 8;
+    float payout_percentage = 9;
+    int32 flash_mode_payout = 10;
+    float flash_mode_payout_percentage =11;
+    float additional_payout_hand = 12;
+    float additional_payout_hand_initial = 13;
+    float additional_payout_winning_hand = 14;
+    float additional_payout_hand_multiplier = 15;
+    int32 table_instance_id = 16;
+    float total_payout_amount = 17;
+}
+
+message Rankings {
+    int32 tournament_instance_id = 1;
+    repeated PayoutDetail payout_details = 2;
+    int32 total_payout = 3;
+}
+
+message GetStatusResult {
+    GameMeta game_meta = 1;
+    Game game = 2;
+    repeated Player players = 3;
+    TournamentMetaData tournament_meta = 4;
+    google.protobuf.Any action_result = 5;
+    Rankings rankings = 6;
+}
+
+// represents blind level and its value
+message BlindLevel {
+    int32 level = 1;
+    int64 value  = 2;
+}
+
+message TournamentMetaData {
+    int32 id = 1;
+    int32 tournament_id = 2;
+    string name = 3;
+    float buyin = 4;
+    float buyin_chips = 5;
+    float rake = 6;
+    bool is_for_money = 7;
+    int32 rebuys_permitted = 8;
+    int32 addons_permitted = 9;
+    int32 addon_threshold = 10;
+    int32 rebuys_round_start = 11;
+    int32 rebuys_round_end = 12;
+    int32 addons_round_start = 13;
+    int32 addons_round_end = 14;
+    int32 scheduled_breaks = 15;
+    int32 time_limit_seconds = 16;
+    int32 pending_timeout_seconds = 17;
+    int32  min_players_per_table = 18;
+    int32 max_players_per_table = 19;
+    string scheduled_start_time = 20;
+    string actual_start_time = 21;
+    string finish_time = 22;
+    float small_blind_starting_value = 23;
+    float small_blind_max_value = 24;
+    int32 table_timer = 25;
+    int32 tour_players_min = 26;
+    int32 tour_players_max = 27;
+    string type = 28;
+    string status = 29;
+    int32 blinds_increase_interval_seconds = 30;
+    int32 blinds_increase_interval_rounds = 31;
+    float user_contributed_prize_pool = 32;
+    float min_prize_pool_value = 33;
+    string table_type = 34;
+    int32 table_max_num_raises = 35;
+    string rebalancing_table_algorithm = 36;
+    string publish_time = 37;
+    int32 event_id = 38;
+    bool is_invalid = 39;
+    bool is_in_scheduled_queue = 40;
+    bool use_decimals = 41;
+    string last_valid_raise_bet_id = 42;
 }
 
 message PlayerStatus {

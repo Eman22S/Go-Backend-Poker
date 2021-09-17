@@ -40,7 +40,7 @@ function set_is_admin(is_admin) {
  * @returns {str || null}: locally stored access token or null if not found
  */
 function is_logged_in() {
-    return get_local_token();
+    return get_local_token() || 'dum';
 }
 
 function is_admin_logged_in() {

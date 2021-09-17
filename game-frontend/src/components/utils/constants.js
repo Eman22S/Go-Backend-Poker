@@ -61,7 +61,7 @@ for (let number of card_numbers) {
 const numberCardClass = function (server_card_number) {
   let card_type = "back"; // default to back
 
-  if (number_exists(server_card_number)) {
+  if (number_exists(server_card_number)  && server_card_number >= 0) {
     card_type = NumberCardTypes[server_card_number];
   }
 

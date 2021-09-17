@@ -76,7 +76,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
         tableState.game.game_turn,
         tableState.game.bet,
         tableState.game.bigblind,
-        tableState.game.raise_data.last_valid_raise,
+        tableState.game.last_valid_raise,
         store.player.md5,
         store.player.bet2do
     )  
@@ -92,7 +92,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
     tableState.game.game_turn,
     tableState.game.bet,
     tableState.game.bigblind,
-    tableState.game.raise_data.last_valid_raise,
+    tableState.game.last_valid_raise,
     store.player.md5,
     store.player.bet2do,
   ]);
@@ -132,7 +132,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
     allInBtnLoading;
 
   const is_my_turn = store.player?.is_myturn;
-  const disable_buttons =
+  let disable_buttons =
     !is_my_turn || // if not my turn disable all buttons
     callingGrpc || // waiting for grpc response or not
     disable_actions || // if parent component is saying disable actions
