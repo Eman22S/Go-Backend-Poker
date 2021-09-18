@@ -9,8 +9,8 @@ import (
 
 // GetStatus streams game state
 func (s *Server) GetStatus(
-	gameStateRequest *GetStatusRequest,
-	srv Sng_GetStatusServer) error {
+	getStatusRequest *GetStatusRequest,
+	stream Sng_GetStatusServer) error {
 
 	SetInterval(func() {
 		gameMeta := GameMeta{
@@ -355,7 +355,7 @@ func (s *Server) GetStatus(
 			Rankings:       &rankings,
 		}
 
-		if err := srv.Send(&resp); err != nil {
+		if err := stream.Send(&resp); err != nil {
 			log.Printf("send error %v", err)
 		}
 	})
