@@ -1,4 +1,4 @@
-package services
+package sngpoker
 
 // Server server
 type Server struct {

@@ -1,7 +1,6 @@
-package utils_test
+package utils
 
 import (
-	utils "cameronapockergames/utils"
 	"testing"
 )
 
@@ -9,7 +8,7 @@ func TestGetSecureRandom(t *testing.T) {
 	min, max := 0, 10
 
 	for i := 0; i < 10; i++ {
-		got, err := utils.GetSecureRandom(min, max)
+		got, err := GetSecureRandom(min, max)
 		if err != nil {
 			t.Errorf("Error while getting secure random")
 		}

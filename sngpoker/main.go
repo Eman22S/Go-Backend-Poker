@@ -1,7 +1,6 @@
-package main
+package sngpoker
 
 import (
-	service "cameronapockergames/services"
 	"log"
 
 	"google.golang.org/grpc"
@@ -16,7 +15,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	c := service.NewSngClient(conn)
+	c := NewSngClient(conn)
 
 	TestUIState(c)
 	TestGameState(c)

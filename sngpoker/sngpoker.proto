@@ -1,8 +1,8 @@
 syntax = "proto3";
-package services;
+package sngpoker;
 import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
-option go_package = "../services";
+option go_package = "../sngpoker";
 
 service Sng {
     rpc getAllUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}

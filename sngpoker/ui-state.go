@@ -1,4 +1,4 @@
-package services
+package sngpoker
 
 import (
 	"golang.org/x/net/context"

@@ -1,7 +1,6 @@
-package main
+package sngpoker
 
 import (
-	"cameronapockergames/services"
 	"io"
 	"log"
 
@@ -9,8 +8,8 @@ import (
 )
 
 // TestGameState game state
-func TestGameState(c services.SngClient) {
-	stream, err := c.GetStatus(context.Background(), &services.GetStatusRequest{})
+func TestGameState(c SngClient) {
+	stream, err := c.GetStatus(context.Background(), &GetStatusRequest{})
 
 	if err != nil {
 		log.Fatalf("open stream error %v", err)

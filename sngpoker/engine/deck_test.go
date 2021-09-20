@@ -1,16 +1,15 @@
-package internal_test
+package engine
 
 import (
-	internal "cameronapockergames/internal"
-	"cameronapockergames/services"
 	"reflect"
+	"sngrpc/sngpoker"
 	"testing"
 )
 
 func TestDeck(t *testing.T) {
 
 	t.Run("Get new deck should give 52 cards", func(t *testing.T) {
-		deck, err := internal.GetNewDeck()
+		deck, err := GetNewDeck()
 		if err != nil {
 			t.Error("Error while getting new decks")
 		}
@@ -24,7 +23,7 @@ func TestDeck(t *testing.T) {
 
 	t.Run("New deck should contain all ranks and suits", func(t *testing.T) {
 
-		deck, err := internal.GetNewDeck()
+		deck, err := GetNewDeck()
 		if err != nil {
 			t.Errorf("Error while getting new deck")
 		}
@@ -35,7 +34,7 @@ func TestDeck(t *testing.T) {
 	})
 
 	t.Run("Shuffled deck should not be equal to initial deck", func(t *testing.T) {
-		deck, err := internal.GetNewDeck()
+		deck, err := GetNewDeck()
 
 		if err != nil {
 			t.Errorf("Error while getting deck")
@@ -54,7 +53,7 @@ func TestDeck(t *testing.T) {
 	})
 
 	t.Run("Dealing cards more than available should throw error", func(t *testing.T) {
-		deck, err := internal.GetNewDeck()
+		deck, err := GetNewDeck()
 		if err != nil {
 			t.Errorf("Error while shufling deck")
 		}
@@ -70,7 +69,7 @@ func TestDeck(t *testing.T) {
 	})
 
 	t.Run("Deal should return cards and decrease current card", func(t *testing.T) {
-		deck, err := internal.GetNewDeck()
+		deck, err := GetNewDeck()
 		if err != nil {
 			t.Errorf("Error while shufling deck")
 		}
@@ -91,7 +90,7 @@ func TestDeck(t *testing.T) {
 }
 
 // chakes if a deck card contains all ranks and suits
-func containsAllRanksAndSuits(cards []*services.Card) bool {
+func containsAllRanksAndSuits(cards []*sngpoker.Card) bool {
 	rankDict := make(map[int]int)
 	suitDict := make(map[string]int)
 	for _, card := range cards {

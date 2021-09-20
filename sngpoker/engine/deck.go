@@ -1,9 +1,9 @@
-package internal
+package engine
 
 import (
-	"cameronapockergames/services"
-	"cameronapockergames/utils"
 	"errors"
+	"sngrpc/sngpoker"
+	"sngrpc/utils"
 )
 
 // GetNewDeck returns a new deck instance
@@ -18,23 +18,23 @@ func GetNewDeck() (*Deck, error) {
 
 // Deck class
 type Deck struct {
-	IntialState services.DeckData
-	CurrentDeck services.DeckData
+	IntialState sngpoker.DeckData
+	CurrentDeck sngpoker.DeckData
 }
 
 func (deck *Deck) intializeDeck() error {
-	cards := make([]*services.Card, 52)
+	cards := make([]*sngpoker.Card, 52)
 	cardIndex := 0
 	for rank := int32(0); rank < 13; rank++ {
 		for suit := int32(0); suit < 4; suit++ {
-			cards[cardIndex] = &services.Card{
+			cards[cardIndex] = &sngpoker.Card{
 				Rank: rank,
 				Suit: suit,
 			}
 			cardIndex++
 		}
 	}
-	deck.CurrentDeck = services.DeckData{Cards: cards}
+	deck.CurrentDeck = sngpoker.DeckData{Cards: cards}
 	err := deck.ShuffleDeck()
 	if err != nil {
 		return err
@@ -45,7 +45,7 @@ func (deck *Deck) intializeDeck() error {
 
 // ShuffleDeck shuffles current deck
 func (deck *Deck) ShuffleDeck() error {
-	cards := make([]*services.Card, 52)
+	cards := make([]*sngpoker.Card, 52)
 	copy(cards, deck.CurrentDeck.Cards)
 	for i := len(cards) - 2; i > 0; i-- {
 		randIndex, err := utils.GetSecureRandom(0, i)
@@ -62,12 +62,12 @@ func (deck *Deck) ShuffleDeck() error {
 }
 
 // DealCards deals specific number of cards to caller
-func (deck *Deck) DealCards(numberOfCards int) ([]*services.Card, error) {
+func (deck *Deck) DealCards(numberOfCards int) ([]*sngpoker.Card, error) {
 	if numberOfCards > len(deck.CurrentDeck.Cards) {
 		err := errors.New("Number of cards should less than available cards")
-		return []*services.Card{}, err
+		return []*sngpoker.Card{}, err
 	}
-	cardsToDeal := make([]*services.Card, 0)
+	cardsToDeal := make([]*sngpoker.Card, 0)
 
 	for i := 0; i < numberOfCards; i++ {
 		currentCard := deck.CurrentDeck.Cards

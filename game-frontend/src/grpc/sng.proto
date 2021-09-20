@@ -1,5 +1,5 @@
 syntax = "proto3";
-package services;
+package sngpoker;
 import "google/protobuf/empty.proto";
 import "google/protobuf/any.proto";
 
