@@ -9,7 +9,7 @@ import (
 func TestGetSecureRandom(t *testing.T) {
 	min, max := 0, 10
 
-	for i := 0; i < max^2; i++ {
+	for i := 0; i < max*max; i++ {
 		got, err := GetSecureRandom(min, max)
 		if err != nil {
 			t.Errorf("Error while getting secure random")
@@ -21,9 +21,9 @@ func TestGetSecureRandom(t *testing.T) {
 }
 
 func TestGetSecureRandomEqualProbability(t *testing.T) {
-	min, max := 0, 101
+	min, max := 0, 51
 
-	numberOfTry := 100 ^ 5
+	numberOfTry := int(math.Pow(10, 7))
 
 	countDict := make([]int, max+1)
 
