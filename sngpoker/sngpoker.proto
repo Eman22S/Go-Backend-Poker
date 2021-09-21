@@ -293,6 +293,17 @@ message FlashPoolValue {
     int32 timer = 2;
 }
 
+message DeckData {
+    repeated Card cards = 1;
+}
+
+message Card {
+    int32 rank = 1;
+    int32 suit = 2;
+    string rankName = 3;
+    string suitName = 4;
+}
+
 message GetStatusResult {
      GameMeta game_meta = 1;
      Game game = 2;
