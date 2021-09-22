@@ -2,6 +2,7 @@ package engine
 
 import (
 	"reflect"
+	sngerrors "sngrpc/sngErrors"
 	"sngrpc/sngpoker"
 	"testing"
 )
@@ -11,7 +12,7 @@ func TestDeck(t *testing.T) {
 	t.Run("Get new deck should give 52 cards", func(t *testing.T) {
 		deck, err := GetNewDeck()
 		if err != nil {
-			t.Error("Error while getting new decks")
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 		want := 52
 		got := len(deck.CurrentDeck.Cards)
@@ -22,10 +23,9 @@ func TestDeck(t *testing.T) {
 	})
 
 	t.Run("New deck should contain all ranks and suits", func(t *testing.T) {
-
 		deck, err := GetNewDeck()
 		if err != nil {
-			t.Errorf("Error while getting new deck")
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 
 		if !containsAllRanksAndSuits(deck.CurrentDeck.Cards) {
@@ -37,13 +37,12 @@ func TestDeck(t *testing.T) {
 		deck, err := GetNewDeck()
 
 		if err != nil {
-			t.Errorf("Error while getting deck")
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 		cardsNow := deck.CurrentDeck.Cards
 		err = deck.ShuffleDeck()
 		if err != nil {
-			t.Errorf("Error while shufling deck")
-
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 		cardsShuffled := deck.CurrentDeck.Cards
 
@@ -55,7 +54,7 @@ func TestDeck(t *testing.T) {
 	t.Run("Dealing cards more than available should throw error", func(t *testing.T) {
 		deck, err := GetNewDeck()
 		if err != nil {
-			t.Errorf("Error while shufling deck")
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 		cards, err := deck.DealCards(55)
 
@@ -71,9 +70,13 @@ func TestDeck(t *testing.T) {
 	t.Run("Deal should return cards and decrease current card", func(t *testing.T) {
 		deck, err := GetNewDeck()
 		if err != nil {
-			t.Errorf("Error while shufling deck")
+			sngerrors.PrintErrorAndFailTest(err, t)
 		}
 		cards, err := deck.DealCards(2)
+
+		if err != nil {
+			sngerrors.PrintErrorAndFailTest(err, t)
+		}
 
 		got := len(cards)
 		wanted := 2
@@ -89,7 +92,7 @@ func TestDeck(t *testing.T) {
 	})
 }
 
-// chakes if a deck card contains all ranks and suits
+// checks if a deck card contains all ranks and suits
 func containsAllRanksAndSuits(cards []*sngpoker.Card) bool {
 	rankDict := make(map[int]int)
 	suitDict := make(map[string]int)

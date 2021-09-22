@@ -1,9 +1,10 @@
 package engine
 
 import (
-	"errors"
 	"sngrpc/sngpoker"
 	"sngrpc/utils"
+
+	"github.com/pkg/errors"
 )
 
 // GetNewDeck returns a new deck instance
@@ -37,7 +38,7 @@ func (deck *Deck) intializeDeck() error {
 	deck.CurrentDeck = sngpoker.DeckData{Cards: cards}
 	err := deck.ShuffleDeck()
 	if err != nil {
-		return err
+		return errors.WithMessage(err, "Shuffling failed on intialization")
 	}
 	deck.IntialState.Cards = cards
 	return nil
@@ -50,7 +51,7 @@ func (deck *Deck) ShuffleDeck() error {
 	for i := len(cards) - 1; i > 0; i-- {
 		randIndex, err := utils.GetSecureRandom(0, i)
 		if err != nil {
-			return err
+			return errors.WithMessage(err, "Secure random failed on shffling")
 		}
 		cardAtI := cards[i]
 		cardAtRandIndex := cards[randIndex]
@@ -63,6 +64,7 @@ func (deck *Deck) ShuffleDeck() error {
 
 // DealCards deals specific number of cards to caller
 func (deck *Deck) DealCards(numberOfCards int) ([]*sngpoker.Card, error) {
+
 	if numberOfCards > len(deck.CurrentDeck.Cards) {
 		err := errors.New("Number of cards should less than available cards")
 		return []*sngpoker.Card{}, err
