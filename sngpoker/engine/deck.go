@@ -47,7 +47,7 @@ func (deck *Deck) intializeDeck() error {
 func (deck *Deck) ShuffleDeck() error {
 	cards := make([]*sngpoker.Card, 52)
 	copy(cards, deck.CurrentDeck.Cards)
-	for i := len(cards) - 2; i > 0; i-- {
+	for i := len(cards) - 1; i > 0; i-- {
 		randIndex, err := utils.GetSecureRandom(0, i)
 		if err != nil {
 			return err

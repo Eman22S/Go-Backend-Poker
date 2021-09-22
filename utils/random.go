@@ -2,9 +2,9 @@ package utils
 
 import (
 	"crypto/rand"
-	"encoding/hex"
 	"fmt"
 	"math"
+	"math/big"
 	"strconv"
 )
 
@@ -12,6 +12,20 @@ import (
 // Currently returns random including the max
 // Will check it
 func GetSecureRandom(min, max int) (int, error) {
+
+	if max <= 0 {
+		return 0, fmt.Errorf("can't define input as <=0")
+	}
+	nbig, err := rand.Int(rand.Reader, big.NewInt(int64(max)))
+	if err != nil {
+		return max, err
+	}
+	n := int(nbig.Int64())
+
+	return min + n, err
+}
+
+func GetSecureRandomLegacy(min, max int) (int, error) {
 	numbersRange := max - min
 	rangeLog := math.Log2(float64(numbersRange))
 	bytesToFetch := int(rangeLog/8) + 1
@@ -55,11 +69,17 @@ func getRandomPsudoBytesString(bytesToFetch int) (string, error) {
 		return "", err
 	}
 
-	return hex.EncodeToString([]byte(byteArray)), nil
+	randStr := ""
+
+	for i := 0; i < len(byteArray); i++ {
+		randStr += fmt.Sprintf("%08b", byteArray[i])
+	}
+
+	return randStr, nil
 }
 
 func bin2hex(str string) (string, error) {
-	ui, err := strconv.ParseUint(str, 16, 64)
+	ui, err := strconv.ParseUint(str, 2, 64)
 	if err != nil {
 		return "", err
 	}
