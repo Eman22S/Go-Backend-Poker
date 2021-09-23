@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	var conn *grpc.ClientConn
 	conn, err := grpc.Dial(":10000", grpc.WithInsecure())
 	if err != nil {

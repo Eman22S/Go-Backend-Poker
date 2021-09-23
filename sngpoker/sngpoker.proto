@@ -7,6 +7,7 @@ option go_package = "../sngpoker";
 service Sng {
     rpc getAllUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
     rpc getStatus(GetStatusRequest) returns (stream GetStatusResult) {}
+    rpc getShuffledDeck(google.protobuf.Empty) returns (DeckData) {}
 }
 
 message UiSettingsRequest {

@@ -1,7 +1,8 @@
-package sngpoker
+package services
 
 import (
 	"log"
+	"sngrpc/sngpoker"
 	"time"
 
 	"google.golang.org/protobuf/types/known/anypb"
@@ -9,11 +10,10 @@ import (
 
 // GetStatus streams game state
 func (s *Server) GetStatus(
-	getStatusRequest *GetStatusRequest,
-	stream Sng_GetStatusServer) error {
-
+	getStatusRequest *sngpoker.GetStatusRequest,
+	stream sngpoker.Sng_GetStatusServer) error {
 	SetInterval(func() {
-		gameMeta := GameMeta{
+		gameMeta := sngpoker.GameMeta{
 			ServerTime:       time.Now().Unix(),
 			IsHandInProgress: true,
 
@@ -36,64 +36,64 @@ func (s *Server) GetStatus(
 			HasAdditionalPayout: false,
 
 			BlindLevelAndValues: nil,
-			FlashPrizePoolValues: &FlashPrizePoolValues{
-				RoyalFlush: &FlashPoolValue{
+			FlashPrizePoolValues: &sngpoker.FlashPrizePoolValues{
+				RoyalFlush: &sngpoker.FlashPoolValue{
 					Prize: 10000,
 					Timer: 360,
 				},
-				StraightFlush: &FlashPoolValue{
+				StraightFlush: &sngpoker.FlashPoolValue{
 					Prize: 7500,
 					Timer: 360,
 				},
-				FourOfAKind: &FlashPoolValue{
+				FourOfAKind: &sngpoker.FlashPoolValue{
 					Prize: 5000,
 					Timer: 360,
 				},
-				FourAces: &FlashPoolValue{
+				FourAces: &sngpoker.FlashPoolValue{
 					Prize: 6500,
 					Timer: 240,
 				},
-				FourFivesThroughKings: &FlashPoolValue{
+				FourFivesThroughKings: &sngpoker.FlashPoolValue{
 					Prize: 5250,
 					Timer: 240,
 				},
-				FourTwosThreesOrFours: &FlashPoolValue{
+				FourTwosThreesOrFours: &sngpoker.FlashPoolValue{
 					Prize: 5500,
 					Timer: 240,
 				},
-				FullHouse: &FlashPoolValue{
+				FullHouse: &sngpoker.FlashPoolValue{
 					Prize: 2500,
 					Timer: 360,
 				},
-				Flush: &FlashPoolValue{
+				Flush: &sngpoker.FlashPoolValue{
 					Prize: 1000,
 					Timer: 240,
 				},
-				Straight: &FlashPoolValue{
+				Straight: &sngpoker.FlashPoolValue{
 					Prize: 500,
 					Timer: 240,
 				},
-				ThreeOfAKind: &FlashPoolValue{
+				ThreeOfAKind: &sngpoker.FlashPoolValue{
 					Prize: 250,
 					Timer: 240,
 				},
-				TwoPair: &FlashPoolValue{
+				TwoPair: &sngpoker.FlashPoolValue{
 					Prize: 100,
 					Timer: 240,
 				},
-				JacksOrBetter: &FlashPoolValue{
+				JacksOrBetter: &sngpoker.FlashPoolValue{
 					Prize: 75,
 					Timer: 240,
 				},
-				Pair: &FlashPoolValue{
+				Pair: &sngpoker.FlashPoolValue{
 					Prize: 50,
 					Timer: 240,
 				},
-				OneJackOrBetter: &FlashPoolValue{
+				OneJackOrBetter: &sngpoker.FlashPoolValue{
 					Prize: 25,
 					Timer: 240,
 				},
-				HighCard: &FlashPoolValue{
+				HighCard: &sngpoker.FlashPoolValue{
 					Prize: 250,
 					Timer: 240,
 				},
@@ -120,7 +120,7 @@ func (s *Server) GetStatus(
 			SmallBlindMaxValue:        1000,
 		}
 
-		game := Game{
+		game := sngpoker.Game{
 			Rake:                          0.1,
 			TableAction:                   "cards",
 			LastPlayerKeyToMakeValidRaise: "2cdbca1755150746ecb4d0010bcb183c",
@@ -135,34 +135,34 @@ func (s *Server) GetStatus(
 			River:                         nil,
 			IsAllin:                       false,
 			WinnersDta:                    nil,
-			Pot: []*Pot{
-				&Pot{
+			Pot: []*sngpoker.Pot{
+				&sngpoker.Pot{
 					Total: 10,
 					PlayersIN: []string{
 						"cd81cfd0a3397761fac44ddbe5ec3349",
 						"c802ceaa43e6ad9ddc511cab5f34789c",
 					},
 				}},
-			Bet: &Bet{
-				Streets: []*Street{
-					&Street{
+			Bet: &sngpoker.Bet{
+				Streets: []*sngpoker.Street{
+					&sngpoker.Street{
 						Number: 1,
-						BetValues: []*BetValue{
-							&BetValue{
+						BetValues: []*sngpoker.BetValue{
+							&sngpoker.BetValue{
 								PlayerId:    "c802ceaa43e6ad9ddc511cab5f34789c",
 								BetAmount:   "10",
 								Description: "Post small blind.",
 								Hash:        "9b5b2fb12e3f89b5adbd0d3d60e4e922",
 								Timestamp:   1630746460,
 							},
-							&BetValue{
+							&sngpoker.BetValue{
 								PlayerId:    "cd81cfd0a3397761fac44ddbe5ec3349",
 								BetAmount:   "20",
 								Description: "Post big blind.",
 								Hash:        "2cdbca1755150746ecb4d0010bcb183c",
 								Timestamp:   1630746460,
 							},
-							&BetValue{
+							&sngpoker.BetValue{
 								PlayerId:    "c802ceaa43e6ad9ddc511cab5f34789c",
 								BetAmount:   "10",
 								Description: "CALL 10",
@@ -202,8 +202,8 @@ func (s *Server) GetStatus(
 			TournamentBatchInfo:       []string{"CLEARN", "CLEARN"},
 		}
 
-		players := []*Player{
-			&Player{
+		players := []*sngpoker.Player{
+			&sngpoker.Player{
 				Username:                "Test8",
 				Chair:                   0,
 				Name:                    "Mathew Doyle",
@@ -232,7 +232,7 @@ func (s *Server) GetStatus(
 				IsAutomuckEnabled:       false,
 				Cards:                   []int32{31, 19, 52, 46},
 			},
-			&Player{
+			&sngpoker.Player{
 				Username:                "Test9",
 				Chair:                   1,
 				Name:                    "Robert Birmingham",
@@ -263,7 +263,7 @@ func (s *Server) GetStatus(
 			},
 		}
 
-		tournamentMeta := TournamentMetaData{
+		tournamentMeta := sngpoker.TournamentMetaData{
 			Id:                            152,
 			TournamentId:                  1152,
 			Name:                          "OMAHA 2P",
@@ -302,10 +302,10 @@ func (s *Server) GetStatus(
 			IsInScheduledQueue:            false,
 		}
 
-		rankings := Rankings{
+		rankings := sngpoker.Rankings{
 			TournamentInstanceId: 152,
-			PayoutDetails: []*PayoutDetail{
-				&PayoutDetail{
+			PayoutDetails: []*sngpoker.PayoutDetail{
+				&sngpoker.PayoutDetail{
 					Username:                       "test9",
 					UserId:                         7770,
 					Chair:                          1,
@@ -324,7 +324,7 @@ func (s *Server) GetStatus(
 					TableInstanceId:                152,
 					TotalPayoutAmount:              0,
 				},
-				&PayoutDetail{
+				&sngpoker.PayoutDetail{
 					Username:                       "test8",
 					UserId:                         7771,
 					Chair:                          0,
@@ -347,7 +347,7 @@ func (s *Server) GetStatus(
 			TotalPayout: 0,
 		}
 
-		resp := GetStatusResult{
+		resp := sngpoker.GetStatusResult{
 			GameMeta:       &gameMeta,
 			Game:           &game,
 			Players:        players,
