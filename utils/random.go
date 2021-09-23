@@ -20,7 +20,7 @@ func GetSecureRandom(min, max int) (int, error) {
 	// https://pkg.go.dev/crypto/rand#Int
 	nbig, err := rand.Int(rand.Reader, big.NewInt(int64(max)))
 	if err != nil {
-		return max, WrapErr(err, "GetSecureRandom failed")
+		return max, errors.Wrap(err, "GetSecureRandom failed")
 	}
 	n := int(nbig.Int64())
 
