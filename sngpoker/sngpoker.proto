@@ -301,8 +301,6 @@ message DeckData {
 message Card {
     int32 rank = 1;
     int32 suit = 2;
-    string rankName = 3;
-    string suitName = 4;
 }
 
 message GetStatusResult {

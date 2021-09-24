@@ -111,7 +111,7 @@ service Sng{
     rpc updatePlayerAccountBalance(UpdateAccountBalanceRequest) returns (UpdateAccountBalanceResponse) {}
 
     rpc rankHands(RankHandsRequest) returns (RankHandsResult){}
-    rpc getShuffledDeck(NewDeckRequest) returns (NewDeckResponse){}
+    rpc getShuffledDeck(google.protobuf.Empty) returns (DeckData) {}
 
     rpc getUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse) {}
     rpc updateUserInfo(UpdateUserInfoRequest) returns (UpdateUserInfoResponse) {}
@@ -459,6 +459,16 @@ message GetStatusResult {
     TournamentMetaData tournament_meta = 4;
     google.protobuf.Any action_result = 5;
     Rankings rankings = 6;
+}
+
+
+message DeckData {
+    repeated Card cards = 1;
+}
+
+message Card {
+    int32 rank = 1;
+    int32 suit = 2;
 }
 
 // represents blind level and its value

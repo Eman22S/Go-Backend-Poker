@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for services
+ * @fileoverview gRPC-Web generated client stub for sngpoker
  * @enhanceable
  * @public
  */
@@ -20,7 +20,7 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js')
 const proto = {};
-proto.services = require('./sng_pb.js');
+proto.sngpoker = require('./sng_pb.js');
 
 /**
  * @param {string} hostname
@@ -30,7 +30,7 @@ proto.services = require('./sng_pb.js');
  * @struct
  * @final
  */
-proto.services.SngClient =
+proto.sngpoker.SngClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -56,7 +56,7 @@ proto.services.SngClient =
  * @struct
  * @final
  */
-proto.services.SngPromiseClient =
+proto.sngpoker.SngPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -81,7 +81,7 @@ proto.services.SngPromiseClient =
  *   !proto.google.protobuf.Empty>}
  */
 const methodDescriptor_Sng_Test = new grpc.web.MethodDescriptor(
-  '/services.Sng/Test',
+  '/sngpoker.Sng/Test',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
   google_protobuf_empty_pb.Empty,
@@ -125,10 +125,10 @@ const methodInfo_Sng_Test = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.google.protobuf.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.test =
+proto.sngpoker.SngClient.prototype.test =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/Test',
+      '/sngpoker.Sng/Test',
       request,
       metadata || {},
       methodDescriptor_Sng_Test,
@@ -142,12 +142,12 @@ proto.services.SngClient.prototype.test =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.google.protobuf.Empty>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.test =
+proto.sngpoker.SngPromiseClient.prototype.test =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/Test',
+      '/sngpoker.Sng/Test',
       request,
       metadata || {},
       methodDescriptor_Sng_Test);
@@ -157,55 +157,55 @@ proto.services.SngPromiseClient.prototype.test =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetStatusRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.GetStatusRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodDescriptor_Sng_getStatus = new grpc.web.MethodDescriptor(
-  '/services.Sng/getStatus',
+  '/sngpoker.Sng/getStatus',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.services.GetStatusRequest,
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusRequest,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.GetStatusRequest} request
+   * @param {!proto.sngpoker.GetStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetStatusRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.GetStatusRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodInfo_Sng_getStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.GetStatusRequest} request
+   * @param {!proto.sngpoker.GetStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetStatusRequest} request The request proto
+ * @param {!proto.sngpoker.GetStatusRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getStatus =
+proto.sngpoker.SngClient.prototype.getStatus =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/services.Sng/getStatus',
+      '/sngpoker.Sng/getStatus',
       request,
       metadata || {},
       methodDescriptor_Sng_getStatus);
@@ -213,16 +213,16 @@ proto.services.SngClient.prototype.getStatus =
 
 
 /**
- * @param {!proto.services.GetStatusRequest} request The request proto
+ * @param {!proto.sngpoker.GetStatusRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>}
  *     The XHR Node Readable Stream
  */
-proto.services.SngPromiseClient.prototype.getStatus =
+proto.sngpoker.SngPromiseClient.prototype.getStatus =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/services.Sng/getStatus',
+      '/sngpoker.Sng/getStatus',
       request,
       metadata || {},
       methodDescriptor_Sng_getStatus);
@@ -232,58 +232,58 @@ proto.services.SngPromiseClient.prototype.getStatus =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.MakeSngRequest,
- *   !proto.services.MakeSngResponse>}
+ *   !proto.sngpoker.MakeSngRequest,
+ *   !proto.sngpoker.MakeSngResponse>}
  */
 const methodDescriptor_Sng_MakeSng = new grpc.web.MethodDescriptor(
-  '/services.Sng/MakeSng',
+  '/sngpoker.Sng/MakeSng',
   grpc.web.MethodType.UNARY,
-  proto.services.MakeSngRequest,
-  proto.services.MakeSngResponse,
+  proto.sngpoker.MakeSngRequest,
+  proto.sngpoker.MakeSngResponse,
   /**
-   * @param {!proto.services.MakeSngRequest} request
+   * @param {!proto.sngpoker.MakeSngRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeSngResponse.deserializeBinary
+  proto.sngpoker.MakeSngResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.MakeSngRequest,
- *   !proto.services.MakeSngResponse>}
+ *   !proto.sngpoker.MakeSngRequest,
+ *   !proto.sngpoker.MakeSngResponse>}
  */
 const methodInfo_Sng_MakeSng = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.MakeSngResponse,
+  proto.sngpoker.MakeSngResponse,
   /**
-   * @param {!proto.services.MakeSngRequest} request
+   * @param {!proto.sngpoker.MakeSngRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeSngResponse.deserializeBinary
+  proto.sngpoker.MakeSngResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.MakeSngRequest} request The
+ * @param {!proto.sngpoker.MakeSngRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.MakeSngResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.MakeSngResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.MakeSngResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.MakeSngResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.makeSng =
+proto.sngpoker.SngClient.prototype.makeSng =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/MakeSng',
+      '/sngpoker.Sng/MakeSng',
       request,
       metadata || {},
       methodDescriptor_Sng_MakeSng,
@@ -292,17 +292,17 @@ proto.services.SngClient.prototype.makeSng =
 
 
 /**
- * @param {!proto.services.MakeSngRequest} request The
+ * @param {!proto.sngpoker.MakeSngRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.MakeSngResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.MakeSngResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.makeSng =
+proto.sngpoker.SngPromiseClient.prototype.makeSng =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/MakeSng',
+      '/sngpoker.Sng/MakeSng',
       request,
       metadata || {},
       methodDescriptor_Sng_MakeSng);
@@ -312,58 +312,58 @@ proto.services.SngPromiseClient.prototype.makeSng =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.MakePlayerActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.MakePlayerActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodDescriptor_Sng_MakePlayerAction = new grpc.web.MethodDescriptor(
-  '/services.Sng/MakePlayerAction',
+  '/sngpoker.Sng/MakePlayerAction',
   grpc.web.MethodType.UNARY,
-  proto.services.MakePlayerActionRequest,
-  proto.services.GetStatusResult,
+  proto.sngpoker.MakePlayerActionRequest,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.MakePlayerActionRequest} request
+   * @param {!proto.sngpoker.MakePlayerActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.MakePlayerActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.MakePlayerActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodInfo_Sng_MakePlayerAction = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.MakePlayerActionRequest} request
+   * @param {!proto.sngpoker.MakePlayerActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.MakePlayerActionRequest} request The
+ * @param {!proto.sngpoker.MakePlayerActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetStatusResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetStatusResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.makePlayerAction =
+proto.sngpoker.SngClient.prototype.makePlayerAction =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/MakePlayerAction',
+      '/sngpoker.Sng/MakePlayerAction',
       request,
       metadata || {},
       methodDescriptor_Sng_MakePlayerAction,
@@ -372,17 +372,17 @@ proto.services.SngClient.prototype.makePlayerAction =
 
 
 /**
- * @param {!proto.services.MakePlayerActionRequest} request The
+ * @param {!proto.sngpoker.MakePlayerActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetStatusResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetStatusResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.makePlayerAction =
+proto.sngpoker.SngPromiseClient.prototype.makePlayerAction =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/MakePlayerAction',
+      '/sngpoker.Sng/MakePlayerAction',
       request,
       metadata || {},
       methodDescriptor_Sng_MakePlayerAction);
@@ -392,58 +392,58 @@ proto.services.SngPromiseClient.prototype.makePlayerAction =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetTournamentsRequest,
- *   !proto.services.GetTournamentsResponse>}
+ *   !proto.sngpoker.GetTournamentsRequest,
+ *   !proto.sngpoker.GetTournamentsResponse>}
  */
 const methodDescriptor_Sng_getTournaments = new grpc.web.MethodDescriptor(
-  '/services.Sng/getTournaments',
+  '/sngpoker.Sng/getTournaments',
   grpc.web.MethodType.UNARY,
-  proto.services.GetTournamentsRequest,
-  proto.services.GetTournamentsResponse,
+  proto.sngpoker.GetTournamentsRequest,
+  proto.sngpoker.GetTournamentsResponse,
   /**
-   * @param {!proto.services.GetTournamentsRequest} request
+   * @param {!proto.sngpoker.GetTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentsResponse.deserializeBinary
+  proto.sngpoker.GetTournamentsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetTournamentsRequest,
- *   !proto.services.GetTournamentsResponse>}
+ *   !proto.sngpoker.GetTournamentsRequest,
+ *   !proto.sngpoker.GetTournamentsResponse>}
  */
 const methodInfo_Sng_getTournaments = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetTournamentsResponse,
+  proto.sngpoker.GetTournamentsResponse,
   /**
-   * @param {!proto.services.GetTournamentsRequest} request
+   * @param {!proto.sngpoker.GetTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentsResponse.deserializeBinary
+  proto.sngpoker.GetTournamentsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetTournamentsRequest} request The
+ * @param {!proto.sngpoker.GetTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetTournamentsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetTournamentsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetTournamentsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetTournamentsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getTournaments =
+proto.sngpoker.SngClient.prototype.getTournaments =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getTournaments',
+      '/sngpoker.Sng/getTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournaments,
@@ -452,17 +452,17 @@ proto.services.SngClient.prototype.getTournaments =
 
 
 /**
- * @param {!proto.services.GetTournamentsRequest} request The
+ * @param {!proto.sngpoker.GetTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetTournamentsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetTournamentsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getTournaments =
+proto.sngpoker.SngPromiseClient.prototype.getTournaments =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getTournaments',
+      '/sngpoker.Sng/getTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournaments);
@@ -472,58 +472,58 @@ proto.services.SngPromiseClient.prototype.getTournaments =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinTournamentRequest,
- *   !proto.services.JoinTournamentResponse>}
+ *   !proto.sngpoker.JoinTournamentRequest,
+ *   !proto.sngpoker.JoinTournamentResponse>}
  */
 const methodDescriptor_Sng_joinTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/joinTournament',
+  '/sngpoker.Sng/joinTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinTournamentRequest,
-  proto.services.JoinTournamentResponse,
+  proto.sngpoker.JoinTournamentRequest,
+  proto.sngpoker.JoinTournamentResponse,
   /**
-   * @param {!proto.services.JoinTournamentRequest} request
+   * @param {!proto.sngpoker.JoinTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinTournamentResponse.deserializeBinary
+  proto.sngpoker.JoinTournamentResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinTournamentRequest,
- *   !proto.services.JoinTournamentResponse>}
+ *   !proto.sngpoker.JoinTournamentRequest,
+ *   !proto.sngpoker.JoinTournamentResponse>}
  */
 const methodInfo_Sng_joinTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinTournamentResponse,
+  proto.sngpoker.JoinTournamentResponse,
   /**
-   * @param {!proto.services.JoinTournamentRequest} request
+   * @param {!proto.sngpoker.JoinTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinTournamentResponse.deserializeBinary
+  proto.sngpoker.JoinTournamentResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinTournamentRequest} request The
+ * @param {!proto.sngpoker.JoinTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinTournamentResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinTournamentResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinTournamentResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinTournamentResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.joinTournament =
+proto.sngpoker.SngClient.prototype.joinTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/joinTournament',
+      '/sngpoker.Sng/joinTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_joinTournament,
@@ -532,17 +532,17 @@ proto.services.SngClient.prototype.joinTournament =
 
 
 /**
- * @param {!proto.services.JoinTournamentRequest} request The
+ * @param {!proto.sngpoker.JoinTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinTournamentResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinTournamentResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.joinTournament =
+proto.sngpoker.SngPromiseClient.prototype.joinTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/joinTournament',
+      '/sngpoker.Sng/joinTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_joinTournament);
@@ -552,58 +552,58 @@ proto.services.SngPromiseClient.prototype.joinTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UnregisterTournamentRequest,
- *   !proto.services.UnregisterTournamentResponse>}
+ *   !proto.sngpoker.UnregisterTournamentRequest,
+ *   !proto.sngpoker.UnregisterTournamentResponse>}
  */
 const methodDescriptor_Sng_unregisterTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/unregisterTournament',
+  '/sngpoker.Sng/unregisterTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.UnregisterTournamentRequest,
-  proto.services.UnregisterTournamentResponse,
+  proto.sngpoker.UnregisterTournamentRequest,
+  proto.sngpoker.UnregisterTournamentResponse,
   /**
-   * @param {!proto.services.UnregisterTournamentRequest} request
+   * @param {!proto.sngpoker.UnregisterTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnregisterTournamentResponse.deserializeBinary
+  proto.sngpoker.UnregisterTournamentResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UnregisterTournamentRequest,
- *   !proto.services.UnregisterTournamentResponse>}
+ *   !proto.sngpoker.UnregisterTournamentRequest,
+ *   !proto.sngpoker.UnregisterTournamentResponse>}
  */
 const methodInfo_Sng_unregisterTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UnregisterTournamentResponse,
+  proto.sngpoker.UnregisterTournamentResponse,
   /**
-   * @param {!proto.services.UnregisterTournamentRequest} request
+   * @param {!proto.sngpoker.UnregisterTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnregisterTournamentResponse.deserializeBinary
+  proto.sngpoker.UnregisterTournamentResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UnregisterTournamentRequest} request The
+ * @param {!proto.sngpoker.UnregisterTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UnregisterTournamentResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UnregisterTournamentResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UnregisterTournamentResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UnregisterTournamentResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.unregisterTournament =
+proto.sngpoker.SngClient.prototype.unregisterTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/unregisterTournament',
+      '/sngpoker.Sng/unregisterTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_unregisterTournament,
@@ -612,17 +612,17 @@ proto.services.SngClient.prototype.unregisterTournament =
 
 
 /**
- * @param {!proto.services.UnregisterTournamentRequest} request The
+ * @param {!proto.sngpoker.UnregisterTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UnregisterTournamentResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UnregisterTournamentResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.unregisterTournament =
+proto.sngpoker.SngPromiseClient.prototype.unregisterTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/unregisterTournament',
+      '/sngpoker.Sng/unregisterTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_unregisterTournament);
@@ -632,58 +632,58 @@ proto.services.SngPromiseClient.prototype.unregisterTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CancelTournamentRequest,
- *   !proto.services.CancelTournamentResponse>}
+ *   !proto.sngpoker.CancelTournamentRequest,
+ *   !proto.sngpoker.CancelTournamentResponse>}
  */
 const methodDescriptor_Sng_cancelTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/cancelTournament',
+  '/sngpoker.Sng/cancelTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.CancelTournamentRequest,
-  proto.services.CancelTournamentResponse,
+  proto.sngpoker.CancelTournamentRequest,
+  proto.sngpoker.CancelTournamentResponse,
   /**
-   * @param {!proto.services.CancelTournamentRequest} request
+   * @param {!proto.sngpoker.CancelTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelTournamentResponse.deserializeBinary
+  proto.sngpoker.CancelTournamentResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CancelTournamentRequest,
- *   !proto.services.CancelTournamentResponse>}
+ *   !proto.sngpoker.CancelTournamentRequest,
+ *   !proto.sngpoker.CancelTournamentResponse>}
  */
 const methodInfo_Sng_cancelTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CancelTournamentResponse,
+  proto.sngpoker.CancelTournamentResponse,
   /**
-   * @param {!proto.services.CancelTournamentRequest} request
+   * @param {!proto.sngpoker.CancelTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelTournamentResponse.deserializeBinary
+  proto.sngpoker.CancelTournamentResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CancelTournamentRequest} request The
+ * @param {!proto.sngpoker.CancelTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CancelTournamentResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CancelTournamentResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CancelTournamentResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CancelTournamentResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.cancelTournament =
+proto.sngpoker.SngClient.prototype.cancelTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/cancelTournament',
+      '/sngpoker.Sng/cancelTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelTournament,
@@ -692,17 +692,17 @@ proto.services.SngClient.prototype.cancelTournament =
 
 
 /**
- * @param {!proto.services.CancelTournamentRequest} request The
+ * @param {!proto.sngpoker.CancelTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CancelTournamentResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CancelTournamentResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.cancelTournament =
+proto.sngpoker.SngPromiseClient.prototype.cancelTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/cancelTournament',
+      '/sngpoker.Sng/cancelTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelTournament);
@@ -712,58 +712,58 @@ proto.services.SngPromiseClient.prototype.cancelTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetGameplayHistoriesRequest,
- *   !proto.services.GetGameplayHistoriesResponse>}
+ *   !proto.sngpoker.GetGameplayHistoriesRequest,
+ *   !proto.sngpoker.GetGameplayHistoriesResponse>}
  */
 const methodDescriptor_Sng_getGameplayHistories = new grpc.web.MethodDescriptor(
-  '/services.Sng/getGameplayHistories',
+  '/sngpoker.Sng/getGameplayHistories',
   grpc.web.MethodType.UNARY,
-  proto.services.GetGameplayHistoriesRequest,
-  proto.services.GetGameplayHistoriesResponse,
+  proto.sngpoker.GetGameplayHistoriesRequest,
+  proto.sngpoker.GetGameplayHistoriesResponse,
   /**
-   * @param {!proto.services.GetGameplayHistoriesRequest} request
+   * @param {!proto.sngpoker.GetGameplayHistoriesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetGameplayHistoriesResponse.deserializeBinary
+  proto.sngpoker.GetGameplayHistoriesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetGameplayHistoriesRequest,
- *   !proto.services.GetGameplayHistoriesResponse>}
+ *   !proto.sngpoker.GetGameplayHistoriesRequest,
+ *   !proto.sngpoker.GetGameplayHistoriesResponse>}
  */
 const methodInfo_Sng_getGameplayHistories = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetGameplayHistoriesResponse,
+  proto.sngpoker.GetGameplayHistoriesResponse,
   /**
-   * @param {!proto.services.GetGameplayHistoriesRequest} request
+   * @param {!proto.sngpoker.GetGameplayHistoriesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetGameplayHistoriesResponse.deserializeBinary
+  proto.sngpoker.GetGameplayHistoriesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetGameplayHistoriesRequest} request The
+ * @param {!proto.sngpoker.GetGameplayHistoriesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetGameplayHistoriesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetGameplayHistoriesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetGameplayHistoriesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetGameplayHistoriesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getGameplayHistories =
+proto.sngpoker.SngClient.prototype.getGameplayHistories =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getGameplayHistories',
+      '/sngpoker.Sng/getGameplayHistories',
       request,
       metadata || {},
       methodDescriptor_Sng_getGameplayHistories,
@@ -772,17 +772,17 @@ proto.services.SngClient.prototype.getGameplayHistories =
 
 
 /**
- * @param {!proto.services.GetGameplayHistoriesRequest} request The
+ * @param {!proto.sngpoker.GetGameplayHistoriesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetGameplayHistoriesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetGameplayHistoriesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getGameplayHistories =
+proto.sngpoker.SngPromiseClient.prototype.getGameplayHistories =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getGameplayHistories',
+      '/sngpoker.Sng/getGameplayHistories',
       request,
       metadata || {},
       methodDescriptor_Sng_getGameplayHistories);
@@ -792,58 +792,58 @@ proto.services.SngPromiseClient.prototype.getGameplayHistories =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodDescriptor_Sng_getAllHandHistoryData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAllHandHistoryData',
+  '/sngpoker.Sng/getAllHandHistoryData',
   grpc.web.MethodType.UNARY,
-  proto.services.GetHandHistoryRequest,
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryRequest,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodInfo_Sng_getAllHandHistoryData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetHandHistoryResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetHandHistoryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetHandHistoryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetHandHistoryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAllHandHistoryData =
+proto.sngpoker.SngClient.prototype.getAllHandHistoryData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAllHandHistoryData',
+      '/sngpoker.Sng/getAllHandHistoryData',
       request,
       metadata || {},
       methodDescriptor_Sng_getAllHandHistoryData,
@@ -852,17 +852,17 @@ proto.services.SngClient.prototype.getAllHandHistoryData =
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetHandHistoryResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetHandHistoryResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAllHandHistoryData =
+proto.sngpoker.SngPromiseClient.prototype.getAllHandHistoryData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAllHandHistoryData',
+      '/sngpoker.Sng/getAllHandHistoryData',
       request,
       metadata || {},
       methodDescriptor_Sng_getAllHandHistoryData);
@@ -872,58 +872,58 @@ proto.services.SngPromiseClient.prototype.getAllHandHistoryData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodDescriptor_Sng_getHandHistoryStat = new grpc.web.MethodDescriptor(
-  '/services.Sng/getHandHistoryStat',
+  '/sngpoker.Sng/getHandHistoryStat',
   grpc.web.MethodType.UNARY,
-  proto.services.GetHandHistoryRequest,
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryRequest,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodInfo_Sng_getHandHistoryStat = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetHandHistoryResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetHandHistoryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetHandHistoryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetHandHistoryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getHandHistoryStat =
+proto.sngpoker.SngClient.prototype.getHandHistoryStat =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getHandHistoryStat',
+      '/sngpoker.Sng/getHandHistoryStat',
       request,
       metadata || {},
       methodDescriptor_Sng_getHandHistoryStat,
@@ -932,17 +932,17 @@ proto.services.SngClient.prototype.getHandHistoryStat =
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetHandHistoryResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetHandHistoryResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getHandHistoryStat =
+proto.sngpoker.SngPromiseClient.prototype.getHandHistoryStat =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getHandHistoryStat',
+      '/sngpoker.Sng/getHandHistoryStat',
       request,
       metadata || {},
       methodDescriptor_Sng_getHandHistoryStat);
@@ -952,58 +952,58 @@ proto.services.SngPromiseClient.prototype.getHandHistoryStat =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodDescriptor_Sng_getHandHistoryData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getHandHistoryData',
+  '/sngpoker.Sng/getHandHistoryData',
   grpc.web.MethodType.UNARY,
-  proto.services.GetHandHistoryRequest,
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryRequest,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetHandHistoryRequest,
- *   !proto.services.GetHandHistoryResponse>}
+ *   !proto.sngpoker.GetHandHistoryRequest,
+ *   !proto.sngpoker.GetHandHistoryResponse>}
  */
 const methodInfo_Sng_getHandHistoryData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetHandHistoryResponse,
+  proto.sngpoker.GetHandHistoryResponse,
   /**
-   * @param {!proto.services.GetHandHistoryRequest} request
+   * @param {!proto.sngpoker.GetHandHistoryRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetHandHistoryResponse.deserializeBinary
+  proto.sngpoker.GetHandHistoryResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetHandHistoryResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetHandHistoryResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetHandHistoryResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetHandHistoryResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getHandHistoryData =
+proto.sngpoker.SngClient.prototype.getHandHistoryData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getHandHistoryData',
+      '/sngpoker.Sng/getHandHistoryData',
       request,
       metadata || {},
       methodDescriptor_Sng_getHandHistoryData,
@@ -1012,17 +1012,17 @@ proto.services.SngClient.prototype.getHandHistoryData =
 
 
 /**
- * @param {!proto.services.GetHandHistoryRequest} request The
+ * @param {!proto.sngpoker.GetHandHistoryRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetHandHistoryResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetHandHistoryResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getHandHistoryData =
+proto.sngpoker.SngPromiseClient.prototype.getHandHistoryData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getHandHistoryData',
+      '/sngpoker.Sng/getHandHistoryData',
       request,
       metadata || {},
       methodDescriptor_Sng_getHandHistoryData);
@@ -1032,58 +1032,58 @@ proto.services.SngPromiseClient.prototype.getHandHistoryData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.DrawReplaceActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.DrawReplaceActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodDescriptor_Sng_drawReplaceAction = new grpc.web.MethodDescriptor(
-  '/services.Sng/drawReplaceAction',
+  '/sngpoker.Sng/drawReplaceAction',
   grpc.web.MethodType.UNARY,
-  proto.services.DrawReplaceActionRequest,
-  proto.services.GetStatusResult,
+  proto.sngpoker.DrawReplaceActionRequest,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.DrawReplaceActionRequest} request
+   * @param {!proto.sngpoker.DrawReplaceActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.DrawReplaceActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.DrawReplaceActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodInfo_Sng_drawReplaceAction = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.DrawReplaceActionRequest} request
+   * @param {!proto.sngpoker.DrawReplaceActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.DrawReplaceActionRequest} request The
+ * @param {!proto.sngpoker.DrawReplaceActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetStatusResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetStatusResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.drawReplaceAction =
+proto.sngpoker.SngClient.prototype.drawReplaceAction =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/drawReplaceAction',
+      '/sngpoker.Sng/drawReplaceAction',
       request,
       metadata || {},
       methodDescriptor_Sng_drawReplaceAction,
@@ -1092,17 +1092,17 @@ proto.services.SngClient.prototype.drawReplaceAction =
 
 
 /**
- * @param {!proto.services.DrawReplaceActionRequest} request The
+ * @param {!proto.sngpoker.DrawReplaceActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetStatusResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetStatusResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.drawReplaceAction =
+proto.sngpoker.SngPromiseClient.prototype.drawReplaceAction =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/drawReplaceAction',
+      '/sngpoker.Sng/drawReplaceAction',
       request,
       metadata || {},
       methodDescriptor_Sng_drawReplaceAction);
@@ -1112,58 +1112,58 @@ proto.services.SngPromiseClient.prototype.drawReplaceAction =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.DrawAddActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.DrawAddActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodDescriptor_Sng_drawAddAction = new grpc.web.MethodDescriptor(
-  '/services.Sng/drawAddAction',
+  '/sngpoker.Sng/drawAddAction',
   grpc.web.MethodType.UNARY,
-  proto.services.DrawAddActionRequest,
-  proto.services.GetStatusResult,
+  proto.sngpoker.DrawAddActionRequest,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.DrawAddActionRequest} request
+   * @param {!proto.sngpoker.DrawAddActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.DrawAddActionRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.DrawAddActionRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodInfo_Sng_drawAddAction = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.DrawAddActionRequest} request
+   * @param {!proto.sngpoker.DrawAddActionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.DrawAddActionRequest} request The
+ * @param {!proto.sngpoker.DrawAddActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetStatusResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetStatusResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.drawAddAction =
+proto.sngpoker.SngClient.prototype.drawAddAction =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/drawAddAction',
+      '/sngpoker.Sng/drawAddAction',
       request,
       metadata || {},
       methodDescriptor_Sng_drawAddAction,
@@ -1172,17 +1172,17 @@ proto.services.SngClient.prototype.drawAddAction =
 
 
 /**
- * @param {!proto.services.DrawAddActionRequest} request The
+ * @param {!proto.sngpoker.DrawAddActionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetStatusResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetStatusResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.drawAddAction =
+proto.sngpoker.SngPromiseClient.prototype.drawAddAction =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/drawAddAction',
+      '/sngpoker.Sng/drawAddAction',
       request,
       metadata || {},
       methodDescriptor_Sng_drawAddAction);
@@ -1192,58 +1192,58 @@ proto.services.SngPromiseClient.prototype.drawAddAction =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinTournamentTemplateRequest,
- *   !proto.services.JoinTournamentTemplateResponse>}
+ *   !proto.sngpoker.JoinTournamentTemplateRequest,
+ *   !proto.sngpoker.JoinTournamentTemplateResponse>}
  */
 const methodDescriptor_Sng_joinTournamentTempalte = new grpc.web.MethodDescriptor(
-  '/services.Sng/joinTournamentTempalte',
+  '/sngpoker.Sng/joinTournamentTempalte',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinTournamentTemplateRequest,
-  proto.services.JoinTournamentTemplateResponse,
+  proto.sngpoker.JoinTournamentTemplateRequest,
+  proto.sngpoker.JoinTournamentTemplateResponse,
   /**
-   * @param {!proto.services.JoinTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.JoinTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinTournamentTemplateResponse.deserializeBinary
+  proto.sngpoker.JoinTournamentTemplateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinTournamentTemplateRequest,
- *   !proto.services.JoinTournamentTemplateResponse>}
+ *   !proto.sngpoker.JoinTournamentTemplateRequest,
+ *   !proto.sngpoker.JoinTournamentTemplateResponse>}
  */
 const methodInfo_Sng_joinTournamentTempalte = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinTournamentTemplateResponse,
+  proto.sngpoker.JoinTournamentTemplateResponse,
   /**
-   * @param {!proto.services.JoinTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.JoinTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinTournamentTemplateResponse.deserializeBinary
+  proto.sngpoker.JoinTournamentTemplateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.JoinTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinTournamentTemplateResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinTournamentTemplateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinTournamentTemplateResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinTournamentTemplateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.joinTournamentTempalte =
+proto.sngpoker.SngClient.prototype.joinTournamentTempalte =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/joinTournamentTempalte',
+      '/sngpoker.Sng/joinTournamentTempalte',
       request,
       metadata || {},
       methodDescriptor_Sng_joinTournamentTempalte,
@@ -1252,17 +1252,17 @@ proto.services.SngClient.prototype.joinTournamentTempalte =
 
 
 /**
- * @param {!proto.services.JoinTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.JoinTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinTournamentTemplateResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinTournamentTemplateResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.joinTournamentTempalte =
+proto.sngpoker.SngPromiseClient.prototype.joinTournamentTempalte =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/joinTournamentTempalte',
+      '/sngpoker.Sng/joinTournamentTempalte',
       request,
       metadata || {},
       methodDescriptor_Sng_joinTournamentTempalte);
@@ -1272,58 +1272,58 @@ proto.services.SngPromiseClient.prototype.joinTournamentTempalte =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetTournamentTemplateDetailRequest,
- *   !proto.services.GetTournamentTemplateDetailResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateDetailRequest,
+ *   !proto.sngpoker.GetTournamentTemplateDetailResponse>}
  */
 const methodDescriptor_Sng_getTournamentTemplateDetail = new grpc.web.MethodDescriptor(
-  '/services.Sng/getTournamentTemplateDetail',
+  '/sngpoker.Sng/getTournamentTemplateDetail',
   grpc.web.MethodType.UNARY,
-  proto.services.GetTournamentTemplateDetailRequest,
-  proto.services.GetTournamentTemplateDetailResponse,
+  proto.sngpoker.GetTournamentTemplateDetailRequest,
+  proto.sngpoker.GetTournamentTemplateDetailResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateDetailRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateDetailResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateDetailResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetTournamentTemplateDetailRequest,
- *   !proto.services.GetTournamentTemplateDetailResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateDetailRequest,
+ *   !proto.sngpoker.GetTournamentTemplateDetailResponse>}
  */
 const methodInfo_Sng_getTournamentTemplateDetail = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetTournamentTemplateDetailResponse,
+  proto.sngpoker.GetTournamentTemplateDetailResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateDetailRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateDetailResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateDetailResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateDetailRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetTournamentTemplateDetailResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetTournamentTemplateDetailResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetTournamentTemplateDetailResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetTournamentTemplateDetailResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getTournamentTemplateDetail =
+proto.sngpoker.SngClient.prototype.getTournamentTemplateDetail =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateDetail',
+      '/sngpoker.Sng/getTournamentTemplateDetail',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateDetail,
@@ -1332,17 +1332,17 @@ proto.services.SngClient.prototype.getTournamentTemplateDetail =
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateDetailRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetTournamentTemplateDetailResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetTournamentTemplateDetailResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getTournamentTemplateDetail =
+proto.sngpoker.SngPromiseClient.prototype.getTournamentTemplateDetail =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateDetail',
+      '/sngpoker.Sng/getTournamentTemplateDetail',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateDetail);
@@ -1352,58 +1352,58 @@ proto.services.SngPromiseClient.prototype.getTournamentTemplateDetail =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AddTournamentTemplateToLobbyRequest,
- *   !proto.services.AddTournamentTemplateToLobbyResponse>}
+ *   !proto.sngpoker.AddTournamentTemplateToLobbyRequest,
+ *   !proto.sngpoker.AddTournamentTemplateToLobbyResponse>}
  */
 const methodDescriptor_Sng_addTournamentTemplateToLobby = new grpc.web.MethodDescriptor(
-  '/services.Sng/addTournamentTemplateToLobby',
+  '/sngpoker.Sng/addTournamentTemplateToLobby',
   grpc.web.MethodType.UNARY,
-  proto.services.AddTournamentTemplateToLobbyRequest,
-  proto.services.AddTournamentTemplateToLobbyResponse,
+  proto.sngpoker.AddTournamentTemplateToLobbyRequest,
+  proto.sngpoker.AddTournamentTemplateToLobbyResponse,
   /**
-   * @param {!proto.services.AddTournamentTemplateToLobbyRequest} request
+   * @param {!proto.sngpoker.AddTournamentTemplateToLobbyRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddTournamentTemplateToLobbyResponse.deserializeBinary
+  proto.sngpoker.AddTournamentTemplateToLobbyResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AddTournamentTemplateToLobbyRequest,
- *   !proto.services.AddTournamentTemplateToLobbyResponse>}
+ *   !proto.sngpoker.AddTournamentTemplateToLobbyRequest,
+ *   !proto.sngpoker.AddTournamentTemplateToLobbyResponse>}
  */
 const methodInfo_Sng_addTournamentTemplateToLobby = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AddTournamentTemplateToLobbyResponse,
+  proto.sngpoker.AddTournamentTemplateToLobbyResponse,
   /**
-   * @param {!proto.services.AddTournamentTemplateToLobbyRequest} request
+   * @param {!proto.sngpoker.AddTournamentTemplateToLobbyRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddTournamentTemplateToLobbyResponse.deserializeBinary
+  proto.sngpoker.AddTournamentTemplateToLobbyResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AddTournamentTemplateToLobbyRequest} request The
+ * @param {!proto.sngpoker.AddTournamentTemplateToLobbyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AddTournamentTemplateToLobbyResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AddTournamentTemplateToLobbyResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AddTournamentTemplateToLobbyResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AddTournamentTemplateToLobbyResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addTournamentTemplateToLobby =
+proto.sngpoker.SngClient.prototype.addTournamentTemplateToLobby =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addTournamentTemplateToLobby',
+      '/sngpoker.Sng/addTournamentTemplateToLobby',
       request,
       metadata || {},
       methodDescriptor_Sng_addTournamentTemplateToLobby,
@@ -1412,17 +1412,17 @@ proto.services.SngClient.prototype.addTournamentTemplateToLobby =
 
 
 /**
- * @param {!proto.services.AddTournamentTemplateToLobbyRequest} request The
+ * @param {!proto.sngpoker.AddTournamentTemplateToLobbyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AddTournamentTemplateToLobbyResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AddTournamentTemplateToLobbyResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addTournamentTemplateToLobby =
+proto.sngpoker.SngPromiseClient.prototype.addTournamentTemplateToLobby =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addTournamentTemplateToLobby',
+      '/sngpoker.Sng/addTournamentTemplateToLobby',
       request,
       metadata || {},
       methodDescriptor_Sng_addTournamentTemplateToLobby);
@@ -1432,58 +1432,58 @@ proto.services.SngPromiseClient.prototype.addTournamentTemplateToLobby =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.RemoveTournamentTemplateFromLobbyRequest,
- *   !proto.services.RemoveTournamentTemplateFromLobbyResponse>}
+ *   !proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest,
+ *   !proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse>}
  */
 const methodDescriptor_Sng_removeTournamentTemplateFromLobby = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeTournamentTemplateFromLobby',
+  '/sngpoker.Sng/removeTournamentTemplateFromLobby',
   grpc.web.MethodType.UNARY,
-  proto.services.RemoveTournamentTemplateFromLobbyRequest,
-  proto.services.RemoveTournamentTemplateFromLobbyResponse,
+  proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest,
+  proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse,
   /**
-   * @param {!proto.services.RemoveTournamentTemplateFromLobbyRequest} request
+   * @param {!proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.RemoveTournamentTemplateFromLobbyResponse.deserializeBinary
+  proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.RemoveTournamentTemplateFromLobbyRequest,
- *   !proto.services.RemoveTournamentTemplateFromLobbyResponse>}
+ *   !proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest,
+ *   !proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse>}
  */
 const methodInfo_Sng_removeTournamentTemplateFromLobby = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.RemoveTournamentTemplateFromLobbyResponse,
+  proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse,
   /**
-   * @param {!proto.services.RemoveTournamentTemplateFromLobbyRequest} request
+   * @param {!proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.RemoveTournamentTemplateFromLobbyResponse.deserializeBinary
+  proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.RemoveTournamentTemplateFromLobbyRequest} request The
+ * @param {!proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.RemoveTournamentTemplateFromLobbyResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.RemoveTournamentTemplateFromLobbyResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeTournamentTemplateFromLobby =
+proto.sngpoker.SngClient.prototype.removeTournamentTemplateFromLobby =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeTournamentTemplateFromLobby',
+      '/sngpoker.Sng/removeTournamentTemplateFromLobby',
       request,
       metadata || {},
       methodDescriptor_Sng_removeTournamentTemplateFromLobby,
@@ -1492,17 +1492,17 @@ proto.services.SngClient.prototype.removeTournamentTemplateFromLobby =
 
 
 /**
- * @param {!proto.services.RemoveTournamentTemplateFromLobbyRequest} request The
+ * @param {!proto.sngpoker.RemoveTournamentTemplateFromLobbyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.RemoveTournamentTemplateFromLobbyResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.RemoveTournamentTemplateFromLobbyResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeTournamentTemplateFromLobby =
+proto.sngpoker.SngPromiseClient.prototype.removeTournamentTemplateFromLobby =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeTournamentTemplateFromLobby',
+      '/sngpoker.Sng/removeTournamentTemplateFromLobby',
       request,
       metadata || {},
       methodDescriptor_Sng_removeTournamentTemplateFromLobby);
@@ -1512,58 +1512,58 @@ proto.services.SngPromiseClient.prototype.removeTournamentTemplateFromLobby =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CreateTournamentTemplateRequest,
- *   !proto.services.CreateTournamentTemplateResponse>}
+ *   !proto.sngpoker.CreateTournamentTemplateRequest,
+ *   !proto.sngpoker.CreateTournamentTemplateResponse>}
  */
 const methodDescriptor_Sng_createTournamentTemplate = new grpc.web.MethodDescriptor(
-  '/services.Sng/createTournamentTemplate',
+  '/sngpoker.Sng/createTournamentTemplate',
   grpc.web.MethodType.UNARY,
-  proto.services.CreateTournamentTemplateRequest,
-  proto.services.CreateTournamentTemplateResponse,
+  proto.sngpoker.CreateTournamentTemplateRequest,
+  proto.sngpoker.CreateTournamentTemplateResponse,
   /**
-   * @param {!proto.services.CreateTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.CreateTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CreateTournamentTemplateResponse.deserializeBinary
+  proto.sngpoker.CreateTournamentTemplateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CreateTournamentTemplateRequest,
- *   !proto.services.CreateTournamentTemplateResponse>}
+ *   !proto.sngpoker.CreateTournamentTemplateRequest,
+ *   !proto.sngpoker.CreateTournamentTemplateResponse>}
  */
 const methodInfo_Sng_createTournamentTemplate = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CreateTournamentTemplateResponse,
+  proto.sngpoker.CreateTournamentTemplateResponse,
   /**
-   * @param {!proto.services.CreateTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.CreateTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CreateTournamentTemplateResponse.deserializeBinary
+  proto.sngpoker.CreateTournamentTemplateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CreateTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.CreateTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CreateTournamentTemplateResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CreateTournamentTemplateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CreateTournamentTemplateResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CreateTournamentTemplateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.createTournamentTemplate =
+proto.sngpoker.SngClient.prototype.createTournamentTemplate =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/createTournamentTemplate',
+      '/sngpoker.Sng/createTournamentTemplate',
       request,
       metadata || {},
       methodDescriptor_Sng_createTournamentTemplate,
@@ -1572,17 +1572,17 @@ proto.services.SngClient.prototype.createTournamentTemplate =
 
 
 /**
- * @param {!proto.services.CreateTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.CreateTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CreateTournamentTemplateResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CreateTournamentTemplateResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.createTournamentTemplate =
+proto.sngpoker.SngPromiseClient.prototype.createTournamentTemplate =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/createTournamentTemplate',
+      '/sngpoker.Sng/createTournamentTemplate',
       request,
       metadata || {},
       methodDescriptor_Sng_createTournamentTemplate);
@@ -1592,58 +1592,58 @@ proto.services.SngPromiseClient.prototype.createTournamentTemplate =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetTournamentTemplateListRequest,
- *   !proto.services.GetTournamentTemplateListResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateListRequest,
+ *   !proto.sngpoker.GetTournamentTemplateListResponse>}
  */
 const methodDescriptor_Sng_getTournamentTemplateList = new grpc.web.MethodDescriptor(
-  '/services.Sng/getTournamentTemplateList',
+  '/sngpoker.Sng/getTournamentTemplateList',
   grpc.web.MethodType.UNARY,
-  proto.services.GetTournamentTemplateListRequest,
-  proto.services.GetTournamentTemplateListResponse,
+  proto.sngpoker.GetTournamentTemplateListRequest,
+  proto.sngpoker.GetTournamentTemplateListResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateListRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateListResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateListResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetTournamentTemplateListRequest,
- *   !proto.services.GetTournamentTemplateListResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateListRequest,
+ *   !proto.sngpoker.GetTournamentTemplateListResponse>}
  */
 const methodInfo_Sng_getTournamentTemplateList = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetTournamentTemplateListResponse,
+  proto.sngpoker.GetTournamentTemplateListResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateListRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateListResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateListResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateListRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetTournamentTemplateListResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetTournamentTemplateListResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetTournamentTemplateListResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetTournamentTemplateListResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getTournamentTemplateList =
+proto.sngpoker.SngClient.prototype.getTournamentTemplateList =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateList',
+      '/sngpoker.Sng/getTournamentTemplateList',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateList,
@@ -1652,17 +1652,17 @@ proto.services.SngClient.prototype.getTournamentTemplateList =
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateListRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetTournamentTemplateListResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetTournamentTemplateListResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getTournamentTemplateList =
+proto.sngpoker.SngPromiseClient.prototype.getTournamentTemplateList =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateList',
+      '/sngpoker.Sng/getTournamentTemplateList',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateList);
@@ -1672,58 +1672,58 @@ proto.services.SngPromiseClient.prototype.getTournamentTemplateList =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetLobbyTournamentTemplateListRequest,
- *   !proto.services.GetLobbyTournamentTemplateListResponse>}
+ *   !proto.sngpoker.GetLobbyTournamentTemplateListRequest,
+ *   !proto.sngpoker.GetLobbyTournamentTemplateListResponse>}
  */
 const methodDescriptor_Sng_getLobbyTournamentTemplateList = new grpc.web.MethodDescriptor(
-  '/services.Sng/getLobbyTournamentTemplateList',
+  '/sngpoker.Sng/getLobbyTournamentTemplateList',
   grpc.web.MethodType.UNARY,
-  proto.services.GetLobbyTournamentTemplateListRequest,
-  proto.services.GetLobbyTournamentTemplateListResponse,
+  proto.sngpoker.GetLobbyTournamentTemplateListRequest,
+  proto.sngpoker.GetLobbyTournamentTemplateListResponse,
   /**
-   * @param {!proto.services.GetLobbyTournamentTemplateListRequest} request
+   * @param {!proto.sngpoker.GetLobbyTournamentTemplateListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetLobbyTournamentTemplateListResponse.deserializeBinary
+  proto.sngpoker.GetLobbyTournamentTemplateListResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetLobbyTournamentTemplateListRequest,
- *   !proto.services.GetLobbyTournamentTemplateListResponse>}
+ *   !proto.sngpoker.GetLobbyTournamentTemplateListRequest,
+ *   !proto.sngpoker.GetLobbyTournamentTemplateListResponse>}
  */
 const methodInfo_Sng_getLobbyTournamentTemplateList = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetLobbyTournamentTemplateListResponse,
+  proto.sngpoker.GetLobbyTournamentTemplateListResponse,
   /**
-   * @param {!proto.services.GetLobbyTournamentTemplateListRequest} request
+   * @param {!proto.sngpoker.GetLobbyTournamentTemplateListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetLobbyTournamentTemplateListResponse.deserializeBinary
+  proto.sngpoker.GetLobbyTournamentTemplateListResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetLobbyTournamentTemplateListRequest} request The
+ * @param {!proto.sngpoker.GetLobbyTournamentTemplateListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetLobbyTournamentTemplateListResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetLobbyTournamentTemplateListResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetLobbyTournamentTemplateListResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetLobbyTournamentTemplateListResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getLobbyTournamentTemplateList =
+proto.sngpoker.SngClient.prototype.getLobbyTournamentTemplateList =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getLobbyTournamentTemplateList',
+      '/sngpoker.Sng/getLobbyTournamentTemplateList',
       request,
       metadata || {},
       methodDescriptor_Sng_getLobbyTournamentTemplateList,
@@ -1732,17 +1732,17 @@ proto.services.SngClient.prototype.getLobbyTournamentTemplateList =
 
 
 /**
- * @param {!proto.services.GetLobbyTournamentTemplateListRequest} request The
+ * @param {!proto.sngpoker.GetLobbyTournamentTemplateListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetLobbyTournamentTemplateListResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetLobbyTournamentTemplateListResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getLobbyTournamentTemplateList =
+proto.sngpoker.SngPromiseClient.prototype.getLobbyTournamentTemplateList =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getLobbyTournamentTemplateList',
+      '/sngpoker.Sng/getLobbyTournamentTemplateList',
       request,
       metadata || {},
       methodDescriptor_Sng_getLobbyTournamentTemplateList);
@@ -1752,58 +1752,58 @@ proto.services.SngPromiseClient.prototype.getLobbyTournamentTemplateList =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetTournamentTemplateBufferStateRequest,
- *   !proto.services.GetTournamentTemplateBufferStateResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateBufferStateRequest,
+ *   !proto.sngpoker.GetTournamentTemplateBufferStateResponse>}
  */
 const methodDescriptor_Sng_getTournamentTemplateBufferState = new grpc.web.MethodDescriptor(
-  '/services.Sng/getTournamentTemplateBufferState',
+  '/sngpoker.Sng/getTournamentTemplateBufferState',
   grpc.web.MethodType.UNARY,
-  proto.services.GetTournamentTemplateBufferStateRequest,
-  proto.services.GetTournamentTemplateBufferStateResponse,
+  proto.sngpoker.GetTournamentTemplateBufferStateRequest,
+  proto.sngpoker.GetTournamentTemplateBufferStateResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateBufferStateRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateBufferStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateBufferStateResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateBufferStateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetTournamentTemplateBufferStateRequest,
- *   !proto.services.GetTournamentTemplateBufferStateResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateBufferStateRequest,
+ *   !proto.sngpoker.GetTournamentTemplateBufferStateResponse>}
  */
 const methodInfo_Sng_getTournamentTemplateBufferState = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetTournamentTemplateBufferStateResponse,
+  proto.sngpoker.GetTournamentTemplateBufferStateResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateBufferStateRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateBufferStateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentTemplateBufferStateResponse.deserializeBinary
+  proto.sngpoker.GetTournamentTemplateBufferStateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateBufferStateRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateBufferStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetTournamentTemplateBufferStateResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetTournamentTemplateBufferStateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetTournamentTemplateBufferStateResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetTournamentTemplateBufferStateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getTournamentTemplateBufferState =
+proto.sngpoker.SngClient.prototype.getTournamentTemplateBufferState =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateBufferState',
+      '/sngpoker.Sng/getTournamentTemplateBufferState',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateBufferState,
@@ -1812,17 +1812,17 @@ proto.services.SngClient.prototype.getTournamentTemplateBufferState =
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateBufferStateRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateBufferStateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetTournamentTemplateBufferStateResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetTournamentTemplateBufferStateResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getTournamentTemplateBufferState =
+proto.sngpoker.SngPromiseClient.prototype.getTournamentTemplateBufferState =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getTournamentTemplateBufferState',
+      '/sngpoker.Sng/getTournamentTemplateBufferState',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentTemplateBufferState);
@@ -1832,58 +1832,58 @@ proto.services.SngPromiseClient.prototype.getTournamentTemplateBufferState =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UnsubscribeFromTournamentTemplateBufferRequest,
- *   !proto.services.UnsubscribeFromTournamentTemplateBufferResponse>}
+ *   !proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest,
+ *   !proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse>}
  */
 const methodDescriptor_Sng_unsubscribeFromTournamentTemplateBuffer = new grpc.web.MethodDescriptor(
-  '/services.Sng/unsubscribeFromTournamentTemplateBuffer',
+  '/sngpoker.Sng/unsubscribeFromTournamentTemplateBuffer',
   grpc.web.MethodType.UNARY,
-  proto.services.UnsubscribeFromTournamentTemplateBufferRequest,
-  proto.services.UnsubscribeFromTournamentTemplateBufferResponse,
+  proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest,
+  proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse,
   /**
-   * @param {!proto.services.UnsubscribeFromTournamentTemplateBufferRequest} request
+   * @param {!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnsubscribeFromTournamentTemplateBufferResponse.deserializeBinary
+  proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UnsubscribeFromTournamentTemplateBufferRequest,
- *   !proto.services.UnsubscribeFromTournamentTemplateBufferResponse>}
+ *   !proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest,
+ *   !proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse>}
  */
 const methodInfo_Sng_unsubscribeFromTournamentTemplateBuffer = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UnsubscribeFromTournamentTemplateBufferResponse,
+  proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse,
   /**
-   * @param {!proto.services.UnsubscribeFromTournamentTemplateBufferRequest} request
+   * @param {!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnsubscribeFromTournamentTemplateBufferResponse.deserializeBinary
+  proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UnsubscribeFromTournamentTemplateBufferRequest} request The
+ * @param {!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UnsubscribeFromTournamentTemplateBufferResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UnsubscribeFromTournamentTemplateBufferResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.unsubscribeFromTournamentTemplateBuffer =
+proto.sngpoker.SngClient.prototype.unsubscribeFromTournamentTemplateBuffer =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/unsubscribeFromTournamentTemplateBuffer',
+      '/sngpoker.Sng/unsubscribeFromTournamentTemplateBuffer',
       request,
       metadata || {},
       methodDescriptor_Sng_unsubscribeFromTournamentTemplateBuffer,
@@ -1892,17 +1892,17 @@ proto.services.SngClient.prototype.unsubscribeFromTournamentTemplateBuffer =
 
 
 /**
- * @param {!proto.services.UnsubscribeFromTournamentTemplateBufferRequest} request The
+ * @param {!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UnsubscribeFromTournamentTemplateBufferResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UnsubscribeFromTournamentTemplateBufferResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.unsubscribeFromTournamentTemplateBuffer =
+proto.sngpoker.SngPromiseClient.prototype.unsubscribeFromTournamentTemplateBuffer =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/unsubscribeFromTournamentTemplateBuffer',
+      '/sngpoker.Sng/unsubscribeFromTournamentTemplateBuffer',
       request,
       metadata || {},
       methodDescriptor_Sng_unsubscribeFromTournamentTemplateBuffer);
@@ -1912,58 +1912,58 @@ proto.services.SngPromiseClient.prototype.unsubscribeFromTournamentTemplateBuffe
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.LaunchTournamentRequest,
- *   !proto.services.LaunchTournamentResponse>}
+ *   !proto.sngpoker.LaunchTournamentRequest,
+ *   !proto.sngpoker.LaunchTournamentResponse>}
  */
 const methodDescriptor_Sng_launchTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/launchTournament',
+  '/sngpoker.Sng/launchTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.LaunchTournamentRequest,
-  proto.services.LaunchTournamentResponse,
+  proto.sngpoker.LaunchTournamentRequest,
+  proto.sngpoker.LaunchTournamentResponse,
   /**
-   * @param {!proto.services.LaunchTournamentRequest} request
+   * @param {!proto.sngpoker.LaunchTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LaunchTournamentResponse.deserializeBinary
+  proto.sngpoker.LaunchTournamentResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.LaunchTournamentRequest,
- *   !proto.services.LaunchTournamentResponse>}
+ *   !proto.sngpoker.LaunchTournamentRequest,
+ *   !proto.sngpoker.LaunchTournamentResponse>}
  */
 const methodInfo_Sng_launchTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.LaunchTournamentResponse,
+  proto.sngpoker.LaunchTournamentResponse,
   /**
-   * @param {!proto.services.LaunchTournamentRequest} request
+   * @param {!proto.sngpoker.LaunchTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LaunchTournamentResponse.deserializeBinary
+  proto.sngpoker.LaunchTournamentResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.LaunchTournamentRequest} request The
+ * @param {!proto.sngpoker.LaunchTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.LaunchTournamentResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.LaunchTournamentResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.LaunchTournamentResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.LaunchTournamentResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.launchTournament =
+proto.sngpoker.SngClient.prototype.launchTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/launchTournament',
+      '/sngpoker.Sng/launchTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_launchTournament,
@@ -1972,17 +1972,17 @@ proto.services.SngClient.prototype.launchTournament =
 
 
 /**
- * @param {!proto.services.LaunchTournamentRequest} request The
+ * @param {!proto.sngpoker.LaunchTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.LaunchTournamentResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.LaunchTournamentResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.launchTournament =
+proto.sngpoker.SngPromiseClient.prototype.launchTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/launchTournament',
+      '/sngpoker.Sng/launchTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_launchTournament);
@@ -1992,58 +1992,58 @@ proto.services.SngPromiseClient.prototype.launchTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.SignupRequest,
- *   !proto.services.SignupResult>}
+ *   !proto.sngpoker.SignupRequest,
+ *   !proto.sngpoker.SignupResult>}
  */
 const methodDescriptor_Sng_Signup = new grpc.web.MethodDescriptor(
-  '/services.Sng/Signup',
+  '/sngpoker.Sng/Signup',
   grpc.web.MethodType.UNARY,
-  proto.services.SignupRequest,
-  proto.services.SignupResult,
+  proto.sngpoker.SignupRequest,
+  proto.sngpoker.SignupResult,
   /**
-   * @param {!proto.services.SignupRequest} request
+   * @param {!proto.sngpoker.SignupRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SignupResult.deserializeBinary
+  proto.sngpoker.SignupResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.SignupRequest,
- *   !proto.services.SignupResult>}
+ *   !proto.sngpoker.SignupRequest,
+ *   !proto.sngpoker.SignupResult>}
  */
 const methodInfo_Sng_Signup = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.SignupResult,
+  proto.sngpoker.SignupResult,
   /**
-   * @param {!proto.services.SignupRequest} request
+   * @param {!proto.sngpoker.SignupRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SignupResult.deserializeBinary
+  proto.sngpoker.SignupResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.SignupRequest} request The
+ * @param {!proto.sngpoker.SignupRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.SignupResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.SignupResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.SignupResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.SignupResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.signup =
+proto.sngpoker.SngClient.prototype.signup =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/Signup',
+      '/sngpoker.Sng/Signup',
       request,
       metadata || {},
       methodDescriptor_Sng_Signup,
@@ -2052,17 +2052,17 @@ proto.services.SngClient.prototype.signup =
 
 
 /**
- * @param {!proto.services.SignupRequest} request The
+ * @param {!proto.sngpoker.SignupRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.SignupResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.SignupResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.signup =
+proto.sngpoker.SngPromiseClient.prototype.signup =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/Signup',
+      '/sngpoker.Sng/Signup',
       request,
       metadata || {},
       methodDescriptor_Sng_Signup);
@@ -2072,58 +2072,58 @@ proto.services.SngPromiseClient.prototype.signup =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.LoginRequest,
- *   !proto.services.LoginResult>}
+ *   !proto.sngpoker.LoginRequest,
+ *   !proto.sngpoker.LoginResult>}
  */
 const methodDescriptor_Sng_Login = new grpc.web.MethodDescriptor(
-  '/services.Sng/Login',
+  '/sngpoker.Sng/Login',
   grpc.web.MethodType.UNARY,
-  proto.services.LoginRequest,
-  proto.services.LoginResult,
+  proto.sngpoker.LoginRequest,
+  proto.sngpoker.LoginResult,
   /**
-   * @param {!proto.services.LoginRequest} request
+   * @param {!proto.sngpoker.LoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LoginResult.deserializeBinary
+  proto.sngpoker.LoginResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.LoginRequest,
- *   !proto.services.LoginResult>}
+ *   !proto.sngpoker.LoginRequest,
+ *   !proto.sngpoker.LoginResult>}
  */
 const methodInfo_Sng_Login = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.LoginResult,
+  proto.sngpoker.LoginResult,
   /**
-   * @param {!proto.services.LoginRequest} request
+   * @param {!proto.sngpoker.LoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LoginResult.deserializeBinary
+  proto.sngpoker.LoginResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.LoginRequest} request The
+ * @param {!proto.sngpoker.LoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.LoginResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.LoginResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.LoginResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.LoginResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.login =
+proto.sngpoker.SngClient.prototype.login =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/Login',
+      '/sngpoker.Sng/Login',
       request,
       metadata || {},
       methodDescriptor_Sng_Login,
@@ -2132,17 +2132,17 @@ proto.services.SngClient.prototype.login =
 
 
 /**
- * @param {!proto.services.LoginRequest} request The
+ * @param {!proto.sngpoker.LoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.LoginResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.LoginResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.login =
+proto.sngpoker.SngPromiseClient.prototype.login =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/Login',
+      '/sngpoker.Sng/Login',
       request,
       metadata || {},
       methodDescriptor_Sng_Login);
@@ -2152,58 +2152,58 @@ proto.services.SngPromiseClient.prototype.login =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.LogoutRequest,
- *   !proto.services.LogoutResult>}
+ *   !proto.sngpoker.LogoutRequest,
+ *   !proto.sngpoker.LogoutResult>}
  */
 const methodDescriptor_Sng_Logout = new grpc.web.MethodDescriptor(
-  '/services.Sng/Logout',
+  '/sngpoker.Sng/Logout',
   grpc.web.MethodType.UNARY,
-  proto.services.LogoutRequest,
-  proto.services.LogoutResult,
+  proto.sngpoker.LogoutRequest,
+  proto.sngpoker.LogoutResult,
   /**
-   * @param {!proto.services.LogoutRequest} request
+   * @param {!proto.sngpoker.LogoutRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LogoutResult.deserializeBinary
+  proto.sngpoker.LogoutResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.LogoutRequest,
- *   !proto.services.LogoutResult>}
+ *   !proto.sngpoker.LogoutRequest,
+ *   !proto.sngpoker.LogoutResult>}
  */
 const methodInfo_Sng_Logout = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.LogoutResult,
+  proto.sngpoker.LogoutResult,
   /**
-   * @param {!proto.services.LogoutRequest} request
+   * @param {!proto.sngpoker.LogoutRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LogoutResult.deserializeBinary
+  proto.sngpoker.LogoutResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.LogoutRequest} request The
+ * @param {!proto.sngpoker.LogoutRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.LogoutResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.LogoutResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.LogoutResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.LogoutResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.logout =
+proto.sngpoker.SngClient.prototype.logout =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/Logout',
+      '/sngpoker.Sng/Logout',
       request,
       metadata || {},
       methodDescriptor_Sng_Logout,
@@ -2212,17 +2212,17 @@ proto.services.SngClient.prototype.logout =
 
 
 /**
- * @param {!proto.services.LogoutRequest} request The
+ * @param {!proto.sngpoker.LogoutRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.LogoutResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.LogoutResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.logout =
+proto.sngpoker.SngPromiseClient.prototype.logout =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/Logout',
+      '/sngpoker.Sng/Logout',
       request,
       metadata || {},
       methodDescriptor_Sng_Logout);
@@ -2232,58 +2232,58 @@ proto.services.SngPromiseClient.prototype.logout =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.MakeDepositRequest,
- *   !proto.services.MakeDepositResponse>}
+ *   !proto.sngpoker.MakeDepositRequest,
+ *   !proto.sngpoker.MakeDepositResponse>}
  */
 const methodDescriptor_Sng_makeDeposit = new grpc.web.MethodDescriptor(
-  '/services.Sng/makeDeposit',
+  '/sngpoker.Sng/makeDeposit',
   grpc.web.MethodType.UNARY,
-  proto.services.MakeDepositRequest,
-  proto.services.MakeDepositResponse,
+  proto.sngpoker.MakeDepositRequest,
+  proto.sngpoker.MakeDepositResponse,
   /**
-   * @param {!proto.services.MakeDepositRequest} request
+   * @param {!proto.sngpoker.MakeDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeDepositResponse.deserializeBinary
+  proto.sngpoker.MakeDepositResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.MakeDepositRequest,
- *   !proto.services.MakeDepositResponse>}
+ *   !proto.sngpoker.MakeDepositRequest,
+ *   !proto.sngpoker.MakeDepositResponse>}
  */
 const methodInfo_Sng_makeDeposit = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.MakeDepositResponse,
+  proto.sngpoker.MakeDepositResponse,
   /**
-   * @param {!proto.services.MakeDepositRequest} request
+   * @param {!proto.sngpoker.MakeDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeDepositResponse.deserializeBinary
+  proto.sngpoker.MakeDepositResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.MakeDepositRequest} request The
+ * @param {!proto.sngpoker.MakeDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.MakeDepositResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.MakeDepositResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.MakeDepositResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.MakeDepositResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.makeDeposit =
+proto.sngpoker.SngClient.prototype.makeDeposit =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/makeDeposit',
+      '/sngpoker.Sng/makeDeposit',
       request,
       metadata || {},
       methodDescriptor_Sng_makeDeposit,
@@ -2292,17 +2292,17 @@ proto.services.SngClient.prototype.makeDeposit =
 
 
 /**
- * @param {!proto.services.MakeDepositRequest} request The
+ * @param {!proto.sngpoker.MakeDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.MakeDepositResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.MakeDepositResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.makeDeposit =
+proto.sngpoker.SngPromiseClient.prototype.makeDeposit =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/makeDeposit',
+      '/sngpoker.Sng/makeDeposit',
       request,
       metadata || {},
       methodDescriptor_Sng_makeDeposit);
@@ -2312,58 +2312,58 @@ proto.services.SngPromiseClient.prototype.makeDeposit =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.MakeWithdrawalRequest,
- *   !proto.services.MakeWithdrawalResponse>}
+ *   !proto.sngpoker.MakeWithdrawalRequest,
+ *   !proto.sngpoker.MakeWithdrawalResponse>}
  */
 const methodDescriptor_Sng_makeWithdrawal = new grpc.web.MethodDescriptor(
-  '/services.Sng/makeWithdrawal',
+  '/sngpoker.Sng/makeWithdrawal',
   grpc.web.MethodType.UNARY,
-  proto.services.MakeWithdrawalRequest,
-  proto.services.MakeWithdrawalResponse,
+  proto.sngpoker.MakeWithdrawalRequest,
+  proto.sngpoker.MakeWithdrawalResponse,
   /**
-   * @param {!proto.services.MakeWithdrawalRequest} request
+   * @param {!proto.sngpoker.MakeWithdrawalRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeWithdrawalResponse.deserializeBinary
+  proto.sngpoker.MakeWithdrawalResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.MakeWithdrawalRequest,
- *   !proto.services.MakeWithdrawalResponse>}
+ *   !proto.sngpoker.MakeWithdrawalRequest,
+ *   !proto.sngpoker.MakeWithdrawalResponse>}
  */
 const methodInfo_Sng_makeWithdrawal = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.MakeWithdrawalResponse,
+  proto.sngpoker.MakeWithdrawalResponse,
   /**
-   * @param {!proto.services.MakeWithdrawalRequest} request
+   * @param {!proto.sngpoker.MakeWithdrawalRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.MakeWithdrawalResponse.deserializeBinary
+  proto.sngpoker.MakeWithdrawalResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.MakeWithdrawalRequest} request The
+ * @param {!proto.sngpoker.MakeWithdrawalRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.MakeWithdrawalResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.MakeWithdrawalResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.MakeWithdrawalResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.MakeWithdrawalResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.makeWithdrawal =
+proto.sngpoker.SngClient.prototype.makeWithdrawal =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/makeWithdrawal',
+      '/sngpoker.Sng/makeWithdrawal',
       request,
       metadata || {},
       methodDescriptor_Sng_makeWithdrawal,
@@ -2372,17 +2372,17 @@ proto.services.SngClient.prototype.makeWithdrawal =
 
 
 /**
- * @param {!proto.services.MakeWithdrawalRequest} request The
+ * @param {!proto.sngpoker.MakeWithdrawalRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.MakeWithdrawalResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.MakeWithdrawalResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.makeWithdrawal =
+proto.sngpoker.SngPromiseClient.prototype.makeWithdrawal =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/makeWithdrawal',
+      '/sngpoker.Sng/makeWithdrawal',
       request,
       metadata || {},
       methodDescriptor_Sng_makeWithdrawal);
@@ -2392,58 +2392,58 @@ proto.services.SngPromiseClient.prototype.makeWithdrawal =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AccountStatementsRequest,
- *   !proto.services.AccountStatementsResponse>}
+ *   !proto.sngpoker.AccountStatementsRequest,
+ *   !proto.sngpoker.AccountStatementsResponse>}
  */
 const methodDescriptor_Sng_getAccountStatements = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAccountStatements',
+  '/sngpoker.Sng/getAccountStatements',
   grpc.web.MethodType.UNARY,
-  proto.services.AccountStatementsRequest,
-  proto.services.AccountStatementsResponse,
+  proto.sngpoker.AccountStatementsRequest,
+  proto.sngpoker.AccountStatementsResponse,
   /**
-   * @param {!proto.services.AccountStatementsRequest} request
+   * @param {!proto.sngpoker.AccountStatementsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AccountStatementsResponse.deserializeBinary
+  proto.sngpoker.AccountStatementsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AccountStatementsRequest,
- *   !proto.services.AccountStatementsResponse>}
+ *   !proto.sngpoker.AccountStatementsRequest,
+ *   !proto.sngpoker.AccountStatementsResponse>}
  */
 const methodInfo_Sng_getAccountStatements = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AccountStatementsResponse,
+  proto.sngpoker.AccountStatementsResponse,
   /**
-   * @param {!proto.services.AccountStatementsRequest} request
+   * @param {!proto.sngpoker.AccountStatementsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AccountStatementsResponse.deserializeBinary
+  proto.sngpoker.AccountStatementsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AccountStatementsRequest} request The
+ * @param {!proto.sngpoker.AccountStatementsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AccountStatementsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AccountStatementsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AccountStatementsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AccountStatementsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAccountStatements =
+proto.sngpoker.SngClient.prototype.getAccountStatements =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAccountStatements',
+      '/sngpoker.Sng/getAccountStatements',
       request,
       metadata || {},
       methodDescriptor_Sng_getAccountStatements,
@@ -2452,17 +2452,17 @@ proto.services.SngClient.prototype.getAccountStatements =
 
 
 /**
- * @param {!proto.services.AccountStatementsRequest} request The
+ * @param {!proto.sngpoker.AccountStatementsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AccountStatementsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AccountStatementsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAccountStatements =
+proto.sngpoker.SngPromiseClient.prototype.getAccountStatements =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAccountStatements',
+      '/sngpoker.Sng/getAccountStatements',
       request,
       metadata || {},
       methodDescriptor_Sng_getAccountStatements);
@@ -2472,58 +2472,58 @@ proto.services.SngPromiseClient.prototype.getAccountStatements =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CaptureDepositRequest,
- *   !proto.services.CaptureDepositResponse>}
+ *   !proto.sngpoker.CaptureDepositRequest,
+ *   !proto.sngpoker.CaptureDepositResponse>}
  */
 const methodDescriptor_Sng_captureProcessedDeposit = new grpc.web.MethodDescriptor(
-  '/services.Sng/captureProcessedDeposit',
+  '/sngpoker.Sng/captureProcessedDeposit',
   grpc.web.MethodType.UNARY,
-  proto.services.CaptureDepositRequest,
-  proto.services.CaptureDepositResponse,
+  proto.sngpoker.CaptureDepositRequest,
+  proto.sngpoker.CaptureDepositResponse,
   /**
-   * @param {!proto.services.CaptureDepositRequest} request
+   * @param {!proto.sngpoker.CaptureDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CaptureDepositResponse.deserializeBinary
+  proto.sngpoker.CaptureDepositResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CaptureDepositRequest,
- *   !proto.services.CaptureDepositResponse>}
+ *   !proto.sngpoker.CaptureDepositRequest,
+ *   !proto.sngpoker.CaptureDepositResponse>}
  */
 const methodInfo_Sng_captureProcessedDeposit = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CaptureDepositResponse,
+  proto.sngpoker.CaptureDepositResponse,
   /**
-   * @param {!proto.services.CaptureDepositRequest} request
+   * @param {!proto.sngpoker.CaptureDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CaptureDepositResponse.deserializeBinary
+  proto.sngpoker.CaptureDepositResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CaptureDepositRequest} request The
+ * @param {!proto.sngpoker.CaptureDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CaptureDepositResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CaptureDepositResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CaptureDepositResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CaptureDepositResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.captureProcessedDeposit =
+proto.sngpoker.SngClient.prototype.captureProcessedDeposit =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/captureProcessedDeposit',
+      '/sngpoker.Sng/captureProcessedDeposit',
       request,
       metadata || {},
       methodDescriptor_Sng_captureProcessedDeposit,
@@ -2532,17 +2532,17 @@ proto.services.SngClient.prototype.captureProcessedDeposit =
 
 
 /**
- * @param {!proto.services.CaptureDepositRequest} request The
+ * @param {!proto.sngpoker.CaptureDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CaptureDepositResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CaptureDepositResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.captureProcessedDeposit =
+proto.sngpoker.SngPromiseClient.prototype.captureProcessedDeposit =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/captureProcessedDeposit',
+      '/sngpoker.Sng/captureProcessedDeposit',
       request,
       metadata || {},
       methodDescriptor_Sng_captureProcessedDeposit);
@@ -2552,58 +2552,58 @@ proto.services.SngPromiseClient.prototype.captureProcessedDeposit =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CaptureWithdrawalRequest,
- *   !proto.services.CaptureWithdrawalResponse>}
+ *   !proto.sngpoker.CaptureWithdrawalRequest,
+ *   !proto.sngpoker.CaptureWithdrawalResponse>}
  */
 const methodDescriptor_Sng_captureProcessedWithdrawal = new grpc.web.MethodDescriptor(
-  '/services.Sng/captureProcessedWithdrawal',
+  '/sngpoker.Sng/captureProcessedWithdrawal',
   grpc.web.MethodType.UNARY,
-  proto.services.CaptureWithdrawalRequest,
-  proto.services.CaptureWithdrawalResponse,
+  proto.sngpoker.CaptureWithdrawalRequest,
+  proto.sngpoker.CaptureWithdrawalResponse,
   /**
-   * @param {!proto.services.CaptureWithdrawalRequest} request
+   * @param {!proto.sngpoker.CaptureWithdrawalRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CaptureWithdrawalResponse.deserializeBinary
+  proto.sngpoker.CaptureWithdrawalResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CaptureWithdrawalRequest,
- *   !proto.services.CaptureWithdrawalResponse>}
+ *   !proto.sngpoker.CaptureWithdrawalRequest,
+ *   !proto.sngpoker.CaptureWithdrawalResponse>}
  */
 const methodInfo_Sng_captureProcessedWithdrawal = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CaptureWithdrawalResponse,
+  proto.sngpoker.CaptureWithdrawalResponse,
   /**
-   * @param {!proto.services.CaptureWithdrawalRequest} request
+   * @param {!proto.sngpoker.CaptureWithdrawalRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CaptureWithdrawalResponse.deserializeBinary
+  proto.sngpoker.CaptureWithdrawalResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CaptureWithdrawalRequest} request The
+ * @param {!proto.sngpoker.CaptureWithdrawalRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CaptureWithdrawalResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CaptureWithdrawalResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CaptureWithdrawalResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CaptureWithdrawalResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.captureProcessedWithdrawal =
+proto.sngpoker.SngClient.prototype.captureProcessedWithdrawal =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/captureProcessedWithdrawal',
+      '/sngpoker.Sng/captureProcessedWithdrawal',
       request,
       metadata || {},
       methodDescriptor_Sng_captureProcessedWithdrawal,
@@ -2612,17 +2612,17 @@ proto.services.SngClient.prototype.captureProcessedWithdrawal =
 
 
 /**
- * @param {!proto.services.CaptureWithdrawalRequest} request The
+ * @param {!proto.sngpoker.CaptureWithdrawalRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CaptureWithdrawalResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CaptureWithdrawalResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.captureProcessedWithdrawal =
+proto.sngpoker.SngPromiseClient.prototype.captureProcessedWithdrawal =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/captureProcessedWithdrawal',
+      '/sngpoker.Sng/captureProcessedWithdrawal',
       request,
       metadata || {},
       methodDescriptor_Sng_captureProcessedWithdrawal);
@@ -2632,58 +2632,58 @@ proto.services.SngPromiseClient.prototype.captureProcessedWithdrawal =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AddPayoutStructureRequest,
- *   !proto.services.AddPayoutStructureResponse>}
+ *   !proto.sngpoker.AddPayoutStructureRequest,
+ *   !proto.sngpoker.AddPayoutStructureResponse>}
  */
 const methodDescriptor_Sng_addPayoutStructure = new grpc.web.MethodDescriptor(
-  '/services.Sng/addPayoutStructure',
+  '/sngpoker.Sng/addPayoutStructure',
   grpc.web.MethodType.UNARY,
-  proto.services.AddPayoutStructureRequest,
-  proto.services.AddPayoutStructureResponse,
+  proto.sngpoker.AddPayoutStructureRequest,
+  proto.sngpoker.AddPayoutStructureResponse,
   /**
-   * @param {!proto.services.AddPayoutStructureRequest} request
+   * @param {!proto.sngpoker.AddPayoutStructureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.AddPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AddPayoutStructureRequest,
- *   !proto.services.AddPayoutStructureResponse>}
+ *   !proto.sngpoker.AddPayoutStructureRequest,
+ *   !proto.sngpoker.AddPayoutStructureResponse>}
  */
 const methodInfo_Sng_addPayoutStructure = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AddPayoutStructureResponse,
+  proto.sngpoker.AddPayoutStructureResponse,
   /**
-   * @param {!proto.services.AddPayoutStructureRequest} request
+   * @param {!proto.sngpoker.AddPayoutStructureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.AddPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AddPayoutStructureRequest} request The
+ * @param {!proto.sngpoker.AddPayoutStructureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AddPayoutStructureResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AddPayoutStructureResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AddPayoutStructureResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AddPayoutStructureResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addPayoutStructure =
+proto.sngpoker.SngClient.prototype.addPayoutStructure =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addPayoutStructure',
+      '/sngpoker.Sng/addPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_addPayoutStructure,
@@ -2692,17 +2692,17 @@ proto.services.SngClient.prototype.addPayoutStructure =
 
 
 /**
- * @param {!proto.services.AddPayoutStructureRequest} request The
+ * @param {!proto.sngpoker.AddPayoutStructureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AddPayoutStructureResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AddPayoutStructureResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addPayoutStructure =
+proto.sngpoker.SngPromiseClient.prototype.addPayoutStructure =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addPayoutStructure',
+      '/sngpoker.Sng/addPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_addPayoutStructure);
@@ -2712,58 +2712,58 @@ proto.services.SngPromiseClient.prototype.addPayoutStructure =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetPayoutStructureRequest,
- *   !proto.services.GetPayoutStructureResponse>}
+ *   !proto.sngpoker.GetPayoutStructureRequest,
+ *   !proto.sngpoker.GetPayoutStructureResponse>}
  */
 const methodDescriptor_Sng_getPayoutStructure = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPayoutStructure',
+  '/sngpoker.Sng/getPayoutStructure',
   grpc.web.MethodType.UNARY,
-  proto.services.GetPayoutStructureRequest,
-  proto.services.GetPayoutStructureResponse,
+  proto.sngpoker.GetPayoutStructureRequest,
+  proto.sngpoker.GetPayoutStructureResponse,
   /**
-   * @param {!proto.services.GetPayoutStructureRequest} request
+   * @param {!proto.sngpoker.GetPayoutStructureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.GetPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetPayoutStructureRequest,
- *   !proto.services.GetPayoutStructureResponse>}
+ *   !proto.sngpoker.GetPayoutStructureRequest,
+ *   !proto.sngpoker.GetPayoutStructureResponse>}
  */
 const methodInfo_Sng_getPayoutStructure = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetPayoutStructureResponse,
+  proto.sngpoker.GetPayoutStructureResponse,
   /**
-   * @param {!proto.services.GetPayoutStructureRequest} request
+   * @param {!proto.sngpoker.GetPayoutStructureRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.GetPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetPayoutStructureRequest} request The
+ * @param {!proto.sngpoker.GetPayoutStructureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetPayoutStructureResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetPayoutStructureResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetPayoutStructureResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetPayoutStructureResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPayoutStructure =
+proto.sngpoker.SngClient.prototype.getPayoutStructure =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPayoutStructure',
+      '/sngpoker.Sng/getPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_getPayoutStructure,
@@ -2772,17 +2772,17 @@ proto.services.SngClient.prototype.getPayoutStructure =
 
 
 /**
- * @param {!proto.services.GetPayoutStructureRequest} request The
+ * @param {!proto.sngpoker.GetPayoutStructureRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetPayoutStructureResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetPayoutStructureResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPayoutStructure =
+proto.sngpoker.SngPromiseClient.prototype.getPayoutStructure =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPayoutStructure',
+      '/sngpoker.Sng/getPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_getPayoutStructure);
@@ -2792,58 +2792,58 @@ proto.services.SngPromiseClient.prototype.getPayoutStructure =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ChangePasswordRequest,
- *   !proto.services.ChangePasswordResponse>}
+ *   !proto.sngpoker.ChangePasswordRequest,
+ *   !proto.sngpoker.ChangePasswordResponse>}
  */
 const methodDescriptor_Sng_changePassword = new grpc.web.MethodDescriptor(
-  '/services.Sng/changePassword',
+  '/sngpoker.Sng/changePassword',
   grpc.web.MethodType.UNARY,
-  proto.services.ChangePasswordRequest,
-  proto.services.ChangePasswordResponse,
+  proto.sngpoker.ChangePasswordRequest,
+  proto.sngpoker.ChangePasswordResponse,
   /**
-   * @param {!proto.services.ChangePasswordRequest} request
+   * @param {!proto.sngpoker.ChangePasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ChangePasswordResponse.deserializeBinary
+  proto.sngpoker.ChangePasswordResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ChangePasswordRequest,
- *   !proto.services.ChangePasswordResponse>}
+ *   !proto.sngpoker.ChangePasswordRequest,
+ *   !proto.sngpoker.ChangePasswordResponse>}
  */
 const methodInfo_Sng_changePassword = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ChangePasswordResponse,
+  proto.sngpoker.ChangePasswordResponse,
   /**
-   * @param {!proto.services.ChangePasswordRequest} request
+   * @param {!proto.sngpoker.ChangePasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ChangePasswordResponse.deserializeBinary
+  proto.sngpoker.ChangePasswordResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ChangePasswordRequest} request The
+ * @param {!proto.sngpoker.ChangePasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ChangePasswordResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ChangePasswordResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ChangePasswordResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ChangePasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.changePassword =
+proto.sngpoker.SngClient.prototype.changePassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/changePassword',
+      '/sngpoker.Sng/changePassword',
       request,
       metadata || {},
       methodDescriptor_Sng_changePassword,
@@ -2852,17 +2852,17 @@ proto.services.SngClient.prototype.changePassword =
 
 
 /**
- * @param {!proto.services.ChangePasswordRequest} request The
+ * @param {!proto.sngpoker.ChangePasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ChangePasswordResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ChangePasswordResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.changePassword =
+proto.sngpoker.SngPromiseClient.prototype.changePassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/changePassword',
+      '/sngpoker.Sng/changePassword',
       request,
       metadata || {},
       methodDescriptor_Sng_changePassword);
@@ -2872,58 +2872,58 @@ proto.services.SngPromiseClient.prototype.changePassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ClientTokenRequest,
- *   !proto.services.ClientTokenResponse>}
+ *   !proto.sngpoker.ClientTokenRequest,
+ *   !proto.sngpoker.ClientTokenResponse>}
  */
 const methodDescriptor_Sng_getClientToken = new grpc.web.MethodDescriptor(
-  '/services.Sng/getClientToken',
+  '/sngpoker.Sng/getClientToken',
   grpc.web.MethodType.UNARY,
-  proto.services.ClientTokenRequest,
-  proto.services.ClientTokenResponse,
+  proto.sngpoker.ClientTokenRequest,
+  proto.sngpoker.ClientTokenResponse,
   /**
-   * @param {!proto.services.ClientTokenRequest} request
+   * @param {!proto.sngpoker.ClientTokenRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientTokenResponse.deserializeBinary
+  proto.sngpoker.ClientTokenResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ClientTokenRequest,
- *   !proto.services.ClientTokenResponse>}
+ *   !proto.sngpoker.ClientTokenRequest,
+ *   !proto.sngpoker.ClientTokenResponse>}
  */
 const methodInfo_Sng_getClientToken = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ClientTokenResponse,
+  proto.sngpoker.ClientTokenResponse,
   /**
-   * @param {!proto.services.ClientTokenRequest} request
+   * @param {!proto.sngpoker.ClientTokenRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientTokenResponse.deserializeBinary
+  proto.sngpoker.ClientTokenResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ClientTokenRequest} request The
+ * @param {!proto.sngpoker.ClientTokenRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ClientTokenResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ClientTokenResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ClientTokenResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ClientTokenResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getClientToken =
+proto.sngpoker.SngClient.prototype.getClientToken =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getClientToken',
+      '/sngpoker.Sng/getClientToken',
       request,
       metadata || {},
       methodDescriptor_Sng_getClientToken,
@@ -2932,17 +2932,17 @@ proto.services.SngClient.prototype.getClientToken =
 
 
 /**
- * @param {!proto.services.ClientTokenRequest} request The
+ * @param {!proto.sngpoker.ClientTokenRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ClientTokenResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ClientTokenResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getClientToken =
+proto.sngpoker.SngPromiseClient.prototype.getClientToken =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getClientToken',
+      '/sngpoker.Sng/getClientToken',
       request,
       metadata || {},
       methodDescriptor_Sng_getClientToken);
@@ -2952,58 +2952,58 @@ proto.services.SngPromiseClient.prototype.getClientToken =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.VaultPaymentMethodRequest,
- *   !proto.services.VaultPaymentMethodResponse>}
+ *   !proto.sngpoker.VaultPaymentMethodRequest,
+ *   !proto.sngpoker.VaultPaymentMethodResponse>}
  */
 const methodDescriptor_Sng_vaultPaymentMethod = new grpc.web.MethodDescriptor(
-  '/services.Sng/vaultPaymentMethod',
+  '/sngpoker.Sng/vaultPaymentMethod',
   grpc.web.MethodType.UNARY,
-  proto.services.VaultPaymentMethodRequest,
-  proto.services.VaultPaymentMethodResponse,
+  proto.sngpoker.VaultPaymentMethodRequest,
+  proto.sngpoker.VaultPaymentMethodResponse,
   /**
-   * @param {!proto.services.VaultPaymentMethodRequest} request
+   * @param {!proto.sngpoker.VaultPaymentMethodRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VaultPaymentMethodResponse.deserializeBinary
+  proto.sngpoker.VaultPaymentMethodResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.VaultPaymentMethodRequest,
- *   !proto.services.VaultPaymentMethodResponse>}
+ *   !proto.sngpoker.VaultPaymentMethodRequest,
+ *   !proto.sngpoker.VaultPaymentMethodResponse>}
  */
 const methodInfo_Sng_vaultPaymentMethod = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.VaultPaymentMethodResponse,
+  proto.sngpoker.VaultPaymentMethodResponse,
   /**
-   * @param {!proto.services.VaultPaymentMethodRequest} request
+   * @param {!proto.sngpoker.VaultPaymentMethodRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VaultPaymentMethodResponse.deserializeBinary
+  proto.sngpoker.VaultPaymentMethodResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.VaultPaymentMethodRequest} request The
+ * @param {!proto.sngpoker.VaultPaymentMethodRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.VaultPaymentMethodResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.VaultPaymentMethodResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.VaultPaymentMethodResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.VaultPaymentMethodResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.vaultPaymentMethod =
+proto.sngpoker.SngClient.prototype.vaultPaymentMethod =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/vaultPaymentMethod',
+      '/sngpoker.Sng/vaultPaymentMethod',
       request,
       metadata || {},
       methodDescriptor_Sng_vaultPaymentMethod,
@@ -3012,17 +3012,17 @@ proto.services.SngClient.prototype.vaultPaymentMethod =
 
 
 /**
- * @param {!proto.services.VaultPaymentMethodRequest} request The
+ * @param {!proto.sngpoker.VaultPaymentMethodRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.VaultPaymentMethodResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.VaultPaymentMethodResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.vaultPaymentMethod =
+proto.sngpoker.SngPromiseClient.prototype.vaultPaymentMethod =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/vaultPaymentMethod',
+      '/sngpoker.Sng/vaultPaymentMethod',
       request,
       metadata || {},
       methodDescriptor_Sng_vaultPaymentMethod);
@@ -3032,58 +3032,58 @@ proto.services.SngPromiseClient.prototype.vaultPaymentMethod =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.SignupRequest,
- *   !proto.services.SignupResult>}
+ *   !proto.sngpoker.SignupRequest,
+ *   !proto.sngpoker.SignupResult>}
  */
 const methodDescriptor_Sng_validateExperian = new grpc.web.MethodDescriptor(
-  '/services.Sng/validateExperian',
+  '/sngpoker.Sng/validateExperian',
   grpc.web.MethodType.UNARY,
-  proto.services.SignupRequest,
-  proto.services.SignupResult,
+  proto.sngpoker.SignupRequest,
+  proto.sngpoker.SignupResult,
   /**
-   * @param {!proto.services.SignupRequest} request
+   * @param {!proto.sngpoker.SignupRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SignupResult.deserializeBinary
+  proto.sngpoker.SignupResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.SignupRequest,
- *   !proto.services.SignupResult>}
+ *   !proto.sngpoker.SignupRequest,
+ *   !proto.sngpoker.SignupResult>}
  */
 const methodInfo_Sng_validateExperian = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.SignupResult,
+  proto.sngpoker.SignupResult,
   /**
-   * @param {!proto.services.SignupRequest} request
+   * @param {!proto.sngpoker.SignupRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SignupResult.deserializeBinary
+  proto.sngpoker.SignupResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.SignupRequest} request The
+ * @param {!proto.sngpoker.SignupRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.SignupResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.SignupResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.SignupResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.SignupResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.validateExperian =
+proto.sngpoker.SngClient.prototype.validateExperian =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/validateExperian',
+      '/sngpoker.Sng/validateExperian',
       request,
       metadata || {},
       methodDescriptor_Sng_validateExperian,
@@ -3092,17 +3092,17 @@ proto.services.SngClient.prototype.validateExperian =
 
 
 /**
- * @param {!proto.services.SignupRequest} request The
+ * @param {!proto.sngpoker.SignupRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.SignupResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.SignupResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.validateExperian =
+proto.sngpoker.SngPromiseClient.prototype.validateExperian =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/validateExperian',
+      '/sngpoker.Sng/validateExperian',
       request,
       metadata || {},
       methodDescriptor_Sng_validateExperian);
@@ -3112,58 +3112,58 @@ proto.services.SngPromiseClient.prototype.validateExperian =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetUserByEmailRequest,
- *   !proto.services.GetUserByEmailResponse>}
+ *   !proto.sngpoker.GetUserByEmailRequest,
+ *   !proto.sngpoker.GetUserByEmailResponse>}
  */
 const methodDescriptor_Sng_GetUserByEmail = new grpc.web.MethodDescriptor(
-  '/services.Sng/GetUserByEmail',
+  '/sngpoker.Sng/GetUserByEmail',
   grpc.web.MethodType.UNARY,
-  proto.services.GetUserByEmailRequest,
-  proto.services.GetUserByEmailResponse,
+  proto.sngpoker.GetUserByEmailRequest,
+  proto.sngpoker.GetUserByEmailResponse,
   /**
-   * @param {!proto.services.GetUserByEmailRequest} request
+   * @param {!proto.sngpoker.GetUserByEmailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetUserByEmailResponse.deserializeBinary
+  proto.sngpoker.GetUserByEmailResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetUserByEmailRequest,
- *   !proto.services.GetUserByEmailResponse>}
+ *   !proto.sngpoker.GetUserByEmailRequest,
+ *   !proto.sngpoker.GetUserByEmailResponse>}
  */
 const methodInfo_Sng_GetUserByEmail = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetUserByEmailResponse,
+  proto.sngpoker.GetUserByEmailResponse,
   /**
-   * @param {!proto.services.GetUserByEmailRequest} request
+   * @param {!proto.sngpoker.GetUserByEmailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetUserByEmailResponse.deserializeBinary
+  proto.sngpoker.GetUserByEmailResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetUserByEmailRequest} request The
+ * @param {!proto.sngpoker.GetUserByEmailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetUserByEmailResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetUserByEmailResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetUserByEmailResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetUserByEmailResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getUserByEmail =
+proto.sngpoker.SngClient.prototype.getUserByEmail =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/GetUserByEmail',
+      '/sngpoker.Sng/GetUserByEmail',
       request,
       metadata || {},
       methodDescriptor_Sng_GetUserByEmail,
@@ -3172,17 +3172,17 @@ proto.services.SngClient.prototype.getUserByEmail =
 
 
 /**
- * @param {!proto.services.GetUserByEmailRequest} request The
+ * @param {!proto.sngpoker.GetUserByEmailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetUserByEmailResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetUserByEmailResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getUserByEmail =
+proto.sngpoker.SngPromiseClient.prototype.getUserByEmail =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/GetUserByEmail',
+      '/sngpoker.Sng/GetUserByEmail',
       request,
       metadata || {},
       methodDescriptor_Sng_GetUserByEmail);
@@ -3192,58 +3192,58 @@ proto.services.SngPromiseClient.prototype.getUserByEmail =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.MakeSngWithRandomUsersRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.MakeSngWithRandomUsersRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodDescriptor_Sng_MakeSngWithRandomUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/MakeSngWithRandomUsers',
+  '/sngpoker.Sng/MakeSngWithRandomUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.MakeSngWithRandomUsersRequest,
-  proto.services.GetStatusResult,
+  proto.sngpoker.MakeSngWithRandomUsersRequest,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.MakeSngWithRandomUsersRequest} request
+   * @param {!proto.sngpoker.MakeSngWithRandomUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.MakeSngWithRandomUsersRequest,
- *   !proto.services.GetStatusResult>}
+ *   !proto.sngpoker.MakeSngWithRandomUsersRequest,
+ *   !proto.sngpoker.GetStatusResult>}
  */
 const methodInfo_Sng_MakeSngWithRandomUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetStatusResult,
+  proto.sngpoker.GetStatusResult,
   /**
-   * @param {!proto.services.MakeSngWithRandomUsersRequest} request
+   * @param {!proto.sngpoker.MakeSngWithRandomUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetStatusResult.deserializeBinary
+  proto.sngpoker.GetStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.MakeSngWithRandomUsersRequest} request The
+ * @param {!proto.sngpoker.MakeSngWithRandomUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetStatusResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetStatusResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetStatusResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetStatusResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.makeSngWithRandomUsers =
+proto.sngpoker.SngClient.prototype.makeSngWithRandomUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/MakeSngWithRandomUsers',
+      '/sngpoker.Sng/MakeSngWithRandomUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_MakeSngWithRandomUsers,
@@ -3252,17 +3252,17 @@ proto.services.SngClient.prototype.makeSngWithRandomUsers =
 
 
 /**
- * @param {!proto.services.MakeSngWithRandomUsersRequest} request The
+ * @param {!proto.sngpoker.MakeSngWithRandomUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetStatusResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetStatusResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.makeSngWithRandomUsers =
+proto.sngpoker.SngPromiseClient.prototype.makeSngWithRandomUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/MakeSngWithRandomUsers',
+      '/sngpoker.Sng/MakeSngWithRandomUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_MakeSngWithRandomUsers);
@@ -3272,58 +3272,58 @@ proto.services.SngPromiseClient.prototype.makeSngWithRandomUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetRankingsRequest,
- *   !proto.services.GetRankingsResult>}
+ *   !proto.sngpoker.GetRankingsRequest,
+ *   !proto.sngpoker.GetRankingsResult>}
  */
 const methodDescriptor_Sng_GetRankings = new grpc.web.MethodDescriptor(
-  '/services.Sng/GetRankings',
+  '/sngpoker.Sng/GetRankings',
   grpc.web.MethodType.UNARY,
-  proto.services.GetRankingsRequest,
-  proto.services.GetRankingsResult,
+  proto.sngpoker.GetRankingsRequest,
+  proto.sngpoker.GetRankingsResult,
   /**
-   * @param {!proto.services.GetRankingsRequest} request
+   * @param {!proto.sngpoker.GetRankingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetRankingsResult.deserializeBinary
+  proto.sngpoker.GetRankingsResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetRankingsRequest,
- *   !proto.services.GetRankingsResult>}
+ *   !proto.sngpoker.GetRankingsRequest,
+ *   !proto.sngpoker.GetRankingsResult>}
  */
 const methodInfo_Sng_GetRankings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetRankingsResult,
+  proto.sngpoker.GetRankingsResult,
   /**
-   * @param {!proto.services.GetRankingsRequest} request
+   * @param {!proto.sngpoker.GetRankingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetRankingsResult.deserializeBinary
+  proto.sngpoker.GetRankingsResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetRankingsRequest} request The
+ * @param {!proto.sngpoker.GetRankingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetRankingsResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetRankingsResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetRankingsResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetRankingsResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getRankings =
+proto.sngpoker.SngClient.prototype.getRankings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/GetRankings',
+      '/sngpoker.Sng/GetRankings',
       request,
       metadata || {},
       methodDescriptor_Sng_GetRankings,
@@ -3332,17 +3332,17 @@ proto.services.SngClient.prototype.getRankings =
 
 
 /**
- * @param {!proto.services.GetRankingsRequest} request The
+ * @param {!proto.sngpoker.GetRankingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetRankingsResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetRankingsResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getRankings =
+proto.sngpoker.SngPromiseClient.prototype.getRankings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/GetRankings',
+      '/sngpoker.Sng/GetRankings',
       request,
       metadata || {},
       methodDescriptor_Sng_GetRankings);
@@ -3352,55 +3352,55 @@ proto.services.SngPromiseClient.prototype.getRankings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.TableSubscribeRequest,
- *   !proto.services.TableSubscribeResponse>}
+ *   !proto.sngpoker.TableSubscribeRequest,
+ *   !proto.sngpoker.TableSubscribeResponse>}
  */
 const methodDescriptor_Sng_TableSubscribe = new grpc.web.MethodDescriptor(
-  '/services.Sng/TableSubscribe',
+  '/sngpoker.Sng/TableSubscribe',
   grpc.web.MethodType.SERVER_STREAMING,
-  proto.services.TableSubscribeRequest,
-  proto.services.TableSubscribeResponse,
+  proto.sngpoker.TableSubscribeRequest,
+  proto.sngpoker.TableSubscribeResponse,
   /**
-   * @param {!proto.services.TableSubscribeRequest} request
+   * @param {!proto.sngpoker.TableSubscribeRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TableSubscribeResponse.deserializeBinary
+  proto.sngpoker.TableSubscribeResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.TableSubscribeRequest,
- *   !proto.services.TableSubscribeResponse>}
+ *   !proto.sngpoker.TableSubscribeRequest,
+ *   !proto.sngpoker.TableSubscribeResponse>}
  */
 const methodInfo_Sng_TableSubscribe = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.TableSubscribeResponse,
+  proto.sngpoker.TableSubscribeResponse,
   /**
-   * @param {!proto.services.TableSubscribeRequest} request
+   * @param {!proto.sngpoker.TableSubscribeRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TableSubscribeResponse.deserializeBinary
+  proto.sngpoker.TableSubscribeResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.TableSubscribeRequest} request The request proto
+ * @param {!proto.sngpoker.TableSubscribeRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.services.TableSubscribeResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.TableSubscribeResponse>}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.tableSubscribe =
+proto.sngpoker.SngClient.prototype.tableSubscribe =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/services.Sng/TableSubscribe',
+      '/sngpoker.Sng/TableSubscribe',
       request,
       metadata || {},
       methodDescriptor_Sng_TableSubscribe);
@@ -3408,16 +3408,16 @@ proto.services.SngClient.prototype.tableSubscribe =
 
 
 /**
- * @param {!proto.services.TableSubscribeRequest} request The request proto
+ * @param {!proto.sngpoker.TableSubscribeRequest} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.services.TableSubscribeResponse>}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.TableSubscribeResponse>}
  *     The XHR Node Readable Stream
  */
-proto.services.SngPromiseClient.prototype.tableSubscribe =
+proto.sngpoker.SngPromiseClient.prototype.tableSubscribe =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/services.Sng/TableSubscribe',
+      '/sngpoker.Sng/TableSubscribe',
       request,
       metadata || {},
       methodDescriptor_Sng_TableSubscribe);
@@ -3427,58 +3427,58 @@ proto.services.SngPromiseClient.prototype.tableSubscribe =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeolocationRequest,
- *   !proto.services.GeolocationResult>}
+ *   !proto.sngpoker.GeolocationRequest,
+ *   !proto.sngpoker.GeolocationResult>}
  */
 const methodDescriptor_Sng_sendGeolocationData = new grpc.web.MethodDescriptor(
-  '/services.Sng/sendGeolocationData',
+  '/sngpoker.Sng/sendGeolocationData',
   grpc.web.MethodType.UNARY,
-  proto.services.GeolocationRequest,
-  proto.services.GeolocationResult,
+  proto.sngpoker.GeolocationRequest,
+  proto.sngpoker.GeolocationResult,
   /**
-   * @param {!proto.services.GeolocationRequest} request
+   * @param {!proto.sngpoker.GeolocationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeolocationResult.deserializeBinary
+  proto.sngpoker.GeolocationResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeolocationRequest,
- *   !proto.services.GeolocationResult>}
+ *   !proto.sngpoker.GeolocationRequest,
+ *   !proto.sngpoker.GeolocationResult>}
  */
 const methodInfo_Sng_sendGeolocationData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeolocationResult,
+  proto.sngpoker.GeolocationResult,
   /**
-   * @param {!proto.services.GeolocationRequest} request
+   * @param {!proto.sngpoker.GeolocationRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeolocationResult.deserializeBinary
+  proto.sngpoker.GeolocationResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeolocationRequest} request The
+ * @param {!proto.sngpoker.GeolocationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeolocationResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeolocationResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeolocationResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeolocationResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.sendGeolocationData =
+proto.sngpoker.SngClient.prototype.sendGeolocationData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/sendGeolocationData',
+      '/sngpoker.Sng/sendGeolocationData',
       request,
       metadata || {},
       methodDescriptor_Sng_sendGeolocationData,
@@ -3487,17 +3487,17 @@ proto.services.SngClient.prototype.sendGeolocationData =
 
 
 /**
- * @param {!proto.services.GeolocationRequest} request The
+ * @param {!proto.sngpoker.GeolocationRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeolocationResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeolocationResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.sendGeolocationData =
+proto.sngpoker.SngPromiseClient.prototype.sendGeolocationData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/sendGeolocationData',
+      '/sngpoker.Sng/sendGeolocationData',
       request,
       metadata || {},
       methodDescriptor_Sng_sendGeolocationData);
@@ -3507,58 +3507,58 @@ proto.services.SngPromiseClient.prototype.sendGeolocationData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.SearchUserRequest,
- *   !proto.services.SearchUserResult>}
+ *   !proto.sngpoker.SearchUserRequest,
+ *   !proto.sngpoker.SearchUserResult>}
  */
 const methodDescriptor_Sng_searchUserByUsername = new grpc.web.MethodDescriptor(
-  '/services.Sng/searchUserByUsername',
+  '/sngpoker.Sng/searchUserByUsername',
   grpc.web.MethodType.UNARY,
-  proto.services.SearchUserRequest,
-  proto.services.SearchUserResult,
+  proto.sngpoker.SearchUserRequest,
+  proto.sngpoker.SearchUserResult,
   /**
-   * @param {!proto.services.SearchUserRequest} request
+   * @param {!proto.sngpoker.SearchUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SearchUserResult.deserializeBinary
+  proto.sngpoker.SearchUserResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.SearchUserRequest,
- *   !proto.services.SearchUserResult>}
+ *   !proto.sngpoker.SearchUserRequest,
+ *   !proto.sngpoker.SearchUserResult>}
  */
 const methodInfo_Sng_searchUserByUsername = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.SearchUserResult,
+  proto.sngpoker.SearchUserResult,
   /**
-   * @param {!proto.services.SearchUserRequest} request
+   * @param {!proto.sngpoker.SearchUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.SearchUserResult.deserializeBinary
+  proto.sngpoker.SearchUserResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.SearchUserRequest} request The
+ * @param {!proto.sngpoker.SearchUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.SearchUserResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.SearchUserResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.SearchUserResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.SearchUserResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.searchUserByUsername =
+proto.sngpoker.SngClient.prototype.searchUserByUsername =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/searchUserByUsername',
+      '/sngpoker.Sng/searchUserByUsername',
       request,
       metadata || {},
       methodDescriptor_Sng_searchUserByUsername,
@@ -3567,17 +3567,17 @@ proto.services.SngClient.prototype.searchUserByUsername =
 
 
 /**
- * @param {!proto.services.SearchUserRequest} request The
+ * @param {!proto.sngpoker.SearchUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.SearchUserResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.SearchUserResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.searchUserByUsername =
+proto.sngpoker.SngPromiseClient.prototype.searchUserByUsername =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/searchUserByUsername',
+      '/sngpoker.Sng/searchUserByUsername',
       request,
       metadata || {},
       methodDescriptor_Sng_searchUserByUsername);
@@ -3587,58 +3587,58 @@ proto.services.SngPromiseClient.prototype.searchUserByUsername =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.WhitelistUserRequest,
- *   !proto.services.WhitelistUserResult>}
+ *   !proto.sngpoker.WhitelistUserRequest,
+ *   !proto.sngpoker.WhitelistUserResult>}
  */
 const methodDescriptor_Sng_whitelistUser = new grpc.web.MethodDescriptor(
-  '/services.Sng/whitelistUser',
+  '/sngpoker.Sng/whitelistUser',
   grpc.web.MethodType.UNARY,
-  proto.services.WhitelistUserRequest,
-  proto.services.WhitelistUserResult,
+  proto.sngpoker.WhitelistUserRequest,
+  proto.sngpoker.WhitelistUserResult,
   /**
-   * @param {!proto.services.WhitelistUserRequest} request
+   * @param {!proto.sngpoker.WhitelistUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistUserResult.deserializeBinary
+  proto.sngpoker.WhitelistUserResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.WhitelistUserRequest,
- *   !proto.services.WhitelistUserResult>}
+ *   !proto.sngpoker.WhitelistUserRequest,
+ *   !proto.sngpoker.WhitelistUserResult>}
  */
 const methodInfo_Sng_whitelistUser = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.WhitelistUserResult,
+  proto.sngpoker.WhitelistUserResult,
   /**
-   * @param {!proto.services.WhitelistUserRequest} request
+   * @param {!proto.sngpoker.WhitelistUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistUserResult.deserializeBinary
+  proto.sngpoker.WhitelistUserResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.WhitelistUserRequest} request The
+ * @param {!proto.sngpoker.WhitelistUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.WhitelistUserResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.WhitelistUserResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.WhitelistUserResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.WhitelistUserResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.whitelistUser =
+proto.sngpoker.SngClient.prototype.whitelistUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/whitelistUser',
+      '/sngpoker.Sng/whitelistUser',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistUser,
@@ -3647,17 +3647,17 @@ proto.services.SngClient.prototype.whitelistUser =
 
 
 /**
- * @param {!proto.services.WhitelistUserRequest} request The
+ * @param {!proto.sngpoker.WhitelistUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.WhitelistUserResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.WhitelistUserResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.whitelistUser =
+proto.sngpoker.SngPromiseClient.prototype.whitelistUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/whitelistUser',
+      '/sngpoker.Sng/whitelistUser',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistUser);
@@ -3667,58 +3667,58 @@ proto.services.SngPromiseClient.prototype.whitelistUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AcceptTOSRequest,
- *   !proto.services.AcceptTOSResult>}
+ *   !proto.sngpoker.AcceptTOSRequest,
+ *   !proto.sngpoker.AcceptTOSResult>}
  */
 const methodDescriptor_Sng_acceptTOS = new grpc.web.MethodDescriptor(
-  '/services.Sng/acceptTOS',
+  '/sngpoker.Sng/acceptTOS',
   grpc.web.MethodType.UNARY,
-  proto.services.AcceptTOSRequest,
-  proto.services.AcceptTOSResult,
+  proto.sngpoker.AcceptTOSRequest,
+  proto.sngpoker.AcceptTOSResult,
   /**
-   * @param {!proto.services.AcceptTOSRequest} request
+   * @param {!proto.sngpoker.AcceptTOSRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AcceptTOSResult.deserializeBinary
+  proto.sngpoker.AcceptTOSResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AcceptTOSRequest,
- *   !proto.services.AcceptTOSResult>}
+ *   !proto.sngpoker.AcceptTOSRequest,
+ *   !proto.sngpoker.AcceptTOSResult>}
  */
 const methodInfo_Sng_acceptTOS = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AcceptTOSResult,
+  proto.sngpoker.AcceptTOSResult,
   /**
-   * @param {!proto.services.AcceptTOSRequest} request
+   * @param {!proto.sngpoker.AcceptTOSRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AcceptTOSResult.deserializeBinary
+  proto.sngpoker.AcceptTOSResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AcceptTOSRequest} request The
+ * @param {!proto.sngpoker.AcceptTOSRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AcceptTOSResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AcceptTOSResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AcceptTOSResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AcceptTOSResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.acceptTOS =
+proto.sngpoker.SngClient.prototype.acceptTOS =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/acceptTOS',
+      '/sngpoker.Sng/acceptTOS',
       request,
       metadata || {},
       methodDescriptor_Sng_acceptTOS,
@@ -3727,17 +3727,17 @@ proto.services.SngClient.prototype.acceptTOS =
 
 
 /**
- * @param {!proto.services.AcceptTOSRequest} request The
+ * @param {!proto.sngpoker.AcceptTOSRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AcceptTOSResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AcceptTOSResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.acceptTOS =
+proto.sngpoker.SngPromiseClient.prototype.acceptTOS =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/acceptTOS',
+      '/sngpoker.Sng/acceptTOS',
       request,
       metadata || {},
       methodDescriptor_Sng_acceptTOS);
@@ -3747,58 +3747,58 @@ proto.services.SngPromiseClient.prototype.acceptTOS =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AccountUpdatesRequest,
- *   !proto.services.AccountUpdatesResult>}
+ *   !proto.sngpoker.AccountUpdatesRequest,
+ *   !proto.sngpoker.AccountUpdatesResult>}
  */
 const methodDescriptor_Sng_checkForUpdates = new grpc.web.MethodDescriptor(
-  '/services.Sng/checkForUpdates',
+  '/sngpoker.Sng/checkForUpdates',
   grpc.web.MethodType.UNARY,
-  proto.services.AccountUpdatesRequest,
-  proto.services.AccountUpdatesResult,
+  proto.sngpoker.AccountUpdatesRequest,
+  proto.sngpoker.AccountUpdatesResult,
   /**
-   * @param {!proto.services.AccountUpdatesRequest} request
+   * @param {!proto.sngpoker.AccountUpdatesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AccountUpdatesResult.deserializeBinary
+  proto.sngpoker.AccountUpdatesResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AccountUpdatesRequest,
- *   !proto.services.AccountUpdatesResult>}
+ *   !proto.sngpoker.AccountUpdatesRequest,
+ *   !proto.sngpoker.AccountUpdatesResult>}
  */
 const methodInfo_Sng_checkForUpdates = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AccountUpdatesResult,
+  proto.sngpoker.AccountUpdatesResult,
   /**
-   * @param {!proto.services.AccountUpdatesRequest} request
+   * @param {!proto.sngpoker.AccountUpdatesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AccountUpdatesResult.deserializeBinary
+  proto.sngpoker.AccountUpdatesResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AccountUpdatesRequest} request The
+ * @param {!proto.sngpoker.AccountUpdatesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AccountUpdatesResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AccountUpdatesResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AccountUpdatesResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AccountUpdatesResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.checkForUpdates =
+proto.sngpoker.SngClient.prototype.checkForUpdates =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/checkForUpdates',
+      '/sngpoker.Sng/checkForUpdates',
       request,
       metadata || {},
       methodDescriptor_Sng_checkForUpdates,
@@ -3807,17 +3807,17 @@ proto.services.SngClient.prototype.checkForUpdates =
 
 
 /**
- * @param {!proto.services.AccountUpdatesRequest} request The
+ * @param {!proto.sngpoker.AccountUpdatesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AccountUpdatesResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AccountUpdatesResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.checkForUpdates =
+proto.sngpoker.SngPromiseClient.prototype.checkForUpdates =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/checkForUpdates',
+      '/sngpoker.Sng/checkForUpdates',
       request,
       metadata || {},
       methodDescriptor_Sng_checkForUpdates);
@@ -3827,58 +3827,58 @@ proto.services.SngPromiseClient.prototype.checkForUpdates =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.WhitelistedUsersRequest,
- *   !proto.services.WhitelistedUsersResult>}
+ *   !proto.sngpoker.WhitelistedUsersRequest,
+ *   !proto.sngpoker.WhitelistedUsersResult>}
  */
 const methodDescriptor_Sng_getWhitelistedUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/getWhitelistedUsers',
+  '/sngpoker.Sng/getWhitelistedUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.WhitelistedUsersRequest,
-  proto.services.WhitelistedUsersResult,
+  proto.sngpoker.WhitelistedUsersRequest,
+  proto.sngpoker.WhitelistedUsersResult,
   /**
-   * @param {!proto.services.WhitelistedUsersRequest} request
+   * @param {!proto.sngpoker.WhitelistedUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistedUsersResult.deserializeBinary
+  proto.sngpoker.WhitelistedUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.WhitelistedUsersRequest,
- *   !proto.services.WhitelistedUsersResult>}
+ *   !proto.sngpoker.WhitelistedUsersRequest,
+ *   !proto.sngpoker.WhitelistedUsersResult>}
  */
 const methodInfo_Sng_getWhitelistedUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.WhitelistedUsersResult,
+  proto.sngpoker.WhitelistedUsersResult,
   /**
-   * @param {!proto.services.WhitelistedUsersRequest} request
+   * @param {!proto.sngpoker.WhitelistedUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistedUsersResult.deserializeBinary
+  proto.sngpoker.WhitelistedUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.WhitelistedUsersRequest} request The
+ * @param {!proto.sngpoker.WhitelistedUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.WhitelistedUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.WhitelistedUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.WhitelistedUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.WhitelistedUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getWhitelistedUsers =
+proto.sngpoker.SngClient.prototype.getWhitelistedUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getWhitelistedUsers',
+      '/sngpoker.Sng/getWhitelistedUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedUsers,
@@ -3887,17 +3887,17 @@ proto.services.SngClient.prototype.getWhitelistedUsers =
 
 
 /**
- * @param {!proto.services.WhitelistedUsersRequest} request The
+ * @param {!proto.sngpoker.WhitelistedUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.WhitelistedUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.WhitelistedUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getWhitelistedUsers =
+proto.sngpoker.SngPromiseClient.prototype.getWhitelistedUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getWhitelistedUsers',
+      '/sngpoker.Sng/getWhitelistedUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedUsers);
@@ -3907,58 +3907,58 @@ proto.services.SngPromiseClient.prototype.getWhitelistedUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.WhitelistUserRequest,
- *   !proto.services.WhitelistUserResult>}
+ *   !proto.sngpoker.WhitelistUserRequest,
+ *   !proto.sngpoker.WhitelistUserResult>}
  */
 const methodDescriptor_Sng_removeWhitelistUser = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeWhitelistUser',
+  '/sngpoker.Sng/removeWhitelistUser',
   grpc.web.MethodType.UNARY,
-  proto.services.WhitelistUserRequest,
-  proto.services.WhitelistUserResult,
+  proto.sngpoker.WhitelistUserRequest,
+  proto.sngpoker.WhitelistUserResult,
   /**
-   * @param {!proto.services.WhitelistUserRequest} request
+   * @param {!proto.sngpoker.WhitelistUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistUserResult.deserializeBinary
+  proto.sngpoker.WhitelistUserResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.WhitelistUserRequest,
- *   !proto.services.WhitelistUserResult>}
+ *   !proto.sngpoker.WhitelistUserRequest,
+ *   !proto.sngpoker.WhitelistUserResult>}
  */
 const methodInfo_Sng_removeWhitelistUser = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.WhitelistUserResult,
+  proto.sngpoker.WhitelistUserResult,
   /**
-   * @param {!proto.services.WhitelistUserRequest} request
+   * @param {!proto.sngpoker.WhitelistUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistUserResult.deserializeBinary
+  proto.sngpoker.WhitelistUserResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.WhitelistUserRequest} request The
+ * @param {!proto.sngpoker.WhitelistUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.WhitelistUserResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.WhitelistUserResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.WhitelistUserResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.WhitelistUserResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeWhitelistUser =
+proto.sngpoker.SngClient.prototype.removeWhitelistUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeWhitelistUser',
+      '/sngpoker.Sng/removeWhitelistUser',
       request,
       metadata || {},
       methodDescriptor_Sng_removeWhitelistUser,
@@ -3967,17 +3967,17 @@ proto.services.SngClient.prototype.removeWhitelistUser =
 
 
 /**
- * @param {!proto.services.WhitelistUserRequest} request The
+ * @param {!proto.sngpoker.WhitelistUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.WhitelistUserResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.WhitelistUserResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeWhitelistUser =
+proto.sngpoker.SngPromiseClient.prototype.removeWhitelistUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeWhitelistUser',
+      '/sngpoker.Sng/removeWhitelistUser',
       request,
       metadata || {},
       methodDescriptor_Sng_removeWhitelistUser);
@@ -3987,58 +3987,58 @@ proto.services.SngPromiseClient.prototype.removeWhitelistUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.TournamentDetailsRequest,
- *   !proto.services.TournamentDetailsResponse>}
+ *   !proto.sngpoker.TournamentDetailsRequest,
+ *   !proto.sngpoker.TournamentDetailsResponse>}
  */
 const methodDescriptor_Sng_getTournamentDetails = new grpc.web.MethodDescriptor(
-  '/services.Sng/getTournamentDetails',
+  '/sngpoker.Sng/getTournamentDetails',
   grpc.web.MethodType.UNARY,
-  proto.services.TournamentDetailsRequest,
-  proto.services.TournamentDetailsResponse,
+  proto.sngpoker.TournamentDetailsRequest,
+  proto.sngpoker.TournamentDetailsResponse,
   /**
-   * @param {!proto.services.TournamentDetailsRequest} request
+   * @param {!proto.sngpoker.TournamentDetailsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TournamentDetailsResponse.deserializeBinary
+  proto.sngpoker.TournamentDetailsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.TournamentDetailsRequest,
- *   !proto.services.TournamentDetailsResponse>}
+ *   !proto.sngpoker.TournamentDetailsRequest,
+ *   !proto.sngpoker.TournamentDetailsResponse>}
  */
 const methodInfo_Sng_getTournamentDetails = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.TournamentDetailsResponse,
+  proto.sngpoker.TournamentDetailsResponse,
   /**
-   * @param {!proto.services.TournamentDetailsRequest} request
+   * @param {!proto.sngpoker.TournamentDetailsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TournamentDetailsResponse.deserializeBinary
+  proto.sngpoker.TournamentDetailsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.TournamentDetailsRequest} request The
+ * @param {!proto.sngpoker.TournamentDetailsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.TournamentDetailsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.TournamentDetailsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.TournamentDetailsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.TournamentDetailsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getTournamentDetails =
+proto.sngpoker.SngClient.prototype.getTournamentDetails =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getTournamentDetails',
+      '/sngpoker.Sng/getTournamentDetails',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentDetails,
@@ -4047,17 +4047,17 @@ proto.services.SngClient.prototype.getTournamentDetails =
 
 
 /**
- * @param {!proto.services.TournamentDetailsRequest} request The
+ * @param {!proto.sngpoker.TournamentDetailsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.TournamentDetailsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.TournamentDetailsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getTournamentDetails =
+proto.sngpoker.SngPromiseClient.prototype.getTournamentDetails =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getTournamentDetails',
+      '/sngpoker.Sng/getTournamentDetails',
       request,
       metadata || {},
       methodDescriptor_Sng_getTournamentDetails);
@@ -4067,58 +4067,58 @@ proto.services.SngPromiseClient.prototype.getTournamentDetails =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerAccountBalanceRequest,
- *   !proto.services.PlayerAccountBalanceResult>}
+ *   !proto.sngpoker.PlayerAccountBalanceRequest,
+ *   !proto.sngpoker.PlayerAccountBalanceResult>}
  */
 const methodDescriptor_Sng_getPlayerAccountBalance = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPlayerAccountBalance',
+  '/sngpoker.Sng/getPlayerAccountBalance',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerAccountBalanceRequest,
-  proto.services.PlayerAccountBalanceResult,
+  proto.sngpoker.PlayerAccountBalanceRequest,
+  proto.sngpoker.PlayerAccountBalanceResult,
   /**
-   * @param {!proto.services.PlayerAccountBalanceRequest} request
+   * @param {!proto.sngpoker.PlayerAccountBalanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerAccountBalanceResult.deserializeBinary
+  proto.sngpoker.PlayerAccountBalanceResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerAccountBalanceRequest,
- *   !proto.services.PlayerAccountBalanceResult>}
+ *   !proto.sngpoker.PlayerAccountBalanceRequest,
+ *   !proto.sngpoker.PlayerAccountBalanceResult>}
  */
 const methodInfo_Sng_getPlayerAccountBalance = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerAccountBalanceResult,
+  proto.sngpoker.PlayerAccountBalanceResult,
   /**
-   * @param {!proto.services.PlayerAccountBalanceRequest} request
+   * @param {!proto.sngpoker.PlayerAccountBalanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerAccountBalanceResult.deserializeBinary
+  proto.sngpoker.PlayerAccountBalanceResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerAccountBalanceRequest} request The
+ * @param {!proto.sngpoker.PlayerAccountBalanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerAccountBalanceResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerAccountBalanceResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerAccountBalanceResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerAccountBalanceResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPlayerAccountBalance =
+proto.sngpoker.SngClient.prototype.getPlayerAccountBalance =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPlayerAccountBalance',
+      '/sngpoker.Sng/getPlayerAccountBalance',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerAccountBalance,
@@ -4127,17 +4127,17 @@ proto.services.SngClient.prototype.getPlayerAccountBalance =
 
 
 /**
- * @param {!proto.services.PlayerAccountBalanceRequest} request The
+ * @param {!proto.sngpoker.PlayerAccountBalanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerAccountBalanceResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerAccountBalanceResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPlayerAccountBalance =
+proto.sngpoker.SngPromiseClient.prototype.getPlayerAccountBalance =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPlayerAccountBalance',
+      '/sngpoker.Sng/getPlayerAccountBalance',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerAccountBalance);
@@ -4147,58 +4147,58 @@ proto.services.SngPromiseClient.prototype.getPlayerAccountBalance =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.NextTournamentRequest,
- *   !proto.services.NextTournamentResult>}
+ *   !proto.sngpoker.NextTournamentRequest,
+ *   !proto.sngpoker.NextTournamentResult>}
  */
 const methodDescriptor_Sng_getNextTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/getNextTournament',
+  '/sngpoker.Sng/getNextTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.NextTournamentRequest,
-  proto.services.NextTournamentResult,
+  proto.sngpoker.NextTournamentRequest,
+  proto.sngpoker.NextTournamentResult,
   /**
-   * @param {!proto.services.NextTournamentRequest} request
+   * @param {!proto.sngpoker.NextTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.NextTournamentResult.deserializeBinary
+  proto.sngpoker.NextTournamentResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.NextTournamentRequest,
- *   !proto.services.NextTournamentResult>}
+ *   !proto.sngpoker.NextTournamentRequest,
+ *   !proto.sngpoker.NextTournamentResult>}
  */
 const methodInfo_Sng_getNextTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.NextTournamentResult,
+  proto.sngpoker.NextTournamentResult,
   /**
-   * @param {!proto.services.NextTournamentRequest} request
+   * @param {!proto.sngpoker.NextTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.NextTournamentResult.deserializeBinary
+  proto.sngpoker.NextTournamentResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.NextTournamentRequest} request The
+ * @param {!proto.sngpoker.NextTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.NextTournamentResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.NextTournamentResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.NextTournamentResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.NextTournamentResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getNextTournament =
+proto.sngpoker.SngClient.prototype.getNextTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getNextTournament',
+      '/sngpoker.Sng/getNextTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_getNextTournament,
@@ -4207,17 +4207,17 @@ proto.services.SngClient.prototype.getNextTournament =
 
 
 /**
- * @param {!proto.services.NextTournamentRequest} request The
+ * @param {!proto.sngpoker.NextTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.NextTournamentResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.NextTournamentResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getNextTournament =
+proto.sngpoker.SngPromiseClient.prototype.getNextTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getNextTournament',
+      '/sngpoker.Sng/getNextTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_getNextTournament);
@@ -4227,58 +4227,58 @@ proto.services.SngPromiseClient.prototype.getNextTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinAnyTournamentRequest,
- *   !proto.services.JoinAnyTournamentResult>}
+ *   !proto.sngpoker.JoinAnyTournamentRequest,
+ *   !proto.sngpoker.JoinAnyTournamentResult>}
  */
 const methodDescriptor_Sng_joinAnyTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/joinAnyTournament',
+  '/sngpoker.Sng/joinAnyTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinAnyTournamentRequest,
-  proto.services.JoinAnyTournamentResult,
+  proto.sngpoker.JoinAnyTournamentRequest,
+  proto.sngpoker.JoinAnyTournamentResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinAnyTournamentRequest,
- *   !proto.services.JoinAnyTournamentResult>}
+ *   !proto.sngpoker.JoinAnyTournamentRequest,
+ *   !proto.sngpoker.JoinAnyTournamentResult>}
  */
 const methodInfo_Sng_joinAnyTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinAnyTournamentResult,
+  proto.sngpoker.JoinAnyTournamentResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinAnyTournamentResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinAnyTournamentResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinAnyTournamentResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinAnyTournamentResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.joinAnyTournament =
+proto.sngpoker.SngClient.prototype.joinAnyTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/joinAnyTournament',
+      '/sngpoker.Sng/joinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_joinAnyTournament,
@@ -4287,17 +4287,17 @@ proto.services.SngClient.prototype.joinAnyTournament =
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinAnyTournamentResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinAnyTournamentResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.joinAnyTournament =
+proto.sngpoker.SngPromiseClient.prototype.joinAnyTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/joinAnyTournament',
+      '/sngpoker.Sng/joinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_joinAnyTournament);
@@ -4307,58 +4307,58 @@ proto.services.SngPromiseClient.prototype.joinAnyTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UnregisterAnyTournamentRequest,
- *   !proto.services.UnregisterAnyTournamentResult>}
+ *   !proto.sngpoker.UnregisterAnyTournamentRequest,
+ *   !proto.sngpoker.UnregisterAnyTournamentResult>}
  */
 const methodDescriptor_Sng_unregisterAnyTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/unregisterAnyTournament',
+  '/sngpoker.Sng/unregisterAnyTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.UnregisterAnyTournamentRequest,
-  proto.services.UnregisterAnyTournamentResult,
+  proto.sngpoker.UnregisterAnyTournamentRequest,
+  proto.sngpoker.UnregisterAnyTournamentResult,
   /**
-   * @param {!proto.services.UnregisterAnyTournamentRequest} request
+   * @param {!proto.sngpoker.UnregisterAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnregisterAnyTournamentResult.deserializeBinary
+  proto.sngpoker.UnregisterAnyTournamentResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UnregisterAnyTournamentRequest,
- *   !proto.services.UnregisterAnyTournamentResult>}
+ *   !proto.sngpoker.UnregisterAnyTournamentRequest,
+ *   !proto.sngpoker.UnregisterAnyTournamentResult>}
  */
 const methodInfo_Sng_unregisterAnyTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UnregisterAnyTournamentResult,
+  proto.sngpoker.UnregisterAnyTournamentResult,
   /**
-   * @param {!proto.services.UnregisterAnyTournamentRequest} request
+   * @param {!proto.sngpoker.UnregisterAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UnregisterAnyTournamentResult.deserializeBinary
+  proto.sngpoker.UnregisterAnyTournamentResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UnregisterAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.UnregisterAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UnregisterAnyTournamentResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UnregisterAnyTournamentResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UnregisterAnyTournamentResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UnregisterAnyTournamentResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.unregisterAnyTournament =
+proto.sngpoker.SngClient.prototype.unregisterAnyTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/unregisterAnyTournament',
+      '/sngpoker.Sng/unregisterAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_unregisterAnyTournament,
@@ -4367,17 +4367,17 @@ proto.services.SngClient.prototype.unregisterAnyTournament =
 
 
 /**
- * @param {!proto.services.UnregisterAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.UnregisterAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UnregisterAnyTournamentResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UnregisterAnyTournamentResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.unregisterAnyTournament =
+proto.sngpoker.SngPromiseClient.prototype.unregisterAnyTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/unregisterAnyTournament',
+      '/sngpoker.Sng/unregisterAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_unregisterAnyTournament);
@@ -4387,58 +4387,58 @@ proto.services.SngPromiseClient.prototype.unregisterAnyTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinAnyTournamentStatusRequest,
- *   !proto.services.JoinAnyTournamentStatusResult>}
+ *   !proto.sngpoker.JoinAnyTournamentStatusRequest,
+ *   !proto.sngpoker.JoinAnyTournamentStatusResult>}
  */
 const methodDescriptor_Sng_getJoinAnyTournamentStatus = new grpc.web.MethodDescriptor(
-  '/services.Sng/getJoinAnyTournamentStatus',
+  '/sngpoker.Sng/getJoinAnyTournamentStatus',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinAnyTournamentStatusRequest,
-  proto.services.JoinAnyTournamentStatusResult,
+  proto.sngpoker.JoinAnyTournamentStatusRequest,
+  proto.sngpoker.JoinAnyTournamentStatusResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentStatusRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentStatusResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentStatusResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinAnyTournamentStatusRequest,
- *   !proto.services.JoinAnyTournamentStatusResult>}
+ *   !proto.sngpoker.JoinAnyTournamentStatusRequest,
+ *   !proto.sngpoker.JoinAnyTournamentStatusResult>}
  */
 const methodInfo_Sng_getJoinAnyTournamentStatus = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinAnyTournamentStatusResult,
+  proto.sngpoker.JoinAnyTournamentStatusResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentStatusRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentStatusResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentStatusResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentStatusRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinAnyTournamentStatusResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinAnyTournamentStatusResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinAnyTournamentStatusResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinAnyTournamentStatusResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getJoinAnyTournamentStatus =
+proto.sngpoker.SngClient.prototype.getJoinAnyTournamentStatus =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getJoinAnyTournamentStatus',
+      '/sngpoker.Sng/getJoinAnyTournamentStatus',
       request,
       metadata || {},
       methodDescriptor_Sng_getJoinAnyTournamentStatus,
@@ -4447,17 +4447,17 @@ proto.services.SngClient.prototype.getJoinAnyTournamentStatus =
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentStatusRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinAnyTournamentStatusResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinAnyTournamentStatusResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getJoinAnyTournamentStatus =
+proto.sngpoker.SngPromiseClient.prototype.getJoinAnyTournamentStatus =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getJoinAnyTournamentStatus',
+      '/sngpoker.Sng/getJoinAnyTournamentStatus',
       request,
       metadata || {},
       methodDescriptor_Sng_getJoinAnyTournamentStatus);
@@ -4467,58 +4467,58 @@ proto.services.SngPromiseClient.prototype.getJoinAnyTournamentStatus =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ActiveJoinAnyTournamentsRequest,
- *   !proto.services.ActiveJoinAnyTournamentsResult>}
+ *   !proto.sngpoker.ActiveJoinAnyTournamentsRequest,
+ *   !proto.sngpoker.ActiveJoinAnyTournamentsResult>}
  */
 const methodDescriptor_Sng_getActiveJoinAnyTournaments = new grpc.web.MethodDescriptor(
-  '/services.Sng/getActiveJoinAnyTournaments',
+  '/sngpoker.Sng/getActiveJoinAnyTournaments',
   grpc.web.MethodType.UNARY,
-  proto.services.ActiveJoinAnyTournamentsRequest,
-  proto.services.ActiveJoinAnyTournamentsResult,
+  proto.sngpoker.ActiveJoinAnyTournamentsRequest,
+  proto.sngpoker.ActiveJoinAnyTournamentsResult,
   /**
-   * @param {!proto.services.ActiveJoinAnyTournamentsRequest} request
+   * @param {!proto.sngpoker.ActiveJoinAnyTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveJoinAnyTournamentsResult.deserializeBinary
+  proto.sngpoker.ActiveJoinAnyTournamentsResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ActiveJoinAnyTournamentsRequest,
- *   !proto.services.ActiveJoinAnyTournamentsResult>}
+ *   !proto.sngpoker.ActiveJoinAnyTournamentsRequest,
+ *   !proto.sngpoker.ActiveJoinAnyTournamentsResult>}
  */
 const methodInfo_Sng_getActiveJoinAnyTournaments = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ActiveJoinAnyTournamentsResult,
+  proto.sngpoker.ActiveJoinAnyTournamentsResult,
   /**
-   * @param {!proto.services.ActiveJoinAnyTournamentsRequest} request
+   * @param {!proto.sngpoker.ActiveJoinAnyTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveJoinAnyTournamentsResult.deserializeBinary
+  proto.sngpoker.ActiveJoinAnyTournamentsResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ActiveJoinAnyTournamentsRequest} request The
+ * @param {!proto.sngpoker.ActiveJoinAnyTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ActiveJoinAnyTournamentsResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ActiveJoinAnyTournamentsResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ActiveJoinAnyTournamentsResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ActiveJoinAnyTournamentsResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getActiveJoinAnyTournaments =
+proto.sngpoker.SngClient.prototype.getActiveJoinAnyTournaments =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getActiveJoinAnyTournaments',
+      '/sngpoker.Sng/getActiveJoinAnyTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getActiveJoinAnyTournaments,
@@ -4527,17 +4527,17 @@ proto.services.SngClient.prototype.getActiveJoinAnyTournaments =
 
 
 /**
- * @param {!proto.services.ActiveJoinAnyTournamentsRequest} request The
+ * @param {!proto.sngpoker.ActiveJoinAnyTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ActiveJoinAnyTournamentsResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ActiveJoinAnyTournamentsResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getActiveJoinAnyTournaments =
+proto.sngpoker.SngPromiseClient.prototype.getActiveJoinAnyTournaments =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getActiveJoinAnyTournaments',
+      '/sngpoker.Sng/getActiveJoinAnyTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getActiveJoinAnyTournaments);
@@ -4547,58 +4547,58 @@ proto.services.SngPromiseClient.prototype.getActiveJoinAnyTournaments =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinAnyUsersListRequest,
- *   !proto.services.JoinAnyUsersListResult>}
+ *   !proto.sngpoker.JoinAnyUsersListRequest,
+ *   !proto.sngpoker.JoinAnyUsersListResult>}
  */
 const methodDescriptor_Sng_getJoinAnyUsersList = new grpc.web.MethodDescriptor(
-  '/services.Sng/getJoinAnyUsersList',
+  '/sngpoker.Sng/getJoinAnyUsersList',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinAnyUsersListRequest,
-  proto.services.JoinAnyUsersListResult,
+  proto.sngpoker.JoinAnyUsersListRequest,
+  proto.sngpoker.JoinAnyUsersListResult,
   /**
-   * @param {!proto.services.JoinAnyUsersListRequest} request
+   * @param {!proto.sngpoker.JoinAnyUsersListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyUsersListResult.deserializeBinary
+  proto.sngpoker.JoinAnyUsersListResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinAnyUsersListRequest,
- *   !proto.services.JoinAnyUsersListResult>}
+ *   !proto.sngpoker.JoinAnyUsersListRequest,
+ *   !proto.sngpoker.JoinAnyUsersListResult>}
  */
 const methodInfo_Sng_getJoinAnyUsersList = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinAnyUsersListResult,
+  proto.sngpoker.JoinAnyUsersListResult,
   /**
-   * @param {!proto.services.JoinAnyUsersListRequest} request
+   * @param {!proto.sngpoker.JoinAnyUsersListRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyUsersListResult.deserializeBinary
+  proto.sngpoker.JoinAnyUsersListResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinAnyUsersListRequest} request The
+ * @param {!proto.sngpoker.JoinAnyUsersListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinAnyUsersListResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinAnyUsersListResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinAnyUsersListResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinAnyUsersListResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getJoinAnyUsersList =
+proto.sngpoker.SngClient.prototype.getJoinAnyUsersList =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getJoinAnyUsersList',
+      '/sngpoker.Sng/getJoinAnyUsersList',
       request,
       metadata || {},
       methodDescriptor_Sng_getJoinAnyUsersList,
@@ -4607,17 +4607,17 @@ proto.services.SngClient.prototype.getJoinAnyUsersList =
 
 
 /**
- * @param {!proto.services.JoinAnyUsersListRequest} request The
+ * @param {!proto.sngpoker.JoinAnyUsersListRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinAnyUsersListResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinAnyUsersListResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getJoinAnyUsersList =
+proto.sngpoker.SngPromiseClient.prototype.getJoinAnyUsersList =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getJoinAnyUsersList',
+      '/sngpoker.Sng/getJoinAnyUsersList',
       request,
       metadata || {},
       methodDescriptor_Sng_getJoinAnyUsersList);
@@ -4627,58 +4627,58 @@ proto.services.SngPromiseClient.prototype.getJoinAnyUsersList =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CancelJoinAnyTournamentRequest,
- *   !proto.services.CancelJoinAnyTournamentResult>}
+ *   !proto.sngpoker.CancelJoinAnyTournamentRequest,
+ *   !proto.sngpoker.CancelJoinAnyTournamentResult>}
  */
 const methodDescriptor_Sng_cancelJoinAnyTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/cancelJoinAnyTournament',
+  '/sngpoker.Sng/cancelJoinAnyTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.CancelJoinAnyTournamentRequest,
-  proto.services.CancelJoinAnyTournamentResult,
+  proto.sngpoker.CancelJoinAnyTournamentRequest,
+  proto.sngpoker.CancelJoinAnyTournamentResult,
   /**
-   * @param {!proto.services.CancelJoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.CancelJoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CancelJoinAnyTournamentRequest,
- *   !proto.services.CancelJoinAnyTournamentResult>}
+ *   !proto.sngpoker.CancelJoinAnyTournamentRequest,
+ *   !proto.sngpoker.CancelJoinAnyTournamentResult>}
  */
 const methodInfo_Sng_cancelJoinAnyTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CancelJoinAnyTournamentResult,
+  proto.sngpoker.CancelJoinAnyTournamentResult,
   /**
-   * @param {!proto.services.CancelJoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.CancelJoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CancelJoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.CancelJoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CancelJoinAnyTournamentResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CancelJoinAnyTournamentResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CancelJoinAnyTournamentResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CancelJoinAnyTournamentResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.cancelJoinAnyTournament =
+proto.sngpoker.SngClient.prototype.cancelJoinAnyTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyTournament',
+      '/sngpoker.Sng/cancelJoinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyTournament,
@@ -4687,17 +4687,17 @@ proto.services.SngClient.prototype.cancelJoinAnyTournament =
 
 
 /**
- * @param {!proto.services.CancelJoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.CancelJoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CancelJoinAnyTournamentResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CancelJoinAnyTournamentResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.cancelJoinAnyTournament =
+proto.sngpoker.SngPromiseClient.prototype.cancelJoinAnyTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyTournament',
+      '/sngpoker.Sng/cancelJoinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyTournament);
@@ -4707,58 +4707,58 @@ proto.services.SngPromiseClient.prototype.cancelJoinAnyTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CancelJoinAnyUsersRequest,
- *   !proto.services.CancelJoinAnyUsersResult>}
+ *   !proto.sngpoker.CancelJoinAnyUsersRequest,
+ *   !proto.sngpoker.CancelJoinAnyUsersResult>}
  */
 const methodDescriptor_Sng_cancelJoinAnyMultipleUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/cancelJoinAnyMultipleUsers',
+  '/sngpoker.Sng/cancelJoinAnyMultipleUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.CancelJoinAnyUsersRequest,
-  proto.services.CancelJoinAnyUsersResult,
+  proto.sngpoker.CancelJoinAnyUsersRequest,
+  proto.sngpoker.CancelJoinAnyUsersResult,
   /**
-   * @param {!proto.services.CancelJoinAnyUsersRequest} request
+   * @param {!proto.sngpoker.CancelJoinAnyUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyUsersResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CancelJoinAnyUsersRequest,
- *   !proto.services.CancelJoinAnyUsersResult>}
+ *   !proto.sngpoker.CancelJoinAnyUsersRequest,
+ *   !proto.sngpoker.CancelJoinAnyUsersResult>}
  */
 const methodInfo_Sng_cancelJoinAnyMultipleUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CancelJoinAnyUsersResult,
+  proto.sngpoker.CancelJoinAnyUsersResult,
   /**
-   * @param {!proto.services.CancelJoinAnyUsersRequest} request
+   * @param {!proto.sngpoker.CancelJoinAnyUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyUsersResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CancelJoinAnyUsersRequest} request The
+ * @param {!proto.sngpoker.CancelJoinAnyUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CancelJoinAnyUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CancelJoinAnyUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CancelJoinAnyUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CancelJoinAnyUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.cancelJoinAnyMultipleUsers =
+proto.sngpoker.SngClient.prototype.cancelJoinAnyMultipleUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyMultipleUsers',
+      '/sngpoker.Sng/cancelJoinAnyMultipleUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyMultipleUsers,
@@ -4767,17 +4767,17 @@ proto.services.SngClient.prototype.cancelJoinAnyMultipleUsers =
 
 
 /**
- * @param {!proto.services.CancelJoinAnyUsersRequest} request The
+ * @param {!proto.sngpoker.CancelJoinAnyUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CancelJoinAnyUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CancelJoinAnyUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.cancelJoinAnyMultipleUsers =
+proto.sngpoker.SngPromiseClient.prototype.cancelJoinAnyMultipleUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyMultipleUsers',
+      '/sngpoker.Sng/cancelJoinAnyMultipleUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyMultipleUsers);
@@ -4787,58 +4787,58 @@ proto.services.SngPromiseClient.prototype.cancelJoinAnyMultipleUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.JoinAnyTournamentStatusRequest,
- *   !proto.services.CancelJoinAnyUsersResult>}
+ *   !proto.sngpoker.JoinAnyTournamentStatusRequest,
+ *   !proto.sngpoker.CancelJoinAnyUsersResult>}
  */
 const methodDescriptor_Sng_cancelJoinAnyAllUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/cancelJoinAnyAllUsers',
+  '/sngpoker.Sng/cancelJoinAnyAllUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.JoinAnyTournamentStatusRequest,
-  proto.services.CancelJoinAnyUsersResult,
+  proto.sngpoker.JoinAnyTournamentStatusRequest,
+  proto.sngpoker.CancelJoinAnyUsersResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentStatusRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyUsersResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.JoinAnyTournamentStatusRequest,
- *   !proto.services.CancelJoinAnyUsersResult>}
+ *   !proto.sngpoker.JoinAnyTournamentStatusRequest,
+ *   !proto.sngpoker.CancelJoinAnyUsersResult>}
  */
 const methodInfo_Sng_cancelJoinAnyAllUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CancelJoinAnyUsersResult,
+  proto.sngpoker.CancelJoinAnyUsersResult,
   /**
-   * @param {!proto.services.JoinAnyTournamentStatusRequest} request
+   * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelJoinAnyUsersResult.deserializeBinary
+  proto.sngpoker.CancelJoinAnyUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentStatusRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CancelJoinAnyUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CancelJoinAnyUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CancelJoinAnyUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CancelJoinAnyUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.cancelJoinAnyAllUsers =
+proto.sngpoker.SngClient.prototype.cancelJoinAnyAllUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyAllUsers',
+      '/sngpoker.Sng/cancelJoinAnyAllUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyAllUsers,
@@ -4847,17 +4847,17 @@ proto.services.SngClient.prototype.cancelJoinAnyAllUsers =
 
 
 /**
- * @param {!proto.services.JoinAnyTournamentStatusRequest} request The
+ * @param {!proto.sngpoker.JoinAnyTournamentStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CancelJoinAnyUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CancelJoinAnyUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.cancelJoinAnyAllUsers =
+proto.sngpoker.SngPromiseClient.prototype.cancelJoinAnyAllUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/cancelJoinAnyAllUsers',
+      '/sngpoker.Sng/cancelJoinAnyAllUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelJoinAnyAllUsers);
@@ -4867,58 +4867,58 @@ proto.services.SngPromiseClient.prototype.cancelJoinAnyAllUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CancelTournamentsRequest,
- *   !proto.services.CancelTournamentsResponse>}
+ *   !proto.sngpoker.CancelTournamentsRequest,
+ *   !proto.sngpoker.CancelTournamentsResponse>}
  */
 const methodDescriptor_Sng_cancelTournaments = new grpc.web.MethodDescriptor(
-  '/services.Sng/cancelTournaments',
+  '/sngpoker.Sng/cancelTournaments',
   grpc.web.MethodType.UNARY,
-  proto.services.CancelTournamentsRequest,
-  proto.services.CancelTournamentsResponse,
+  proto.sngpoker.CancelTournamentsRequest,
+  proto.sngpoker.CancelTournamentsResponse,
   /**
-   * @param {!proto.services.CancelTournamentsRequest} request
+   * @param {!proto.sngpoker.CancelTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelTournamentsResponse.deserializeBinary
+  proto.sngpoker.CancelTournamentsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CancelTournamentsRequest,
- *   !proto.services.CancelTournamentsResponse>}
+ *   !proto.sngpoker.CancelTournamentsRequest,
+ *   !proto.sngpoker.CancelTournamentsResponse>}
  */
 const methodInfo_Sng_cancelTournaments = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CancelTournamentsResponse,
+  proto.sngpoker.CancelTournamentsResponse,
   /**
-   * @param {!proto.services.CancelTournamentsRequest} request
+   * @param {!proto.sngpoker.CancelTournamentsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CancelTournamentsResponse.deserializeBinary
+  proto.sngpoker.CancelTournamentsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CancelTournamentsRequest} request The
+ * @param {!proto.sngpoker.CancelTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CancelTournamentsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CancelTournamentsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CancelTournamentsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CancelTournamentsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.cancelTournaments =
+proto.sngpoker.SngClient.prototype.cancelTournaments =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/cancelTournaments',
+      '/sngpoker.Sng/cancelTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelTournaments,
@@ -4927,17 +4927,17 @@ proto.services.SngClient.prototype.cancelTournaments =
 
 
 /**
- * @param {!proto.services.CancelTournamentsRequest} request The
+ * @param {!proto.sngpoker.CancelTournamentsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CancelTournamentsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CancelTournamentsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.cancelTournaments =
+proto.sngpoker.SngPromiseClient.prototype.cancelTournaments =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/cancelTournaments',
+      '/sngpoker.Sng/cancelTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_cancelTournaments);
@@ -4947,58 +4947,58 @@ proto.services.SngPromiseClient.prototype.cancelTournaments =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AddonPlayerRequest,
- *   !proto.services.AddonPlayerResponse>}
+ *   !proto.sngpoker.AddonPlayerRequest,
+ *   !proto.sngpoker.AddonPlayerResponse>}
  */
 const methodDescriptor_Sng_addonPlayer = new grpc.web.MethodDescriptor(
-  '/services.Sng/addonPlayer',
+  '/sngpoker.Sng/addonPlayer',
   grpc.web.MethodType.UNARY,
-  proto.services.AddonPlayerRequest,
-  proto.services.AddonPlayerResponse,
+  proto.sngpoker.AddonPlayerRequest,
+  proto.sngpoker.AddonPlayerResponse,
   /**
-   * @param {!proto.services.AddonPlayerRequest} request
+   * @param {!proto.sngpoker.AddonPlayerRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddonPlayerResponse.deserializeBinary
+  proto.sngpoker.AddonPlayerResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AddonPlayerRequest,
- *   !proto.services.AddonPlayerResponse>}
+ *   !proto.sngpoker.AddonPlayerRequest,
+ *   !proto.sngpoker.AddonPlayerResponse>}
  */
 const methodInfo_Sng_addonPlayer = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AddonPlayerResponse,
+  proto.sngpoker.AddonPlayerResponse,
   /**
-   * @param {!proto.services.AddonPlayerRequest} request
+   * @param {!proto.sngpoker.AddonPlayerRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AddonPlayerResponse.deserializeBinary
+  proto.sngpoker.AddonPlayerResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AddonPlayerRequest} request The
+ * @param {!proto.sngpoker.AddonPlayerRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AddonPlayerResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AddonPlayerResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AddonPlayerResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AddonPlayerResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addonPlayer =
+proto.sngpoker.SngClient.prototype.addonPlayer =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addonPlayer',
+      '/sngpoker.Sng/addonPlayer',
       request,
       metadata || {},
       methodDescriptor_Sng_addonPlayer,
@@ -5007,17 +5007,17 @@ proto.services.SngClient.prototype.addonPlayer =
 
 
 /**
- * @param {!proto.services.AddonPlayerRequest} request The
+ * @param {!proto.sngpoker.AddonPlayerRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AddonPlayerResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AddonPlayerResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addonPlayer =
+proto.sngpoker.SngPromiseClient.prototype.addonPlayer =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addonPlayer',
+      '/sngpoker.Sng/addonPlayer',
       request,
       metadata || {},
       methodDescriptor_Sng_addonPlayer);
@@ -5027,58 +5027,58 @@ proto.services.SngPromiseClient.prototype.addonPlayer =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PrizeRevealRequest,
- *   !proto.services.PrizeRevealResponse>}
+ *   !proto.sngpoker.PrizeRevealRequest,
+ *   !proto.sngpoker.PrizeRevealResponse>}
  */
 const methodDescriptor_Sng_setPrizeAsRevealed = new grpc.web.MethodDescriptor(
-  '/services.Sng/setPrizeAsRevealed',
+  '/sngpoker.Sng/setPrizeAsRevealed',
   grpc.web.MethodType.UNARY,
-  proto.services.PrizeRevealRequest,
-  proto.services.PrizeRevealResponse,
+  proto.sngpoker.PrizeRevealRequest,
+  proto.sngpoker.PrizeRevealResponse,
   /**
-   * @param {!proto.services.PrizeRevealRequest} request
+   * @param {!proto.sngpoker.PrizeRevealRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PrizeRevealResponse.deserializeBinary
+  proto.sngpoker.PrizeRevealResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PrizeRevealRequest,
- *   !proto.services.PrizeRevealResponse>}
+ *   !proto.sngpoker.PrizeRevealRequest,
+ *   !proto.sngpoker.PrizeRevealResponse>}
  */
 const methodInfo_Sng_setPrizeAsRevealed = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PrizeRevealResponse,
+  proto.sngpoker.PrizeRevealResponse,
   /**
-   * @param {!proto.services.PrizeRevealRequest} request
+   * @param {!proto.sngpoker.PrizeRevealRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PrizeRevealResponse.deserializeBinary
+  proto.sngpoker.PrizeRevealResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PrizeRevealRequest} request The
+ * @param {!proto.sngpoker.PrizeRevealRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PrizeRevealResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PrizeRevealResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PrizeRevealResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PrizeRevealResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setPrizeAsRevealed =
+proto.sngpoker.SngClient.prototype.setPrizeAsRevealed =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setPrizeAsRevealed',
+      '/sngpoker.Sng/setPrizeAsRevealed',
       request,
       metadata || {},
       methodDescriptor_Sng_setPrizeAsRevealed,
@@ -5087,17 +5087,17 @@ proto.services.SngClient.prototype.setPrizeAsRevealed =
 
 
 /**
- * @param {!proto.services.PrizeRevealRequest} request The
+ * @param {!proto.sngpoker.PrizeRevealRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PrizeRevealResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PrizeRevealResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setPrizeAsRevealed =
+proto.sngpoker.SngPromiseClient.prototype.setPrizeAsRevealed =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setPrizeAsRevealed',
+      '/sngpoker.Sng/setPrizeAsRevealed',
       request,
       metadata || {},
       methodDescriptor_Sng_setPrizeAsRevealed);
@@ -5107,58 +5107,58 @@ proto.services.SngPromiseClient.prototype.setPrizeAsRevealed =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceRequest,
- *   !proto.services.GeofenceResponse>}
+ *   !proto.sngpoker.GeofenceRequest,
+ *   !proto.sngpoker.GeofenceResponse>}
  */
 const methodDescriptor_Sng_getGeofenceData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getGeofenceData',
+  '/sngpoker.Sng/getGeofenceData',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceRequest,
-  proto.services.GeofenceResponse,
+  proto.sngpoker.GeofenceRequest,
+  proto.sngpoker.GeofenceResponse,
   /**
-   * @param {!proto.services.GeofenceRequest} request
+   * @param {!proto.sngpoker.GeofenceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceResponse.deserializeBinary
+  proto.sngpoker.GeofenceResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceRequest,
- *   !proto.services.GeofenceResponse>}
+ *   !proto.sngpoker.GeofenceRequest,
+ *   !proto.sngpoker.GeofenceResponse>}
  */
 const methodInfo_Sng_getGeofenceData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceResponse,
+  proto.sngpoker.GeofenceResponse,
   /**
-   * @param {!proto.services.GeofenceRequest} request
+   * @param {!proto.sngpoker.GeofenceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceResponse.deserializeBinary
+  proto.sngpoker.GeofenceResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceRequest} request The
+ * @param {!proto.sngpoker.GeofenceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getGeofenceData =
+proto.sngpoker.SngClient.prototype.getGeofenceData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getGeofenceData',
+      '/sngpoker.Sng/getGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_getGeofenceData,
@@ -5167,17 +5167,17 @@ proto.services.SngClient.prototype.getGeofenceData =
 
 
 /**
- * @param {!proto.services.GeofenceRequest} request The
+ * @param {!proto.sngpoker.GeofenceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getGeofenceData =
+proto.sngpoker.SngPromiseClient.prototype.getGeofenceData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getGeofenceData',
+      '/sngpoker.Sng/getGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_getGeofenceData);
@@ -5187,58 +5187,58 @@ proto.services.SngPromiseClient.prototype.getGeofenceData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceAddRequest,
- *   !proto.services.GeofenceAddResponse>}
+ *   !proto.sngpoker.GeofenceAddRequest,
+ *   !proto.sngpoker.GeofenceAddResponse>}
  */
 const methodDescriptor_Sng_addGeofenceData = new grpc.web.MethodDescriptor(
-  '/services.Sng/addGeofenceData',
+  '/sngpoker.Sng/addGeofenceData',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceAddRequest,
-  proto.services.GeofenceAddResponse,
+  proto.sngpoker.GeofenceAddRequest,
+  proto.sngpoker.GeofenceAddResponse,
   /**
-   * @param {!proto.services.GeofenceAddRequest} request
+   * @param {!proto.sngpoker.GeofenceAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceAddResponse.deserializeBinary
+  proto.sngpoker.GeofenceAddResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceAddRequest,
- *   !proto.services.GeofenceAddResponse>}
+ *   !proto.sngpoker.GeofenceAddRequest,
+ *   !proto.sngpoker.GeofenceAddResponse>}
  */
 const methodInfo_Sng_addGeofenceData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceAddResponse,
+  proto.sngpoker.GeofenceAddResponse,
   /**
-   * @param {!proto.services.GeofenceAddRequest} request
+   * @param {!proto.sngpoker.GeofenceAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceAddResponse.deserializeBinary
+  proto.sngpoker.GeofenceAddResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceAddRequest} request The
+ * @param {!proto.sngpoker.GeofenceAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceAddResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceAddResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceAddResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceAddResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addGeofenceData =
+proto.sngpoker.SngClient.prototype.addGeofenceData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addGeofenceData',
+      '/sngpoker.Sng/addGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_addGeofenceData,
@@ -5247,17 +5247,17 @@ proto.services.SngClient.prototype.addGeofenceData =
 
 
 /**
- * @param {!proto.services.GeofenceAddRequest} request The
+ * @param {!proto.sngpoker.GeofenceAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceAddResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceAddResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addGeofenceData =
+proto.sngpoker.SngPromiseClient.prototype.addGeofenceData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addGeofenceData',
+      '/sngpoker.Sng/addGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_addGeofenceData);
@@ -5267,58 +5267,58 @@ proto.services.SngPromiseClient.prototype.addGeofenceData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceUpdateRequest,
- *   !proto.services.GeofenceUpdateResponse>}
+ *   !proto.sngpoker.GeofenceUpdateRequest,
+ *   !proto.sngpoker.GeofenceUpdateResponse>}
  */
 const methodDescriptor_Sng_updateGeofenceData = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateGeofenceData',
+  '/sngpoker.Sng/updateGeofenceData',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceUpdateRequest,
-  proto.services.GeofenceUpdateResponse,
+  proto.sngpoker.GeofenceUpdateRequest,
+  proto.sngpoker.GeofenceUpdateResponse,
   /**
-   * @param {!proto.services.GeofenceUpdateRequest} request
+   * @param {!proto.sngpoker.GeofenceUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUpdateResponse.deserializeBinary
+  proto.sngpoker.GeofenceUpdateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceUpdateRequest,
- *   !proto.services.GeofenceUpdateResponse>}
+ *   !proto.sngpoker.GeofenceUpdateRequest,
+ *   !proto.sngpoker.GeofenceUpdateResponse>}
  */
 const methodInfo_Sng_updateGeofenceData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceUpdateResponse,
+  proto.sngpoker.GeofenceUpdateResponse,
   /**
-   * @param {!proto.services.GeofenceUpdateRequest} request
+   * @param {!proto.sngpoker.GeofenceUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUpdateResponse.deserializeBinary
+  proto.sngpoker.GeofenceUpdateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceUpdateRequest} request The
+ * @param {!proto.sngpoker.GeofenceUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceUpdateResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceUpdateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceUpdateResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceUpdateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateGeofenceData =
+proto.sngpoker.SngClient.prototype.updateGeofenceData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateGeofenceData',
+      '/sngpoker.Sng/updateGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateGeofenceData,
@@ -5327,17 +5327,17 @@ proto.services.SngClient.prototype.updateGeofenceData =
 
 
 /**
- * @param {!proto.services.GeofenceUpdateRequest} request The
+ * @param {!proto.sngpoker.GeofenceUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceUpdateResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceUpdateResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateGeofenceData =
+proto.sngpoker.SngPromiseClient.prototype.updateGeofenceData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateGeofenceData',
+      '/sngpoker.Sng/updateGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateGeofenceData);
@@ -5347,58 +5347,58 @@ proto.services.SngPromiseClient.prototype.updateGeofenceData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceRemoveRequest,
- *   !proto.services.GeofenceRemoveResponse>}
+ *   !proto.sngpoker.GeofenceRemoveRequest,
+ *   !proto.sngpoker.GeofenceRemoveResponse>}
  */
 const methodDescriptor_Sng_removeGeofenceData = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeGeofenceData',
+  '/sngpoker.Sng/removeGeofenceData',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceRemoveRequest,
-  proto.services.GeofenceRemoveResponse,
+  proto.sngpoker.GeofenceRemoveRequest,
+  proto.sngpoker.GeofenceRemoveResponse,
   /**
-   * @param {!proto.services.GeofenceRemoveRequest} request
+   * @param {!proto.sngpoker.GeofenceRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceRemoveResponse.deserializeBinary
+  proto.sngpoker.GeofenceRemoveResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceRemoveRequest,
- *   !proto.services.GeofenceRemoveResponse>}
+ *   !proto.sngpoker.GeofenceRemoveRequest,
+ *   !proto.sngpoker.GeofenceRemoveResponse>}
  */
 const methodInfo_Sng_removeGeofenceData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceRemoveResponse,
+  proto.sngpoker.GeofenceRemoveResponse,
   /**
-   * @param {!proto.services.GeofenceRemoveRequest} request
+   * @param {!proto.sngpoker.GeofenceRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceRemoveResponse.deserializeBinary
+  proto.sngpoker.GeofenceRemoveResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceRemoveRequest} request The
+ * @param {!proto.sngpoker.GeofenceRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceRemoveResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceRemoveResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceRemoveResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceRemoveResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeGeofenceData =
+proto.sngpoker.SngClient.prototype.removeGeofenceData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeGeofenceData',
+      '/sngpoker.Sng/removeGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeGeofenceData,
@@ -5407,17 +5407,17 @@ proto.services.SngClient.prototype.removeGeofenceData =
 
 
 /**
- * @param {!proto.services.GeofenceRemoveRequest} request The
+ * @param {!proto.sngpoker.GeofenceRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceRemoveResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceRemoveResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeGeofenceData =
+proto.sngpoker.SngPromiseClient.prototype.removeGeofenceData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeGeofenceData',
+      '/sngpoker.Sng/removeGeofenceData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeGeofenceData);
@@ -5427,58 +5427,58 @@ proto.services.SngPromiseClient.prototype.removeGeofenceData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceWhitelistRequest,
- *   !proto.services.GeofenceWhitelistResponse>}
+ *   !proto.sngpoker.GeofenceWhitelistRequest,
+ *   !proto.sngpoker.GeofenceWhitelistResponse>}
  */
 const methodDescriptor_Sng_whitelistUsersOnGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/whitelistUsersOnGeofence',
+  '/sngpoker.Sng/whitelistUsersOnGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceWhitelistRequest,
-  proto.services.GeofenceWhitelistResponse,
+  proto.sngpoker.GeofenceWhitelistRequest,
+  proto.sngpoker.GeofenceWhitelistResponse,
   /**
-   * @param {!proto.services.GeofenceWhitelistRequest} request
+   * @param {!proto.sngpoker.GeofenceWhitelistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceWhitelistResponse.deserializeBinary
+  proto.sngpoker.GeofenceWhitelistResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceWhitelistRequest,
- *   !proto.services.GeofenceWhitelistResponse>}
+ *   !proto.sngpoker.GeofenceWhitelistRequest,
+ *   !proto.sngpoker.GeofenceWhitelistResponse>}
  */
 const methodInfo_Sng_whitelistUsersOnGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceWhitelistResponse,
+  proto.sngpoker.GeofenceWhitelistResponse,
   /**
-   * @param {!proto.services.GeofenceWhitelistRequest} request
+   * @param {!proto.sngpoker.GeofenceWhitelistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceWhitelistResponse.deserializeBinary
+  proto.sngpoker.GeofenceWhitelistResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceWhitelistRequest} request The
+ * @param {!proto.sngpoker.GeofenceWhitelistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceWhitelistResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceWhitelistResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceWhitelistResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceWhitelistResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.whitelistUsersOnGeofence =
+proto.sngpoker.SngClient.prototype.whitelistUsersOnGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/whitelistUsersOnGeofence',
+      '/sngpoker.Sng/whitelistUsersOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistUsersOnGeofence,
@@ -5487,17 +5487,17 @@ proto.services.SngClient.prototype.whitelistUsersOnGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceWhitelistRequest} request The
+ * @param {!proto.sngpoker.GeofenceWhitelistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceWhitelistResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceWhitelistResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.whitelistUsersOnGeofence =
+proto.sngpoker.SngPromiseClient.prototype.whitelistUsersOnGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/whitelistUsersOnGeofence',
+      '/sngpoker.Sng/whitelistUsersOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistUsersOnGeofence);
@@ -5507,58 +5507,58 @@ proto.services.SngPromiseClient.prototype.whitelistUsersOnGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceBlacklistRequest,
- *   !proto.services.GeofenceBlacklistResponse>}
+ *   !proto.sngpoker.GeofenceBlacklistRequest,
+ *   !proto.sngpoker.GeofenceBlacklistResponse>}
  */
 const methodDescriptor_Sng_blacklistUsersOnGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/blacklistUsersOnGeofence',
+  '/sngpoker.Sng/blacklistUsersOnGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceBlacklistRequest,
-  proto.services.GeofenceBlacklistResponse,
+  proto.sngpoker.GeofenceBlacklistRequest,
+  proto.sngpoker.GeofenceBlacklistResponse,
   /**
-   * @param {!proto.services.GeofenceBlacklistRequest} request
+   * @param {!proto.sngpoker.GeofenceBlacklistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceBlacklistResponse.deserializeBinary
+  proto.sngpoker.GeofenceBlacklistResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceBlacklistRequest,
- *   !proto.services.GeofenceBlacklistResponse>}
+ *   !proto.sngpoker.GeofenceBlacklistRequest,
+ *   !proto.sngpoker.GeofenceBlacklistResponse>}
  */
 const methodInfo_Sng_blacklistUsersOnGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceBlacklistResponse,
+  proto.sngpoker.GeofenceBlacklistResponse,
   /**
-   * @param {!proto.services.GeofenceBlacklistRequest} request
+   * @param {!proto.sngpoker.GeofenceBlacklistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceBlacklistResponse.deserializeBinary
+  proto.sngpoker.GeofenceBlacklistResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceBlacklistRequest} request The
+ * @param {!proto.sngpoker.GeofenceBlacklistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceBlacklistResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceBlacklistResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceBlacklistResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceBlacklistResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.blacklistUsersOnGeofence =
+proto.sngpoker.SngClient.prototype.blacklistUsersOnGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/blacklistUsersOnGeofence',
+      '/sngpoker.Sng/blacklistUsersOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_blacklistUsersOnGeofence,
@@ -5567,17 +5567,17 @@ proto.services.SngClient.prototype.blacklistUsersOnGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceBlacklistRequest} request The
+ * @param {!proto.sngpoker.GeofenceBlacklistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceBlacklistResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceBlacklistResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.blacklistUsersOnGeofence =
+proto.sngpoker.SngPromiseClient.prototype.blacklistUsersOnGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/blacklistUsersOnGeofence',
+      '/sngpoker.Sng/blacklistUsersOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_blacklistUsersOnGeofence);
@@ -5587,58 +5587,58 @@ proto.services.SngPromiseClient.prototype.blacklistUsersOnGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceWhitelistRequest,
- *   !proto.services.GeofenceWhitelistResponse>}
+ *   !proto.sngpoker.GeofenceWhitelistRequest,
+ *   !proto.sngpoker.GeofenceWhitelistResponse>}
  */
 const methodDescriptor_Sng_whitelistClientsOnGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/whitelistClientsOnGeofence',
+  '/sngpoker.Sng/whitelistClientsOnGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceWhitelistRequest,
-  proto.services.GeofenceWhitelistResponse,
+  proto.sngpoker.GeofenceWhitelistRequest,
+  proto.sngpoker.GeofenceWhitelistResponse,
   /**
-   * @param {!proto.services.GeofenceWhitelistRequest} request
+   * @param {!proto.sngpoker.GeofenceWhitelistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceWhitelistResponse.deserializeBinary
+  proto.sngpoker.GeofenceWhitelistResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceWhitelistRequest,
- *   !proto.services.GeofenceWhitelistResponse>}
+ *   !proto.sngpoker.GeofenceWhitelistRequest,
+ *   !proto.sngpoker.GeofenceWhitelistResponse>}
  */
 const methodInfo_Sng_whitelistClientsOnGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceWhitelistResponse,
+  proto.sngpoker.GeofenceWhitelistResponse,
   /**
-   * @param {!proto.services.GeofenceWhitelistRequest} request
+   * @param {!proto.sngpoker.GeofenceWhitelistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceWhitelistResponse.deserializeBinary
+  proto.sngpoker.GeofenceWhitelistResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceWhitelistRequest} request The
+ * @param {!proto.sngpoker.GeofenceWhitelistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceWhitelistResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceWhitelistResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceWhitelistResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceWhitelistResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.whitelistClientsOnGeofence =
+proto.sngpoker.SngClient.prototype.whitelistClientsOnGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/whitelistClientsOnGeofence',
+      '/sngpoker.Sng/whitelistClientsOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistClientsOnGeofence,
@@ -5647,17 +5647,17 @@ proto.services.SngClient.prototype.whitelistClientsOnGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceWhitelistRequest} request The
+ * @param {!proto.sngpoker.GeofenceWhitelistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceWhitelistResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceWhitelistResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.whitelistClientsOnGeofence =
+proto.sngpoker.SngPromiseClient.prototype.whitelistClientsOnGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/whitelistClientsOnGeofence',
+      '/sngpoker.Sng/whitelistClientsOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_whitelistClientsOnGeofence);
@@ -5667,58 +5667,58 @@ proto.services.SngPromiseClient.prototype.whitelistClientsOnGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceBlacklistRequest,
- *   !proto.services.GeofenceBlacklistResponse>}
+ *   !proto.sngpoker.GeofenceBlacklistRequest,
+ *   !proto.sngpoker.GeofenceBlacklistResponse>}
  */
 const methodDescriptor_Sng_blacklistClientsOnGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/blacklistClientsOnGeofence',
+  '/sngpoker.Sng/blacklistClientsOnGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceBlacklistRequest,
-  proto.services.GeofenceBlacklistResponse,
+  proto.sngpoker.GeofenceBlacklistRequest,
+  proto.sngpoker.GeofenceBlacklistResponse,
   /**
-   * @param {!proto.services.GeofenceBlacklistRequest} request
+   * @param {!proto.sngpoker.GeofenceBlacklistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceBlacklistResponse.deserializeBinary
+  proto.sngpoker.GeofenceBlacklistResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceBlacklistRequest,
- *   !proto.services.GeofenceBlacklistResponse>}
+ *   !proto.sngpoker.GeofenceBlacklistRequest,
+ *   !proto.sngpoker.GeofenceBlacklistResponse>}
  */
 const methodInfo_Sng_blacklistClientsOnGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceBlacklistResponse,
+  proto.sngpoker.GeofenceBlacklistResponse,
   /**
-   * @param {!proto.services.GeofenceBlacklistRequest} request
+   * @param {!proto.sngpoker.GeofenceBlacklistRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceBlacklistResponse.deserializeBinary
+  proto.sngpoker.GeofenceBlacklistResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceBlacklistRequest} request The
+ * @param {!proto.sngpoker.GeofenceBlacklistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceBlacklistResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceBlacklistResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceBlacklistResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceBlacklistResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.blacklistClientsOnGeofence =
+proto.sngpoker.SngClient.prototype.blacklistClientsOnGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/blacklistClientsOnGeofence',
+      '/sngpoker.Sng/blacklistClientsOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_blacklistClientsOnGeofence,
@@ -5727,17 +5727,17 @@ proto.services.SngClient.prototype.blacklistClientsOnGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceBlacklistRequest} request The
+ * @param {!proto.sngpoker.GeofenceBlacklistRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceBlacklistResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceBlacklistResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.blacklistClientsOnGeofence =
+proto.sngpoker.SngPromiseClient.prototype.blacklistClientsOnGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/blacklistClientsOnGeofence',
+      '/sngpoker.Sng/blacklistClientsOnGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_blacklistClientsOnGeofence);
@@ -5747,58 +5747,58 @@ proto.services.SngPromiseClient.prototype.blacklistClientsOnGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceUsersRequest,
- *   !proto.services.GeofenceUsersResponse>}
+ *   !proto.sngpoker.GeofenceUsersRequest,
+ *   !proto.sngpoker.GeofenceUsersResponse>}
  */
 const methodDescriptor_Sng_getWhitelistedUsersonGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/getWhitelistedUsersonGeofence',
+  '/sngpoker.Sng/getWhitelistedUsersonGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceUsersRequest,
-  proto.services.GeofenceUsersResponse,
+  proto.sngpoker.GeofenceUsersRequest,
+  proto.sngpoker.GeofenceUsersResponse,
   /**
-   * @param {!proto.services.GeofenceUsersRequest} request
+   * @param {!proto.sngpoker.GeofenceUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUsersResponse.deserializeBinary
+  proto.sngpoker.GeofenceUsersResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceUsersRequest,
- *   !proto.services.GeofenceUsersResponse>}
+ *   !proto.sngpoker.GeofenceUsersRequest,
+ *   !proto.sngpoker.GeofenceUsersResponse>}
  */
 const methodInfo_Sng_getWhitelistedUsersonGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceUsersResponse,
+  proto.sngpoker.GeofenceUsersResponse,
   /**
-   * @param {!proto.services.GeofenceUsersRequest} request
+   * @param {!proto.sngpoker.GeofenceUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUsersResponse.deserializeBinary
+  proto.sngpoker.GeofenceUsersResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceUsersRequest} request The
+ * @param {!proto.sngpoker.GeofenceUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceUsersResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceUsersResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceUsersResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceUsersResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getWhitelistedUsersonGeofence =
+proto.sngpoker.SngClient.prototype.getWhitelistedUsersonGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getWhitelistedUsersonGeofence',
+      '/sngpoker.Sng/getWhitelistedUsersonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedUsersonGeofence,
@@ -5807,17 +5807,17 @@ proto.services.SngClient.prototype.getWhitelistedUsersonGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceUsersRequest} request The
+ * @param {!proto.sngpoker.GeofenceUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceUsersResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceUsersResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getWhitelistedUsersonGeofence =
+proto.sngpoker.SngPromiseClient.prototype.getWhitelistedUsersonGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getWhitelistedUsersonGeofence',
+      '/sngpoker.Sng/getWhitelistedUsersonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedUsersonGeofence);
@@ -5827,58 +5827,58 @@ proto.services.SngPromiseClient.prototype.getWhitelistedUsersonGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceUsersRequest,
- *   !proto.services.GeofenceUsersResponse>}
+ *   !proto.sngpoker.GeofenceUsersRequest,
+ *   !proto.sngpoker.GeofenceUsersResponse>}
  */
 const methodDescriptor_Sng_getBlacklistedUsersonGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/getBlacklistedUsersonGeofence',
+  '/sngpoker.Sng/getBlacklistedUsersonGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceUsersRequest,
-  proto.services.GeofenceUsersResponse,
+  proto.sngpoker.GeofenceUsersRequest,
+  proto.sngpoker.GeofenceUsersResponse,
   /**
-   * @param {!proto.services.GeofenceUsersRequest} request
+   * @param {!proto.sngpoker.GeofenceUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUsersResponse.deserializeBinary
+  proto.sngpoker.GeofenceUsersResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceUsersRequest,
- *   !proto.services.GeofenceUsersResponse>}
+ *   !proto.sngpoker.GeofenceUsersRequest,
+ *   !proto.sngpoker.GeofenceUsersResponse>}
  */
 const methodInfo_Sng_getBlacklistedUsersonGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceUsersResponse,
+  proto.sngpoker.GeofenceUsersResponse,
   /**
-   * @param {!proto.services.GeofenceUsersRequest} request
+   * @param {!proto.sngpoker.GeofenceUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceUsersResponse.deserializeBinary
+  proto.sngpoker.GeofenceUsersResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceUsersRequest} request The
+ * @param {!proto.sngpoker.GeofenceUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceUsersResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceUsersResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceUsersResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceUsersResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getBlacklistedUsersonGeofence =
+proto.sngpoker.SngClient.prototype.getBlacklistedUsersonGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getBlacklistedUsersonGeofence',
+      '/sngpoker.Sng/getBlacklistedUsersonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getBlacklistedUsersonGeofence,
@@ -5887,17 +5887,17 @@ proto.services.SngClient.prototype.getBlacklistedUsersonGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceUsersRequest} request The
+ * @param {!proto.sngpoker.GeofenceUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceUsersResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceUsersResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getBlacklistedUsersonGeofence =
+proto.sngpoker.SngPromiseClient.prototype.getBlacklistedUsersonGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getBlacklistedUsersonGeofence',
+      '/sngpoker.Sng/getBlacklistedUsersonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getBlacklistedUsersonGeofence);
@@ -5907,58 +5907,58 @@ proto.services.SngPromiseClient.prototype.getBlacklistedUsersonGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceGlobalRuleRequest,
- *   !proto.services.GeofenceGlobalRuleResponse>}
+ *   !proto.sngpoker.GeofenceGlobalRuleRequest,
+ *   !proto.sngpoker.GeofenceGlobalRuleResponse>}
  */
 const methodDescriptor_Sng_setGeofenceGlobalRule = new grpc.web.MethodDescriptor(
-  '/services.Sng/setGeofenceGlobalRule',
+  '/sngpoker.Sng/setGeofenceGlobalRule',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceGlobalRuleRequest,
-  proto.services.GeofenceGlobalRuleResponse,
+  proto.sngpoker.GeofenceGlobalRuleRequest,
+  proto.sngpoker.GeofenceGlobalRuleResponse,
   /**
-   * @param {!proto.services.GeofenceGlobalRuleRequest} request
+   * @param {!proto.sngpoker.GeofenceGlobalRuleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceGlobalRuleResponse.deserializeBinary
+  proto.sngpoker.GeofenceGlobalRuleResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceGlobalRuleRequest,
- *   !proto.services.GeofenceGlobalRuleResponse>}
+ *   !proto.sngpoker.GeofenceGlobalRuleRequest,
+ *   !proto.sngpoker.GeofenceGlobalRuleResponse>}
  */
 const methodInfo_Sng_setGeofenceGlobalRule = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceGlobalRuleResponse,
+  proto.sngpoker.GeofenceGlobalRuleResponse,
   /**
-   * @param {!proto.services.GeofenceGlobalRuleRequest} request
+   * @param {!proto.sngpoker.GeofenceGlobalRuleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceGlobalRuleResponse.deserializeBinary
+  proto.sngpoker.GeofenceGlobalRuleResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceGlobalRuleRequest} request The
+ * @param {!proto.sngpoker.GeofenceGlobalRuleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceGlobalRuleResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceGlobalRuleResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceGlobalRuleResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceGlobalRuleResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setGeofenceGlobalRule =
+proto.sngpoker.SngClient.prototype.setGeofenceGlobalRule =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setGeofenceGlobalRule',
+      '/sngpoker.Sng/setGeofenceGlobalRule',
       request,
       metadata || {},
       methodDescriptor_Sng_setGeofenceGlobalRule,
@@ -5967,17 +5967,17 @@ proto.services.SngClient.prototype.setGeofenceGlobalRule =
 
 
 /**
- * @param {!proto.services.GeofenceGlobalRuleRequest} request The
+ * @param {!proto.sngpoker.GeofenceGlobalRuleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceGlobalRuleResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceGlobalRuleResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setGeofenceGlobalRule =
+proto.sngpoker.SngPromiseClient.prototype.setGeofenceGlobalRule =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setGeofenceGlobalRule',
+      '/sngpoker.Sng/setGeofenceGlobalRule',
       request,
       metadata || {},
       methodDescriptor_Sng_setGeofenceGlobalRule);
@@ -5987,58 +5987,58 @@ proto.services.SngPromiseClient.prototype.setGeofenceGlobalRule =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceClientsRequest,
- *   !proto.services.GeofenceClientsResponse>}
+ *   !proto.sngpoker.GeofenceClientsRequest,
+ *   !proto.sngpoker.GeofenceClientsResponse>}
  */
 const methodDescriptor_Sng_getWhitelistedClientsonGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/getWhitelistedClientsonGeofence',
+  '/sngpoker.Sng/getWhitelistedClientsonGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceClientsRequest,
-  proto.services.GeofenceClientsResponse,
+  proto.sngpoker.GeofenceClientsRequest,
+  proto.sngpoker.GeofenceClientsResponse,
   /**
-   * @param {!proto.services.GeofenceClientsRequest} request
+   * @param {!proto.sngpoker.GeofenceClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientsResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceClientsRequest,
- *   !proto.services.GeofenceClientsResponse>}
+ *   !proto.sngpoker.GeofenceClientsRequest,
+ *   !proto.sngpoker.GeofenceClientsResponse>}
  */
 const methodInfo_Sng_getWhitelistedClientsonGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceClientsResponse,
+  proto.sngpoker.GeofenceClientsResponse,
   /**
-   * @param {!proto.services.GeofenceClientsRequest} request
+   * @param {!proto.sngpoker.GeofenceClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientsResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceClientsRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceClientsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceClientsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceClientsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceClientsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getWhitelistedClientsonGeofence =
+proto.sngpoker.SngClient.prototype.getWhitelistedClientsonGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getWhitelistedClientsonGeofence',
+      '/sngpoker.Sng/getWhitelistedClientsonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedClientsonGeofence,
@@ -6047,17 +6047,17 @@ proto.services.SngClient.prototype.getWhitelistedClientsonGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceClientsRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceClientsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceClientsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getWhitelistedClientsonGeofence =
+proto.sngpoker.SngPromiseClient.prototype.getWhitelistedClientsonGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getWhitelistedClientsonGeofence',
+      '/sngpoker.Sng/getWhitelistedClientsonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getWhitelistedClientsonGeofence);
@@ -6067,58 +6067,58 @@ proto.services.SngPromiseClient.prototype.getWhitelistedClientsonGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceClientsRequest,
- *   !proto.services.GeofenceClientsResponse>}
+ *   !proto.sngpoker.GeofenceClientsRequest,
+ *   !proto.sngpoker.GeofenceClientsResponse>}
  */
 const methodDescriptor_Sng_getBlacklistedClientsonGeofence = new grpc.web.MethodDescriptor(
-  '/services.Sng/getBlacklistedClientsonGeofence',
+  '/sngpoker.Sng/getBlacklistedClientsonGeofence',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceClientsRequest,
-  proto.services.GeofenceClientsResponse,
+  proto.sngpoker.GeofenceClientsRequest,
+  proto.sngpoker.GeofenceClientsResponse,
   /**
-   * @param {!proto.services.GeofenceClientsRequest} request
+   * @param {!proto.sngpoker.GeofenceClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientsResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceClientsRequest,
- *   !proto.services.GeofenceClientsResponse>}
+ *   !proto.sngpoker.GeofenceClientsRequest,
+ *   !proto.sngpoker.GeofenceClientsResponse>}
  */
 const methodInfo_Sng_getBlacklistedClientsonGeofence = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceClientsResponse,
+  proto.sngpoker.GeofenceClientsResponse,
   /**
-   * @param {!proto.services.GeofenceClientsRequest} request
+   * @param {!proto.sngpoker.GeofenceClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientsResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceClientsRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceClientsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceClientsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceClientsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceClientsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getBlacklistedClientsonGeofence =
+proto.sngpoker.SngClient.prototype.getBlacklistedClientsonGeofence =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getBlacklistedClientsonGeofence',
+      '/sngpoker.Sng/getBlacklistedClientsonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getBlacklistedClientsonGeofence,
@@ -6127,17 +6127,17 @@ proto.services.SngClient.prototype.getBlacklistedClientsonGeofence =
 
 
 /**
- * @param {!proto.services.GeofenceClientsRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceClientsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceClientsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getBlacklistedClientsonGeofence =
+proto.sngpoker.SngPromiseClient.prototype.getBlacklistedClientsonGeofence =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getBlacklistedClientsonGeofence',
+      '/sngpoker.Sng/getBlacklistedClientsonGeofence',
       request,
       metadata || {},
       methodDescriptor_Sng_getBlacklistedClientsonGeofence);
@@ -6147,58 +6147,58 @@ proto.services.SngPromiseClient.prototype.getBlacklistedClientsonGeofence =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeofenceClientGlobalRuleRequest,
- *   !proto.services.GeofenceClientGlobalRuleResponse>}
+ *   !proto.sngpoker.GeofenceClientGlobalRuleRequest,
+ *   !proto.sngpoker.GeofenceClientGlobalRuleResponse>}
  */
 const methodDescriptor_Sng_setGeofenceClientGlobalRule = new grpc.web.MethodDescriptor(
-  '/services.Sng/setGeofenceClientGlobalRule',
+  '/sngpoker.Sng/setGeofenceClientGlobalRule',
   grpc.web.MethodType.UNARY,
-  proto.services.GeofenceClientGlobalRuleRequest,
-  proto.services.GeofenceClientGlobalRuleResponse,
+  proto.sngpoker.GeofenceClientGlobalRuleRequest,
+  proto.sngpoker.GeofenceClientGlobalRuleResponse,
   /**
-   * @param {!proto.services.GeofenceClientGlobalRuleRequest} request
+   * @param {!proto.sngpoker.GeofenceClientGlobalRuleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientGlobalRuleResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientGlobalRuleResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeofenceClientGlobalRuleRequest,
- *   !proto.services.GeofenceClientGlobalRuleResponse>}
+ *   !proto.sngpoker.GeofenceClientGlobalRuleRequest,
+ *   !proto.sngpoker.GeofenceClientGlobalRuleResponse>}
  */
 const methodInfo_Sng_setGeofenceClientGlobalRule = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeofenceClientGlobalRuleResponse,
+  proto.sngpoker.GeofenceClientGlobalRuleResponse,
   /**
-   * @param {!proto.services.GeofenceClientGlobalRuleRequest} request
+   * @param {!proto.sngpoker.GeofenceClientGlobalRuleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeofenceClientGlobalRuleResponse.deserializeBinary
+  proto.sngpoker.GeofenceClientGlobalRuleResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeofenceClientGlobalRuleRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientGlobalRuleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeofenceClientGlobalRuleResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeofenceClientGlobalRuleResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeofenceClientGlobalRuleResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeofenceClientGlobalRuleResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setGeofenceClientGlobalRule =
+proto.sngpoker.SngClient.prototype.setGeofenceClientGlobalRule =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setGeofenceClientGlobalRule',
+      '/sngpoker.Sng/setGeofenceClientGlobalRule',
       request,
       metadata || {},
       methodDescriptor_Sng_setGeofenceClientGlobalRule,
@@ -6207,17 +6207,17 @@ proto.services.SngClient.prototype.setGeofenceClientGlobalRule =
 
 
 /**
- * @param {!proto.services.GeofenceClientGlobalRuleRequest} request The
+ * @param {!proto.sngpoker.GeofenceClientGlobalRuleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeofenceClientGlobalRuleResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeofenceClientGlobalRuleResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setGeofenceClientGlobalRule =
+proto.sngpoker.SngPromiseClient.prototype.setGeofenceClientGlobalRule =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setGeofenceClientGlobalRule',
+      '/sngpoker.Sng/setGeofenceClientGlobalRule',
       request,
       metadata || {},
       methodDescriptor_Sng_setGeofenceClientGlobalRule);
@@ -6227,58 +6227,58 @@ proto.services.SngPromiseClient.prototype.setGeofenceClientGlobalRule =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.WhitelistedClientsRequest,
- *   !proto.services.WhitelistedClientsResult>}
+ *   !proto.sngpoker.WhitelistedClientsRequest,
+ *   !proto.sngpoker.WhitelistedClientsResult>}
  */
 const methodDescriptor_Sng_getClients = new grpc.web.MethodDescriptor(
-  '/services.Sng/getClients',
+  '/sngpoker.Sng/getClients',
   grpc.web.MethodType.UNARY,
-  proto.services.WhitelistedClientsRequest,
-  proto.services.WhitelistedClientsResult,
+  proto.sngpoker.WhitelistedClientsRequest,
+  proto.sngpoker.WhitelistedClientsResult,
   /**
-   * @param {!proto.services.WhitelistedClientsRequest} request
+   * @param {!proto.sngpoker.WhitelistedClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistedClientsResult.deserializeBinary
+  proto.sngpoker.WhitelistedClientsResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.WhitelistedClientsRequest,
- *   !proto.services.WhitelistedClientsResult>}
+ *   !proto.sngpoker.WhitelistedClientsRequest,
+ *   !proto.sngpoker.WhitelistedClientsResult>}
  */
 const methodInfo_Sng_getClients = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.WhitelistedClientsResult,
+  proto.sngpoker.WhitelistedClientsResult,
   /**
-   * @param {!proto.services.WhitelistedClientsRequest} request
+   * @param {!proto.sngpoker.WhitelistedClientsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.WhitelistedClientsResult.deserializeBinary
+  proto.sngpoker.WhitelistedClientsResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.WhitelistedClientsRequest} request The
+ * @param {!proto.sngpoker.WhitelistedClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.WhitelistedClientsResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.WhitelistedClientsResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.WhitelistedClientsResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.WhitelistedClientsResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getClients =
+proto.sngpoker.SngClient.prototype.getClients =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getClients',
+      '/sngpoker.Sng/getClients',
       request,
       metadata || {},
       methodDescriptor_Sng_getClients,
@@ -6287,17 +6287,17 @@ proto.services.SngClient.prototype.getClients =
 
 
 /**
- * @param {!proto.services.WhitelistedClientsRequest} request The
+ * @param {!proto.sngpoker.WhitelistedClientsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.WhitelistedClientsResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.WhitelistedClientsResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getClients =
+proto.sngpoker.SngPromiseClient.prototype.getClients =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getClients',
+      '/sngpoker.Sng/getClients',
       request,
       metadata || {},
       methodDescriptor_Sng_getClients);
@@ -6307,58 +6307,58 @@ proto.services.SngPromiseClient.prototype.getClients =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UpdateAccountBalanceRequest,
- *   !proto.services.UpdateAccountBalanceResponse>}
+ *   !proto.sngpoker.UpdateAccountBalanceRequest,
+ *   !proto.sngpoker.UpdateAccountBalanceResponse>}
  */
 const methodDescriptor_Sng_updatePlayerAccountBalance = new grpc.web.MethodDescriptor(
-  '/services.Sng/updatePlayerAccountBalance',
+  '/sngpoker.Sng/updatePlayerAccountBalance',
   grpc.web.MethodType.UNARY,
-  proto.services.UpdateAccountBalanceRequest,
-  proto.services.UpdateAccountBalanceResponse,
+  proto.sngpoker.UpdateAccountBalanceRequest,
+  proto.sngpoker.UpdateAccountBalanceResponse,
   /**
-   * @param {!proto.services.UpdateAccountBalanceRequest} request
+   * @param {!proto.sngpoker.UpdateAccountBalanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateAccountBalanceResponse.deserializeBinary
+  proto.sngpoker.UpdateAccountBalanceResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UpdateAccountBalanceRequest,
- *   !proto.services.UpdateAccountBalanceResponse>}
+ *   !proto.sngpoker.UpdateAccountBalanceRequest,
+ *   !proto.sngpoker.UpdateAccountBalanceResponse>}
  */
 const methodInfo_Sng_updatePlayerAccountBalance = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UpdateAccountBalanceResponse,
+  proto.sngpoker.UpdateAccountBalanceResponse,
   /**
-   * @param {!proto.services.UpdateAccountBalanceRequest} request
+   * @param {!proto.sngpoker.UpdateAccountBalanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateAccountBalanceResponse.deserializeBinary
+  proto.sngpoker.UpdateAccountBalanceResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UpdateAccountBalanceRequest} request The
+ * @param {!proto.sngpoker.UpdateAccountBalanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UpdateAccountBalanceResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UpdateAccountBalanceResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UpdateAccountBalanceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UpdateAccountBalanceResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updatePlayerAccountBalance =
+proto.sngpoker.SngClient.prototype.updatePlayerAccountBalance =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updatePlayerAccountBalance',
+      '/sngpoker.Sng/updatePlayerAccountBalance',
       request,
       metadata || {},
       methodDescriptor_Sng_updatePlayerAccountBalance,
@@ -6367,17 +6367,17 @@ proto.services.SngClient.prototype.updatePlayerAccountBalance =
 
 
 /**
- * @param {!proto.services.UpdateAccountBalanceRequest} request The
+ * @param {!proto.sngpoker.UpdateAccountBalanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UpdateAccountBalanceResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UpdateAccountBalanceResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updatePlayerAccountBalance =
+proto.sngpoker.SngPromiseClient.prototype.updatePlayerAccountBalance =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updatePlayerAccountBalance',
+      '/sngpoker.Sng/updatePlayerAccountBalance',
       request,
       metadata || {},
       methodDescriptor_Sng_updatePlayerAccountBalance);
@@ -6387,58 +6387,58 @@ proto.services.SngPromiseClient.prototype.updatePlayerAccountBalance =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.RankHandsRequest,
- *   !proto.services.RankHandsResult>}
+ *   !proto.sngpoker.RankHandsRequest,
+ *   !proto.sngpoker.RankHandsResult>}
  */
 const methodDescriptor_Sng_rankHands = new grpc.web.MethodDescriptor(
-  '/services.Sng/rankHands',
+  '/sngpoker.Sng/rankHands',
   grpc.web.MethodType.UNARY,
-  proto.services.RankHandsRequest,
-  proto.services.RankHandsResult,
+  proto.sngpoker.RankHandsRequest,
+  proto.sngpoker.RankHandsResult,
   /**
-   * @param {!proto.services.RankHandsRequest} request
+   * @param {!proto.sngpoker.RankHandsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.RankHandsResult.deserializeBinary
+  proto.sngpoker.RankHandsResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.RankHandsRequest,
- *   !proto.services.RankHandsResult>}
+ *   !proto.sngpoker.RankHandsRequest,
+ *   !proto.sngpoker.RankHandsResult>}
  */
 const methodInfo_Sng_rankHands = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.RankHandsResult,
+  proto.sngpoker.RankHandsResult,
   /**
-   * @param {!proto.services.RankHandsRequest} request
+   * @param {!proto.sngpoker.RankHandsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.RankHandsResult.deserializeBinary
+  proto.sngpoker.RankHandsResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.RankHandsRequest} request The
+ * @param {!proto.sngpoker.RankHandsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.RankHandsResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.RankHandsResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.RankHandsResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.RankHandsResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.rankHands =
+proto.sngpoker.SngClient.prototype.rankHands =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/rankHands',
+      '/sngpoker.Sng/rankHands',
       request,
       metadata || {},
       methodDescriptor_Sng_rankHands,
@@ -6447,17 +6447,17 @@ proto.services.SngClient.prototype.rankHands =
 
 
 /**
- * @param {!proto.services.RankHandsRequest} request The
+ * @param {!proto.sngpoker.RankHandsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.RankHandsResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.RankHandsResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.rankHands =
+proto.sngpoker.SngPromiseClient.prototype.rankHands =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/rankHands',
+      '/sngpoker.Sng/rankHands',
       request,
       metadata || {},
       methodDescriptor_Sng_rankHands);
@@ -6467,58 +6467,58 @@ proto.services.SngPromiseClient.prototype.rankHands =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.NewDeckRequest,
- *   !proto.services.NewDeckResponse>}
+ *   !proto.google.protobuf.Empty,
+ *   !proto.sngpoker.DeckData>}
  */
 const methodDescriptor_Sng_getShuffledDeck = new grpc.web.MethodDescriptor(
-  '/services.Sng/getShuffledDeck',
+  '/sngpoker.Sng/getShuffledDeck',
   grpc.web.MethodType.UNARY,
-  proto.services.NewDeckRequest,
-  proto.services.NewDeckResponse,
+  google_protobuf_empty_pb.Empty,
+  proto.sngpoker.DeckData,
   /**
-   * @param {!proto.services.NewDeckRequest} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.NewDeckResponse.deserializeBinary
+  proto.sngpoker.DeckData.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.NewDeckRequest,
- *   !proto.services.NewDeckResponse>}
+ *   !proto.google.protobuf.Empty,
+ *   !proto.sngpoker.DeckData>}
  */
 const methodInfo_Sng_getShuffledDeck = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.NewDeckResponse,
+  proto.sngpoker.DeckData,
   /**
-   * @param {!proto.services.NewDeckRequest} request
+   * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.NewDeckResponse.deserializeBinary
+  proto.sngpoker.DeckData.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.NewDeckRequest} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.NewDeckResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DeckData)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.NewDeckResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DeckData>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getShuffledDeck =
+proto.sngpoker.SngClient.prototype.getShuffledDeck =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getShuffledDeck',
+      '/sngpoker.Sng/getShuffledDeck',
       request,
       metadata || {},
       methodDescriptor_Sng_getShuffledDeck,
@@ -6527,17 +6527,17 @@ proto.services.SngClient.prototype.getShuffledDeck =
 
 
 /**
- * @param {!proto.services.NewDeckRequest} request The
+ * @param {!proto.google.protobuf.Empty} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.NewDeckResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DeckData>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getShuffledDeck =
+proto.sngpoker.SngPromiseClient.prototype.getShuffledDeck =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getShuffledDeck',
+      '/sngpoker.Sng/getShuffledDeck',
       request,
       metadata || {},
       methodDescriptor_Sng_getShuffledDeck);
@@ -6547,58 +6547,58 @@ proto.services.SngPromiseClient.prototype.getShuffledDeck =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetUserInfoRequest,
- *   !proto.services.GetUserInfoResponse>}
+ *   !proto.sngpoker.GetUserInfoRequest,
+ *   !proto.sngpoker.GetUserInfoResponse>}
  */
 const methodDescriptor_Sng_getUserInfo = new grpc.web.MethodDescriptor(
-  '/services.Sng/getUserInfo',
+  '/sngpoker.Sng/getUserInfo',
   grpc.web.MethodType.UNARY,
-  proto.services.GetUserInfoRequest,
-  proto.services.GetUserInfoResponse,
+  proto.sngpoker.GetUserInfoRequest,
+  proto.sngpoker.GetUserInfoResponse,
   /**
-   * @param {!proto.services.GetUserInfoRequest} request
+   * @param {!proto.sngpoker.GetUserInfoRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetUserInfoResponse.deserializeBinary
+  proto.sngpoker.GetUserInfoResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetUserInfoRequest,
- *   !proto.services.GetUserInfoResponse>}
+ *   !proto.sngpoker.GetUserInfoRequest,
+ *   !proto.sngpoker.GetUserInfoResponse>}
  */
 const methodInfo_Sng_getUserInfo = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetUserInfoResponse,
+  proto.sngpoker.GetUserInfoResponse,
   /**
-   * @param {!proto.services.GetUserInfoRequest} request
+   * @param {!proto.sngpoker.GetUserInfoRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetUserInfoResponse.deserializeBinary
+  proto.sngpoker.GetUserInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetUserInfoRequest} request The
+ * @param {!proto.sngpoker.GetUserInfoRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetUserInfoResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetUserInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetUserInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetUserInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getUserInfo =
+proto.sngpoker.SngClient.prototype.getUserInfo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getUserInfo',
+      '/sngpoker.Sng/getUserInfo',
       request,
       metadata || {},
       methodDescriptor_Sng_getUserInfo,
@@ -6607,17 +6607,17 @@ proto.services.SngClient.prototype.getUserInfo =
 
 
 /**
- * @param {!proto.services.GetUserInfoRequest} request The
+ * @param {!proto.sngpoker.GetUserInfoRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetUserInfoResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetUserInfoResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getUserInfo =
+proto.sngpoker.SngPromiseClient.prototype.getUserInfo =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getUserInfo',
+      '/sngpoker.Sng/getUserInfo',
       request,
       metadata || {},
       methodDescriptor_Sng_getUserInfo);
@@ -6627,58 +6627,58 @@ proto.services.SngPromiseClient.prototype.getUserInfo =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UpdateUserInfoRequest,
- *   !proto.services.UpdateUserInfoResponse>}
+ *   !proto.sngpoker.UpdateUserInfoRequest,
+ *   !proto.sngpoker.UpdateUserInfoResponse>}
  */
 const methodDescriptor_Sng_updateUserInfo = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateUserInfo',
+  '/sngpoker.Sng/updateUserInfo',
   grpc.web.MethodType.UNARY,
-  proto.services.UpdateUserInfoRequest,
-  proto.services.UpdateUserInfoResponse,
+  proto.sngpoker.UpdateUserInfoRequest,
+  proto.sngpoker.UpdateUserInfoResponse,
   /**
-   * @param {!proto.services.UpdateUserInfoRequest} request
+   * @param {!proto.sngpoker.UpdateUserInfoRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateUserInfoResponse.deserializeBinary
+  proto.sngpoker.UpdateUserInfoResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UpdateUserInfoRequest,
- *   !proto.services.UpdateUserInfoResponse>}
+ *   !proto.sngpoker.UpdateUserInfoRequest,
+ *   !proto.sngpoker.UpdateUserInfoResponse>}
  */
 const methodInfo_Sng_updateUserInfo = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UpdateUserInfoResponse,
+  proto.sngpoker.UpdateUserInfoResponse,
   /**
-   * @param {!proto.services.UpdateUserInfoRequest} request
+   * @param {!proto.sngpoker.UpdateUserInfoRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateUserInfoResponse.deserializeBinary
+  proto.sngpoker.UpdateUserInfoResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UpdateUserInfoRequest} request The
+ * @param {!proto.sngpoker.UpdateUserInfoRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UpdateUserInfoResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UpdateUserInfoResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UpdateUserInfoResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UpdateUserInfoResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateUserInfo =
+proto.sngpoker.SngClient.prototype.updateUserInfo =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateUserInfo',
+      '/sngpoker.Sng/updateUserInfo',
       request,
       metadata || {},
       methodDescriptor_Sng_updateUserInfo,
@@ -6687,17 +6687,17 @@ proto.services.SngClient.prototype.updateUserInfo =
 
 
 /**
- * @param {!proto.services.UpdateUserInfoRequest} request The
+ * @param {!proto.sngpoker.UpdateUserInfoRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UpdateUserInfoResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UpdateUserInfoResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateUserInfo =
+proto.sngpoker.SngPromiseClient.prototype.updateUserInfo =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateUserInfo',
+      '/sngpoker.Sng/updateUserInfo',
       request,
       metadata || {},
       methodDescriptor_Sng_updateUserInfo);
@@ -6707,58 +6707,58 @@ proto.services.SngPromiseClient.prototype.updateUserInfo =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GlobalSettingsRequest,
- *   !proto.services.GlobalSettingsResponse>}
+ *   !proto.sngpoker.GlobalSettingsRequest,
+ *   !proto.sngpoker.GlobalSettingsResponse>}
  */
 const methodDescriptor_Sng_getGlobalSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/getGlobalSettings',
+  '/sngpoker.Sng/getGlobalSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.GlobalSettingsRequest,
-  proto.services.GlobalSettingsResponse,
+  proto.sngpoker.GlobalSettingsRequest,
+  proto.sngpoker.GlobalSettingsResponse,
   /**
-   * @param {!proto.services.GlobalSettingsRequest} request
+   * @param {!proto.sngpoker.GlobalSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GlobalSettingsResponse.deserializeBinary
+  proto.sngpoker.GlobalSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GlobalSettingsRequest,
- *   !proto.services.GlobalSettingsResponse>}
+ *   !proto.sngpoker.GlobalSettingsRequest,
+ *   !proto.sngpoker.GlobalSettingsResponse>}
  */
 const methodInfo_Sng_getGlobalSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GlobalSettingsResponse,
+  proto.sngpoker.GlobalSettingsResponse,
   /**
-   * @param {!proto.services.GlobalSettingsRequest} request
+   * @param {!proto.sngpoker.GlobalSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GlobalSettingsResponse.deserializeBinary
+  proto.sngpoker.GlobalSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GlobalSettingsRequest} request The
+ * @param {!proto.sngpoker.GlobalSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GlobalSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GlobalSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GlobalSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GlobalSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getGlobalSettings =
+proto.sngpoker.SngClient.prototype.getGlobalSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getGlobalSettings',
+      '/sngpoker.Sng/getGlobalSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getGlobalSettings,
@@ -6767,17 +6767,17 @@ proto.services.SngClient.prototype.getGlobalSettings =
 
 
 /**
- * @param {!proto.services.GlobalSettingsRequest} request The
+ * @param {!proto.sngpoker.GlobalSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GlobalSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GlobalSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getGlobalSettings =
+proto.sngpoker.SngPromiseClient.prototype.getGlobalSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getGlobalSettings',
+      '/sngpoker.Sng/getGlobalSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getGlobalSettings);
@@ -6787,58 +6787,58 @@ proto.services.SngPromiseClient.prototype.getGlobalSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GlobalSettingsRequest,
- *   !proto.services.GlobalSettingsResponse>}
+ *   !proto.sngpoker.GlobalSettingsRequest,
+ *   !proto.sngpoker.GlobalSettingsResponse>}
  */
 const methodDescriptor_Sng_setGlobalSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/setGlobalSettings',
+  '/sngpoker.Sng/setGlobalSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.GlobalSettingsRequest,
-  proto.services.GlobalSettingsResponse,
+  proto.sngpoker.GlobalSettingsRequest,
+  proto.sngpoker.GlobalSettingsResponse,
   /**
-   * @param {!proto.services.GlobalSettingsRequest} request
+   * @param {!proto.sngpoker.GlobalSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GlobalSettingsResponse.deserializeBinary
+  proto.sngpoker.GlobalSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GlobalSettingsRequest,
- *   !proto.services.GlobalSettingsResponse>}
+ *   !proto.sngpoker.GlobalSettingsRequest,
+ *   !proto.sngpoker.GlobalSettingsResponse>}
  */
 const methodInfo_Sng_setGlobalSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GlobalSettingsResponse,
+  proto.sngpoker.GlobalSettingsResponse,
   /**
-   * @param {!proto.services.GlobalSettingsRequest} request
+   * @param {!proto.sngpoker.GlobalSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GlobalSettingsResponse.deserializeBinary
+  proto.sngpoker.GlobalSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GlobalSettingsRequest} request The
+ * @param {!proto.sngpoker.GlobalSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GlobalSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GlobalSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GlobalSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GlobalSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setGlobalSettings =
+proto.sngpoker.SngClient.prototype.setGlobalSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setGlobalSettings',
+      '/sngpoker.Sng/setGlobalSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_setGlobalSettings,
@@ -6847,17 +6847,17 @@ proto.services.SngClient.prototype.setGlobalSettings =
 
 
 /**
- * @param {!proto.services.GlobalSettingsRequest} request The
+ * @param {!proto.sngpoker.GlobalSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GlobalSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GlobalSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setGlobalSettings =
+proto.sngpoker.SngPromiseClient.prototype.setGlobalSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setGlobalSettings',
+      '/sngpoker.Sng/setGlobalSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_setGlobalSettings);
@@ -6867,58 +6867,58 @@ proto.services.SngPromiseClient.prototype.setGlobalSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetPasswordResetLinkRequest,
- *   !proto.services.GetPasswordResetLinkResponse>}
+ *   !proto.sngpoker.GetPasswordResetLinkRequest,
+ *   !proto.sngpoker.GetPasswordResetLinkResponse>}
  */
 const methodDescriptor_Sng_getPasswordResetLink = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPasswordResetLink',
+  '/sngpoker.Sng/getPasswordResetLink',
   grpc.web.MethodType.UNARY,
-  proto.services.GetPasswordResetLinkRequest,
-  proto.services.GetPasswordResetLinkResponse,
+  proto.sngpoker.GetPasswordResetLinkRequest,
+  proto.sngpoker.GetPasswordResetLinkResponse,
   /**
-   * @param {!proto.services.GetPasswordResetLinkRequest} request
+   * @param {!proto.sngpoker.GetPasswordResetLinkRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetPasswordResetLinkResponse.deserializeBinary
+  proto.sngpoker.GetPasswordResetLinkResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetPasswordResetLinkRequest,
- *   !proto.services.GetPasswordResetLinkResponse>}
+ *   !proto.sngpoker.GetPasswordResetLinkRequest,
+ *   !proto.sngpoker.GetPasswordResetLinkResponse>}
  */
 const methodInfo_Sng_getPasswordResetLink = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetPasswordResetLinkResponse,
+  proto.sngpoker.GetPasswordResetLinkResponse,
   /**
-   * @param {!proto.services.GetPasswordResetLinkRequest} request
+   * @param {!proto.sngpoker.GetPasswordResetLinkRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetPasswordResetLinkResponse.deserializeBinary
+  proto.sngpoker.GetPasswordResetLinkResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetPasswordResetLinkRequest} request The
+ * @param {!proto.sngpoker.GetPasswordResetLinkRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetPasswordResetLinkResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetPasswordResetLinkResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetPasswordResetLinkResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetPasswordResetLinkResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPasswordResetLink =
+proto.sngpoker.SngClient.prototype.getPasswordResetLink =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPasswordResetLink',
+      '/sngpoker.Sng/getPasswordResetLink',
       request,
       metadata || {},
       methodDescriptor_Sng_getPasswordResetLink,
@@ -6927,17 +6927,17 @@ proto.services.SngClient.prototype.getPasswordResetLink =
 
 
 /**
- * @param {!proto.services.GetPasswordResetLinkRequest} request The
+ * @param {!proto.sngpoker.GetPasswordResetLinkRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetPasswordResetLinkResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetPasswordResetLinkResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPasswordResetLink =
+proto.sngpoker.SngPromiseClient.prototype.getPasswordResetLink =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPasswordResetLink',
+      '/sngpoker.Sng/getPasswordResetLink',
       request,
       metadata || {},
       methodDescriptor_Sng_getPasswordResetLink);
@@ -6947,58 +6947,58 @@ proto.services.SngPromiseClient.prototype.getPasswordResetLink =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.FetchSecurityQuestionsRequest,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsRequest,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodDescriptor_Sng_fetchSecurityQuestions = new grpc.web.MethodDescriptor(
-  '/services.Sng/fetchSecurityQuestions',
+  '/sngpoker.Sng/fetchSecurityQuestions',
   grpc.web.MethodType.UNARY,
-  proto.services.FetchSecurityQuestionsRequest,
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsRequest,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.FetchSecurityQuestionsRequest,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsRequest,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodInfo_Sng_fetchSecurityQuestions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.FetchSecurityQuestionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.FetchSecurityQuestionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.FetchSecurityQuestionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.FetchSecurityQuestionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.fetchSecurityQuestions =
+proto.sngpoker.SngClient.prototype.fetchSecurityQuestions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/fetchSecurityQuestions',
+      '/sngpoker.Sng/fetchSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_fetchSecurityQuestions,
@@ -7007,17 +7007,17 @@ proto.services.SngClient.prototype.fetchSecurityQuestions =
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.FetchSecurityQuestionsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.FetchSecurityQuestionsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.fetchSecurityQuestions =
+proto.sngpoker.SngPromiseClient.prototype.fetchSecurityQuestions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/fetchSecurityQuestions',
+      '/sngpoker.Sng/fetchSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_fetchSecurityQuestions);
@@ -7027,58 +7027,58 @@ proto.services.SngPromiseClient.prototype.fetchSecurityQuestions =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ResetPasswordRequest,
- *   !proto.services.ResetPasswordResponse>}
+ *   !proto.sngpoker.ResetPasswordRequest,
+ *   !proto.sngpoker.ResetPasswordResponse>}
  */
 const methodDescriptor_Sng_resetPassword = new grpc.web.MethodDescriptor(
-  '/services.Sng/resetPassword',
+  '/sngpoker.Sng/resetPassword',
   grpc.web.MethodType.UNARY,
-  proto.services.ResetPasswordRequest,
-  proto.services.ResetPasswordResponse,
+  proto.sngpoker.ResetPasswordRequest,
+  proto.sngpoker.ResetPasswordResponse,
   /**
-   * @param {!proto.services.ResetPasswordRequest} request
+   * @param {!proto.sngpoker.ResetPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ResetPasswordResponse.deserializeBinary
+  proto.sngpoker.ResetPasswordResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ResetPasswordRequest,
- *   !proto.services.ResetPasswordResponse>}
+ *   !proto.sngpoker.ResetPasswordRequest,
+ *   !proto.sngpoker.ResetPasswordResponse>}
  */
 const methodInfo_Sng_resetPassword = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ResetPasswordResponse,
+  proto.sngpoker.ResetPasswordResponse,
   /**
-   * @param {!proto.services.ResetPasswordRequest} request
+   * @param {!proto.sngpoker.ResetPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ResetPasswordResponse.deserializeBinary
+  proto.sngpoker.ResetPasswordResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ResetPasswordRequest} request The
+ * @param {!proto.sngpoker.ResetPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ResetPasswordResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ResetPasswordResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ResetPasswordResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ResetPasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.resetPassword =
+proto.sngpoker.SngClient.prototype.resetPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/resetPassword',
+      '/sngpoker.Sng/resetPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_resetPassword,
@@ -7087,17 +7087,17 @@ proto.services.SngClient.prototype.resetPassword =
 
 
 /**
- * @param {!proto.services.ResetPasswordRequest} request The
+ * @param {!proto.sngpoker.ResetPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ResetPasswordResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ResetPasswordResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.resetPassword =
+proto.sngpoker.SngPromiseClient.prototype.resetPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/resetPassword',
+      '/sngpoker.Sng/resetPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_resetPassword);
@@ -7107,58 +7107,58 @@ proto.services.SngPromiseClient.prototype.resetPassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.VerifyUserPasswordRequest,
- *   !proto.services.VerifyUserPasswordResponse>}
+ *   !proto.sngpoker.VerifyUserPasswordRequest,
+ *   !proto.sngpoker.VerifyUserPasswordResponse>}
  */
 const methodDescriptor_Sng_verifyUserPassword = new grpc.web.MethodDescriptor(
-  '/services.Sng/verifyUserPassword',
+  '/sngpoker.Sng/verifyUserPassword',
   grpc.web.MethodType.UNARY,
-  proto.services.VerifyUserPasswordRequest,
-  proto.services.VerifyUserPasswordResponse,
+  proto.sngpoker.VerifyUserPasswordRequest,
+  proto.sngpoker.VerifyUserPasswordResponse,
   /**
-   * @param {!proto.services.VerifyUserPasswordRequest} request
+   * @param {!proto.sngpoker.VerifyUserPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VerifyUserPasswordResponse.deserializeBinary
+  proto.sngpoker.VerifyUserPasswordResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.VerifyUserPasswordRequest,
- *   !proto.services.VerifyUserPasswordResponse>}
+ *   !proto.sngpoker.VerifyUserPasswordRequest,
+ *   !proto.sngpoker.VerifyUserPasswordResponse>}
  */
 const methodInfo_Sng_verifyUserPassword = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.VerifyUserPasswordResponse,
+  proto.sngpoker.VerifyUserPasswordResponse,
   /**
-   * @param {!proto.services.VerifyUserPasswordRequest} request
+   * @param {!proto.sngpoker.VerifyUserPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VerifyUserPasswordResponse.deserializeBinary
+  proto.sngpoker.VerifyUserPasswordResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.VerifyUserPasswordRequest} request The
+ * @param {!proto.sngpoker.VerifyUserPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.VerifyUserPasswordResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.VerifyUserPasswordResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.VerifyUserPasswordResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.VerifyUserPasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.verifyUserPassword =
+proto.sngpoker.SngClient.prototype.verifyUserPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/verifyUserPassword',
+      '/sngpoker.Sng/verifyUserPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_verifyUserPassword,
@@ -7167,17 +7167,17 @@ proto.services.SngClient.prototype.verifyUserPassword =
 
 
 /**
- * @param {!proto.services.VerifyUserPasswordRequest} request The
+ * @param {!proto.sngpoker.VerifyUserPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.VerifyUserPasswordResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.VerifyUserPasswordResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.verifyUserPassword =
+proto.sngpoker.SngPromiseClient.prototype.verifyUserPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/verifyUserPassword',
+      '/sngpoker.Sng/verifyUserPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_verifyUserPassword);
@@ -7187,58 +7187,58 @@ proto.services.SngPromiseClient.prototype.verifyUserPassword =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.LoginRequest,
- *   !proto.services.LoginResult>}
+ *   !proto.sngpoker.LoginRequest,
+ *   !proto.sngpoker.LoginResult>}
  */
 const methodDescriptor_Sng_adminLogin = new grpc.web.MethodDescriptor(
-  '/services.Sng/adminLogin',
+  '/sngpoker.Sng/adminLogin',
   grpc.web.MethodType.UNARY,
-  proto.services.LoginRequest,
-  proto.services.LoginResult,
+  proto.sngpoker.LoginRequest,
+  proto.sngpoker.LoginResult,
   /**
-   * @param {!proto.services.LoginRequest} request
+   * @param {!proto.sngpoker.LoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LoginResult.deserializeBinary
+  proto.sngpoker.LoginResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.LoginRequest,
- *   !proto.services.LoginResult>}
+ *   !proto.sngpoker.LoginRequest,
+ *   !proto.sngpoker.LoginResult>}
  */
 const methodInfo_Sng_adminLogin = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.LoginResult,
+  proto.sngpoker.LoginResult,
   /**
-   * @param {!proto.services.LoginRequest} request
+   * @param {!proto.sngpoker.LoginRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.LoginResult.deserializeBinary
+  proto.sngpoker.LoginResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.LoginRequest} request The
+ * @param {!proto.sngpoker.LoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.LoginResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.LoginResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.LoginResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.LoginResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.adminLogin =
+proto.sngpoker.SngClient.prototype.adminLogin =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/adminLogin',
+      '/sngpoker.Sng/adminLogin',
       request,
       metadata || {},
       methodDescriptor_Sng_adminLogin,
@@ -7247,17 +7247,17 @@ proto.services.SngClient.prototype.adminLogin =
 
 
 /**
- * @param {!proto.services.LoginRequest} request The
+ * @param {!proto.sngpoker.LoginRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.LoginResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.LoginResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.adminLogin =
+proto.sngpoker.SngPromiseClient.prototype.adminLogin =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/adminLogin',
+      '/sngpoker.Sng/adminLogin',
       request,
       metadata || {},
       methodDescriptor_Sng_adminLogin);
@@ -7267,58 +7267,58 @@ proto.services.SngPromiseClient.prototype.adminLogin =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ValidateSecurityQuestionsRequest,
- *   !proto.services.ValidateSecurityQuestionsResponse>}
+ *   !proto.sngpoker.ValidateSecurityQuestionsRequest,
+ *   !proto.sngpoker.ValidateSecurityQuestionsResponse>}
  */
 const methodDescriptor_Sng_validateSecurityQuestionsForLogin = new grpc.web.MethodDescriptor(
-  '/services.Sng/validateSecurityQuestionsForLogin',
+  '/sngpoker.Sng/validateSecurityQuestionsForLogin',
   grpc.web.MethodType.UNARY,
-  proto.services.ValidateSecurityQuestionsRequest,
-  proto.services.ValidateSecurityQuestionsResponse,
+  proto.sngpoker.ValidateSecurityQuestionsRequest,
+  proto.sngpoker.ValidateSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.ValidateSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.ValidateSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ValidateSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.ValidateSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ValidateSecurityQuestionsRequest,
- *   !proto.services.ValidateSecurityQuestionsResponse>}
+ *   !proto.sngpoker.ValidateSecurityQuestionsRequest,
+ *   !proto.sngpoker.ValidateSecurityQuestionsResponse>}
  */
 const methodInfo_Sng_validateSecurityQuestionsForLogin = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ValidateSecurityQuestionsResponse,
+  proto.sngpoker.ValidateSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.ValidateSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.ValidateSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ValidateSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.ValidateSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ValidateSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.ValidateSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ValidateSecurityQuestionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ValidateSecurityQuestionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ValidateSecurityQuestionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ValidateSecurityQuestionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.validateSecurityQuestionsForLogin =
+proto.sngpoker.SngClient.prototype.validateSecurityQuestionsForLogin =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/validateSecurityQuestionsForLogin',
+      '/sngpoker.Sng/validateSecurityQuestionsForLogin',
       request,
       metadata || {},
       methodDescriptor_Sng_validateSecurityQuestionsForLogin,
@@ -7327,17 +7327,17 @@ proto.services.SngClient.prototype.validateSecurityQuestionsForLogin =
 
 
 /**
- * @param {!proto.services.ValidateSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.ValidateSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ValidateSecurityQuestionsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ValidateSecurityQuestionsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.validateSecurityQuestionsForLogin =
+proto.sngpoker.SngPromiseClient.prototype.validateSecurityQuestionsForLogin =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/validateSecurityQuestionsForLogin',
+      '/sngpoker.Sng/validateSecurityQuestionsForLogin',
       request,
       metadata || {},
       methodDescriptor_Sng_validateSecurityQuestionsForLogin);
@@ -7347,58 +7347,58 @@ proto.services.SngPromiseClient.prototype.validateSecurityQuestionsForLogin =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.IsEmailAvailableRequest,
- *   !proto.services.IsEmailAvailableResponse>}
+ *   !proto.sngpoker.IsEmailAvailableRequest,
+ *   !proto.sngpoker.IsEmailAvailableResponse>}
  */
 const methodDescriptor_Sng_checkIsEmailAvailable = new grpc.web.MethodDescriptor(
-  '/services.Sng/checkIsEmailAvailable',
+  '/sngpoker.Sng/checkIsEmailAvailable',
   grpc.web.MethodType.UNARY,
-  proto.services.IsEmailAvailableRequest,
-  proto.services.IsEmailAvailableResponse,
+  proto.sngpoker.IsEmailAvailableRequest,
+  proto.sngpoker.IsEmailAvailableResponse,
   /**
-   * @param {!proto.services.IsEmailAvailableRequest} request
+   * @param {!proto.sngpoker.IsEmailAvailableRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.IsEmailAvailableResponse.deserializeBinary
+  proto.sngpoker.IsEmailAvailableResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.IsEmailAvailableRequest,
- *   !proto.services.IsEmailAvailableResponse>}
+ *   !proto.sngpoker.IsEmailAvailableRequest,
+ *   !proto.sngpoker.IsEmailAvailableResponse>}
  */
 const methodInfo_Sng_checkIsEmailAvailable = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.IsEmailAvailableResponse,
+  proto.sngpoker.IsEmailAvailableResponse,
   /**
-   * @param {!proto.services.IsEmailAvailableRequest} request
+   * @param {!proto.sngpoker.IsEmailAvailableRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.IsEmailAvailableResponse.deserializeBinary
+  proto.sngpoker.IsEmailAvailableResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.IsEmailAvailableRequest} request The
+ * @param {!proto.sngpoker.IsEmailAvailableRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.IsEmailAvailableResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.IsEmailAvailableResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.IsEmailAvailableResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.IsEmailAvailableResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.checkIsEmailAvailable =
+proto.sngpoker.SngClient.prototype.checkIsEmailAvailable =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/checkIsEmailAvailable',
+      '/sngpoker.Sng/checkIsEmailAvailable',
       request,
       metadata || {},
       methodDescriptor_Sng_checkIsEmailAvailable,
@@ -7407,17 +7407,17 @@ proto.services.SngClient.prototype.checkIsEmailAvailable =
 
 
 /**
- * @param {!proto.services.IsEmailAvailableRequest} request The
+ * @param {!proto.sngpoker.IsEmailAvailableRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.IsEmailAvailableResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.IsEmailAvailableResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.checkIsEmailAvailable =
+proto.sngpoker.SngPromiseClient.prototype.checkIsEmailAvailable =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/checkIsEmailAvailable',
+      '/sngpoker.Sng/checkIsEmailAvailable',
       request,
       metadata || {},
       methodDescriptor_Sng_checkIsEmailAvailable);
@@ -7427,58 +7427,58 @@ proto.services.SngPromiseClient.prototype.checkIsEmailAvailable =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.StartTournamentTableInstanceRequest,
- *   !proto.services.StartTournamentTableInstanceResponse>}
+ *   !proto.sngpoker.StartTournamentTableInstanceRequest,
+ *   !proto.sngpoker.StartTournamentTableInstanceResponse>}
  */
 const methodDescriptor_Sng_startTournamentTableInstance = new grpc.web.MethodDescriptor(
-  '/services.Sng/startTournamentTableInstance',
+  '/sngpoker.Sng/startTournamentTableInstance',
   grpc.web.MethodType.UNARY,
-  proto.services.StartTournamentTableInstanceRequest,
-  proto.services.StartTournamentTableInstanceResponse,
+  proto.sngpoker.StartTournamentTableInstanceRequest,
+  proto.sngpoker.StartTournamentTableInstanceResponse,
   /**
-   * @param {!proto.services.StartTournamentTableInstanceRequest} request
+   * @param {!proto.sngpoker.StartTournamentTableInstanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StartTournamentTableInstanceResponse.deserializeBinary
+  proto.sngpoker.StartTournamentTableInstanceResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.StartTournamentTableInstanceRequest,
- *   !proto.services.StartTournamentTableInstanceResponse>}
+ *   !proto.sngpoker.StartTournamentTableInstanceRequest,
+ *   !proto.sngpoker.StartTournamentTableInstanceResponse>}
  */
 const methodInfo_Sng_startTournamentTableInstance = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StartTournamentTableInstanceResponse,
+  proto.sngpoker.StartTournamentTableInstanceResponse,
   /**
-   * @param {!proto.services.StartTournamentTableInstanceRequest} request
+   * @param {!proto.sngpoker.StartTournamentTableInstanceRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StartTournamentTableInstanceResponse.deserializeBinary
+  proto.sngpoker.StartTournamentTableInstanceResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.StartTournamentTableInstanceRequest} request The
+ * @param {!proto.sngpoker.StartTournamentTableInstanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StartTournamentTableInstanceResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StartTournamentTableInstanceResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StartTournamentTableInstanceResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StartTournamentTableInstanceResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.startTournamentTableInstance =
+proto.sngpoker.SngClient.prototype.startTournamentTableInstance =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/startTournamentTableInstance',
+      '/sngpoker.Sng/startTournamentTableInstance',
       request,
       metadata || {},
       methodDescriptor_Sng_startTournamentTableInstance,
@@ -7487,17 +7487,17 @@ proto.services.SngClient.prototype.startTournamentTableInstance =
 
 
 /**
- * @param {!proto.services.StartTournamentTableInstanceRequest} request The
+ * @param {!proto.sngpoker.StartTournamentTableInstanceRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StartTournamentTableInstanceResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StartTournamentTableInstanceResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.startTournamentTableInstance =
+proto.sngpoker.SngPromiseClient.prototype.startTournamentTableInstance =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/startTournamentTableInstance',
+      '/sngpoker.Sng/startTournamentTableInstance',
       request,
       metadata || {},
       methodDescriptor_Sng_startTournamentTableInstance);
@@ -7507,58 +7507,58 @@ proto.services.SngPromiseClient.prototype.startTournamentTableInstance =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.TournamentDetailsRequest,
- *   !proto.services.TournamentPayoutStructureResponse>}
+ *   !proto.sngpoker.TournamentDetailsRequest,
+ *   !proto.sngpoker.TournamentPayoutStructureResponse>}
  */
 const methodDescriptor_Sng_tournamentPayoutStructure = new grpc.web.MethodDescriptor(
-  '/services.Sng/tournamentPayoutStructure',
+  '/sngpoker.Sng/tournamentPayoutStructure',
   grpc.web.MethodType.UNARY,
-  proto.services.TournamentDetailsRequest,
-  proto.services.TournamentPayoutStructureResponse,
+  proto.sngpoker.TournamentDetailsRequest,
+  proto.sngpoker.TournamentPayoutStructureResponse,
   /**
-   * @param {!proto.services.TournamentDetailsRequest} request
+   * @param {!proto.sngpoker.TournamentDetailsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TournamentPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.TournamentPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.TournamentDetailsRequest,
- *   !proto.services.TournamentPayoutStructureResponse>}
+ *   !proto.sngpoker.TournamentDetailsRequest,
+ *   !proto.sngpoker.TournamentPayoutStructureResponse>}
  */
 const methodInfo_Sng_tournamentPayoutStructure = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.TournamentPayoutStructureResponse,
+  proto.sngpoker.TournamentPayoutStructureResponse,
   /**
-   * @param {!proto.services.TournamentDetailsRequest} request
+   * @param {!proto.sngpoker.TournamentDetailsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.TournamentPayoutStructureResponse.deserializeBinary
+  proto.sngpoker.TournamentPayoutStructureResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.TournamentDetailsRequest} request The
+ * @param {!proto.sngpoker.TournamentDetailsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.TournamentPayoutStructureResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.TournamentPayoutStructureResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.TournamentPayoutStructureResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.TournamentPayoutStructureResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.tournamentPayoutStructure =
+proto.sngpoker.SngClient.prototype.tournamentPayoutStructure =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/tournamentPayoutStructure',
+      '/sngpoker.Sng/tournamentPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_tournamentPayoutStructure,
@@ -7567,17 +7567,17 @@ proto.services.SngClient.prototype.tournamentPayoutStructure =
 
 
 /**
- * @param {!proto.services.TournamentDetailsRequest} request The
+ * @param {!proto.sngpoker.TournamentDetailsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.TournamentPayoutStructureResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.TournamentPayoutStructureResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.tournamentPayoutStructure =
+proto.sngpoker.SngPromiseClient.prototype.tournamentPayoutStructure =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/tournamentPayoutStructure',
+      '/sngpoker.Sng/tournamentPayoutStructure',
       request,
       metadata || {},
       methodDescriptor_Sng_tournamentPayoutStructure);
@@ -7587,58 +7587,58 @@ proto.services.SngPromiseClient.prototype.tournamentPayoutStructure =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.ActiveUsersResult>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.ActiveUsersResult>}
  */
 const methodDescriptor_Sng_getActiveUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/getActiveUsers',
+  '/sngpoker.Sng/getActiveUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.ActiveUsersRequest,
-  proto.services.ActiveUsersResult,
+  proto.sngpoker.ActiveUsersRequest,
+  proto.sngpoker.ActiveUsersResult,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveUsersResult.deserializeBinary
+  proto.sngpoker.ActiveUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.ActiveUsersResult>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.ActiveUsersResult>}
  */
 const methodInfo_Sng_getActiveUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ActiveUsersResult,
+  proto.sngpoker.ActiveUsersResult,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveUsersResult.deserializeBinary
+  proto.sngpoker.ActiveUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ActiveUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ActiveUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ActiveUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ActiveUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getActiveUsers =
+proto.sngpoker.SngClient.prototype.getActiveUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getActiveUsers',
+      '/sngpoker.Sng/getActiveUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_getActiveUsers,
@@ -7647,17 +7647,17 @@ proto.services.SngClient.prototype.getActiveUsers =
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ActiveUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ActiveUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getActiveUsers =
+proto.sngpoker.SngPromiseClient.prototype.getActiveUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getActiveUsers',
+      '/sngpoker.Sng/getActiveUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_getActiveUsers);
@@ -7667,58 +7667,58 @@ proto.services.SngPromiseClient.prototype.getActiveUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ClientRequest,
- *   !proto.services.ClientResponse>}
+ *   !proto.sngpoker.ClientRequest,
+ *   !proto.sngpoker.ClientResponse>}
  */
 const methodDescriptor_Sng_getClientData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getClientData',
+  '/sngpoker.Sng/getClientData',
   grpc.web.MethodType.UNARY,
-  proto.services.ClientRequest,
-  proto.services.ClientResponse,
+  proto.sngpoker.ClientRequest,
+  proto.sngpoker.ClientResponse,
   /**
-   * @param {!proto.services.ClientRequest} request
+   * @param {!proto.sngpoker.ClientRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientResponse.deserializeBinary
+  proto.sngpoker.ClientResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ClientRequest,
- *   !proto.services.ClientResponse>}
+ *   !proto.sngpoker.ClientRequest,
+ *   !proto.sngpoker.ClientResponse>}
  */
 const methodInfo_Sng_getClientData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ClientResponse,
+  proto.sngpoker.ClientResponse,
   /**
-   * @param {!proto.services.ClientRequest} request
+   * @param {!proto.sngpoker.ClientRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientResponse.deserializeBinary
+  proto.sngpoker.ClientResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ClientRequest} request The
+ * @param {!proto.sngpoker.ClientRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ClientResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ClientResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ClientResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ClientResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getClientData =
+proto.sngpoker.SngClient.prototype.getClientData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getClientData',
+      '/sngpoker.Sng/getClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_getClientData,
@@ -7727,17 +7727,17 @@ proto.services.SngClient.prototype.getClientData =
 
 
 /**
- * @param {!proto.services.ClientRequest} request The
+ * @param {!proto.sngpoker.ClientRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ClientResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ClientResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getClientData =
+proto.sngpoker.SngPromiseClient.prototype.getClientData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getClientData',
+      '/sngpoker.Sng/getClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_getClientData);
@@ -7747,58 +7747,58 @@ proto.services.SngPromiseClient.prototype.getClientData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ClientAddRequest,
- *   !proto.services.ClientAddResponse>}
+ *   !proto.sngpoker.ClientAddRequest,
+ *   !proto.sngpoker.ClientAddResponse>}
  */
 const methodDescriptor_Sng_addClientData = new grpc.web.MethodDescriptor(
-  '/services.Sng/addClientData',
+  '/sngpoker.Sng/addClientData',
   grpc.web.MethodType.UNARY,
-  proto.services.ClientAddRequest,
-  proto.services.ClientAddResponse,
+  proto.sngpoker.ClientAddRequest,
+  proto.sngpoker.ClientAddResponse,
   /**
-   * @param {!proto.services.ClientAddRequest} request
+   * @param {!proto.sngpoker.ClientAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientAddResponse.deserializeBinary
+  proto.sngpoker.ClientAddResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ClientAddRequest,
- *   !proto.services.ClientAddResponse>}
+ *   !proto.sngpoker.ClientAddRequest,
+ *   !proto.sngpoker.ClientAddResponse>}
  */
 const methodInfo_Sng_addClientData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ClientAddResponse,
+  proto.sngpoker.ClientAddResponse,
   /**
-   * @param {!proto.services.ClientAddRequest} request
+   * @param {!proto.sngpoker.ClientAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientAddResponse.deserializeBinary
+  proto.sngpoker.ClientAddResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ClientAddRequest} request The
+ * @param {!proto.sngpoker.ClientAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ClientAddResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ClientAddResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ClientAddResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ClientAddResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addClientData =
+proto.sngpoker.SngClient.prototype.addClientData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addClientData',
+      '/sngpoker.Sng/addClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_addClientData,
@@ -7807,17 +7807,17 @@ proto.services.SngClient.prototype.addClientData =
 
 
 /**
- * @param {!proto.services.ClientAddRequest} request The
+ * @param {!proto.sngpoker.ClientAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ClientAddResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ClientAddResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addClientData =
+proto.sngpoker.SngPromiseClient.prototype.addClientData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addClientData',
+      '/sngpoker.Sng/addClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_addClientData);
@@ -7827,58 +7827,58 @@ proto.services.SngPromiseClient.prototype.addClientData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ClientUpdateRequest,
- *   !proto.services.ClientUpdateResponse>}
+ *   !proto.sngpoker.ClientUpdateRequest,
+ *   !proto.sngpoker.ClientUpdateResponse>}
  */
 const methodDescriptor_Sng_updateClientData = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateClientData',
+  '/sngpoker.Sng/updateClientData',
   grpc.web.MethodType.UNARY,
-  proto.services.ClientUpdateRequest,
-  proto.services.ClientUpdateResponse,
+  proto.sngpoker.ClientUpdateRequest,
+  proto.sngpoker.ClientUpdateResponse,
   /**
-   * @param {!proto.services.ClientUpdateRequest} request
+   * @param {!proto.sngpoker.ClientUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientUpdateResponse.deserializeBinary
+  proto.sngpoker.ClientUpdateResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ClientUpdateRequest,
- *   !proto.services.ClientUpdateResponse>}
+ *   !proto.sngpoker.ClientUpdateRequest,
+ *   !proto.sngpoker.ClientUpdateResponse>}
  */
 const methodInfo_Sng_updateClientData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ClientUpdateResponse,
+  proto.sngpoker.ClientUpdateResponse,
   /**
-   * @param {!proto.services.ClientUpdateRequest} request
+   * @param {!proto.sngpoker.ClientUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientUpdateResponse.deserializeBinary
+  proto.sngpoker.ClientUpdateResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ClientUpdateRequest} request The
+ * @param {!proto.sngpoker.ClientUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ClientUpdateResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ClientUpdateResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ClientUpdateResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ClientUpdateResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateClientData =
+proto.sngpoker.SngClient.prototype.updateClientData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateClientData',
+      '/sngpoker.Sng/updateClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateClientData,
@@ -7887,17 +7887,17 @@ proto.services.SngClient.prototype.updateClientData =
 
 
 /**
- * @param {!proto.services.ClientUpdateRequest} request The
+ * @param {!proto.sngpoker.ClientUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ClientUpdateResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ClientUpdateResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateClientData =
+proto.sngpoker.SngPromiseClient.prototype.updateClientData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateClientData',
+      '/sngpoker.Sng/updateClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateClientData);
@@ -7907,58 +7907,58 @@ proto.services.SngPromiseClient.prototype.updateClientData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ClientRemoveRequest,
- *   !proto.services.ClientRemoveResponse>}
+ *   !proto.sngpoker.ClientRemoveRequest,
+ *   !proto.sngpoker.ClientRemoveResponse>}
  */
 const methodDescriptor_Sng_removeClientData = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeClientData',
+  '/sngpoker.Sng/removeClientData',
   grpc.web.MethodType.UNARY,
-  proto.services.ClientRemoveRequest,
-  proto.services.ClientRemoveResponse,
+  proto.sngpoker.ClientRemoveRequest,
+  proto.sngpoker.ClientRemoveResponse,
   /**
-   * @param {!proto.services.ClientRemoveRequest} request
+   * @param {!proto.sngpoker.ClientRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientRemoveResponse.deserializeBinary
+  proto.sngpoker.ClientRemoveResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ClientRemoveRequest,
- *   !proto.services.ClientRemoveResponse>}
+ *   !proto.sngpoker.ClientRemoveRequest,
+ *   !proto.sngpoker.ClientRemoveResponse>}
  */
 const methodInfo_Sng_removeClientData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ClientRemoveResponse,
+  proto.sngpoker.ClientRemoveResponse,
   /**
-   * @param {!proto.services.ClientRemoveRequest} request
+   * @param {!proto.sngpoker.ClientRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ClientRemoveResponse.deserializeBinary
+  proto.sngpoker.ClientRemoveResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ClientRemoveRequest} request The
+ * @param {!proto.sngpoker.ClientRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ClientRemoveResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ClientRemoveResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ClientRemoveResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ClientRemoveResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeClientData =
+proto.sngpoker.SngClient.prototype.removeClientData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeClientData',
+      '/sngpoker.Sng/removeClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeClientData,
@@ -7967,17 +7967,17 @@ proto.services.SngClient.prototype.removeClientData =
 
 
 /**
- * @param {!proto.services.ClientRemoveRequest} request The
+ * @param {!proto.sngpoker.ClientRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ClientRemoveResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ClientRemoveResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeClientData =
+proto.sngpoker.SngPromiseClient.prototype.removeClientData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeClientData',
+      '/sngpoker.Sng/removeClientData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeClientData);
@@ -7987,58 +7987,58 @@ proto.services.SngPromiseClient.prototype.removeClientData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ComponentPermissionRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.ComponentPermissionRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getComponentPermissionData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getComponentPermissionData',
+  '/sngpoker.Sng/getComponentPermissionData',
   grpc.web.MethodType.UNARY,
-  proto.services.ComponentPermissionRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.ComponentPermissionRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.ComponentPermissionRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ComponentPermissionRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.ComponentPermissionRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getComponentPermissionData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.ComponentPermissionRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ComponentPermissionRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getComponentPermissionData =
+proto.sngpoker.SngClient.prototype.getComponentPermissionData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getComponentPermissionData',
+      '/sngpoker.Sng/getComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_getComponentPermissionData,
@@ -8047,17 +8047,17 @@ proto.services.SngClient.prototype.getComponentPermissionData =
 
 
 /**
- * @param {!proto.services.ComponentPermissionRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getComponentPermissionData =
+proto.sngpoker.SngPromiseClient.prototype.getComponentPermissionData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getComponentPermissionData',
+      '/sngpoker.Sng/getComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_getComponentPermissionData);
@@ -8067,58 +8067,58 @@ proto.services.SngPromiseClient.prototype.getComponentPermissionData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ComponentPermissionAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_addComponentPermissionData = new grpc.web.MethodDescriptor(
-  '/services.Sng/addComponentPermissionData',
+  '/sngpoker.Sng/addComponentPermissionData',
   grpc.web.MethodType.UNARY,
-  proto.services.ComponentPermissionAddRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.ComponentPermissionAddRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionAddRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ComponentPermissionAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_addComponentPermissionData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionAddRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ComponentPermissionAddRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addComponentPermissionData =
+proto.sngpoker.SngClient.prototype.addComponentPermissionData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addComponentPermissionData',
+      '/sngpoker.Sng/addComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_addComponentPermissionData,
@@ -8127,17 +8127,17 @@ proto.services.SngClient.prototype.addComponentPermissionData =
 
 
 /**
- * @param {!proto.services.ComponentPermissionAddRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addComponentPermissionData =
+proto.sngpoker.SngPromiseClient.prototype.addComponentPermissionData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addComponentPermissionData',
+      '/sngpoker.Sng/addComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_addComponentPermissionData);
@@ -8147,58 +8147,58 @@ proto.services.SngPromiseClient.prototype.addComponentPermissionData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ComponentPermissionUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_updateComponentPermissionData = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateComponentPermissionData',
+  '/sngpoker.Sng/updateComponentPermissionData',
   grpc.web.MethodType.UNARY,
-  proto.services.ComponentPermissionUpdateRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.ComponentPermissionUpdateRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionUpdateRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ComponentPermissionUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_updateComponentPermissionData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionUpdateRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ComponentPermissionUpdateRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateComponentPermissionData =
+proto.sngpoker.SngClient.prototype.updateComponentPermissionData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateComponentPermissionData',
+      '/sngpoker.Sng/updateComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateComponentPermissionData,
@@ -8207,17 +8207,17 @@ proto.services.SngClient.prototype.updateComponentPermissionData =
 
 
 /**
- * @param {!proto.services.ComponentPermissionUpdateRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateComponentPermissionData =
+proto.sngpoker.SngPromiseClient.prototype.updateComponentPermissionData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateComponentPermissionData',
+      '/sngpoker.Sng/updateComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateComponentPermissionData);
@@ -8227,58 +8227,58 @@ proto.services.SngPromiseClient.prototype.updateComponentPermissionData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ComponentPermissionRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_removeComponentPermissionData = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeComponentPermissionData',
+  '/sngpoker.Sng/removeComponentPermissionData',
   grpc.web.MethodType.UNARY,
-  proto.services.ComponentPermissionRemoveRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.ComponentPermissionRemoveRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionRemoveRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ComponentPermissionRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.ComponentPermissionRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_removeComponentPermissionData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.ComponentPermissionRemoveRequest} request
+   * @param {!proto.sngpoker.ComponentPermissionRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ComponentPermissionRemoveRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeComponentPermissionData =
+proto.sngpoker.SngClient.prototype.removeComponentPermissionData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeComponentPermissionData',
+      '/sngpoker.Sng/removeComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeComponentPermissionData,
@@ -8287,17 +8287,17 @@ proto.services.SngClient.prototype.removeComponentPermissionData =
 
 
 /**
- * @param {!proto.services.ComponentPermissionRemoveRequest} request The
+ * @param {!proto.sngpoker.ComponentPermissionRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeComponentPermissionData =
+proto.sngpoker.SngPromiseClient.prototype.removeComponentPermissionData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeComponentPermissionData',
+      '/sngpoker.Sng/removeComponentPermissionData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeComponentPermissionData);
@@ -8307,58 +8307,58 @@ proto.services.SngPromiseClient.prototype.removeComponentPermissionData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRoleRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminRoleRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getAdminRoleData = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAdminRoleData',
+  '/sngpoker.Sng/getAdminRoleData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRoleRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.AdminRoleRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminRoleRequest} request
+   * @param {!proto.sngpoker.AdminRoleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRoleRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminRoleRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getAdminRoleData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminRoleRequest} request
+   * @param {!proto.sngpoker.AdminRoleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRoleRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAdminRoleData =
+proto.sngpoker.SngClient.prototype.getAdminRoleData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAdminRoleData',
+      '/sngpoker.Sng/getAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdminRoleData,
@@ -8367,17 +8367,17 @@ proto.services.SngClient.prototype.getAdminRoleData =
 
 
 /**
- * @param {!proto.services.AdminRoleRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAdminRoleData =
+proto.sngpoker.SngPromiseClient.prototype.getAdminRoleData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAdminRoleData',
+      '/sngpoker.Sng/getAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdminRoleData);
@@ -8387,58 +8387,58 @@ proto.services.SngPromiseClient.prototype.getAdminRoleData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRoleAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_addAdminRoleData = new grpc.web.MethodDescriptor(
-  '/services.Sng/addAdminRoleData',
+  '/sngpoker.Sng/addAdminRoleData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRoleAddRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminRoleAddRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleAddRequest} request
+   * @param {!proto.sngpoker.AdminRoleAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRoleAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_addAdminRoleData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleAddRequest} request
+   * @param {!proto.sngpoker.AdminRoleAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRoleAddRequest} request The
+ * @param {!proto.sngpoker.AdminRoleAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addAdminRoleData =
+proto.sngpoker.SngClient.prototype.addAdminRoleData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addAdminRoleData',
+      '/sngpoker.Sng/addAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_addAdminRoleData,
@@ -8447,17 +8447,17 @@ proto.services.SngClient.prototype.addAdminRoleData =
 
 
 /**
- * @param {!proto.services.AdminRoleAddRequest} request The
+ * @param {!proto.sngpoker.AdminRoleAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addAdminRoleData =
+proto.sngpoker.SngPromiseClient.prototype.addAdminRoleData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addAdminRoleData',
+      '/sngpoker.Sng/addAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_addAdminRoleData);
@@ -8467,58 +8467,58 @@ proto.services.SngPromiseClient.prototype.addAdminRoleData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRoleUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_updateAdminRoleData = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateAdminRoleData',
+  '/sngpoker.Sng/updateAdminRoleData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRoleUpdateRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminRoleUpdateRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleUpdateRequest} request
+   * @param {!proto.sngpoker.AdminRoleUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRoleUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_updateAdminRoleData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleUpdateRequest} request
+   * @param {!proto.sngpoker.AdminRoleUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRoleUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminRoleUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateAdminRoleData =
+proto.sngpoker.SngClient.prototype.updateAdminRoleData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateAdminRoleData',
+      '/sngpoker.Sng/updateAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateAdminRoleData,
@@ -8527,17 +8527,17 @@ proto.services.SngClient.prototype.updateAdminRoleData =
 
 
 /**
- * @param {!proto.services.AdminRoleUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminRoleUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateAdminRoleData =
+proto.sngpoker.SngPromiseClient.prototype.updateAdminRoleData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateAdminRoleData',
+      '/sngpoker.Sng/updateAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateAdminRoleData);
@@ -8547,58 +8547,58 @@ proto.services.SngPromiseClient.prototype.updateAdminRoleData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRoleRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_removeAdminRoleData = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeAdminRoleData',
+  '/sngpoker.Sng/removeAdminRoleData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRoleRemoveRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminRoleRemoveRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleRemoveRequest} request
+   * @param {!proto.sngpoker.AdminRoleRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRoleRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRoleRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_removeAdminRoleData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRoleRemoveRequest} request
+   * @param {!proto.sngpoker.AdminRoleRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRoleRemoveRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeAdminRoleData =
+proto.sngpoker.SngClient.prototype.removeAdminRoleData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeAdminRoleData',
+      '/sngpoker.Sng/removeAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeAdminRoleData,
@@ -8607,17 +8607,17 @@ proto.services.SngClient.prototype.removeAdminRoleData =
 
 
 /**
- * @param {!proto.services.AdminRoleRemoveRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeAdminRoleData =
+proto.sngpoker.SngPromiseClient.prototype.removeAdminRoleData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeAdminRoleData',
+      '/sngpoker.Sng/removeAdminRoleData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeAdminRoleData);
@@ -8627,58 +8627,58 @@ proto.services.SngPromiseClient.prototype.removeAdminRoleData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminUpdateRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminUpdateRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getAdminRoles = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAdminRoles',
+  '/sngpoker.Sng/getAdminRoles',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminUpdateRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.AdminUpdateRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminUpdateRequest} request
+   * @param {!proto.sngpoker.AdminUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminUpdateRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminUpdateRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getAdminRoles = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminUpdateRequest} request
+   * @param {!proto.sngpoker.AdminUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAdminRoles =
+proto.sngpoker.SngClient.prototype.getAdminRoles =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAdminRoles',
+      '/sngpoker.Sng/getAdminRoles',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdminRoles,
@@ -8687,17 +8687,17 @@ proto.services.SngClient.prototype.getAdminRoles =
 
 
 /**
- * @param {!proto.services.AdminUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAdminRoles =
+proto.sngpoker.SngPromiseClient.prototype.getAdminRoles =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAdminRoles',
+      '/sngpoker.Sng/getAdminRoles',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdminRoles);
@@ -8707,58 +8707,58 @@ proto.services.SngPromiseClient.prototype.getAdminRoles =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRoleRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminRoleRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getDistinctRole = new grpc.web.MethodDescriptor(
-  '/services.Sng/getDistinctRole',
+  '/sngpoker.Sng/getDistinctRole',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRoleRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.AdminRoleRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminRoleRequest} request
+   * @param {!proto.sngpoker.AdminRoleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRoleRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.AdminRoleRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getDistinctRole = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.AdminRoleRequest} request
+   * @param {!proto.sngpoker.AdminRoleRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRoleRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getDistinctRole =
+proto.sngpoker.SngClient.prototype.getDistinctRole =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getDistinctRole',
+      '/sngpoker.Sng/getDistinctRole',
       request,
       metadata || {},
       methodDescriptor_Sng_getDistinctRole,
@@ -8767,17 +8767,17 @@ proto.services.SngClient.prototype.getDistinctRole =
 
 
 /**
- * @param {!proto.services.AdminRoleRequest} request The
+ * @param {!proto.sngpoker.AdminRoleRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getDistinctRole =
+proto.sngpoker.SngPromiseClient.prototype.getDistinctRole =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getDistinctRole',
+      '/sngpoker.Sng/getDistinctRole',
       request,
       metadata || {},
       methodDescriptor_Sng_getDistinctRole);
@@ -8787,58 +8787,58 @@ proto.services.SngPromiseClient.prototype.getDistinctRole =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getAdmins = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAdmins',
+  '/sngpoker.Sng/getAdmins',
   grpc.web.MethodType.UNARY,
-  proto.services.ActiveUsersRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.ActiveUsersRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getAdmins = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAdmins =
+proto.sngpoker.SngClient.prototype.getAdmins =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAdmins',
+      '/sngpoker.Sng/getAdmins',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdmins,
@@ -8847,17 +8847,17 @@ proto.services.SngClient.prototype.getAdmins =
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAdmins =
+proto.sngpoker.SngPromiseClient.prototype.getAdmins =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAdmins',
+      '/sngpoker.Sng/getAdmins',
       request,
       metadata || {},
       methodDescriptor_Sng_getAdmins);
@@ -8867,58 +8867,58 @@ proto.services.SngPromiseClient.prototype.getAdmins =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_addAdminData = new grpc.web.MethodDescriptor(
-  '/services.Sng/addAdminData',
+  '/sngpoker.Sng/addAdminData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminAddRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminAddRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminAddRequest} request
+   * @param {!proto.sngpoker.AdminAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminAddRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminAddRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_addAdminData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminAddRequest} request
+   * @param {!proto.sngpoker.AdminAddRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminAddRequest} request The
+ * @param {!proto.sngpoker.AdminAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addAdminData =
+proto.sngpoker.SngClient.prototype.addAdminData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addAdminData',
+      '/sngpoker.Sng/addAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_addAdminData,
@@ -8927,17 +8927,17 @@ proto.services.SngClient.prototype.addAdminData =
 
 
 /**
- * @param {!proto.services.AdminAddRequest} request The
+ * @param {!proto.sngpoker.AdminAddRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addAdminData =
+proto.sngpoker.SngPromiseClient.prototype.addAdminData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addAdminData',
+      '/sngpoker.Sng/addAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_addAdminData);
@@ -8947,58 +8947,58 @@ proto.services.SngPromiseClient.prototype.addAdminData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_updateAdminData = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateAdminData',
+  '/sngpoker.Sng/updateAdminData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminUpdateRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminUpdateRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminUpdateRequest} request
+   * @param {!proto.sngpoker.AdminUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminUpdateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminUpdateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_updateAdminData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminUpdateRequest} request
+   * @param {!proto.sngpoker.AdminUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateAdminData =
+proto.sngpoker.SngClient.prototype.updateAdminData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateAdminData',
+      '/sngpoker.Sng/updateAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateAdminData,
@@ -9007,17 +9007,17 @@ proto.services.SngClient.prototype.updateAdminData =
 
 
 /**
- * @param {!proto.services.AdminUpdateRequest} request The
+ * @param {!proto.sngpoker.AdminUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateAdminData =
+proto.sngpoker.SngPromiseClient.prototype.updateAdminData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateAdminData',
+      '/sngpoker.Sng/updateAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_updateAdminData);
@@ -9027,58 +9027,58 @@ proto.services.SngPromiseClient.prototype.updateAdminData =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_removeAdminData = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeAdminData',
+  '/sngpoker.Sng/removeAdminData',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminRemoveRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.AdminRemoveRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRemoveRequest} request
+   * @param {!proto.sngpoker.AdminRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminRemoveRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.AdminRemoveRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_removeAdminData = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.AdminRemoveRequest} request
+   * @param {!proto.sngpoker.AdminRemoveRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminRemoveRequest} request The
+ * @param {!proto.sngpoker.AdminRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeAdminData =
+proto.sngpoker.SngClient.prototype.removeAdminData =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeAdminData',
+      '/sngpoker.Sng/removeAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeAdminData,
@@ -9087,17 +9087,17 @@ proto.services.SngClient.prototype.removeAdminData =
 
 
 /**
- * @param {!proto.services.AdminRemoveRequest} request The
+ * @param {!proto.sngpoker.AdminRemoveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeAdminData =
+proto.sngpoker.SngPromiseClient.prototype.removeAdminData =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeAdminData',
+      '/sngpoker.Sng/removeAdminData',
       request,
       metadata || {},
       methodDescriptor_Sng_removeAdminData);
@@ -9108,13 +9108,13 @@ proto.services.SngPromiseClient.prototype.removeAdminData =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.google.protobuf.Empty,
- *   !proto.services.FloatResponse>}
+ *   !proto.sngpoker.FloatResponse>}
  */
 const methodDescriptor_Sng_getAmountInplay = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAmountInplay',
+  '/sngpoker.Sng/getAmountInplay',
   grpc.web.MethodType.UNARY,
   google_protobuf_empty_pb.Empty,
-  proto.services.FloatResponse,
+  proto.sngpoker.FloatResponse,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -9122,7 +9122,7 @@ const methodDescriptor_Sng_getAmountInplay = new grpc.web.MethodDescriptor(
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FloatResponse.deserializeBinary
+  proto.sngpoker.FloatResponse.deserializeBinary
 );
 
 
@@ -9130,10 +9130,10 @@ const methodDescriptor_Sng_getAmountInplay = new grpc.web.MethodDescriptor(
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.google.protobuf.Empty,
- *   !proto.services.FloatResponse>}
+ *   !proto.sngpoker.FloatResponse>}
  */
 const methodInfo_Sng_getAmountInplay = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.FloatResponse,
+  proto.sngpoker.FloatResponse,
   /**
    * @param {!proto.google.protobuf.Empty} request
    * @return {!Uint8Array}
@@ -9141,7 +9141,7 @@ const methodInfo_Sng_getAmountInplay = new grpc.web.AbstractClientBase.MethodInf
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FloatResponse.deserializeBinary
+  proto.sngpoker.FloatResponse.deserializeBinary
 );
 
 
@@ -9150,15 +9150,15 @@ const methodInfo_Sng_getAmountInplay = new grpc.web.AbstractClientBase.MethodInf
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.FloatResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.FloatResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.FloatResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.FloatResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAmountInplay =
+proto.sngpoker.SngClient.prototype.getAmountInplay =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAmountInplay',
+      '/sngpoker.Sng/getAmountInplay',
       request,
       metadata || {},
       methodDescriptor_Sng_getAmountInplay,
@@ -9171,13 +9171,13 @@ proto.services.SngClient.prototype.getAmountInplay =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.FloatResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.FloatResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAmountInplay =
+proto.sngpoker.SngPromiseClient.prototype.getAmountInplay =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAmountInplay',
+      '/sngpoker.Sng/getAmountInplay',
       request,
       metadata || {},
       methodDescriptor_Sng_getAmountInplay);
@@ -9187,58 +9187,58 @@ proto.services.SngPromiseClient.prototype.getAmountInplay =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GetTournamentTemplateDetailRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateDetailRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_removeTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/removeTournament',
+  '/sngpoker.Sng/removeTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.GetTournamentTemplateDetailRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.GetTournamentTemplateDetailRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateDetailRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GetTournamentTemplateDetailRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.GetTournamentTemplateDetailRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_removeTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.GetTournamentTemplateDetailRequest} request
+   * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateDetailRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.removeTournament =
+proto.sngpoker.SngClient.prototype.removeTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/removeTournament',
+      '/sngpoker.Sng/removeTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_removeTournament,
@@ -9247,17 +9247,17 @@ proto.services.SngClient.prototype.removeTournament =
 
 
 /**
- * @param {!proto.services.GetTournamentTemplateDetailRequest} request The
+ * @param {!proto.sngpoker.GetTournamentTemplateDetailRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.removeTournament =
+proto.sngpoker.SngPromiseClient.prototype.removeTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/removeTournament',
+      '/sngpoker.Sng/removeTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_removeTournament);
@@ -9267,58 +9267,58 @@ proto.services.SngPromiseClient.prototype.removeTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UpdateTournamentTemplateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.UpdateTournamentTemplateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_updateTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateTournament',
+  '/sngpoker.Sng/updateTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.UpdateTournamentTemplateRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.UpdateTournamentTemplateRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.UpdateTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.UpdateTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UpdateTournamentTemplateRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.UpdateTournamentTemplateRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_updateTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.UpdateTournamentTemplateRequest} request
+   * @param {!proto.sngpoker.UpdateTournamentTemplateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UpdateTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.UpdateTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateTournament =
+proto.sngpoker.SngClient.prototype.updateTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateTournament',
+      '/sngpoker.Sng/updateTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_updateTournament,
@@ -9327,17 +9327,17 @@ proto.services.SngClient.prototype.updateTournament =
 
 
 /**
- * @param {!proto.services.UpdateTournamentTemplateRequest} request The
+ * @param {!proto.sngpoker.UpdateTournamentTemplateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateTournament =
+proto.sngpoker.SngPromiseClient.prototype.updateTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateTournament',
+      '/sngpoker.Sng/updateTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_updateTournament);
@@ -9347,58 +9347,58 @@ proto.services.SngPromiseClient.prototype.updateTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerTournamentRequest,
- *   !proto.services.GetTournamentsResponse>}
+ *   !proto.sngpoker.PlayerTournamentRequest,
+ *   !proto.sngpoker.GetTournamentsResponse>}
  */
 const methodDescriptor_Sng_getPlayerTournaments = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPlayerTournaments',
+  '/sngpoker.Sng/getPlayerTournaments',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerTournamentRequest,
-  proto.services.GetTournamentsResponse,
+  proto.sngpoker.PlayerTournamentRequest,
+  proto.sngpoker.GetTournamentsResponse,
   /**
-   * @param {!proto.services.PlayerTournamentRequest} request
+   * @param {!proto.sngpoker.PlayerTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentsResponse.deserializeBinary
+  proto.sngpoker.GetTournamentsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerTournamentRequest,
- *   !proto.services.GetTournamentsResponse>}
+ *   !proto.sngpoker.PlayerTournamentRequest,
+ *   !proto.sngpoker.GetTournamentsResponse>}
  */
 const methodInfo_Sng_getPlayerTournaments = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GetTournamentsResponse,
+  proto.sngpoker.GetTournamentsResponse,
   /**
-   * @param {!proto.services.PlayerTournamentRequest} request
+   * @param {!proto.sngpoker.PlayerTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GetTournamentsResponse.deserializeBinary
+  proto.sngpoker.GetTournamentsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerTournamentRequest} request The
+ * @param {!proto.sngpoker.PlayerTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GetTournamentsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GetTournamentsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GetTournamentsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GetTournamentsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPlayerTournaments =
+proto.sngpoker.SngClient.prototype.getPlayerTournaments =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPlayerTournaments',
+      '/sngpoker.Sng/getPlayerTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerTournaments,
@@ -9407,17 +9407,17 @@ proto.services.SngClient.prototype.getPlayerTournaments =
 
 
 /**
- * @param {!proto.services.PlayerTournamentRequest} request The
+ * @param {!proto.sngpoker.PlayerTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GetTournamentsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GetTournamentsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPlayerTournaments =
+proto.sngpoker.SngPromiseClient.prototype.getPlayerTournaments =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPlayerTournaments',
+      '/sngpoker.Sng/getPlayerTournaments',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerTournaments);
@@ -9427,58 +9427,58 @@ proto.services.SngPromiseClient.prototype.getPlayerTournaments =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.SimulateGamesRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.SimulateGamesRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_simulateGames = new grpc.web.MethodDescriptor(
-  '/services.Sng/simulateGames',
+  '/sngpoker.Sng/simulateGames',
   grpc.web.MethodType.UNARY,
-  proto.services.SimulateGamesRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.SimulateGamesRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.SimulateGamesRequest} request
+   * @param {!proto.sngpoker.SimulateGamesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.SimulateGamesRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.SimulateGamesRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_simulateGames = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.SimulateGamesRequest} request
+   * @param {!proto.sngpoker.SimulateGamesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.SimulateGamesRequest} request The
+ * @param {!proto.sngpoker.SimulateGamesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.simulateGames =
+proto.sngpoker.SngClient.prototype.simulateGames =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/simulateGames',
+      '/sngpoker.Sng/simulateGames',
       request,
       metadata || {},
       methodDescriptor_Sng_simulateGames,
@@ -9487,17 +9487,17 @@ proto.services.SngClient.prototype.simulateGames =
 
 
 /**
- * @param {!proto.services.SimulateGamesRequest} request The
+ * @param {!proto.sngpoker.SimulateGamesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.simulateGames =
+proto.sngpoker.SngPromiseClient.prototype.simulateGames =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/simulateGames',
+      '/sngpoker.Sng/simulateGames',
       request,
       metadata || {},
       methodDescriptor_Sng_simulateGames);
@@ -9507,58 +9507,58 @@ proto.services.SngPromiseClient.prototype.simulateGames =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PendingDepositRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.PendingDepositRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getPendingRequest = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPendingRequest',
+  '/sngpoker.Sng/getPendingRequest',
   grpc.web.MethodType.UNARY,
-  proto.services.PendingDepositRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.PendingDepositRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.PendingDepositRequest} request
+   * @param {!proto.sngpoker.PendingDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PendingDepositRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.PendingDepositRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getPendingRequest = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.PendingDepositRequest} request
+   * @param {!proto.sngpoker.PendingDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PendingDepositRequest} request The
+ * @param {!proto.sngpoker.PendingDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPendingRequest =
+proto.sngpoker.SngClient.prototype.getPendingRequest =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPendingRequest',
+      '/sngpoker.Sng/getPendingRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_getPendingRequest,
@@ -9567,17 +9567,17 @@ proto.services.SngClient.prototype.getPendingRequest =
 
 
 /**
- * @param {!proto.services.PendingDepositRequest} request The
+ * @param {!proto.sngpoker.PendingDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPendingRequest =
+proto.sngpoker.SngPromiseClient.prototype.getPendingRequest =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPendingRequest',
+      '/sngpoker.Sng/getPendingRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_getPendingRequest);
@@ -9587,58 +9587,58 @@ proto.services.SngPromiseClient.prototype.getPendingRequest =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PendingDepositRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.PendingDepositRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodDescriptor_Sng_getApprovedRequest = new grpc.web.MethodDescriptor(
-  '/services.Sng/getApprovedRequest',
+  '/sngpoker.Sng/getApprovedRequest',
   grpc.web.MethodType.UNARY,
-  proto.services.PendingDepositRequest,
-  proto.services.DataResponse,
+  proto.sngpoker.PendingDepositRequest,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.PendingDepositRequest} request
+   * @param {!proto.sngpoker.PendingDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PendingDepositRequest,
- *   !proto.services.DataResponse>}
+ *   !proto.sngpoker.PendingDepositRequest,
+ *   !proto.sngpoker.DataResponse>}
  */
 const methodInfo_Sng_getApprovedRequest = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DataResponse,
+  proto.sngpoker.DataResponse,
   /**
-   * @param {!proto.services.PendingDepositRequest} request
+   * @param {!proto.sngpoker.PendingDepositRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DataResponse.deserializeBinary
+  proto.sngpoker.DataResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PendingDepositRequest} request The
+ * @param {!proto.sngpoker.PendingDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DataResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DataResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DataResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DataResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getApprovedRequest =
+proto.sngpoker.SngClient.prototype.getApprovedRequest =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getApprovedRequest',
+      '/sngpoker.Sng/getApprovedRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_getApprovedRequest,
@@ -9647,17 +9647,17 @@ proto.services.SngClient.prototype.getApprovedRequest =
 
 
 /**
- * @param {!proto.services.PendingDepositRequest} request The
+ * @param {!proto.sngpoker.PendingDepositRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DataResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DataResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getApprovedRequest =
+proto.sngpoker.SngPromiseClient.prototype.getApprovedRequest =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getApprovedRequest',
+      '/sngpoker.Sng/getApprovedRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_getApprovedRequest);
@@ -9667,58 +9667,58 @@ proto.services.SngPromiseClient.prototype.getApprovedRequest =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UpdatePendingRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.UpdatePendingRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodDescriptor_Sng_actionOnPendingRequest = new grpc.web.MethodDescriptor(
-  '/services.Sng/actionOnPendingRequest',
+  '/sngpoker.Sng/actionOnPendingRequest',
   grpc.web.MethodType.UNARY,
-  proto.services.UpdatePendingRequest,
-  proto.services.StatusResponse,
+  proto.sngpoker.UpdatePendingRequest,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.UpdatePendingRequest} request
+   * @param {!proto.sngpoker.UpdatePendingRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UpdatePendingRequest,
- *   !proto.services.StatusResponse>}
+ *   !proto.sngpoker.UpdatePendingRequest,
+ *   !proto.sngpoker.StatusResponse>}
  */
 const methodInfo_Sng_actionOnPendingRequest = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.StatusResponse,
+  proto.sngpoker.StatusResponse,
   /**
-   * @param {!proto.services.UpdatePendingRequest} request
+   * @param {!proto.sngpoker.UpdatePendingRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.StatusResponse.deserializeBinary
+  proto.sngpoker.StatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UpdatePendingRequest} request The
+ * @param {!proto.sngpoker.UpdatePendingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.StatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.StatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.StatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.StatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.actionOnPendingRequest =
+proto.sngpoker.SngClient.prototype.actionOnPendingRequest =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/actionOnPendingRequest',
+      '/sngpoker.Sng/actionOnPendingRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_actionOnPendingRequest,
@@ -9727,17 +9727,17 @@ proto.services.SngClient.prototype.actionOnPendingRequest =
 
 
 /**
- * @param {!proto.services.UpdatePendingRequest} request The
+ * @param {!proto.sngpoker.UpdatePendingRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.StatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.StatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.actionOnPendingRequest =
+proto.sngpoker.SngPromiseClient.prototype.actionOnPendingRequest =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/actionOnPendingRequest',
+      '/sngpoker.Sng/actionOnPendingRequest',
       request,
       metadata || {},
       methodDescriptor_Sng_actionOnPendingRequest);
@@ -9747,58 +9747,58 @@ proto.services.SngPromiseClient.prototype.actionOnPendingRequest =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.ActiveUsersResult>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.ActiveUsersResult>}
  */
 const methodDescriptor_Sng_getBotList = new grpc.web.MethodDescriptor(
-  '/services.Sng/getBotList',
+  '/sngpoker.Sng/getBotList',
   grpc.web.MethodType.UNARY,
-  proto.services.ActiveUsersRequest,
-  proto.services.ActiveUsersResult,
+  proto.sngpoker.ActiveUsersRequest,
+  proto.sngpoker.ActiveUsersResult,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveUsersResult.deserializeBinary
+  proto.sngpoker.ActiveUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ActiveUsersRequest,
- *   !proto.services.ActiveUsersResult>}
+ *   !proto.sngpoker.ActiveUsersRequest,
+ *   !proto.sngpoker.ActiveUsersResult>}
  */
 const methodInfo_Sng_getBotList = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ActiveUsersResult,
+  proto.sngpoker.ActiveUsersResult,
   /**
-   * @param {!proto.services.ActiveUsersRequest} request
+   * @param {!proto.sngpoker.ActiveUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ActiveUsersResult.deserializeBinary
+  proto.sngpoker.ActiveUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ActiveUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ActiveUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ActiveUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ActiveUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getBotList =
+proto.sngpoker.SngClient.prototype.getBotList =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getBotList',
+      '/sngpoker.Sng/getBotList',
       request,
       metadata || {},
       methodDescriptor_Sng_getBotList,
@@ -9807,17 +9807,17 @@ proto.services.SngClient.prototype.getBotList =
 
 
 /**
- * @param {!proto.services.ActiveUsersRequest} request The
+ * @param {!proto.sngpoker.ActiveUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ActiveUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ActiveUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getBotList =
+proto.sngpoker.SngPromiseClient.prototype.getBotList =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getBotList',
+      '/sngpoker.Sng/getBotList',
       request,
       metadata || {},
       methodDescriptor_Sng_getBotList);
@@ -9827,58 +9827,58 @@ proto.services.SngPromiseClient.prototype.getBotList =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CreateMultipleUsersRequest,
- *   !proto.services.CreateMultipleUsersResult>}
+ *   !proto.sngpoker.CreateMultipleUsersRequest,
+ *   !proto.sngpoker.CreateMultipleUsersResult>}
  */
 const methodDescriptor_Sng_createMultipleUsers = new grpc.web.MethodDescriptor(
-  '/services.Sng/createMultipleUsers',
+  '/sngpoker.Sng/createMultipleUsers',
   grpc.web.MethodType.UNARY,
-  proto.services.CreateMultipleUsersRequest,
-  proto.services.CreateMultipleUsersResult,
+  proto.sngpoker.CreateMultipleUsersRequest,
+  proto.sngpoker.CreateMultipleUsersResult,
   /**
-   * @param {!proto.services.CreateMultipleUsersRequest} request
+   * @param {!proto.sngpoker.CreateMultipleUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CreateMultipleUsersResult.deserializeBinary
+  proto.sngpoker.CreateMultipleUsersResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CreateMultipleUsersRequest,
- *   !proto.services.CreateMultipleUsersResult>}
+ *   !proto.sngpoker.CreateMultipleUsersRequest,
+ *   !proto.sngpoker.CreateMultipleUsersResult>}
  */
 const methodInfo_Sng_createMultipleUsers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CreateMultipleUsersResult,
+  proto.sngpoker.CreateMultipleUsersResult,
   /**
-   * @param {!proto.services.CreateMultipleUsersRequest} request
+   * @param {!proto.sngpoker.CreateMultipleUsersRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CreateMultipleUsersResult.deserializeBinary
+  proto.sngpoker.CreateMultipleUsersResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CreateMultipleUsersRequest} request The
+ * @param {!proto.sngpoker.CreateMultipleUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CreateMultipleUsersResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CreateMultipleUsersResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CreateMultipleUsersResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CreateMultipleUsersResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.createMultipleUsers =
+proto.sngpoker.SngClient.prototype.createMultipleUsers =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/createMultipleUsers',
+      '/sngpoker.Sng/createMultipleUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_createMultipleUsers,
@@ -9887,17 +9887,17 @@ proto.services.SngClient.prototype.createMultipleUsers =
 
 
 /**
- * @param {!proto.services.CreateMultipleUsersRequest} request The
+ * @param {!proto.sngpoker.CreateMultipleUsersRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CreateMultipleUsersResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CreateMultipleUsersResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.createMultipleUsers =
+proto.sngpoker.SngPromiseClient.prototype.createMultipleUsers =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/createMultipleUsers',
+      '/sngpoker.Sng/createMultipleUsers',
       request,
       metadata || {},
       methodDescriptor_Sng_createMultipleUsers);
@@ -9907,58 +9907,58 @@ proto.services.SngPromiseClient.prototype.createMultipleUsers =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.DeletePrizePoolStatusRequest,
- *   !proto.services.DeletePrizePoolStatusResponse>}
+ *   !proto.sngpoker.DeletePrizePoolStatusRequest,
+ *   !proto.sngpoker.DeletePrizePoolStatusResponse>}
  */
 const methodDescriptor_Sng_deletePrizePoolPayout = new grpc.web.MethodDescriptor(
-  '/services.Sng/deletePrizePoolPayout',
+  '/sngpoker.Sng/deletePrizePoolPayout',
   grpc.web.MethodType.UNARY,
-  proto.services.DeletePrizePoolStatusRequest,
-  proto.services.DeletePrizePoolStatusResponse,
+  proto.sngpoker.DeletePrizePoolStatusRequest,
+  proto.sngpoker.DeletePrizePoolStatusResponse,
   /**
-   * @param {!proto.services.DeletePrizePoolStatusRequest} request
+   * @param {!proto.sngpoker.DeletePrizePoolStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DeletePrizePoolStatusResponse.deserializeBinary
+  proto.sngpoker.DeletePrizePoolStatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.DeletePrizePoolStatusRequest,
- *   !proto.services.DeletePrizePoolStatusResponse>}
+ *   !proto.sngpoker.DeletePrizePoolStatusRequest,
+ *   !proto.sngpoker.DeletePrizePoolStatusResponse>}
  */
 const methodInfo_Sng_deletePrizePoolPayout = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.DeletePrizePoolStatusResponse,
+  proto.sngpoker.DeletePrizePoolStatusResponse,
   /**
-   * @param {!proto.services.DeletePrizePoolStatusRequest} request
+   * @param {!proto.sngpoker.DeletePrizePoolStatusRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.DeletePrizePoolStatusResponse.deserializeBinary
+  proto.sngpoker.DeletePrizePoolStatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.DeletePrizePoolStatusRequest} request The
+ * @param {!proto.sngpoker.DeletePrizePoolStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.DeletePrizePoolStatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.DeletePrizePoolStatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.DeletePrizePoolStatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.DeletePrizePoolStatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.deletePrizePoolPayout =
+proto.sngpoker.SngClient.prototype.deletePrizePoolPayout =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/deletePrizePoolPayout',
+      '/sngpoker.Sng/deletePrizePoolPayout',
       request,
       metadata || {},
       methodDescriptor_Sng_deletePrizePoolPayout,
@@ -9967,17 +9967,17 @@ proto.services.SngClient.prototype.deletePrizePoolPayout =
 
 
 /**
- * @param {!proto.services.DeletePrizePoolStatusRequest} request The
+ * @param {!proto.sngpoker.DeletePrizePoolStatusRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.DeletePrizePoolStatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.DeletePrizePoolStatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.deletePrizePoolPayout =
+proto.sngpoker.SngPromiseClient.prototype.deletePrizePoolPayout =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/deletePrizePoolPayout',
+      '/sngpoker.Sng/deletePrizePoolPayout',
       request,
       metadata || {},
       methodDescriptor_Sng_deletePrizePoolPayout);
@@ -9987,58 +9987,58 @@ proto.services.SngPromiseClient.prototype.deletePrizePoolPayout =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AdminJoinAnyTournamentRequest,
- *   !proto.services.JoinAnyTournamentResult>}
+ *   !proto.sngpoker.AdminJoinAnyTournamentRequest,
+ *   !proto.sngpoker.JoinAnyTournamentResult>}
  */
 const methodDescriptor_Sng_adminJoinAnyTournament = new grpc.web.MethodDescriptor(
-  '/services.Sng/adminJoinAnyTournament',
+  '/sngpoker.Sng/adminJoinAnyTournament',
   grpc.web.MethodType.UNARY,
-  proto.services.AdminJoinAnyTournamentRequest,
-  proto.services.JoinAnyTournamentResult,
+  proto.sngpoker.AdminJoinAnyTournamentRequest,
+  proto.sngpoker.JoinAnyTournamentResult,
   /**
-   * @param {!proto.services.AdminJoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.AdminJoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AdminJoinAnyTournamentRequest,
- *   !proto.services.JoinAnyTournamentResult>}
+ *   !proto.sngpoker.AdminJoinAnyTournamentRequest,
+ *   !proto.sngpoker.JoinAnyTournamentResult>}
  */
 const methodInfo_Sng_adminJoinAnyTournament = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.JoinAnyTournamentResult,
+  proto.sngpoker.JoinAnyTournamentResult,
   /**
-   * @param {!proto.services.AdminJoinAnyTournamentRequest} request
+   * @param {!proto.sngpoker.AdminJoinAnyTournamentRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.JoinAnyTournamentResult.deserializeBinary
+  proto.sngpoker.JoinAnyTournamentResult.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AdminJoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.AdminJoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.JoinAnyTournamentResult)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.JoinAnyTournamentResult)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.JoinAnyTournamentResult>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.JoinAnyTournamentResult>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.adminJoinAnyTournament =
+proto.sngpoker.SngClient.prototype.adminJoinAnyTournament =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/adminJoinAnyTournament',
+      '/sngpoker.Sng/adminJoinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_adminJoinAnyTournament,
@@ -10047,17 +10047,17 @@ proto.services.SngClient.prototype.adminJoinAnyTournament =
 
 
 /**
- * @param {!proto.services.AdminJoinAnyTournamentRequest} request The
+ * @param {!proto.sngpoker.AdminJoinAnyTournamentRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.JoinAnyTournamentResult>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.JoinAnyTournamentResult>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.adminJoinAnyTournament =
+proto.sngpoker.SngPromiseClient.prototype.adminJoinAnyTournament =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/adminJoinAnyTournament',
+      '/sngpoker.Sng/adminJoinAnyTournament',
       request,
       metadata || {},
       methodDescriptor_Sng_adminJoinAnyTournament);
@@ -10067,58 +10067,58 @@ proto.services.SngPromiseClient.prototype.adminJoinAnyTournament =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodDescriptor_Sng_getUiSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/getUiSettings',
+  '/sngpoker.Sng/getUiSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.UiSettingsRequest,
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsRequest,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodInfo_Sng_getUiSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UiSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UiSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UiSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UiSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getUiSettings =
+proto.sngpoker.SngClient.prototype.getUiSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getUiSettings',
+      '/sngpoker.Sng/getUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getUiSettings,
@@ -10127,17 +10127,17 @@ proto.services.SngClient.prototype.getUiSettings =
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UiSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UiSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getUiSettings =
+proto.sngpoker.SngPromiseClient.prototype.getUiSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getUiSettings',
+      '/sngpoker.Sng/getUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getUiSettings);
@@ -10147,58 +10147,58 @@ proto.services.SngPromiseClient.prototype.getUiSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodDescriptor_Sng_getAllUiSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/getAllUiSettings',
+  '/sngpoker.Sng/getAllUiSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.UiSettingsRequest,
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsRequest,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodInfo_Sng_getAllUiSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UiSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UiSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UiSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UiSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getAllUiSettings =
+proto.sngpoker.SngClient.prototype.getAllUiSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getAllUiSettings',
+      '/sngpoker.Sng/getAllUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getAllUiSettings,
@@ -10207,17 +10207,17 @@ proto.services.SngClient.prototype.getAllUiSettings =
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UiSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UiSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getAllUiSettings =
+proto.sngpoker.SngPromiseClient.prototype.getAllUiSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getAllUiSettings',
+      '/sngpoker.Sng/getAllUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_getAllUiSettings);
@@ -10227,58 +10227,58 @@ proto.services.SngPromiseClient.prototype.getAllUiSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AllUiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.AllUiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodDescriptor_Sng_setUiSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/setUiSettings',
+  '/sngpoker.Sng/setUiSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.AllUiSettingsRequest,
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.AllUiSettingsRequest,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.AllUiSettingsRequest} request
+   * @param {!proto.sngpoker.AllUiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AllUiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.AllUiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodInfo_Sng_setUiSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.AllUiSettingsRequest} request
+   * @param {!proto.sngpoker.AllUiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AllUiSettingsRequest} request The
+ * @param {!proto.sngpoker.AllUiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UiSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UiSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UiSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UiSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setUiSettings =
+proto.sngpoker.SngClient.prototype.setUiSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setUiSettings',
+      '/sngpoker.Sng/setUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_setUiSettings,
@@ -10287,17 +10287,17 @@ proto.services.SngClient.prototype.setUiSettings =
 
 
 /**
- * @param {!proto.services.AllUiSettingsRequest} request The
+ * @param {!proto.sngpoker.AllUiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UiSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UiSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setUiSettings =
+proto.sngpoker.SngPromiseClient.prototype.setUiSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setUiSettings',
+      '/sngpoker.Sng/setUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_setUiSettings);
@@ -10307,58 +10307,58 @@ proto.services.SngPromiseClient.prototype.setUiSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodDescriptor_Sng_deleteUiSettings = new grpc.web.MethodDescriptor(
-  '/services.Sng/deleteUiSettings',
+  '/sngpoker.Sng/deleteUiSettings',
   grpc.web.MethodType.UNARY,
-  proto.services.UiSettingsRequest,
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsRequest,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UiSettingsRequest,
- *   !proto.services.UiSettingsResponse>}
+ *   !proto.sngpoker.UiSettingsRequest,
+ *   !proto.sngpoker.UiSettingsResponse>}
  */
 const methodInfo_Sng_deleteUiSettings = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UiSettingsResponse,
+  proto.sngpoker.UiSettingsResponse,
   /**
-   * @param {!proto.services.UiSettingsRequest} request
+   * @param {!proto.sngpoker.UiSettingsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UiSettingsResponse.deserializeBinary
+  proto.sngpoker.UiSettingsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UiSettingsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UiSettingsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UiSettingsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UiSettingsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.deleteUiSettings =
+proto.sngpoker.SngClient.prototype.deleteUiSettings =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/deleteUiSettings',
+      '/sngpoker.Sng/deleteUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_deleteUiSettings,
@@ -10367,17 +10367,17 @@ proto.services.SngClient.prototype.deleteUiSettings =
 
 
 /**
- * @param {!proto.services.UiSettingsRequest} request The
+ * @param {!proto.sngpoker.UiSettingsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UiSettingsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UiSettingsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.deleteUiSettings =
+proto.sngpoker.SngPromiseClient.prototype.deleteUiSettings =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/deleteUiSettings',
+      '/sngpoker.Sng/deleteUiSettings',
       request,
       metadata || {},
       methodDescriptor_Sng_deleteUiSettings);
@@ -10387,58 +10387,58 @@ proto.services.SngPromiseClient.prototype.deleteUiSettings =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodDescriptor_Sng_getThemes = new grpc.web.MethodDescriptor(
-  '/services.Sng/getThemes',
+  '/sngpoker.Sng/getThemes',
   grpc.web.MethodType.UNARY,
-  proto.services.ThemesRequest,
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesRequest,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodInfo_Sng_getThemes = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ThemesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ThemesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ThemesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ThemesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getThemes =
+proto.sngpoker.SngClient.prototype.getThemes =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getThemes',
+      '/sngpoker.Sng/getThemes',
       request,
       metadata || {},
       methodDescriptor_Sng_getThemes,
@@ -10447,17 +10447,17 @@ proto.services.SngClient.prototype.getThemes =
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ThemesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ThemesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getThemes =
+proto.sngpoker.SngPromiseClient.prototype.getThemes =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getThemes',
+      '/sngpoker.Sng/getThemes',
       request,
       metadata || {},
       methodDescriptor_Sng_getThemes);
@@ -10467,58 +10467,58 @@ proto.services.SngPromiseClient.prototype.getThemes =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodDescriptor_Sng_setTheme = new grpc.web.MethodDescriptor(
-  '/services.Sng/setTheme',
+  '/sngpoker.Sng/setTheme',
   grpc.web.MethodType.UNARY,
-  proto.services.ThemesRequest,
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesRequest,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodInfo_Sng_setTheme = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ThemesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ThemesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ThemesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ThemesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setTheme =
+proto.sngpoker.SngClient.prototype.setTheme =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setTheme',
+      '/sngpoker.Sng/setTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_setTheme,
@@ -10527,17 +10527,17 @@ proto.services.SngClient.prototype.setTheme =
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ThemesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ThemesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setTheme =
+proto.sngpoker.SngPromiseClient.prototype.setTheme =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setTheme',
+      '/sngpoker.Sng/setTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_setTheme);
@@ -10547,58 +10547,58 @@ proto.services.SngPromiseClient.prototype.setTheme =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.EditThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.EditThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodDescriptor_Sng_editTheme = new grpc.web.MethodDescriptor(
-  '/services.Sng/editTheme',
+  '/sngpoker.Sng/editTheme',
   grpc.web.MethodType.UNARY,
-  proto.services.EditThemesRequest,
-  proto.services.ThemesResponse,
+  proto.sngpoker.EditThemesRequest,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.EditThemesRequest} request
+   * @param {!proto.sngpoker.EditThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.EditThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.EditThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodInfo_Sng_editTheme = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.EditThemesRequest} request
+   * @param {!proto.sngpoker.EditThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.EditThemesRequest} request The
+ * @param {!proto.sngpoker.EditThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ThemesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ThemesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ThemesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ThemesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.editTheme =
+proto.sngpoker.SngClient.prototype.editTheme =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/editTheme',
+      '/sngpoker.Sng/editTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_editTheme,
@@ -10607,17 +10607,17 @@ proto.services.SngClient.prototype.editTheme =
 
 
 /**
- * @param {!proto.services.EditThemesRequest} request The
+ * @param {!proto.sngpoker.EditThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ThemesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ThemesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.editTheme =
+proto.sngpoker.SngPromiseClient.prototype.editTheme =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/editTheme',
+      '/sngpoker.Sng/editTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_editTheme);
@@ -10627,58 +10627,58 @@ proto.services.SngPromiseClient.prototype.editTheme =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodDescriptor_Sng_deleteTheme = new grpc.web.MethodDescriptor(
-  '/services.Sng/deleteTheme',
+  '/sngpoker.Sng/deleteTheme',
   grpc.web.MethodType.UNARY,
-  proto.services.ThemesRequest,
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesRequest,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.ThemesRequest,
- *   !proto.services.ThemesResponse>}
+ *   !proto.sngpoker.ThemesRequest,
+ *   !proto.sngpoker.ThemesResponse>}
  */
 const methodInfo_Sng_deleteTheme = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.ThemesResponse,
+  proto.sngpoker.ThemesResponse,
   /**
-   * @param {!proto.services.ThemesRequest} request
+   * @param {!proto.sngpoker.ThemesRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.ThemesResponse.deserializeBinary
+  proto.sngpoker.ThemesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.ThemesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.ThemesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.ThemesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.ThemesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.deleteTheme =
+proto.sngpoker.SngClient.prototype.deleteTheme =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/deleteTheme',
+      '/sngpoker.Sng/deleteTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_deleteTheme,
@@ -10687,17 +10687,17 @@ proto.services.SngClient.prototype.deleteTheme =
 
 
 /**
- * @param {!proto.services.ThemesRequest} request The
+ * @param {!proto.sngpoker.ThemesRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.ThemesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.ThemesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.deleteTheme =
+proto.sngpoker.SngPromiseClient.prototype.deleteTheme =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/deleteTheme',
+      '/sngpoker.Sng/deleteTheme',
       request,
       metadata || {},
       methodDescriptor_Sng_deleteTheme);
@@ -10707,58 +10707,58 @@ proto.services.SngPromiseClient.prototype.deleteTheme =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.GeopollRequest,
- *   !proto.services.GeopollResponse>}
+ *   !proto.sngpoker.GeopollRequest,
+ *   !proto.sngpoker.GeopollResponse>}
  */
 const methodDescriptor_Sng_getGeopoll = new grpc.web.MethodDescriptor(
-  '/services.Sng/getGeopoll',
+  '/sngpoker.Sng/getGeopoll',
   grpc.web.MethodType.UNARY,
-  proto.services.GeopollRequest,
-  proto.services.GeopollResponse,
+  proto.sngpoker.GeopollRequest,
+  proto.sngpoker.GeopollResponse,
   /**
-   * @param {!proto.services.GeopollRequest} request
+   * @param {!proto.sngpoker.GeopollRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeopollResponse.deserializeBinary
+  proto.sngpoker.GeopollResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.GeopollRequest,
- *   !proto.services.GeopollResponse>}
+ *   !proto.sngpoker.GeopollRequest,
+ *   !proto.sngpoker.GeopollResponse>}
  */
 const methodInfo_Sng_getGeopoll = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.GeopollResponse,
+  proto.sngpoker.GeopollResponse,
   /**
-   * @param {!proto.services.GeopollRequest} request
+   * @param {!proto.sngpoker.GeopollRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.GeopollResponse.deserializeBinary
+  proto.sngpoker.GeopollResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.GeopollRequest} request The
+ * @param {!proto.sngpoker.GeopollRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.GeopollResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.GeopollResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.GeopollResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.GeopollResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getGeopoll =
+proto.sngpoker.SngClient.prototype.getGeopoll =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getGeopoll',
+      '/sngpoker.Sng/getGeopoll',
       request,
       metadata || {},
       methodDescriptor_Sng_getGeopoll,
@@ -10767,17 +10767,17 @@ proto.services.SngClient.prototype.getGeopoll =
 
 
 /**
- * @param {!proto.services.GeopollRequest} request The
+ * @param {!proto.sngpoker.GeopollRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.GeopollResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.GeopollResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getGeopoll =
+proto.sngpoker.SngPromiseClient.prototype.getGeopoll =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getGeopoll',
+      '/sngpoker.Sng/getGeopoll',
       request,
       metadata || {},
       methodDescriptor_Sng_getGeopoll);
@@ -10787,58 +10787,58 @@ proto.services.SngPromiseClient.prototype.getGeopoll =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.UpdateSecurityQuestionsRequest,
- *   !proto.services.UpdateSecurityQuestionsResponse>}
+ *   !proto.sngpoker.UpdateSecurityQuestionsRequest,
+ *   !proto.sngpoker.UpdateSecurityQuestionsResponse>}
  */
 const methodDescriptor_Sng_updateSecurityQuestions = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateSecurityQuestions',
+  '/sngpoker.Sng/updateSecurityQuestions',
   grpc.web.MethodType.UNARY,
-  proto.services.UpdateSecurityQuestionsRequest,
-  proto.services.UpdateSecurityQuestionsResponse,
+  proto.sngpoker.UpdateSecurityQuestionsRequest,
+  proto.sngpoker.UpdateSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.UpdateSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.UpdateSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.UpdateSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.UpdateSecurityQuestionsRequest,
- *   !proto.services.UpdateSecurityQuestionsResponse>}
+ *   !proto.sngpoker.UpdateSecurityQuestionsRequest,
+ *   !proto.sngpoker.UpdateSecurityQuestionsResponse>}
  */
 const methodInfo_Sng_updateSecurityQuestions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.UpdateSecurityQuestionsResponse,
+  proto.sngpoker.UpdateSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.UpdateSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.UpdateSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.UpdateSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.UpdateSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.UpdateSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.UpdateSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.UpdateSecurityQuestionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.UpdateSecurityQuestionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.UpdateSecurityQuestionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.UpdateSecurityQuestionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateSecurityQuestions =
+proto.sngpoker.SngClient.prototype.updateSecurityQuestions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateSecurityQuestions',
+      '/sngpoker.Sng/updateSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_updateSecurityQuestions,
@@ -10847,17 +10847,17 @@ proto.services.SngClient.prototype.updateSecurityQuestions =
 
 
 /**
- * @param {!proto.services.UpdateSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.UpdateSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.UpdateSecurityQuestionsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.UpdateSecurityQuestionsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateSecurityQuestions =
+proto.sngpoker.SngPromiseClient.prototype.updateSecurityQuestions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateSecurityQuestions',
+      '/sngpoker.Sng/updateSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_updateSecurityQuestions);
@@ -10867,58 +10867,58 @@ proto.services.SngPromiseClient.prototype.updateSecurityQuestions =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.FetchSecurityQuestionsResponse,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodDescriptor_Sng_getUserSecurityQuestions = new grpc.web.MethodDescriptor(
-  '/services.Sng/getUserSecurityQuestions',
+  '/sngpoker.Sng/getUserSecurityQuestions',
   grpc.web.MethodType.UNARY,
-  proto.services.FetchSecurityQuestionsResponse,
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsResponse} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsResponse} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.FetchSecurityQuestionsResponse,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodInfo_Sng_getUserSecurityQuestions = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsResponse} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsResponse} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsResponse} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsResponse} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.FetchSecurityQuestionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.FetchSecurityQuestionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.FetchSecurityQuestionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.FetchSecurityQuestionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getUserSecurityQuestions =
+proto.sngpoker.SngClient.prototype.getUserSecurityQuestions =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getUserSecurityQuestions',
+      '/sngpoker.Sng/getUserSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_getUserSecurityQuestions,
@@ -10927,17 +10927,17 @@ proto.services.SngClient.prototype.getUserSecurityQuestions =
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsResponse} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsResponse} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.FetchSecurityQuestionsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.FetchSecurityQuestionsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getUserSecurityQuestions =
+proto.sngpoker.SngPromiseClient.prototype.getUserSecurityQuestions =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getUserSecurityQuestions',
+      '/sngpoker.Sng/getUserSecurityQuestions',
       request,
       metadata || {},
       methodDescriptor_Sng_getUserSecurityQuestions);
@@ -10947,58 +10947,58 @@ proto.services.SngPromiseClient.prototype.getUserSecurityQuestions =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CustomCssRequest,
- *   !proto.services.CustomCssResponse>}
+ *   !proto.sngpoker.CustomCssRequest,
+ *   !proto.sngpoker.CustomCssResponse>}
  */
 const methodDescriptor_Sng_updateCustomCss = new grpc.web.MethodDescriptor(
-  '/services.Sng/updateCustomCss',
+  '/sngpoker.Sng/updateCustomCss',
   grpc.web.MethodType.UNARY,
-  proto.services.CustomCssRequest,
-  proto.services.CustomCssResponse,
+  proto.sngpoker.CustomCssRequest,
+  proto.sngpoker.CustomCssResponse,
   /**
-   * @param {!proto.services.CustomCssRequest} request
+   * @param {!proto.sngpoker.CustomCssRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CustomCssResponse.deserializeBinary
+  proto.sngpoker.CustomCssResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CustomCssRequest,
- *   !proto.services.CustomCssResponse>}
+ *   !proto.sngpoker.CustomCssRequest,
+ *   !proto.sngpoker.CustomCssResponse>}
  */
 const methodInfo_Sng_updateCustomCss = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CustomCssResponse,
+  proto.sngpoker.CustomCssResponse,
   /**
-   * @param {!proto.services.CustomCssRequest} request
+   * @param {!proto.sngpoker.CustomCssRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CustomCssResponse.deserializeBinary
+  proto.sngpoker.CustomCssResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CustomCssRequest} request The
+ * @param {!proto.sngpoker.CustomCssRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CustomCssResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CustomCssResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CustomCssResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CustomCssResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updateCustomCss =
+proto.sngpoker.SngClient.prototype.updateCustomCss =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updateCustomCss',
+      '/sngpoker.Sng/updateCustomCss',
       request,
       metadata || {},
       methodDescriptor_Sng_updateCustomCss,
@@ -11007,17 +11007,17 @@ proto.services.SngClient.prototype.updateCustomCss =
 
 
 /**
- * @param {!proto.services.CustomCssRequest} request The
+ * @param {!proto.sngpoker.CustomCssRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CustomCssResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CustomCssResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updateCustomCss =
+proto.sngpoker.SngPromiseClient.prototype.updateCustomCss =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updateCustomCss',
+      '/sngpoker.Sng/updateCustomCss',
       request,
       metadata || {},
       methodDescriptor_Sng_updateCustomCss);
@@ -11027,58 +11027,58 @@ proto.services.SngPromiseClient.prototype.updateCustomCss =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.CustomCssRequest,
- *   !proto.services.CustomCssResponse>}
+ *   !proto.sngpoker.CustomCssRequest,
+ *   !proto.sngpoker.CustomCssResponse>}
  */
 const methodDescriptor_Sng_getCustomCss = new grpc.web.MethodDescriptor(
-  '/services.Sng/getCustomCss',
+  '/sngpoker.Sng/getCustomCss',
   grpc.web.MethodType.UNARY,
-  proto.services.CustomCssRequest,
-  proto.services.CustomCssResponse,
+  proto.sngpoker.CustomCssRequest,
+  proto.sngpoker.CustomCssResponse,
   /**
-   * @param {!proto.services.CustomCssRequest} request
+   * @param {!proto.sngpoker.CustomCssRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CustomCssResponse.deserializeBinary
+  proto.sngpoker.CustomCssResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.CustomCssRequest,
- *   !proto.services.CustomCssResponse>}
+ *   !proto.sngpoker.CustomCssRequest,
+ *   !proto.sngpoker.CustomCssResponse>}
  */
 const methodInfo_Sng_getCustomCss = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.CustomCssResponse,
+  proto.sngpoker.CustomCssResponse,
   /**
-   * @param {!proto.services.CustomCssRequest} request
+   * @param {!proto.sngpoker.CustomCssRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.CustomCssResponse.deserializeBinary
+  proto.sngpoker.CustomCssResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.CustomCssRequest} request The
+ * @param {!proto.sngpoker.CustomCssRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.CustomCssResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.CustomCssResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.CustomCssResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.CustomCssResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getCustomCss =
+proto.sngpoker.SngClient.prototype.getCustomCss =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getCustomCss',
+      '/sngpoker.Sng/getCustomCss',
       request,
       metadata || {},
       methodDescriptor_Sng_getCustomCss,
@@ -11087,17 +11087,17 @@ proto.services.SngClient.prototype.getCustomCss =
 
 
 /**
- * @param {!proto.services.CustomCssRequest} request The
+ * @param {!proto.sngpoker.CustomCssRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.CustomCssResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.CustomCssResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getCustomCss =
+proto.sngpoker.SngPromiseClient.prototype.getCustomCss =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getCustomCss',
+      '/sngpoker.Sng/getCustomCss',
       request,
       metadata || {},
       methodDescriptor_Sng_getCustomCss);
@@ -11107,58 +11107,58 @@ proto.services.SngPromiseClient.prototype.getCustomCss =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressUpdateRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressUpdateRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodDescriptor_Sng_addPlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/addPlayerMailingAddress',
+  '/sngpoker.Sng/addPlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressUpdateRequest,
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressUpdateRequest,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressUpdateRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressUpdateRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressUpdateRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodInfo_Sng_addPlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressUpdateRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressUpdateRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressStatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressStatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressStatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressStatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.addPlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.addPlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/addPlayerMailingAddress',
+      '/sngpoker.Sng/addPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_addPlayerMailingAddress,
@@ -11167,17 +11167,17 @@ proto.services.SngClient.prototype.addPlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressUpdateRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressStatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressStatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.addPlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.addPlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/addPlayerMailingAddress',
+      '/sngpoker.Sng/addPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_addPlayerMailingAddress);
@@ -11187,58 +11187,58 @@ proto.services.SngPromiseClient.prototype.addPlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressResponse>}
  */
 const methodDescriptor_Sng_getPlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPlayerMailingAddress',
+  '/sngpoker.Sng/getPlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressRequest,
-  proto.services.PlayerMailingAddressResponse,
+  proto.sngpoker.PlayerMailingAddressRequest,
+  proto.sngpoker.PlayerMailingAddressResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressResponse>}
  */
 const methodInfo_Sng_getPlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressResponse,
+  proto.sngpoker.PlayerMailingAddressResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.getPlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPlayerMailingAddress',
+      '/sngpoker.Sng/getPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerMailingAddress,
@@ -11247,17 +11247,17 @@ proto.services.SngClient.prototype.getPlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.getPlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPlayerMailingAddress',
+      '/sngpoker.Sng/getPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerMailingAddress);
@@ -11267,58 +11267,58 @@ proto.services.SngPromiseClient.prototype.getPlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressesResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressesResponse>}
  */
 const methodDescriptor_Sng_getPlayerMailingAddresses = new grpc.web.MethodDescriptor(
-  '/services.Sng/getPlayerMailingAddresses',
+  '/sngpoker.Sng/getPlayerMailingAddresses',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressRequest,
-  proto.services.PlayerMailingAddressesResponse,
+  proto.sngpoker.PlayerMailingAddressRequest,
+  proto.sngpoker.PlayerMailingAddressesResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressesResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressesResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressesResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressesResponse>}
  */
 const methodInfo_Sng_getPlayerMailingAddresses = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressesResponse,
+  proto.sngpoker.PlayerMailingAddressesResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressesResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressesResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressesResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressesResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressesResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressesResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getPlayerMailingAddresses =
+proto.sngpoker.SngClient.prototype.getPlayerMailingAddresses =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getPlayerMailingAddresses',
+      '/sngpoker.Sng/getPlayerMailingAddresses',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerMailingAddresses,
@@ -11327,17 +11327,17 @@ proto.services.SngClient.prototype.getPlayerMailingAddresses =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressesResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressesResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getPlayerMailingAddresses =
+proto.sngpoker.SngPromiseClient.prototype.getPlayerMailingAddresses =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getPlayerMailingAddresses',
+      '/sngpoker.Sng/getPlayerMailingAddresses',
       request,
       metadata || {},
       methodDescriptor_Sng_getPlayerMailingAddresses);
@@ -11347,58 +11347,58 @@ proto.services.SngPromiseClient.prototype.getPlayerMailingAddresses =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressUpdateRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressUpdateRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodDescriptor_Sng_updatePlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/updatePlayerMailingAddress',
+  '/sngpoker.Sng/updatePlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressUpdateRequest,
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressUpdateRequest,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressUpdateRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressUpdateRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressUpdateRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodInfo_Sng_updatePlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressUpdateRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressUpdateRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressStatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressStatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressStatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressStatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.updatePlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.updatePlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/updatePlayerMailingAddress',
+      '/sngpoker.Sng/updatePlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_updatePlayerMailingAddress,
@@ -11407,17 +11407,17 @@ proto.services.SngClient.prototype.updatePlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressUpdateRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressUpdateRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressStatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressStatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.updatePlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.updatePlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/updatePlayerMailingAddress',
+      '/sngpoker.Sng/updatePlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_updatePlayerMailingAddress);
@@ -11427,58 +11427,58 @@ proto.services.SngPromiseClient.prototype.updatePlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressResponse>}
  */
 const methodDescriptor_Sng_getDefaultPlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/getDefaultPlayerMailingAddress',
+  '/sngpoker.Sng/getDefaultPlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressRequest,
-  proto.services.PlayerMailingAddressResponse,
+  proto.sngpoker.PlayerMailingAddressRequest,
+  proto.sngpoker.PlayerMailingAddressResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressResponse>}
  */
 const methodInfo_Sng_getDefaultPlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressResponse,
+  proto.sngpoker.PlayerMailingAddressResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getDefaultPlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.getDefaultPlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getDefaultPlayerMailingAddress',
+      '/sngpoker.Sng/getDefaultPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_getDefaultPlayerMailingAddress,
@@ -11487,17 +11487,17 @@ proto.services.SngClient.prototype.getDefaultPlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getDefaultPlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.getDefaultPlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getDefaultPlayerMailingAddress',
+      '/sngpoker.Sng/getDefaultPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_getDefaultPlayerMailingAddress);
@@ -11507,58 +11507,58 @@ proto.services.SngPromiseClient.prototype.getDefaultPlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodDescriptor_Sng_setDefaultPlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/setDefaultPlayerMailingAddress',
+  '/sngpoker.Sng/setDefaultPlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressRequest,
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressRequest,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodInfo_Sng_setDefaultPlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressStatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressStatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressStatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressStatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.setDefaultPlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.setDefaultPlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/setDefaultPlayerMailingAddress',
+      '/sngpoker.Sng/setDefaultPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_setDefaultPlayerMailingAddress,
@@ -11567,17 +11567,17 @@ proto.services.SngClient.prototype.setDefaultPlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressStatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressStatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.setDefaultPlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.setDefaultPlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/setDefaultPlayerMailingAddress',
+      '/sngpoker.Sng/setDefaultPlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_setDefaultPlayerMailingAddress);
@@ -11587,58 +11587,58 @@ proto.services.SngPromiseClient.prototype.setDefaultPlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodDescriptor_Sng_deletePlayerMailingAddress = new grpc.web.MethodDescriptor(
-  '/services.Sng/deletePlayerMailingAddress',
+  '/sngpoker.Sng/deletePlayerMailingAddress',
   grpc.web.MethodType.UNARY,
-  proto.services.PlayerMailingAddressRequest,
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressRequest,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.PlayerMailingAddressRequest,
- *   !proto.services.PlayerMailingAddressStatusResponse>}
+ *   !proto.sngpoker.PlayerMailingAddressRequest,
+ *   !proto.sngpoker.PlayerMailingAddressStatusResponse>}
  */
 const methodInfo_Sng_deletePlayerMailingAddress = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.PlayerMailingAddressStatusResponse,
+  proto.sngpoker.PlayerMailingAddressStatusResponse,
   /**
-   * @param {!proto.services.PlayerMailingAddressRequest} request
+   * @param {!proto.sngpoker.PlayerMailingAddressRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.PlayerMailingAddressStatusResponse.deserializeBinary
+  proto.sngpoker.PlayerMailingAddressStatusResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.PlayerMailingAddressStatusResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.PlayerMailingAddressStatusResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.PlayerMailingAddressStatusResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.PlayerMailingAddressStatusResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.deletePlayerMailingAddress =
+proto.sngpoker.SngClient.prototype.deletePlayerMailingAddress =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/deletePlayerMailingAddress',
+      '/sngpoker.Sng/deletePlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_deletePlayerMailingAddress,
@@ -11647,17 +11647,17 @@ proto.services.SngClient.prototype.deletePlayerMailingAddress =
 
 
 /**
- * @param {!proto.services.PlayerMailingAddressRequest} request The
+ * @param {!proto.sngpoker.PlayerMailingAddressRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.PlayerMailingAddressStatusResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.PlayerMailingAddressStatusResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.deletePlayerMailingAddress =
+proto.sngpoker.SngPromiseClient.prototype.deletePlayerMailingAddress =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/deletePlayerMailingAddress',
+      '/sngpoker.Sng/deletePlayerMailingAddress',
       request,
       metadata || {},
       methodDescriptor_Sng_deletePlayerMailingAddress);
@@ -11667,58 +11667,58 @@ proto.services.SngPromiseClient.prototype.deletePlayerMailingAddress =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.FetchSecurityQuestionsRequest,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsRequest,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodDescriptor_Sng_getRandomSecurityQuestion = new grpc.web.MethodDescriptor(
-  '/services.Sng/getRandomSecurityQuestion',
+  '/sngpoker.Sng/getRandomSecurityQuestion',
   grpc.web.MethodType.UNARY,
-  proto.services.FetchSecurityQuestionsRequest,
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsRequest,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.FetchSecurityQuestionsRequest,
- *   !proto.services.FetchSecurityQuestionsResponse>}
+ *   !proto.sngpoker.FetchSecurityQuestionsRequest,
+ *   !proto.sngpoker.FetchSecurityQuestionsResponse>}
  */
 const methodInfo_Sng_getRandomSecurityQuestion = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.FetchSecurityQuestionsResponse,
+  proto.sngpoker.FetchSecurityQuestionsResponse,
   /**
-   * @param {!proto.services.FetchSecurityQuestionsRequest} request
+   * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.FetchSecurityQuestionsResponse.deserializeBinary
+  proto.sngpoker.FetchSecurityQuestionsResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.FetchSecurityQuestionsResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.FetchSecurityQuestionsResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.FetchSecurityQuestionsResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.FetchSecurityQuestionsResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.getRandomSecurityQuestion =
+proto.sngpoker.SngClient.prototype.getRandomSecurityQuestion =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/getRandomSecurityQuestion',
+      '/sngpoker.Sng/getRandomSecurityQuestion',
       request,
       metadata || {},
       methodDescriptor_Sng_getRandomSecurityQuestion,
@@ -11727,17 +11727,17 @@ proto.services.SngClient.prototype.getRandomSecurityQuestion =
 
 
 /**
- * @param {!proto.services.FetchSecurityQuestionsRequest} request The
+ * @param {!proto.sngpoker.FetchSecurityQuestionsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.FetchSecurityQuestionsResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.FetchSecurityQuestionsResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.getRandomSecurityQuestion =
+proto.sngpoker.SngPromiseClient.prototype.getRandomSecurityQuestion =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/getRandomSecurityQuestion',
+      '/sngpoker.Sng/getRandomSecurityQuestion',
       request,
       metadata || {},
       methodDescriptor_Sng_getRandomSecurityQuestion);
@@ -11747,58 +11747,58 @@ proto.services.SngPromiseClient.prototype.getRandomSecurityQuestion =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.AnswerVerifyPasswordRequest,
- *   !proto.services.AnswerVerifyPasswordResponse>}
+ *   !proto.sngpoker.AnswerVerifyPasswordRequest,
+ *   !proto.sngpoker.AnswerVerifyPasswordResponse>}
  */
 const methodDescriptor_Sng_answerSecurityQusetionAndVerifyPassword = new grpc.web.MethodDescriptor(
-  '/services.Sng/answerSecurityQusetionAndVerifyPassword',
+  '/sngpoker.Sng/answerSecurityQusetionAndVerifyPassword',
   grpc.web.MethodType.UNARY,
-  proto.services.AnswerVerifyPasswordRequest,
-  proto.services.AnswerVerifyPasswordResponse,
+  proto.sngpoker.AnswerVerifyPasswordRequest,
+  proto.sngpoker.AnswerVerifyPasswordResponse,
   /**
-   * @param {!proto.services.AnswerVerifyPasswordRequest} request
+   * @param {!proto.sngpoker.AnswerVerifyPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AnswerVerifyPasswordResponse.deserializeBinary
+  proto.sngpoker.AnswerVerifyPasswordResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.AnswerVerifyPasswordRequest,
- *   !proto.services.AnswerVerifyPasswordResponse>}
+ *   !proto.sngpoker.AnswerVerifyPasswordRequest,
+ *   !proto.sngpoker.AnswerVerifyPasswordResponse>}
  */
 const methodInfo_Sng_answerSecurityQusetionAndVerifyPassword = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.AnswerVerifyPasswordResponse,
+  proto.sngpoker.AnswerVerifyPasswordResponse,
   /**
-   * @param {!proto.services.AnswerVerifyPasswordRequest} request
+   * @param {!proto.sngpoker.AnswerVerifyPasswordRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.AnswerVerifyPasswordResponse.deserializeBinary
+  proto.sngpoker.AnswerVerifyPasswordResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.AnswerVerifyPasswordRequest} request The
+ * @param {!proto.sngpoker.AnswerVerifyPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.AnswerVerifyPasswordResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.AnswerVerifyPasswordResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.AnswerVerifyPasswordResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.AnswerVerifyPasswordResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.answerSecurityQusetionAndVerifyPassword =
+proto.sngpoker.SngClient.prototype.answerSecurityQusetionAndVerifyPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/answerSecurityQusetionAndVerifyPassword',
+      '/sngpoker.Sng/answerSecurityQusetionAndVerifyPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_answerSecurityQusetionAndVerifyPassword,
@@ -11807,17 +11807,17 @@ proto.services.SngClient.prototype.answerSecurityQusetionAndVerifyPassword =
 
 
 /**
- * @param {!proto.services.AnswerVerifyPasswordRequest} request The
+ * @param {!proto.sngpoker.AnswerVerifyPasswordRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.AnswerVerifyPasswordResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.AnswerVerifyPasswordResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.answerSecurityQusetionAndVerifyPassword =
+proto.sngpoker.SngPromiseClient.prototype.answerSecurityQusetionAndVerifyPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/answerSecurityQusetionAndVerifyPassword',
+      '/sngpoker.Sng/answerSecurityQusetionAndVerifyPassword',
       request,
       metadata || {},
       methodDescriptor_Sng_answerSecurityQusetionAndVerifyPassword);
@@ -11827,58 +11827,58 @@ proto.services.SngPromiseClient.prototype.answerSecurityQusetionAndVerifyPasswor
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.services.VerifySSNLastFourRequest,
- *   !proto.services.VerifySSNLastFourResponse>}
+ *   !proto.sngpoker.VerifySSNLastFourRequest,
+ *   !proto.sngpoker.VerifySSNLastFourResponse>}
  */
 const methodDescriptor_Sng_verifySSNLastFourDigits = new grpc.web.MethodDescriptor(
-  '/services.Sng/verifySSNLastFourDigits',
+  '/sngpoker.Sng/verifySSNLastFourDigits',
   grpc.web.MethodType.UNARY,
-  proto.services.VerifySSNLastFourRequest,
-  proto.services.VerifySSNLastFourResponse,
+  proto.sngpoker.VerifySSNLastFourRequest,
+  proto.sngpoker.VerifySSNLastFourResponse,
   /**
-   * @param {!proto.services.VerifySSNLastFourRequest} request
+   * @param {!proto.sngpoker.VerifySSNLastFourRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VerifySSNLastFourResponse.deserializeBinary
+  proto.sngpoker.VerifySSNLastFourResponse.deserializeBinary
 );
 
 
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.services.VerifySSNLastFourRequest,
- *   !proto.services.VerifySSNLastFourResponse>}
+ *   !proto.sngpoker.VerifySSNLastFourRequest,
+ *   !proto.sngpoker.VerifySSNLastFourResponse>}
  */
 const methodInfo_Sng_verifySSNLastFourDigits = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.services.VerifySSNLastFourResponse,
+  proto.sngpoker.VerifySSNLastFourResponse,
   /**
-   * @param {!proto.services.VerifySSNLastFourRequest} request
+   * @param {!proto.sngpoker.VerifySSNLastFourRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.services.VerifySSNLastFourResponse.deserializeBinary
+  proto.sngpoker.VerifySSNLastFourResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.services.VerifySSNLastFourRequest} request The
+ * @param {!proto.sngpoker.VerifySSNLastFourRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.services.VerifySSNLastFourResponse)}
+ * @param {function(?grpc.web.Error, ?proto.sngpoker.VerifySSNLastFourResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.services.VerifySSNLastFourResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.sngpoker.VerifySSNLastFourResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.services.SngClient.prototype.verifySSNLastFourDigits =
+proto.sngpoker.SngClient.prototype.verifySSNLastFourDigits =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/services.Sng/verifySSNLastFourDigits',
+      '/sngpoker.Sng/verifySSNLastFourDigits',
       request,
       metadata || {},
       methodDescriptor_Sng_verifySSNLastFourDigits,
@@ -11887,22 +11887,22 @@ proto.services.SngClient.prototype.verifySSNLastFourDigits =
 
 
 /**
- * @param {!proto.services.VerifySSNLastFourRequest} request The
+ * @param {!proto.sngpoker.VerifySSNLastFourRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.services.VerifySSNLastFourResponse>}
- *     A native promise that resolves to the response
+ * @return {!Promise<!proto.sngpoker.VerifySSNLastFourResponse>}
+ *     Promise that resolves to the response
  */
-proto.services.SngPromiseClient.prototype.verifySSNLastFourDigits =
+proto.sngpoker.SngPromiseClient.prototype.verifySSNLastFourDigits =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/services.Sng/verifySSNLastFourDigits',
+      '/sngpoker.Sng/verifySSNLastFourDigits',
       request,
       metadata || {},
       methodDescriptor_Sng_verifySSNLastFourDigits);
 };
 
 
-module.exports = proto.services;
+module.exports = proto.sngpoker;
 

@@ -13,12 +13,12 @@ const CardNameClasses = {
   river: "river",
 };
 
-function UnpositionedCard({ number, type, winners_cards, ...props }) {
+function UnpositionedCard({ card, type, winners_cards, ...props }) {
   const assetPaths = useAssetPaths();
 
   const name_class = CardNameClasses[type];
-  const type_class = numberCardClass(number);
-  const winner_class = getNumberCardWinnerClass(winners_cards, number);
+  const type_class = numberCardClass(card.rank, card.suit);
+  const winner_class = getNumberCardWinnerClass(winners_cards, card);
 
   return (
     <div

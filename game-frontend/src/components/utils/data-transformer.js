@@ -84,5 +84,4 @@ function getExpectedPlayersData(playersData) {
     };
   }
   
-
 export { tranformData } 

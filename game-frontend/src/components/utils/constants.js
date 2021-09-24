@@ -28,7 +28,7 @@ for (let number of card_numbers) {
 StringCardClasses["back"] = "card_back";
 
 // change number representation of card sent from server to its corresponding card number and symbols
-card_numbers = [
+const CardRanks = [
   "A",
   "K",
   "Q",
@@ -43,26 +43,19 @@ card_numbers = [
   "3",
   "2",
 ];
-card_symbols = ["c", "s", "h", "d"];
-const NumberCardTypes = {};
-let card_server_number = 1;
-for (let number of card_numbers) {
-  for (let type of card_symbols) {
-    NumberCardTypes[card_server_number] = `${number}${type}`;
-    card_server_number++;
-  }
-}
+const CardSuits = ["c", "s", "h", "d"];
 
 /**
  * Changes card represented as number to its correspondinc card class
  * @param {str} server_card_number : number representation of card
  * @returns {str} : corresponding card class
  */
-const numberCardClass = function (server_card_number) {
+const numberCardClass = function (server_rank_number, server_suit_number) {
   let card_type = "back"; // default to back
 
-  if (number_exists(server_card_number)  && server_card_number >= 0) {
-    card_type = NumberCardTypes[server_card_number];
+  if (number_exists(server_rank_number) && number_exists(server_suit_number) 
+   && server_rank_number >= 0 && server_suit_number >= 0) {
+    card_type = `${CardRanks[server_rank_number]}${CardSuits[server_suit_number]}`;
   }
 
   return StringCardClasses[card_type];

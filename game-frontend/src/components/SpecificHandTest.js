@@ -44,6 +44,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/FormControl";
+import { transformCards } from "./utils/data-transformer";
+import { numberCardClass } from "./utils/constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -180,15 +182,6 @@ export default function SpecificHandTest({  ...props }) {
   const {flop0, flop1, flop2, river, turn} = metaData;
   
 
-
-  const formatNumber = (cardNumberIndex, cardSymbolIndex) =>{
-    let voffset = 12 - cardNumberIndex;	// Ace => 0, King => 1, etc.
-		let coffset =	3 - cardSymbolIndex;	// Clubs => 0, Spades => 1, Diamonds => 2, etc.
-
-		let picnum  = voffset * 4 + coffset + 1;
-		
-		return picnum;
-  }
   const setupDeck = () =>{
     setSelectedHistoryId(null);
     if(uniqueDeck){
@@ -213,7 +206,8 @@ export default function SpecificHandTest({  ...props }) {
 
 
   const handle_deck_response = (response)=>{
-    setDeck(JSON.parse(response)[0])
+   const DeckData = response.toObject().cardsList
+    setDeck(DeckData)
   }
 
   useEffect(()=>{
@@ -290,71 +284,44 @@ export default function SpecificHandTest({  ...props }) {
   },[deck]);
 
 
-  const notSelected = (card) =>{
-    let matchNotFound = true;
-    Object.keys(metaData).forEach((key)=>{
-      if(metaData[key] === card){
-        matchNotFound = false;
-      }
-    })
-    if(!uniqueDeck){
-      players.forEach(player=>{
-        console.log(player); 
-        player.cards.forEach((player_card)=>{
-          if(player_card === card){
-            matchNotFound = false
-          }
-        })
-       
-     
-      })
-    }else{
-      
-      if(selectedPlayer || selectedPlayer === 0){
-        console.log("Noo selected player")
-      console.log(selectedPlayer);
-      console.log(players[selectedPlayer]);
-      console.log(card);
-        players[selectedPlayer].cards.forEach((player_card)=>{
-          
-          if(player_card === card){
-            matchNotFound = false
-          }
-        })
-      }
-     
-    }
-   
-
-    return matchNotFound;
-  }
+  
   const assignCard = () =>{  
     setWinnerCards(null);
 
-    if(cardNumber !== -1 && cardSymbol !== -1){
-      let card = formatNumber(cardNumber, cardSymbol);
-      if(notSelected(card)){
-        if(selectedPlayer !== null){
-          let tempPlayers = players;
-          tempPlayers[selectedPlayer].cards[cardToUpdate] = card;
-          setSelectedPlayer(null);
-          setPlayers([...tempPlayers]);
-        }else{
-          setMetaData({
-              ...metaData,
-              [cardToUpdate]:card
-          });
-        }
-        setCardNumber(-1);
-        setCardSymbol(-1);   
-        setOpen(false);
-      }else{
-        showSnackBar("Card has already been selected");
+    const card = {rank: cardNumber, suit: cardSymbol};
 
-      }
-        
+    if (isCardSelected(card)) {
+      return  showSnackBar("Card has already been selected");
     }
-      
+    if(selectedPlayer !== null){
+      let tempPlayers = players;
+      tempPlayers[selectedPlayer].cards[cardToUpdate] = card;
+      setSelectedPlayer(null);
+      setPlayers([...tempPlayers]);
+    }else{
+      setMetaData({
+          ...metaData,
+          [cardToUpdate]: card
+      });
+    }
+    setOpen(false);
+     
+  }
+
+  const isCardSelected = card => {
+    const cardSelectedInMeta = Object.keys(metaData).find((meta, key)  => {
+      return card.rank === metaData[meta].rank && card.suit === metaData[meta].suit
+    })
+    
+    const cardSelectedInPlayers = Object.keys(players).find((selectedPlayer, index) => {
+      const player = players[selectedPlayer]
+      const cardInPlayer = Object.keys(player.cards).find((card, key)  => {
+        return card.rank === player.cards[card].rank && card.suit === player.cards[card].suit
+      })
+      return !!cardInPlayer
+    })
+
+    return !!(cardSelectedInMeta || cardSelectedInPlayers)
   }
 
 
@@ -740,7 +707,7 @@ function setCardFromHistory(history, index){
                         <Grid container justify="center" spacing={5}>
                             <Grid item>
                                 <UnpositionedCard
-                                number={flop0}
+                                card={flop0}
                                 winners_cards={winnerCards}
                                 />
                                 <IconButton aria-label="update" className={classes.iconButton} name="flop0" onClick={()=>selectCard("flop0")} color="primary">
@@ -749,7 +716,7 @@ function setCardFromHistory(history, index){
                             </Grid>
                             <Grid item>
                                 <UnpositionedCard
-                                number={flop1}
+                                card={flop1}
                                 winners_cards={winnerCards}
                                 />
                                 <Grid item xs={6}>
@@ -760,7 +727,7 @@ function setCardFromHistory(history, index){
                             </Grid>
                             <Grid item>
                                 <UnpositionedCard
-                                number={flop2}
+                                card={flop2}
                                 winners_cards={winnerCards}
                                 />
                                 <IconButton aria-label="update" className={classes.iconButton} name="flop0" onClick={()=>selectCard("flop2")} color="primary">
@@ -769,7 +736,7 @@ function setCardFromHistory(history, index){
                             </Grid>
                             <Grid item>
                                 <UnpositionedCard
-                                number={river}
+                                card={river}
                                 winners_cards={winnerCards}
                                 />
                                 <IconButton aria-label="update" className={classes.iconButton} name="river" onClick={()=>selectCard("river")} color="primary">
@@ -779,7 +746,7 @@ function setCardFromHistory(history, index){
                             </Grid>
                             <Grid item>
                                 <UnpositionedCard
-                                number={turn}
+                                card={turn}
                                 winners_cards={winnerCards}
                                 />
                                 <IconButton aria-label="update" className={classes.iconButton} name="turn" onClick={()=>selectCard("turn")} color="primary">
@@ -845,9 +812,9 @@ function setCardFromHistory(history, index){
                               
                                     {player.cards && player.cards.length > 0 &&
                                     player.cards.map((card, card_index)=>(
-                                     <Grid item >
+                                     <Grid item key={card_index}>
 
-                                    <UnpositionedCard number={card} winners_cards={winnerCards}/>
+                                    <UnpositionedCard card={card} winners_cards={winnerCards}/>
                                     <IconButton aria-label="update" className={classes.iconButton} name="flop0" onClick={()=>{
                                         selectPlayerCard(index,card_index)
                                     }} color="primary">
@@ -1018,9 +985,9 @@ function setCardFromHistory(history, index){
                       }}
                       >
                           
-                          {crdsym.map((sym, index) =>{
+                          {crdsym.map((rank, index) =>{
                               return (
-                                  <MenuItem key={index} value={index}>{sym}</MenuItem>
+                                  <MenuItem key={index} value={crdsym.length - 1 - index}>{rank}</MenuItem>
 
                               );
                           })}
@@ -1036,9 +1003,9 @@ function setCardFromHistory(history, index){
                       }}
                       >
                           
-                          {colsym.map((sym, index) =>{
+                          {colsym.map((suit, index) =>{
                               return (
-                                  <MenuItem key={index} value={index}>{sym}</MenuItem>
+                                  <MenuItem key={index} value={colsym.length - 1 - index}>{suit}</MenuItem>
 
                               );
                           })}

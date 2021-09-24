@@ -7,6 +7,7 @@ import (
 	"net"
 
 	sngpoker "sngrpc/sngpoker"
+	services "sngrpc/sngpoker/services"
 
 	"google.golang.org/grpc"
 )
@@ -27,6 +28,6 @@ func main() {
 	}
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)
-	sngpoker.RegisterSngServer(grpcServer, &sngpoker.Server{})
+	sngpoker.RegisterSngServer(grpcServer, &services.Server{})
 	grpcServer.Serve(lis)
 }
