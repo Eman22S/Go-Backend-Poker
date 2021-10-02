@@ -29,13 +29,13 @@ func TestHighCard(t *testing.T) {
 		},
 	}
 
-	rankingResult := GetRankHandsResult([]*sngpoker.Player{
+	rankingResult := GetRankedHandsResult([]*sngpoker.Player{
 		&player1,
 		&player2,
 	}, communityCards)
 
 	expectedWiningCard := sngpoker.Card{Rank: 9, Suit: 3}
-	winnningCard := rankingResult[2].WinningCard
+	winnningCard := rankingResult[2].WinningCards[0]
 	if winnningCard.Rank != expectedWiningCard.Rank || winnningCard.Suit != expectedWiningCard.Suit {
 		t.Error("Player 2 sould be the winner")
 	}
