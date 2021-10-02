@@ -230,7 +230,7 @@ func (s *Server) GetStatus(
 				WasSmallBlindMissed:     false,
 				WasBigBlindMissed:       false,
 				IsAutomuckEnabled:       false,
-				Cards:                   []int32{31, 19, 52, 46},
+				Cards:                   []*sngpoker.Card{},
 			},
 			&sngpoker.Player{
 				Username:                "Test9",
@@ -259,7 +259,7 @@ func (s *Server) GetStatus(
 				WasSmallBlindMissed:     false,
 				WasBigBlindMissed:       false,
 				IsAutomuckEnabled:       false,
-				Cards:                   []int32{-1, -1, -1, -1},
+				Cards:                   []*sngpoker.Card{},
 			},
 		}
 

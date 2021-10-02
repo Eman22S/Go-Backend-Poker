@@ -16,3 +16,17 @@ func (s *Server) GetShuffledDeck(ctx context.Context, req *emptypb.Empty) (*sngp
 
 	return &deck.CurrentDeck, nil
 }
+
+func (s *Server) RankHands(ctx context.Context, req *sngpoker.RankHandsRequest) (*sngpoker.RankHandsResult, error) {
+	err := ValidateRankHandRequest(req)
+	if err != nil {
+		return &sngpoker.RankHandsResult{}, err
+	}
+	players, communityCards := req.Players, req.CommunityCard
+	if len(communityCards) == 0 {
+		return &sngpoker.RankHandsResult{WinnerPlayerId: 2}, nil
+	}
+	handTestResult := engine.GetHandTestResult(players, communityCards)
+
+	return &handTestResult, nil
+}

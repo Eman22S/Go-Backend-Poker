@@ -29,19 +29,19 @@ StringCardClasses["back"] = "card_back";
 
 // change number representation of card sent from server to its corresponding card number and symbols
 const CardRanks = [
-  "A",
-  "K",
-  "Q",
-  "J",
-  "10",
-  "9",
-  "8",
-  "7",
-  "6",
-  "5",
-  "4",
-  "3",
   "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+  "A",
 ];
 const CardSuits = ["c", "s", "h", "d"];
 
