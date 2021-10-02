@@ -110,7 +110,7 @@ service Sng{
     
     rpc updatePlayerAccountBalance(UpdateAccountBalanceRequest) returns (UpdateAccountBalanceResponse) {}
 
-    rpc rankHands(RankHandsRequest) returns (RankHandsResult){}
+    rpc rankHands(RankHandsRequest) returns (RankHandsResult) {}
     rpc getShuffledDeck(google.protobuf.Empty) returns (DeckData) {}
 
     rpc getUserInfo(GetUserInfoRequest) returns (GetUserInfoResponse) {}
@@ -349,7 +349,7 @@ message Player {
     bool is_dealer = 16;
     bool is_myturn = 17;
     int64 myturn_start_time = 18;
-    repeated int32 cards = 19;
+    repeated Card cards = 19;
     bool is_allin = 20;
     bool is_away = 21;
 
@@ -1337,17 +1337,26 @@ message WhitelistedClientsResult {
     string data = 1;
 }
 
-//rank hands requests
 message RankHandsRequest {
-    string player_hands = 1;
-    string table_cards = 2;
+    repeated Player players = 1;
+    repeated Card community_card = 2;
     bool additional_checks = 3;
     int32 wildcard_value = 4;
 }
-//rank hands result
+
 message RankHandsResult {
-    string success = 1;
+    int32 winner_playerId = 1;
+    repeated RankData rankResult = 2; 
 }
+
+message RankData {
+    Card high_card = 1;
+    repeated Card kick_cards = 2;
+    string hand_description = 3;
+    int32 score = 4;
+    int32 playerId = 5;
+}
+
 
 message NewDeckRequest {
     string newDeck = 1;

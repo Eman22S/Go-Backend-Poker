@@ -83,5 +83,24 @@ function getExpectedPlayersData(playersData) {
       cards: player_cards,
     };
   }
+
+  function transformRankHandResult (rankHand, originalHands) {
+    console.log("original hands ", originalHands)
+    const hands = rankHand.rankresultList
+    const winners = [hands[0].highCard, ...hands[0].kickCardsList]
+
+    const hand_description = hands.map((hand, index) => {
+      return {
+        hand: originalHands[index],
+        description:  hand.handDescription
+      }
+    })
+
+    return {
+      hand_description,
+      winners
+    }
+
+  }
   
-export { tranformData } 
+export { tranformData, transformRankHandResult } 

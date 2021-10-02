@@ -44,8 +44,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/FormControl";
-import { transformCards } from "./utils/data-transformer";
-import { numberCardClass } from "./utils/constants";
+import { transformRankHandResult } from "./utils/data-transformer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -411,7 +410,7 @@ const on_stat_response = function(response){
 
     //check if all cards are selected
     let isComplete = true;
-    let community_cards = [[flop0,flop1,flop2], turn , river];
+    let community_cards = [flop0,flop1,flop2, turn , river];
     player_cards.forEach(card=>{
    
         if(!card){
@@ -420,7 +419,7 @@ const on_stat_response = function(response){
   
     })
 
-    community_cards[0].forEach((card)=>{
+    community_cards.forEach((card)=>{
       if(!card){
         isComplete = false;
       }
@@ -439,14 +438,26 @@ const on_stat_response = function(response){
       if(gameType !== game_type_values["FIVE_CARD"]){
         payload = {
           ...payload,
-          table_cards:JSON.stringify(community_cards) 
+          table_cards:community_cards
 
         }
       }
+      const reqPlayers = []
+
+      JSON.parse(payload.player_cards).forEach((card,index) => {
+          const p = {}
+          p['Id'] = index
+          p['Cards'] = card
+          reqPlayers.push(p)
+      })
       
-      console.log(payload);
+      const reqObj = {
+        players: reqPlayers,
+        communityCard: payload.table_cards
+      }
+      setCurrentlyTestedHand(reqObj)
       grpc_client.rankHands(
-        payload,
+        reqObj,
         rank_cards_response,
         on_grpc_error
     );
@@ -458,7 +469,12 @@ const on_stat_response = function(response){
   }
   //response after cards are ranked
   const rank_cards_response = (response)=>{
-    let json_response = JSON.parse(response.getSuccess());
+    const rankResponse = response.toObject()
+    let player_cards = [];
+    players.forEach((player=>{
+      player_cards.push(player.cards);
+    }));
+    let json_response =transformRankHandResult(rankResponse,player_cards)
     let winning_hands = json_response.winners;
     setPlayerDescription([...json_response.hand_description])
     setWinning({
@@ -490,7 +506,6 @@ const on_stat_response = function(response){
           }
         })
         setPlayers([...player_description]);
-       
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   },[playerDescription]);

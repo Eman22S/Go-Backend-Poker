@@ -108,6 +108,8 @@ const {
   GeopollRequest,
   UpdateSecurityQuestionsRequest,
   CustomCssRequest,
+  Player,
+  Card
 } = require("./sng_pb");
 
 const CustomGrpcExceptionCode = 111;
@@ -1331,11 +1333,29 @@ class GrpcClient {
   
   rankHands(data, on_change, on_err) {
     let request = new RankHandsRequest();
-    request.setPlayerHands(data.player_cards);
-    request.setTableCards(data.table_cards);
-    request.setAdditionalChecks(data.additionalChecks);
-    request.setWildcardValue(data.wildcardValue);
-    console.log(request);
+    let communityCards = data.communityCard.map(communityCard => {
+      const card = new Card()
+      card.setRank(communityCard.rank)
+      card.setSuit(communityCard.suit)
+      return card
+    })
+
+    let players = data.players.map(player => {
+      const cards = player.Cards.map(card => {
+        const c = new Card()
+        c.setRank(card.rank)
+        c.setSuit(card.suit)
+        return c
+      })
+      const Id = player.Id
+      player = new Player()
+      player.setId(Id)
+      player.setCardsList(cards)
+      return player
+    })
+
+    request.setCommunityCardList(communityCards)
+    request.setPlayersList(players)
     this.call_grpc(
       "rankHands",
       request,

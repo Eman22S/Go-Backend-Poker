@@ -8,6 +8,7 @@ service Sng {
     rpc getAllUiSettings(UiSettingsRequest) returns (UiSettingsResponse) {}
     rpc getStatus(GetStatusRequest) returns (stream GetStatusResult) {}
     rpc getShuffledDeck(google.protobuf.Empty) returns (DeckData) {}
+    rpc rankHands(RankHandsRequest) returns (RankHandsResult) {}
 }
 
 message UiSettingsRequest {
@@ -206,7 +207,7 @@ message Player {
     bool is_dealer = 16;
     bool is_myturn = 17;
     int64 myturn_start_time = 18;
-    repeated int32 cards = 19;
+    repeated Card cards = 19;
     bool is_allin = 20;
     bool is_away = 21;
 
@@ -301,6 +302,26 @@ message DeckData {
 message Card {
     int32 rank = 1;
     int32 suit = 2;
+}
+
+message RankHandsRequest {
+    repeated Player players = 1;
+    repeated Card communityCard = 2;
+    bool additional_checks = 3;
+    int32 wildcard_value = 4;
+}
+
+message RankHandsResult {
+    int32 winnerPlayerId = 1;
+    repeated RankData rankResult = 2; 
+}
+
+message RankData {
+    Card highCard = 1;
+    repeated Card kickCards = 2;
+    string handDescription = 3;
+    int32 score = 4;
+    int32 playerId = 5;
 }
 
 message GetStatusResult {
