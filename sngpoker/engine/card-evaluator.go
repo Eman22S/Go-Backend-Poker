@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"fmt"
 	"sngrpc/sngpoker"
 	"sort"
 )
@@ -14,9 +15,10 @@ const (
 	HighCard      Ranking = 0
 )
 
-const rankScale int32 = 10000000
+const rankingScale int32 = 10000000
 
-var RankNames = map[int]RankName{
+// mapping of each card rank internal representation with user friendly strings
+var CardRankNames = map[int]RankName{
 	0:  {name: "DEUCE", multiplier: "s"},
 	1:  {name: "THREE", multiplier: "s"},
 	2:  {name: "FOUR", multiplier: "s"},
@@ -32,6 +34,7 @@ var RankNames = map[int]RankName{
 	12: {name: "ACE", multiplier: "s"},
 }
 
+// mapping of each card suit internal representation with user friendly strings
 var SuitNames = map[int]string{
 	3: "DIAMONDS",
 	2: "HEARTS",
@@ -70,15 +73,15 @@ func sortHandBySuit(holes, community []*sngpoker.Card) []*sngpoker.Card {
 	return hand[:5]
 }
 
-func getRoyalFlush(holes, community []*sngpoker.Card) (RankingData, bool) {
+func getRoyalFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	straighResult, isStraightFlush := isStraightFlush(holes, community)
 
 	return straighResult, isStraightFlush
 }
 
-func isStraightFlush(holes, community []*sngpoker.Card) (RankingData, bool) {
+func isStraightFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	// hand := append(holes, community...)
-	return RankingData{}, false
+	return RankingDetails{}, false
 }
 
 func isFourOfAKind(holes, community []*sngpoker.Card) bool {
@@ -109,83 +112,90 @@ func getOnePairRanking(holes, community []*sngpoker.Card) bool {
 	return false
 }
 
-// returns high card ranking data: RankingData{rank, score, winningCards}
-func getHighCardRanking(holes, community []*sngpoker.Card) (RankingData, bool) {
+// returns high card ranking data of given hand cards: RankingData{rank, score, winningCards}
+// always returns true along with ranking data
+func getHighCardRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	handByRank := sortHandByRank(holes, community)
 	handBySuit := sortHandBySuit(holes, community)
-	// fmt.Printf("handByRank: %v\n", handByRank)
-	high := handByRank[0]
-	high.Suit = handBySuit[0].Suit
-	// kik1, kick2, kick3, kick4 with Rank from handByRank and Suit from handBySuit
+
+	// get top card info
+	highCard := handByRank[0]
+	highCard.Suit = handBySuit[0].Suit
+
+	// kick1, kick2, kick3, kick4 with Rank from handByRank and Suit from handBySuit
 	kicks := handByRank[1:5]
 	for i := range kicks {
 		kicks[i].Suit = handBySuit[i].Suit
 	}
-	rank := int32(HighCard)
 
-	// calculate score
-	score := high.Rank * 15
-	// multiply first kick to one before last kick by 15 and and to score
-	// fmt.Printf("kicks: %v\n", kicks)
+	ranking := int32(HighCard)
+
+	// calculate score for high card
+	score := ranking * rankingScale // starting score is based on score and ranking scale
+
+	// add score based on high card and kicks to break ties
+	score = score + highCard.Rank*15
+	// multiply each kicks(except last kick) based on their order
 	for _, kick := range kicks[:len(kicks)-1] {
-		score += kick.Rank * 15
+		score = (score + kick.Rank) * 15
 	}
-	score += (rank * rankScale) + kicks[len(kicks)-1].Rank
-	return RankingData{
-		Rank:        rank,
-		Score:       score,
-		WinningCard: high,
-		KickCards:   kicks,
+
+	score += kicks[len(kicks)-1].Rank
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: []*sngpoker.Card{highCard},
+		KickingCards: kicks,
 	}, true
 }
 
-func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingData {
+func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
-	rankResult, isHighCard := getHighCardRanking(holes, communityCards)
+	rankingResult, isHighCard := getHighCardRanking(holes, communityCards)
 	if isHighCard {
-		return rankResult
+		return rankingResult
 	}
-	return rankResult
+	return rankingResult
 }
 
-func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int]RankingData {
-	playersHands := make([]RankingData, 0)
-	ranks := make(map[int][]int)
+func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int]RankingDetails {
+	playersHands := make([]RankingDetails, 0)
+	rankings := make(map[int][]int)
 
-	// populate playersBestHands map with player Id and rankin data
-	// populate ranks array with rank and player id
+	// populate playersBestHands map with player Id and ranking data
+	// populate rankings array with ranking and player id
 	for _, player := range players {
 		bestHand := getBestHand(player, community)
 		bestHand.PlayerId = player.Id
 		playersHands = append(playersHands, bestHand)
-		ranks[int(bestHand.Rank)] = append(
-			ranks[int(bestHand.Rank)], int(player.Id))
+		rankings[int(bestHand.Ranking)] = append(
+			rankings[int(bestHand.Ranking)], int(player.Id))
 	}
-	sortedRankHands := make(map[int][]RankingData)
-	for rank := 0; rank < 10; rank++ {
-		// skip rank type if there are no players
-		if len(ranks[rank]) == 0 {
+	sortedRankHands := make(map[int][]RankingDetails)
+	for ranking := 0; ranking < 10; ranking++ {
+		// skip ranking type if there are no players
+		if len(rankings[ranking]) == 0 {
 			continue
 		}
-		sortedRankHands[rank] = sortPlayersHandsByScore(playersHands)
+		sortedRankHands[ranking] = sortPlayersHandsByScore(playersHands)
 	}
 
 	highScore := 0
-	playerRankHands := make(map[int]RankingData)
-	for rank := 9; rank >= 0; rank-- {
+	playerRankHands := make(map[int]RankingDetails)
+	for ranking := 9; ranking >= 0; ranking-- {
 		// skip rank type if no hands
-		if len(sortedRankHands[rank]) == 0 {
+		if len(sortedRankHands[ranking]) == 0 {
 			continue
 		}
-		for _, rankHand := range sortedRankHands[rank] {
+		for _, rankHand := range sortedRankHands[ranking] {
 			if rankHand.Score > int32(highScore) {
 				highScore = int(rankHand.Score)
 			}
-			rankHand.WinningText = getWinningText(rankHand, rank)
+			rankHand.HandDescription = getHandDescription(rankHand, ranking)
 			playerRankHands[int(rankHand.PlayerId)] = rankHand
 		}
 	}
-	// determine if kickers shoudl be adde to cards invlved in the win for
+	// determine if kickers should be added to cards involved in the win for
 	// the winning player(s) compared to the other hands that were defeated
 	for indx, rankHand := range playerRankHands {
 		if rankHand.Score == int32(highScore) &&
@@ -197,33 +207,33 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int]R
 				if otherHand.PlayerId == rankHand.PlayerId || (otherHand.Score == int32(highScore)) {
 					continue
 				}
-				if otherHand.Rank == rankHand.Rank {
+				if otherHand.Ranking == rankHand.Ranking {
 					//another player had the same rank but a lower score so kickers were used
 					defeatedInSameRankId = append(defeatedInSameRankId,
 						int(otherHand.PlayerId))
 				}
 			}
 			for _, id := range defeatedInSameRankId {
-				if containsItem([]int{7, 3, 1, 0}, int(rankHand.Rank)) {
+				if containsItem([]int{7, 3, 1, 0}, int(rankHand.Ranking)) {
 					//four of a kind OR three of a kind OR one pair OR just high card
-					if rankHand.WinningCard.Rank > playerRankHands[int(id)].WinningCard.Rank || rankHand.KickCards[0].Rank > playerRankHands[id].KickCards[0].Rank {
+					if rankHand.WinningCards[0].Rank > playerRankHands[int(id)].WinningCards[0].Rank || rankHand.KickingCards[0].Rank > playerRankHands[id].KickingCards[0].Rank {
 						continue
 					}
-				} else if rankHand.Rank == 2 {
+				} else if rankHand.Ranking == 2 {
 					//two pair
 					//see if pair1 or pair2 is enough to defeat the player
-					if rankHand.WinningCard.Rank > playerRankHands[id].Rank {
+					if rankHand.WinningCards[0].Rank > playerRankHands[id].Ranking {
 						continue
 					}
 				}
 				//determine which kicker cards were used to win
-				defeatedKickers := playerRankHands[id].KickCards
+				defeatedKickers := playerRankHands[id].KickingCards
 				sort.Slice(defeatedKickers, func(i, j int) bool {
 					return defeatedKickers[i].Rank > defeatedKickers[j].Rank
 				})
 
-				winnerKickers := rankHand.KickCards
-				sort.Slice(rankHand.KickCards, func(i, j int) bool {
+				winnerKickers := rankHand.KickingCards
+				sort.Slice(rankHand.KickingCards, func(i, j int) bool {
 					return winnerKickers[i].Rank > winnerKickers[j].Rank
 				})
 				kickCardsUsed := make([]*sngpoker.Card, 0)
@@ -234,7 +244,7 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int]R
 						break
 					}
 				}
-				rankHand.KickCards = kickCardsUsed
+				rankHand.KickingCards = kickCardsUsed
 				playerRankHands[indx] = rankHand
 			}
 		}
@@ -243,28 +253,28 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int]R
 
 }
 
-func GetRankHandsResult(players []*sngpoker.Player,
-	communityCards []*sngpoker.Card) map[int]RankingData {
+func GetRankedHandsResult(players []*sngpoker.Player,
+	communityCards []*sngpoker.Card) map[int]RankingDetails {
 	return rankHands(players, communityCards)
 }
 
 func GetHandTestResult(players []*sngpoker.Player,
 	communityCard []*sngpoker.Card) sngpoker.RankHandsResult {
 	rankHandResult := rankHands(players, communityCard)
-	sortedRankHands := make([]RankingData, 0)
+	sortedRankHands := make([]RankingDetails, 0)
 	for _, rankHand := range rankHandResult {
 		sortedRankHands = append(sortedRankHands, rankHand)
 	}
 
 	sortedRankHands = sortPlayersHandsByScore(sortedRankHands)
-	rankResult := make([]*sngpoker.RankData, 0)
+	rankResult := make([]*sngpoker.RankingData, 0)
 	for _, v := range sortedRankHands {
-		rankResult = append(rankResult, &sngpoker.RankData{
+		rankResult = append(rankResult, &sngpoker.RankingData{
 			PlayerId:        v.PlayerId,
 			Score:           v.Score,
-			HighCard:        v.WinningCard,
-			KickCards:       v.KickCards,
-			HandDescription: v.WinningText,
+			WinningCards:    v.WinningCards,
+			KickingCards:    v.KickingCards,
+			HandDescription: v.HandDescription,
 		})
 	}
 
@@ -276,7 +286,7 @@ func GetHandTestResult(players []*sngpoker.Player,
 
 // accepts best hand mapped with player id and returns sorted ids by
 // best hand score value
-func sortPlayersHandsByScore(bestHands []RankingData) []RankingData {
+func sortPlayersHandsByScore(bestHands []RankingDetails) []RankingDetails {
 	sort.Slice(bestHands, func(i, j int) bool {
 		return bestHands[i].Score > bestHands[j].Score
 	})
@@ -285,32 +295,34 @@ func sortPlayersHandsByScore(bestHands []RankingData) []RankingData {
 }
 
 // returns the winning text from by rank and rank data
-func getWinningText(rankData RankingData, rank int) string {
-	var winningText string
-	switch rank {
+func getHandDescription(rankingData RankingDetails, ranking int) string {
+	var handDescription string
+	switch ranking {
 	case 0: // High card
-		high := rankData.WinningCard
+		high := rankingData.WinningCards[0]
 
-		winningText = "HIGHCARD: " + RankNames[int(high.Rank)].name
-		winningText += ", KICKERS: "
-		kickers := rankData.KickCards
+		handDescription = fmt.Sprintf("HIGHCARD: %s", CardRankNames[int(high.Rank)].name)
+		// concatenate kicker cards string
+		handDescription += ", KICKERS: "
+		kickers := rankingData.KickingCards
 		for index, kick := range kickers {
 			if index == len(kickers)-2 {
-				winningText += RankNames[int(kick.Rank)].name + " AND "
+				handDescription += CardRankNames[int(kick.Rank)].name + " AND "
 			} else if index == len(kickers)-1 {
-				winningText += RankNames[int(kick.Rank)].name
+				handDescription += CardRankNames[int(kick.Rank)].name
 			} else {
-				winningText += RankNames[int(kick.Rank)].name + ", "
+				handDescription += CardRankNames[int(kick.Rank)].name + ", "
 			}
 			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
 
 	}
 
-	return winningText
+	return handDescription
 }
 
-func getCardStringRepresentation(card *sngpoker.Card) string {
+// ! function trying to dictate/contain UI explicit syntax, consider removing this in future
+func getCardHtmlRepresentation(card *sngpoker.Card) string {
 	var cardClass string
 	switch card.Suit {
 	case 0:
@@ -323,7 +335,8 @@ func getCardStringRepresentation(card *sngpoker.Card) string {
 		cardClass = "card_head"
 	}
 
-	return "<span class=\"" + cardClass + "\">" + SuitNames[int(card.Suit)] + "</span>"
+	// ! script injection attack possible here beware when changing here
+	return fmt.Sprintf(`<span class="%s"> %s </span>`, cardClass, SuitNames[int(card.Suit)])
 }
 
 func containsItem(arr []int, item int) bool {
@@ -335,13 +348,15 @@ func containsItem(arr []int, item int) bool {
 	return false
 }
 
-type RankingData struct {
-	PlayerId    int32
-	Rank        int32
-	Score       int32
-	WinningCard *sngpoker.Card
-	KickCards   []*sngpoker.Card
-	WinningText string
+type RankingDetails struct {
+	PlayerId                     int32
+	Ranking                      int32
+	Score                        int32
+	WinningCards                 []*sngpoker.Card
+	KickingCards                 []*sngpoker.Card
+	HandDescription              string
+	CardsDirectlyInvolvedInHands []*sngpoker.Card
+	CardsPotentiallyKickers      []*sngpoker.Card
 }
 
 type RankName struct {

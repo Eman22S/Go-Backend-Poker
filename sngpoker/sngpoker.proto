@@ -313,15 +313,15 @@ message RankHandsRequest {
 
 message RankHandsResult {
     int32 winnerPlayerId = 1;
-    repeated RankData rankResult = 2; 
+    repeated RankingData rankResult = 2; 
 }
 
-message RankData {
-    Card highCard = 1;
-    repeated Card kickCards = 2;
-    string handDescription = 3;
-    int32 score = 4;
-    int32 playerId = 5;
+message RankingData {
+    int32 playerId = 1;
+    int32 score = 2;
+    repeated Card winningCards = 3;
+    repeated Card kickingCards = 4;
+    string handDescription = 5;
 }
 
 message GetStatusResult {
