@@ -1333,7 +1333,7 @@ class GrpcClient {
   
   rankHands(data, on_change, on_err) {
     let request = new RankHandsRequest();
-    let communityCards = data.communityCard.map(communityCard => {
+    let communityCards = data.communityCards.map(communityCard => {
       const card = new Card()
       card.setRank(communityCard.rank)
       card.setSuit(communityCard.suit)
@@ -1354,7 +1354,7 @@ class GrpcClient {
       return player
     })
 
-    request.setCommunityCardList(communityCards)
+    request.setCommunityCardsList(communityCards)
     request.setPlayersList(players)
     this.call_grpc(
       "rankHands",

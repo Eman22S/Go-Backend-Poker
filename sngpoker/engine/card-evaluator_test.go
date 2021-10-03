@@ -29,7 +29,7 @@ func TestHighCard(t *testing.T) {
 		},
 	}
 
-	rankingResult := GetRankedHandsResult([]*sngpoker.Player{
+	rankingResult := rankHands([]*sngpoker.Player{
 		&player1,
 		&player2,
 	}, communityCards)

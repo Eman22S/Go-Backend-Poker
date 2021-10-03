@@ -306,7 +306,7 @@ message Card {
 
 message RankHandsRequest {
     repeated Player players = 1;
-    repeated Card communityCard = 2;
+    repeated Card communityCards = 2;
     bool additional_checks = 3;
     int32 wildcard_value = 4;
 }

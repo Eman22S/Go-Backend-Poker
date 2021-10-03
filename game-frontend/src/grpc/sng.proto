@@ -1339,22 +1339,22 @@ message WhitelistedClientsResult {
 
 message RankHandsRequest {
     repeated Player players = 1;
-    repeated Card community_card = 2;
+    repeated Card community_cards = 2;
     bool additional_checks = 3;
     int32 wildcard_value = 4;
 }
 
 message RankHandsResult {
     int32 winner_playerId = 1;
-    repeated RankData rankResult = 2; 
+    repeated RankingData rankResult = 2; 
 }
 
-message RankData {
-    Card high_card = 1;
-    repeated Card kick_cards = 2;
-    string hand_description = 3;
-    int32 score = 4;
-    int32 playerId = 5;
+message RankingData {
+    int32 playerId = 1;
+    int32 score = 2;
+    repeated Card winning_cards = 3;
+    repeated Card kicking_cards = 4;
+    string hand_description = 5;
 }
 
 
