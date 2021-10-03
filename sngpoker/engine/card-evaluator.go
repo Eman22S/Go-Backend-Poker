@@ -21,12 +21,12 @@ const (
 	HighCard      RankingType = 0
 )
 
-const rankingScale int32 = 10000000
+const rankingScale int64 = 10000000
 
 type RankingDetails struct {
 	PlayerId              int32
 	Ranking               RankingType
-	Score                 int32
+	Score                 int64
 	WinningCards          []*sngpoker.Card
 	KickingCards          []*sngpoker.Card
 	HandDescription       string
@@ -89,44 +89,32 @@ func GetHandTestResult(players []*sngpoker.Player,
 	}
 }
 
-func containsItem(arr []RankingType, item RankingType) bool {
-	for _, element := range arr {
-		if element == item {
-			return true
-		}
+func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
+	holes := player.Cards
+
+	rankingResult, isStraight := getStraightRanking(holes, communityCards)
+	if isStraight {
+		return rankingResult
 	}
-	return false
-}
 
-func isCardMoreByRank(a, b *sngpoker.Card) bool {
-	return a.Rank > b.Rank
+	rankingResult, isThreeOfAKind := getThreeOfAKindRanking(holes, communityCards)
+	if isThreeOfAKind {
+		return rankingResult
+	}
 
-}
+	rankingResult, isTwoPair := getTwoPairRanking(holes, communityCards)
+	if isTwoPair {
+		return rankingResult
+	}
 
-func isCardLessBySuit(a, b *sngpoker.Card) bool {
-	return a.Suit > b.Suit
-}
+	rankingResult, isOnePair := getOnePairRanking(holes, communityCards)
+	if isOnePair {
+		return rankingResult
+	}
 
-// returns given hand cards sorted by their rank
-func sortHandByRank(holes, community []*sngpoker.Card) []*sngpoker.Card {
-	hand := append(holes, community...)
-	sort.SliceStable(hand, func(i, j int) bool {
-		// since in our representation higher number is higher rank
-		// we need to sort it in reverse order(use more function not less function for sort.SliceStable)
-		return isCardMoreByRank(hand[i], hand[j])
-	})
-	return hand[:5]
-}
-
-// returns given cards sorted by their suit
-func sortHandBySuit(holes, community []*sngpoker.Card) []*sngpoker.Card {
-	hand := append(holes, community...)
-
-	// sort hand by rank
-	sort.SliceStable(hand, func(i, j int) bool {
-		return isCardLessBySuit(hand[i], hand[j])
-	})
-	return hand[:5]
+	// high card ranking is default always
+	rankingResult, _ = getHighCardRanking(holes, communityCards)
+	return rankingResult
 }
 
 func getRoyalFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
@@ -140,32 +128,251 @@ func isStraightFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	return RankingDetails{}, false
 }
 
-func isFourOfAKind(holes, community []*sngpoker.Card) bool {
-	return false
+func isFourOfAKind(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	return RankingDetails{}, false
 }
 
-func isFullHouse(holes, community []*sngpoker.Card) bool {
-	return false
+func isFullHouse(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	return RankingDetails{}, false
 }
 
-func isFlush(holes, community []*sngpoker.Card) bool {
-	return false
+func getFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	return RankingDetails{}, false
 }
 
-func isStraight(holes, community []*sngpoker.Card) bool {
-	return false
+func getStraightRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// default values to check consecutive cards
+	consecutiveCardsNumber := 0
+	consecutiveCardsStartIndex := -1
+	// search for cards pair with the same rank and set them as winning cards
+	winningCards := []*sngpoker.Card{}
+	for index := 0; index < len(handByRank)-1; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank-1 {
+			if consecutiveCardsNumber == 0 {
+				// first consecutive cards found
+				consecutiveCardsNumber = 2
+				consecutiveCardsStartIndex = index
+			} else {
+				consecutiveCardsNumber++
+				// if 5 consecutive cards found, straight cards are found
+				if consecutiveCardsNumber == 5 {
+					winningCards = handByRank[consecutiveCardsStartIndex : consecutiveCardsStartIndex+5]
+					break
+				}
+			}
+		} else {
+			// reset to default since consecutive card missed
+			consecutiveCardsNumber = 0
+			consecutiveCardsStartIndex = -1
+		}
+	}
+
+	// no 5 consecutive cards found
+	if len(winningCards) == 0 {
+		// check if high five to low ace straight exists
+		if handByRank[0].Rank == sngpoker.CardRank_ACE &&
+			handByRank[len(handByRank)-1].Rank == sngpoker.CardRank_TWO &&
+			handByRank[len(handByRank)-2].Rank == sngpoker.CardRank_THREE &&
+			handByRank[len(handByRank)-3].Rank == sngpoker.CardRank_FOUR &&
+			handByRank[len(handByRank)-4].Rank == sngpoker.CardRank_FIVE {
+			winningCards = append(handByRank[len(handByRank)-4:], handByRank[0])
+		} else {
+			return RankingDetails{}, false
+		}
+	}
+
+	// high card rank
+	highCardRank := winningCards[0].Rank
+
+	// calculate score
+	ranking := Straight
+
+	score := rankingScale * int64(ranking)
+
+	// add score based on top card to break ties
+	score += int64(highCardRank)
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: []*sngpoker.Card{},
+	}, true
 }
 
-func getThreeOfAKindRanking(holes, community []*sngpoker.Card) bool {
-	return false
+func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// search for 3 cards with the same rank
+	winningCards := []*sngpoker.Card{}
+	for index := 0; index < len(handByRank)-2; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank &&
+			handByRank[index].Rank == handByRank[index+2].Rank {
+			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1], handByRank[index+2]}
+		}
+	}
+
+	// no 3 same rank cards found
+	if len(winningCards) == 0 {
+		return RankingDetails{}, false
+	}
+
+	// 3 same card rank
+	sameCardsRank := winningCards[0].Rank
+
+	// get remaining 3 kicking cards
+	kickingCards := make([]*sngpoker.Card, 0)
+	for _, card := range handByRank {
+		// if same card rank skip
+		if sameCardsRank == card.Rank {
+			continue
+		}
+
+		// 2 kicking cards must be found
+		kickingCards = append(kickingCards, card)
+		if len(kickingCards) == 2 {
+			break
+		}
+	}
+
+	// calculate score
+	ranking := ThreeOfAKind
+
+	score := rankingScale * int64(ranking)
+
+	// add score based on top card and kicks to break ties
+	score += int64(sameCardsRank) * 15
+	// multiply and add each kicks( based on their order
+	score = (score + int64(kickingCards[0].Rank)) * 15
+	score = score + int64(kickingCards[0].Rank) // last kick
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: kickingCards,
+	}, true
 }
 
-func getTwoPairRanking(holes, community []*sngpoker.Card) bool {
-	return false
+func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// search for cards pair with the same rank and but leaving at least 1 lower rank pair
+	highRankPair := []*sngpoker.Card{}
+	lowRankPairStart := 0
+	// at least 3 cards must be left to get lower rank pair
+	for index := 0; index < len(handByRank)-3; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank {
+			highRankPair = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
+			lowRankPairStart = index + 2
+		}
+	}
+	// no high rank pair found
+	if len(highRankPair) == 0 {
+		return RankingDetails{}, false
+	}
+	// pair card rank
+	highPairRank := highRankPair[0].Rank
+
+	// search for cards pair with the same rank starting lower rank pair index
+	lowRankPair := []*sngpoker.Card{}
+	for index := lowRankPairStart; index < len(handByRank)-1; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank {
+			lowRankPair = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
+		}
+	}
+	// no low rank pair found
+	if len(lowRankPair) == 0 {
+		return RankingDetails{}, false
+	}
+	// pair card rank
+	lowPairRank := lowRankPair[0].Rank
+
+	// get remaining 1 kicking card
+	kickingCards := []*sngpoker.Card{}
+	for _, card := range handByRank {
+		if highPairRank != card.Rank && lowPairRank != card.Rank {
+			kickingCards = append(kickingCards, card)
+			break
+		}
+	}
+
+	// calculate score
+	ranking := TwoPair
+
+	score := rankingScale * int64(ranking)
+
+	// add score based on top card and kicks to break ties
+	score += ((int64(highPairRank)*15 + int64(lowPairRank)) * 15)
+	score = score + int64(kickingCards[0].Rank) // 1 kick
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: append(highRankPair, lowRankPair...),
+		KickingCards: kickingCards,
+	}, true
 }
 
-func getOnePairRanking(holes, community []*sngpoker.Card) bool {
-	return false
+func getOnePairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// search for cards pair with the same rank and set them as winning cards
+	winningCards := []*sngpoker.Card{}
+	for index := 0; index < len(handByRank)-1; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank {
+			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
+		}
+	}
+
+	// no pair found
+	if len(winningCards) == 0 {
+		return RankingDetails{}, false
+	}
+
+	// pair card rank
+	pairCardRank := winningCards[0].Rank
+
+	// get remaining 3 kicking cards
+	kickingCards := make([]*sngpoker.Card, 0)
+	for _, card := range handByRank {
+		// if pair card rank skip
+		if pairCardRank == card.Rank {
+			continue
+		}
+
+		// 3 kicking cards must be found
+		kickingCards = append(kickingCards, card)
+		if len(kickingCards) == 3 {
+			break
+		}
+	}
+
+	// calculate score
+	ranking := OnePair
+
+	score := rankingScale * int64(ranking)
+
+	// add score based on top card and kicks to break ties
+	score += int64(pairCardRank) * 15
+	// multiply each kicks(except last kick) based on their order
+	for _, kick := range kickingCards[:len(kickingCards)-1] {
+		score = (score + int64(kick.Rank)) * 15
+	}
+	score = score + int64(kickingCards[len(kickingCards)-1].Rank) // last kick
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: kickingCards,
+	}, true
 }
 
 // returns high card ranking details of given hand cards
@@ -182,31 +389,22 @@ func getHighCardRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 	ranking := HighCard
 
 	// calculate score for high card
-	score := int32(ranking) * rankingScale // starting score is based on score and ranking scale
+	score := int64(ranking) * rankingScale // starting score is based on score and ranking scale
 
 	// add score based on high card and kicks to break ties
-	score = score + int32(highCard.Rank)*15
+	score = score + int64(highCard.Rank)*15
 	// multiply each kicks(except last kick) based on their order
 	for _, kick := range kickingCards[:len(kickingCards)-1] {
-		score = (score + int32(kick.Rank)) * 15
+		score = (score + int64(kick.Rank)) * 15
 	}
 
-	score += int32(kickingCards[len(kickingCards)-1].Rank)
+	score += int64(kickingCards[len(kickingCards)-1].Rank)
 	return RankingDetails{
 		Ranking:      ranking,
 		Score:        score,
 		WinningCards: []*sngpoker.Card{highCard},
 		KickingCards: kickingCards,
 	}, true
-}
-
-func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
-	holes := player.Cards
-	rankingResult, isHighCard := getHighCardRanking(holes, communityCards)
-	if isHighCard {
-		return rankingResult
-	}
-	return rankingResult
 }
 
 func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32]RankingDetails {
@@ -233,7 +431,7 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32
 		sortedHandRankings[ranking] = sortPlayersHandsByScore(playersHands)
 	}
 
-	highScore := int32(0)
+	highScore := int64(0)
 	// player id to ranking details mapping
 	playersHandRankings := make(map[int32]RankingDetails)
 	for ranking := RoyalFlush; ranking >= HighCard; ranking-- {
@@ -242,7 +440,7 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32
 			continue
 		}
 		for _, handRanking := range sortedHandRankings[ranking] {
-			if handRanking.Score > int32(highScore) {
+			if handRanking.Score > highScore {
 				highScore = handRanking.Score
 			}
 			handRanking.HandDescription = getHandDescription(handRanking, ranking)
@@ -259,7 +457,7 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32
 // update high score player hand ranking to include kicker cards used to win if exists
 // beware more than 1 player could have used kicker cards to win and same high score
 // parameter playersHandRankings is mapping of player id to ranking details
-func determineKickerCardsUsedToWin(playersHandRankings map[int32]RankingDetails, highScore int32) {
+func determineKickerCardsUsedToWin(playersHandRankings map[int32]RankingDetails, highScore int64) {
 	for index, possibleWinnerRanking := range playersHandRankings {
 		// determine if kickers should be added to cards involved in the win for
 		// the winning player(s) compared to the other hands that were defeated
@@ -332,6 +530,46 @@ func determineKickerCardsUsedToWin(playersHandRankings map[int32]RankingDetails,
 			playersHandRankings[index] = highScoreHandRanking
 		}
 	}
+}
+
+// returns given hand cards sorted by their rank
+func sortHandByRank(holes, community []*sngpoker.Card) []*sngpoker.Card {
+	hand := append(holes, community...)
+	sort.SliceStable(hand, func(i, j int) bool {
+		// since in our representation higher number is higher rank
+		// we need to sort it in reverse order(use more function not less function for sort.SliceStable)
+		return isCardMoreByRank(hand[i], hand[j])
+	})
+	return hand[:5]
+}
+
+// returns given cards sorted by their suit
+func sortHandBySuit(holes, community []*sngpoker.Card) []*sngpoker.Card {
+	hand := append(holes, community...)
+
+	// sort hand by rank
+	sort.SliceStable(hand, func(i, j int) bool {
+		return isCardLessBySuit(hand[i], hand[j])
+	})
+	return hand[:5]
+}
+
+func containsItem(arr []RankingType, item RankingType) bool {
+	for _, element := range arr {
+		if element == item {
+			return true
+		}
+	}
+	return false
+}
+
+func isCardMoreByRank(a, b *sngpoker.Card) bool {
+	return a.Rank > b.Rank
+
+}
+
+func isCardLessBySuit(a, b *sngpoker.Card) bool {
+	return a.Suit > b.Suit
 }
 
 // accepts best hand mapped with player id and returns sorted player ids by
