@@ -299,9 +299,32 @@ message DeckData {
     repeated Card cards = 1;
 }
 
+enum CardRank {
+    TWO    = 0;
+    THREE  = 1;
+	FOUR   = 2;
+	FIVE   = 3;
+	SIX    = 4;
+	SEVEN  = 5;
+    EIGHT  = 6;
+	NINE   = 7;
+	TEN    = 8;
+	JACK   = 9;
+	QUEEN  = 10;
+	KING   = 11;
+	ACE    = 12;
+}
+
+enum Suit {
+    CLUB = 0;
+    SPADE = 1;
+    HEART = 2;
+    DIAMOND = 3;
+}
+
 message Card {
-    int32 rank = 1;
-    int32 suit = 2;
+    CardRank rank = 1;
+    Suit suit = 2;
 }
 
 message RankHandsRequest {

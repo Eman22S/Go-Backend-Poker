@@ -26,8 +26,8 @@ type Deck struct {
 func (deck *Deck) intializeDeck() error {
 	cards := make([]*sngpoker.Card, 52)
 	cardIndex := 0
-	for rank := int32(0); rank < 13; rank++ {
-		for suit := int32(0); suit < 4; suit++ {
+	for rank := sngpoker.CardRank_TWO; rank <= sngpoker.CardRank_ACE; rank++ {
+		for suit := sngpoker.Suit_CLUB; suit <= sngpoker.Suit_DIAMOND; suit++ {
 			cards[cardIndex] = &sngpoker.Card{
 				Rank: rank,
 				Suit: suit,

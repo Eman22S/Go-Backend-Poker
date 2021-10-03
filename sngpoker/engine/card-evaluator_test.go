@@ -7,25 +7,25 @@ import (
 
 func TestHighCard(t *testing.T) {
 	communityCards := []*sngpoker.Card{
-		{Rank: 5, Suit: 3},
-		{Rank: 2, Suit: 2},
-		{Rank: 4, Suit: 1},
-		{Rank: 7, Suit: 2},
-		{Rank: 3, Suit: 1},
+		{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
+		{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
+		{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+		{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+		{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
 	}
 
 	player1 := sngpoker.Player{
 		Id: 1,
 		Cards: []*sngpoker.Card{
-			{Rank: 1, Suit: 3},
-			{Rank: 8, Suit: 2},
+			{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
+			{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
 		},
 	}
 	player2 := sngpoker.Player{
 		Id: 2,
 		Cards: []*sngpoker.Card{
-			{Rank: 9, Suit: 2},
-			{Rank: 6, Suit: 3},
+			{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+			{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
 		},
 	}
 
@@ -34,7 +34,7 @@ func TestHighCard(t *testing.T) {
 		&player2,
 	}, communityCards)
 
-	expectedWiningCard := sngpoker.Card{Rank: 9, Suit: 3}
+	expectedWiningCard := sngpoker.Card{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART}
 	winnningCard := rankingResult[2].WinningCards[0]
 	if winnningCard.Rank != expectedWiningCard.Rank || winnningCard.Suit != expectedWiningCard.Suit {
 		t.Error("Player 2 sould be the winner")

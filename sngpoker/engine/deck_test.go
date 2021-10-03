@@ -94,20 +94,19 @@ func TestDeck(t *testing.T) {
 
 // checks if a deck card contains all ranks and suits
 func containsAllRanksAndSuits(cards []*sngpoker.Card) bool {
-	rankDict := make(map[int]int)
+	rankDict := make(map[sngpoker.CardRank]int)
 	suitDict := make(map[string]int)
 	for _, card := range cards {
-		rankDict[int(card.Rank)] = rankDict[int(card.Rank)] + 1
+		rankDict[card.Rank] = rankDict[card.Rank] + 1
 		suiteKey := string(card.Rank) + string(card.Suit)
 		suitDict[suiteKey] = suitDict[suiteKey] + 1
 	}
 
-	for rank := 0; rank < 13; rank++ {
-
+	for rank := sngpoker.CardRank_TWO; rank < sngpoker.CardRank_ACE; rank++ {
 		if rankDict[rank] != 4 {
 			return false
 		}
-		for suit := 0; suit < 4; suit++ {
+		for suit := sngpoker.Suit_CLUB; suit < sngpoker.Suit_DIAMOND; suit++ {
 			suiteKey := string(rune(rank)) + string(rune(suit))
 			if suitDict[suiteKey] != 1 {
 				return false
