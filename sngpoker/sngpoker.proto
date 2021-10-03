@@ -341,7 +341,7 @@ message RankHandsResult {
 
 message RankingData {
     int32 playerId = 1;
-    int32 score = 2;
+    int64 score = 2;
     repeated Card winningCards = 3;
     repeated Card kickingCards = 4;
     string handDescription = 5;
