@@ -39,28 +39,28 @@ type RankName struct {
 }
 
 // mapping of each card rank internal representation with user friendly strings
-var CardRankNames = map[int32]RankName{
-	0:  {name: "DEUCE", multiplier: "s"},
-	1:  {name: "THREE", multiplier: "s"},
-	2:  {name: "FOUR", multiplier: "s"},
-	3:  {name: "FIVE", multiplier: "s"},
-	4:  {name: "SIX", multiplier: "es"},
-	5:  {name: "SEVEN", multiplier: "s"},
-	6:  {name: "EIGHT", multiplier: "s"},
-	7:  {name: "NINE", multiplier: "s"},
-	8:  {name: "TEN", multiplier: "s"},
-	9:  {name: "JACK", multiplier: "s"},
-	10: {name: "QUEEN", multiplier: "s"},
-	11: {name: "KING", multiplier: "s"},
-	12: {name: "ACE", multiplier: "s"},
+var CardRankNames = map[sngpoker.CardRank]RankName{
+	sngpoker.CardRank_TWO:   {name: "DEUCE", multiplier: "s"},
+	sngpoker.CardRank_THREE: {name: "THREE", multiplier: "s"},
+	sngpoker.CardRank_FOUR:  {name: "FOUR", multiplier: "s"},
+	sngpoker.CardRank_FIVE:  {name: "FIVE", multiplier: "s"},
+	sngpoker.CardRank_SIX:   {name: "SIX", multiplier: "es"},
+	sngpoker.CardRank_SEVEN: {name: "SEVEN", multiplier: "s"},
+	sngpoker.CardRank_EIGHT: {name: "EIGHT", multiplier: "s"},
+	sngpoker.CardRank_NINE:  {name: "NINE", multiplier: "s"},
+	sngpoker.CardRank_TEN:   {name: "TEN", multiplier: "s"},
+	sngpoker.CardRank_JACK:  {name: "JACK", multiplier: "s"},
+	sngpoker.CardRank_QUEEN: {name: "QUEEN", multiplier: "s"},
+	sngpoker.CardRank_KING:  {name: "KING", multiplier: "s"},
+	sngpoker.CardRank_ACE:   {name: "ACE", multiplier: "s"},
 }
 
 // mapping of each card suit internal representation with user friendly strings
-var SuitNames = map[int32]string{
-	3: "DIAMONDS",
-	2: "HEARTS",
-	1: "SPADES",
-	0: "CLUBS",
+var SuitNames = map[sngpoker.Suit]string{
+	sngpoker.Suit_DIAMOND: "DIAMONDS",
+	sngpoker.Suit_HEART:   "HEARTS",
+	sngpoker.Suit_SPADE:   "SPADES",
+	sngpoker.Suit_CLUB:    "CLUBS",
 }
 
 func GetHandTestResult(players []*sngpoker.Player,
@@ -185,13 +185,13 @@ func getHighCardRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 	score := int32(ranking) * rankingScale // starting score is based on score and ranking scale
 
 	// add score based on high card and kicks to break ties
-	score = score + highCard.Rank*15
+	score = score + int32(highCard.Rank)*15
 	// multiply each kicks(except last kick) based on their order
 	for _, kick := range kickingCards[:len(kickingCards)-1] {
-		score = (score + kick.Rank) * 15
+		score = (score + int32(kick.Rank)) * 15
 	}
 
-	score += kickingCards[len(kickingCards)-1].Rank
+	score += int32(kickingCards[len(kickingCards)-1].Rank)
 	return RankingDetails{
 		Ranking:      ranking,
 		Score:        score,
