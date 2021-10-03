@@ -87,7 +87,7 @@ function getExpectedPlayersData(playersData) {
   function transformRankHandResult (rankHand, originalHands) {
     console.log("original hands ", originalHands)
     const hands = rankHand.rankresultList
-    const winners = [hands[0].highCard, ...hands[0].kickCardsList]
+    const winners = [...hands[0].winningCardsList, ...hands[0].kickingCardsList]
 
     const hand_description = hands.map((hand, index) => {
       return {

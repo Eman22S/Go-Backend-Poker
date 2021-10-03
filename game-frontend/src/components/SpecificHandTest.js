@@ -453,9 +453,9 @@ const on_stat_response = function(response){
       
       const reqObj = {
         players: reqPlayers,
-        communityCard: payload.table_cards
+        communityCards: payload.table_cards
       }
-      setCurrentlyTestedHand(reqObj)
+      // setCurrentlyTestedHand(reqObj)
       grpc_client.rankHands(
         reqObj,
         rank_cards_response,
