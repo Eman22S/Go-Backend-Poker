@@ -1,43 +1,42 @@
 package engine
 
+/**
+When testing ranking,
+expected winning cards and kicking cards must be sorted by rank
+if equal rank cards, player cards first, then community cards
+if equal rank cards on player or community,then based on their original card order
+**/
+
 import (
+	"reflect"
 	"sngrpc/sngpoker"
 	"testing"
 )
 
-func TestHighCard(t *testing.T) {
-	communityCards := []*sngpoker.Card{
-		{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
-		{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
-		{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
-		{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
-		{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+func TestRankings(t *testing.T) {
+	for _, testData := range getRankingTestData() {
+		for index, expectedWinnerRanking := range testData.expectedWinnerRanking {
+			checkRankingIntegrity(t, testData.players[index], testData.communityCards, expectedWinnerRanking)
+		}
+	}
+}
+
+func checkRankingIntegrity(t *testing.T, players []*sngpoker.Player, communityCards []*sngpoker.Card, expectedWinnerRanking *RankingDetails) {
+	rankingResult := rankHands(players, communityCards)
+
+	expectedWinner := expectedWinnerRanking.PlayerId
+	expectedRanking := expectedWinnerRanking.Ranking
+	if rankingResult[expectedWinner].Ranking != expectedRanking {
+		t.Errorf("Expected winner should have %s ranking.", RankingTypeNames[expectedRanking])
 	}
 
-	player1 := sngpoker.Player{
-		Id: 1,
-		Cards: []*sngpoker.Card{
-			{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
-			{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
-		},
-	}
-	player2 := sngpoker.Player{
-		Id: 2,
-		Cards: []*sngpoker.Card{
-			{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
-			{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
-		},
+	expectedWiningCards := expectedWinnerRanking.WinningCards
+	winnningCards := rankingResult[expectedWinner].WinningCards
+	if len(winnningCards) != len(expectedWiningCards) {
+		t.Errorf("Winning cards must be %d cards", len(expectedWiningCards))
 	}
 
-	rankingResult := rankHands([]*sngpoker.Player{
-		&player1,
-		&player2,
-	}, communityCards)
-
-	expectedWiningCard := sngpoker.Card{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART}
-	winnningCard := rankingResult[2].WinningCards[0]
-	if winnningCard.Rank != expectedWiningCard.Rank || winnningCard.Suit != expectedWiningCard.Suit {
-		t.Error("Player 2 sould be the winner")
+	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinner].WinningCards) {
+		t.Errorf("Player %d should be winner. But the winning cards are incorrect.", expectedWinner)
 	}
-
 }
