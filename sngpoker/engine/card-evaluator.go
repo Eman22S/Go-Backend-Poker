@@ -21,6 +21,20 @@ const (
 	HighCard      RankingType = 0
 )
 
+// mapping of each card rank internal representation with user friendly strings
+var RankingTypeNames = map[RankingType]string{
+	RoyalFlush:    "",
+	StraightFlush: "",
+	FourOfAKind:   "",
+	FullHouse:     "",
+	Flush:         "",
+	Straight:      "",
+	ThreeOfAKind:  "THREE OF A KIND",
+	TwoPair:       "TWO PAIR",
+	OnePair:       "ONE PAIR",
+	HighCard:      "HIGHCARD",
+}
+
 const rankingScale int64 = 10000000
 
 type RankingDetails struct {
@@ -293,6 +307,12 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 	// pair card rank
 	lowPairRank := lowRankPair[0].Rank
 
+	// check integrity of winning cards
+	if len(highRankPair)+len(lowRankPair) != 4 {
+		// something is not right, winning cards expectation is failing
+		return RankingDetails{}, false
+	}
+
 	// get remaining 1 kicking card
 	kickingCards := []*sngpoker.Card{}
 	for _, card := range handByRank {
@@ -409,7 +429,6 @@ func getHighCardRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 
 func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32]RankingDetails {
 	playersHands := make([]RankingDetails, 0)
-	rankings := make(map[RankingType][]int)
 
 	// populate playersBestHands map with player Id and ranking data
 	// populate rankings array with ranking and player id
@@ -417,18 +436,14 @@ func rankHands(players []*sngpoker.Player, community []*sngpoker.Card) map[int32
 		bestHand := getBestHand(player, community)
 		bestHand.PlayerId = player.Id
 		playersHands = append(playersHands, bestHand)
-		rankings[bestHand.Ranking] = append(
-			rankings[bestHand.Ranking], int(player.Id))
 	}
 
 	// ranking type to ranking details mapping
 	sortedHandRankings := make(map[RankingType][]RankingDetails)
-	for ranking := HighCard; ranking <= RoyalFlush; ranking++ {
-		// skip ranking type if there are no players
-		if len(rankings[ranking]) == 0 {
-			continue
-		}
-		sortedHandRankings[ranking] = sortPlayersHandsByScore(playersHands)
+	sortedHandRankingsByScore := sortPlayersHandsByScore(playersHands)
+	for _, rankingDetails := range sortedHandRankingsByScore {
+		sortedHandRankings[rankingDetails.Ranking] =
+			append(sortedHandRankings[rankingDetails.Ranking], rankingDetails)
 	}
 
 	highScore := int64(0)
@@ -586,7 +601,7 @@ func sortPlayersHandsByScore(bestHands []RankingDetails) []RankingDetails {
 func getHandDescription(rankingData RankingDetails, ranking RankingType) string {
 	var handDescription string
 	switch ranking {
-	case 0: // High card
+	case HighCard:
 		high := rankingData.WinningCards[0]
 
 		handDescription = fmt.Sprintf("HIGHCARD: %s", CardRankNames[high.Rank].name)
@@ -603,7 +618,45 @@ func getHandDescription(rankingData RankingDetails, ranking RankingType) string 
 			}
 			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
+	case OnePair:
+	case ThreeOfAKind:
+		highPairCard := rankingData.WinningCards[0]
 
+		handDescription = fmt.Sprintf(
+			"%s: %s%s", RankingTypeNames[ranking], CardRankNames[highPairCard.Rank].name, CardRankNames[highPairCard.Rank].multiplier)
+		// concatenate kicker cards string
+		handDescription += ", KICKERS: "
+		kickers := rankingData.KickingCards
+		for index, kick := range kickers {
+			if index == len(kickers)-2 {
+				handDescription += CardRankNames[kick.Rank].name + " AND "
+			} else if index == len(kickers)-1 {
+				handDescription += CardRankNames[kick.Rank].name
+			} else {
+				handDescription += CardRankNames[kick.Rank].name + ", "
+			}
+			// cardStringRepresentation = getCardStringRepresentation(kick)
+		}
+	case TwoPair:
+		highPairCard := rankingData.WinningCards[0]
+		lowPairCard := rankingData.WinningCards[2]
+
+		handDescription = fmt.Sprintf(
+			"%s: %s%s", RankingTypeNames[ranking], CardRankNames[highPairCard.Rank].name, CardRankNames[highPairCard.Rank].multiplier)
+		handDescription += fmt.Sprintf(" AND %s%s", CardRankNames[lowPairCard.Rank].name, CardRankNames[lowPairCard.Rank].multiplier)
+		// concatenate kicker cards string
+		handDescription += ", KICKERS: "
+		kickers := rankingData.KickingCards
+		for index, kick := range kickers {
+			if index == len(kickers)-2 {
+				handDescription += CardRankNames[kick.Rank].name + " AND "
+			} else if index == len(kickers)-1 {
+				handDescription += CardRankNames[kick.Rank].name
+			} else {
+				handDescription += CardRankNames[kick.Rank].name + ", "
+			}
+			// cardStringRepresentation = getCardStringRepresentation(kick)
+		}
 	}
 
 	return handDescription
