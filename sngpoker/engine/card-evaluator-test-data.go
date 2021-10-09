@@ -269,6 +269,76 @@ func getRankingTestData() []*RankingTestData {
 				},
 			},
 		},
+
+		// straight ranking
+		{
+			communityCards: []*sngpoker.Card{
+				{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
+				{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+				{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
+			},
+
+			players: [][]*sngpoker.Player{
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+			},
+			expectedWinnerRanking: []*RankingDetails{
+				{
+					PlayerId: 1,
+					Ranking:  Straight,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+				{
+					PlayerId: 2,
+					Ranking:  Straight,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+			},
+		},
 	}
 
 }

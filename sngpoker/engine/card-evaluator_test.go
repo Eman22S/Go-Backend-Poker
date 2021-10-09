@@ -27,16 +27,16 @@ func checkRankingIntegrity(t *testing.T, players []*sngpoker.Player, communityCa
 	expectedWinner := expectedWinnerRanking.PlayerId
 	expectedRanking := expectedWinnerRanking.Ranking
 	if rankingResult[expectedWinner].Ranking != expectedRanking {
-		t.Errorf("Expected winner should have %s ranking.", RankingTypeNames[expectedRanking])
+		t.Errorf("%s ranking: Expected winner should have %s ranking.", RankingTypeNames[expectedRanking], RankingTypeNames[expectedRanking])
 	}
 
 	expectedWiningCards := expectedWinnerRanking.WinningCards
 	winnningCards := rankingResult[expectedWinner].WinningCards
 	if len(winnningCards) != len(expectedWiningCards) {
-		t.Errorf("Winning cards must be %d cards", len(expectedWiningCards))
+		t.Errorf("%s ranking: Winning cards must be %d cards", RankingTypeNames[expectedRanking], len(expectedWiningCards))
 	}
 
 	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinner].WinningCards) {
-		t.Errorf("Player %d should be winner. But the winning cards are incorrect.", expectedWinner)
+		t.Errorf("%s ranking: Player %d should be winner. But the winning cards are incorrect.", RankingTypeNames[expectedRanking], expectedWinner)
 	}
 }
