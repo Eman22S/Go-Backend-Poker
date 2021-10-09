@@ -284,6 +284,7 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 		if handByRank[index].Rank == handByRank[index+1].Rank {
 			highRankPair = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
 			lowRankPairStart = index + 2
+			break
 		}
 	}
 	// no high rank pair found
@@ -298,6 +299,7 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 	for index := lowRankPairStart; index < len(handByRank)-1; index++ {
 		if handByRank[index].Rank == handByRank[index+1].Rank {
 			lowRankPair = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
+			break
 		}
 	}
 	// no low rank pair found
