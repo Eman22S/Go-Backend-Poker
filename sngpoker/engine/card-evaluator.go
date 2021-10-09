@@ -28,7 +28,7 @@ var RankingTypeNames = map[RankingType]string{
 	FourOfAKind:   "",
 	FullHouse:     "",
 	Flush:         "",
-	Straight:      "",
+	Straight:      "STRAIGHT",
 	ThreeOfAKind:  "THREE OF A KIND",
 	TwoPair:       "TWO PAIR",
 	OnePair:       "ONE PAIR",
@@ -348,6 +348,7 @@ func getOnePairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 	for index := 0; index < len(handByRank)-1; index++ {
 		if handByRank[index].Rank == handByRank[index+1].Rank {
 			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1]}
+			break
 		}
 	}
 
@@ -555,7 +556,7 @@ func sortHandByRank(holes, community []*sngpoker.Card) []*sngpoker.Card {
 		// we need to sort it in reverse order(use more function not less function for sort.SliceStable)
 		return isCardMoreByRank(hand[i], hand[j])
 	})
-	return hand[:5]
+	return hand
 }
 
 // returns given cards sorted by their suit
@@ -566,7 +567,7 @@ func sortHandBySuit(holes, community []*sngpoker.Card) []*sngpoker.Card {
 	sort.SliceStable(hand, func(i, j int) bool {
 		return isCardLessBySuit(hand[i], hand[j])
 	})
-	return hand[:5]
+	return hand
 }
 
 func containsItem(arr []RankingType, item RankingType) bool {
