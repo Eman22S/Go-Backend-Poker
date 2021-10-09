@@ -9,8 +9,8 @@ func TestValidateRankHandRequestValidator(t *testing.T) {
 	t.Run("RankHandRequestValidator should throw error for empty cards and players",
 		func(t *testing.T) {
 			requestObject := sngpoker.RankHandsRequest{
-				Players:       []*sngpoker.Player{},
-				CommunityCard: []*sngpoker.Card{},
+				Players:        []*sngpoker.Player{},
+				CommunityCards: []*sngpoker.Card{},
 			}
 
 			err := ValidateRankHandRequest(&requestObject)
@@ -23,7 +23,7 @@ func TestValidateRankHandRequestValidator(t *testing.T) {
 		func(t *testing.T) {
 			requestObject := sngpoker.RankHandsRequest{
 				Players: []*sngpoker.Player{},
-				CommunityCard: []*sngpoker.Card{
+				CommunityCards: []*sngpoker.Card{
 					{Rank: 3, Suit: 4},
 					{Rank: 7, Suit: 0},
 					{Rank: 10, Suit: 2},
@@ -62,8 +62,8 @@ func TestValidateRankHandRequestValidator(t *testing.T) {
 			}
 
 			requestObject := sngpoker.RankHandsRequest{
-				CommunityCard: communityCards,
-				Players:       []*sngpoker.Player{&player1, &player2},
+				CommunityCards: communityCards,
+				Players:        []*sngpoker.Player{&player1, &player2},
 			}
 
 			err := ValidateRankHandRequest(&requestObject)
