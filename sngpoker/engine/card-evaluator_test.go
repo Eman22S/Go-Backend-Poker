@@ -16,7 +16,9 @@ import (
 func TestRankings(t *testing.T) {
 	for _, testData := range getRankingTestData() {
 		for index, expectedWinnerRanking := range testData.expectedWinnerRanking {
+			// if expectedWinnerRanking.Ranking == Straight {
 			checkRankingIntegrity(t, testData.players[index], testData.communityCards, expectedWinnerRanking)
+			// }
 		}
 	}
 }
@@ -37,6 +39,6 @@ func checkRankingIntegrity(t *testing.T, players []*sngpoker.Player, communityCa
 	}
 
 	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinner].WinningCards) {
-		t.Errorf("%s ranking: Player %d should be winner. But the winning cards are incorrect.", RankingTypeNames[expectedRanking], expectedWinner)
+		t.Errorf("%s ranking: The winning cards are incorrect.", RankingTypeNames[expectedRanking])
 	}
 }

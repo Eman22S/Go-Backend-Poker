@@ -286,7 +286,7 @@ func getRankingTestData() []*RankingTestData {
 						Id: 1,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
-							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
 						},
 					},
 					{
@@ -321,7 +321,7 @@ func getRankingTestData() []*RankingTestData {
 					WinningCards: []*sngpoker.Card{
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
-						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
 					},
@@ -333,7 +333,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
-						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 					},
 				},

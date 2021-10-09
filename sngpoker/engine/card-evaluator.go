@@ -131,22 +131,22 @@ func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) Ranki
 	return rankingResult
 }
 
-func getRoyalFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	straighResult, isStraightFlush := isStraightFlush(holes, community)
+func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+	straighResult, isStraightFlush := getStraightFlushRanking(holes, community)
 
 	return straighResult, isStraightFlush
 }
 
-func isStraightFlush(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	// hand := append(holes, community...)
 	return RankingDetails{}, false
 }
 
-func isFourOfAKind(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+func getFourOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	return RankingDetails{}, false
 }
 
-func isFullHouse(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	return RankingDetails{}, false
 }
 
@@ -157,6 +157,7 @@ func getFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 func getStraightRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 	// sort hand cards by card rank
 	handByRank := sortHandByRank(holes, community)
+	// fmt.Printf("Straight ranking:  %v\n", handByRank)
 
 	// default values to check consecutive cards
 	consecutiveCardsNumber := 0
@@ -164,7 +165,7 @@ func getStraightRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 	// search for cards pair with the same rank and set them as winning cards
 	winningCards := []*sngpoker.Card{}
 	for index := 0; index < len(handByRank)-1; index++ {
-		if handByRank[index].Rank == handByRank[index+1].Rank-1 {
+		if handByRank[index].Rank == handByRank[index+1].Rank+1 {
 			if consecutiveCardsNumber == 0 {
 				// first consecutive cards found
 				consecutiveCardsNumber = 2
