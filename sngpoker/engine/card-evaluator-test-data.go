@@ -507,5 +507,73 @@ func getRankingTestData() []*RankingTestData {
 				},
 			},
 		},
+
+		// four of a kind ranking
+		{
+			communityCards: []*sngpoker.Card{
+				{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+				{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
+			},
+
+			players: [][]*sngpoker.Player{
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+				},
+			},
+			expectedWinnerRanking: []*RankingDetails{
+				{
+					PlayerId: 1,
+					Ranking:  FourOfAKind,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_DIAMOND},
+						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+					},
+				},
+				{
+					PlayerId: 2,
+					Ranking:  FourOfAKind,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_CLUB},
+						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_DIAMOND},
+						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+			},
+		},
 	}
 }
