@@ -16,9 +16,13 @@ import (
 func TestRankings(t *testing.T) {
 	for _, testData := range getRankingTestData() {
 		for index, expectedWinnerRanking := range testData.expectedWinnerRanking {
-			// if expectedWinnerRanking.Ranking == Straight {
-			checkRankingIntegrity(t, testData.players[index], testData.communityCards, expectedWinnerRanking)
-			// }
+			if expectedWinnerRanking.Ranking == HighCard {
+				checkRankingIntegrity(
+					t, testData.players[index],
+					testData.communityCards,
+					expectedWinnerRanking,
+				)
+			}
 		}
 	}
 }
@@ -30,7 +34,6 @@ func checkRankingIntegrity(
 	expectedWinnerRanking *RankingDetails,
 ) {
 	rankingResult := RankHands(players, communityCards)
-
 	expectedWinnerIndex := 0
 	expectedRanking := expectedWinnerRanking.Ranking
 	if rankingResult[expectedWinnerIndex].Ranking != expectedRanking {
@@ -50,17 +53,47 @@ func checkRankingIntegrity(
 		)
 	}
 
+	// expectedKickingCardsToWin := expectedWinnerRanking.KickingCardsUsedToWin
+	// kickingCardsUsedToWin := rankingResult[expectedWinnerIndex].KickingCardsUsedToWin
+
+	// if !reflect.DeepEqual(
+	// 	expectedKickingCardsToWin,
+	// 	kickingCardsUsedToWin,
+	// ) {
+	// 	t.Errorf(
+	// 		`%s ranking: Winner player id: %d
+	// 		 	Expected kicking cards used to win: %v
+	// 			Actual kicking cards used to win: %v`,
+	// 		RankingTypeNames[expectedRanking],
+	// 		expectedWinnerId,
+	// 		expectedKickingCardsToWin,
+	// 		kickingCardsUsedToWin,
+	// 	)
+	// }
+
+	// expectectedKickingCards := expectedWinnerRanking.KickingCards
+	// kickingCards := rankingResult[expectedWinnerIndex].KickingCards
+	// if !reflect.DeepEqual(
+	// 	expectectedKickingCards,
+	// 	kickingCards,
+	// ) {
+	// 	t.Errorf(
+	// 		`%s ranking: Winner player id: %d
+	// 		 	Expected winning cards: %v
+	// 			Actual winning cards: %v`,
+	// 		RankingTypeNames[expectedRanking],
+	// 		expectedWinnerId,
+	// 		expectectedKickingCards,
+	// 		kickingCards,
+	// 	)
+	// }
+
 	expectedWiningCards := expectedWinnerRanking.WinningCards
 	winnningCards := rankingResult[expectedWinnerIndex].WinningCards
-	if len(winnningCards) != len(expectedWiningCards) {
-		t.Errorf(
-			"%s ranking: Winning cards must be %d cards",
-			RankingTypeNames[expectedRanking],
-			len(expectedWiningCards),
-		)
-	}
-
-	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinnerIndex].WinningCards) {
+	if !reflect.DeepEqual(
+		expectedWiningCards,
+		winnningCards,
+	) {
 		t.Errorf(
 			`%s ranking: Winner player id: %d
 			 	Expected winning cards: %v
@@ -68,7 +101,7 @@ func checkRankingIntegrity(
 			RankingTypeNames[expectedRanking],
 			expectedWinnerId,
 			expectedWiningCards,
-			rankingResult[expectedWinnerIndex].WinningCards,
+			winnningCards,
 		)
 	}
 }
