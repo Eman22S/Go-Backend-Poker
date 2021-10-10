@@ -575,5 +575,103 @@ func getRankingTestData() []*RankingTestData {
 				},
 			},
 		},
+
+		// straight flush ranking
+		{
+			communityCards: []*sngpoker.Card{
+				{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
+			},
+
+			players: [][]*sngpoker.Player{
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_QUEEN, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+			},
+			expectedWinnerRanking: []*RankingDetails{
+				{
+					PlayerId: 1,
+					Ranking:  StraightFlush,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+				{
+					PlayerId: 2,
+					Ranking:  StraightFlush,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+				// special straight flush five high to ace low
+				{
+					PlayerId: 1,
+					Ranking:  StraightFlush,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_SPADE},
+					},
+				},
+			},
+		},
 	}
 }
