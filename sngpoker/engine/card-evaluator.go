@@ -77,7 +77,10 @@ var SuitNames = map[sngpoker.Suit]string{
 	sngpoker.Suit_CLUB:    "CLUBS",
 }
 
-func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
+func getBestHand(
+	player *sngpoker.Player,
+	communityCards []*sngpoker.Card,
+) RankingDetails {
 	holes := player.Cards
 
 	rankingResult, isRoyalFlush := getRoyalFlushRanking(holes, communityCards)
@@ -159,7 +162,10 @@ func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bo
 	}, true
 }
 
-func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+func getStraightFlushRanking(
+	holes,
+	community []*sngpoker.Card,
+) (RankingDetails, bool) {
 	// check if hand has straight cards
 	straightRanking, isStraight := getStraightRanking(holes, community)
 	if !isStraight {
@@ -175,7 +181,10 @@ func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails,
 	// sort cards properly for special case five high to ace low straight cards
 	if flushRanking.WinningCards[0].Rank == sngpoker.CardRank_ACE &&
 		flushRanking.WinningCards[1].Rank == sngpoker.CardRank_FIVE {
-		flushRanking.WinningCards = append(flushRanking.WinningCards[1:], flushRanking.WinningCards[0])
+		flushRanking.WinningCards = append(
+			flushRanking.WinningCards[1:],
+			flushRanking.WinningCards[0],
+		)
 	}
 
 	winningCards = flushRanking.WinningCards
@@ -199,7 +208,10 @@ func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails,
 	}, true
 }
 
-func getFourOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
+func getFourOfAKindRanking(
+	holes,
+	community []*sngpoker.Card,
+) (RankingDetails, bool) {
 	// sort hand cards by card rank
 	handByRank := sortHandByRank(holes, community)
 
@@ -267,7 +279,11 @@ func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, boo
 	for index := 0; index < len(handByRank)-2; index++ {
 		if handByRank[index].Rank == handByRank[index+1].Rank &&
 			handByRank[index].Rank == handByRank[index+2].Rank {
-			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1], handByRank[index+2]}
+			winningCards = []*sngpoker.Card{
+				handByRank[index],
+				handByRank[index+1],
+				handByRank[index+2],
+			}
 			break
 		}
 	}
@@ -437,7 +453,9 @@ func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, 
 	for index := 0; index < len(handByRank)-2; index++ {
 		if handByRank[index].Rank == handByRank[index+1].Rank &&
 			handByRank[index].Rank == handByRank[index+2].Rank {
-			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1], handByRank[index+2]}
+			winningCards = []*sngpoker.Card{
+				handByRank[index], handByRank[index+1], handByRank[index+2],
+			}
 			break
 		}
 	}
@@ -766,17 +784,6 @@ func sortHandByRank(holes, community []*sngpoker.Card) []*sngpoker.Card {
 	return hand
 }
 
-// returns given cards sorted by their suit
-func sortHandBySuit(holes, community []*sngpoker.Card) []*sngpoker.Card {
-	hand := append(holes, community...)
-
-	// sort hand by rank
-	sort.SliceStable(hand, func(i, j int) bool {
-		return isCardLessBySuit(hand[i], hand[j])
-	})
-	return hand
-}
-
 func containsItem(arr []RankingType, item RankingType) bool {
 	for _, element := range arr {
 		if element == item {
@@ -789,10 +796,6 @@ func containsItem(arr []RankingType, item RankingType) bool {
 func isCardMoreByRank(a, b *sngpoker.Card) bool {
 	return a.Rank > b.Rank
 
-}
-
-func isCardLessBySuit(a, b *sngpoker.Card) bool {
-	return a.Suit > b.Suit
 }
 
 // accepts best hand mapped with player id and returns sorted player ids by
@@ -875,7 +878,6 @@ func getHandDescription(rankingData RankingDetails) string {
 			} else {
 				handDescription += CardRankNames[kick.Rank].name + ", "
 			}
-			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
 	}
 
