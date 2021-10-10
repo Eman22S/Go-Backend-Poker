@@ -80,6 +80,11 @@ var SuitNames = map[sngpoker.Suit]string{
 func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
 
+	rankingResult, isStraightFlush := getStraightFlushRanking(holes, communityCards)
+	if isStraightFlush {
+		return rankingResult
+	}
+
 	rankingResult, isFourOfAKind := getFourOfAKindRanking(holes, communityCards)
 	if isFourOfAKind {
 		return rankingResult
@@ -127,8 +132,42 @@ func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bo
 }
 
 func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	// hand := append(holes, community...)
-	return RankingDetails{}, false
+	// check if hand has straight cards
+	straightRanking, isStraight := getStraightRanking(holes, community)
+	if !isStraight {
+		return RankingDetails{}, false
+	}
+	// check if found straight cards are also flush cards
+	winningCards := straightRanking.WinningCards
+	flushRanking, isFlush := getFlushRanking(winningCards, []*sngpoker.Card{})
+	if !isFlush {
+		return RankingDetails{}, false
+	}
+
+	// sort cards properly for special case five high to ace low straight cards
+	if flushRanking.WinningCards[0].Rank == sngpoker.CardRank_ACE {
+		flushRanking.WinningCards = append(flushRanking.WinningCards[1:], flushRanking.WinningCards[0])
+	}
+
+	winningCards = flushRanking.WinningCards
+
+	// high card rank
+	highCardRank := winningCards[0].Rank
+
+	// calculate score
+	ranking := StraightFlush
+
+	baseScore := rankingScale * int64(ranking)
+
+	// add score based on top card to break ties
+	score := int64(highCardRank)
+	score += baseScore
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: []*sngpoker.Card{},
+	}, true
 }
 
 func getFourOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
