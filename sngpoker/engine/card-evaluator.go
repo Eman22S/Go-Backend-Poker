@@ -80,6 +80,11 @@ var SuitNames = map[sngpoker.Suit]string{
 func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
 
+	rankingResult, isFullHouse := getFullHouseRanking(holes, communityCards)
+	if isFullHouse {
+		return rankingResult
+	}
+
 	rankingResult, isFlush := getFlushRanking(holes, communityCards)
 	if isFlush {
 		return rankingResult
@@ -126,7 +131,64 @@ func getFourOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, b
 }
 
 func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	return RankingDetails{}, false
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// search for 3 cards with the same rank
+	winningCards := []*sngpoker.Card{}
+	for index := 0; index < len(handByRank)-2; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank &&
+			handByRank[index].Rank == handByRank[index+2].Rank {
+			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1], handByRank[index+2]}
+			break
+		}
+	}
+
+	// no 3 same rank cards found
+	if len(winningCards) != 3 {
+		return RankingDetails{}, false
+	}
+
+	// 3 same card rank
+	threeSameCardRank := winningCards[0].Rank
+
+	// search for cards pair with the same rank and set them as winning cards
+	for index := 0; index < len(handByRank)-1; index++ {
+		// skip if rank is the one we get for three same rank card
+		if handByRank[index].Rank == threeSameCardRank {
+			continue
+		}
+
+		if handByRank[index].Rank == handByRank[index+1].Rank {
+			winningCards = append(winningCards, handByRank[index], handByRank[index+1])
+			break
+		}
+	}
+
+	// no pair found
+	if len(winningCards) != 5 {
+		return RankingDetails{}, false
+	}
+
+	// pair card rank
+	twoSameCardRank := winningCards[3].Rank
+
+	// calculate score
+	ranking := FullHouse
+
+	baseScore := rankingScale * int64(ranking)
+
+	// add score based on top card and kicks to break ties
+	score := int64(threeSameCardRank) * 15
+	score += int64(twoSameCardRank)
+	score += baseScore
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: []*sngpoker.Card{},
+	}, true
 }
 
 func getFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
@@ -248,11 +310,12 @@ func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, 
 		if handByRank[index].Rank == handByRank[index+1].Rank &&
 			handByRank[index].Rank == handByRank[index+2].Rank {
 			winningCards = []*sngpoker.Card{handByRank[index], handByRank[index+1], handByRank[index+2]}
+			break
 		}
 	}
 
 	// no 3 same rank cards found
-	if len(winningCards) == 0 {
+	if len(winningCards) != 3 {
 		return RankingDetails{}, false
 	}
 
@@ -310,7 +373,7 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 		}
 	}
 	// no high rank pair found
-	if len(highRankPair) == 0 {
+	if len(highRankPair) != 2 {
 		return RankingDetails{}, false
 	}
 	// pair card rank
@@ -325,7 +388,7 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 		}
 	}
 	// no low rank pair found
-	if len(lowRankPair) == 0 {
+	if len(lowRankPair) != 2 {
 		return RankingDetails{}, false
 	}
 	// pair card rank
@@ -377,7 +440,7 @@ func getOnePairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 	}
 
 	// no pair found
-	if len(winningCards) == 0 {
+	if len(winningCards) != 2 {
 		return RankingDetails{}, false
 	}
 
