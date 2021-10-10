@@ -80,6 +80,11 @@ var SuitNames = map[sngpoker.Suit]string{
 func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
 
+	rankingResult, isFourOfAKind := getFourOfAKindRanking(holes, communityCards)
+	if isFourOfAKind {
+		return rankingResult
+	}
+
 	rankingResult, isFullHouse := getFullHouseRanking(holes, communityCards)
 	if isFullHouse {
 		return rankingResult
@@ -127,7 +132,62 @@ func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails,
 }
 
 func getFourOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	return RankingDetails{}, false
+	// sort hand cards by card rank
+	handByRank := sortHandByRank(holes, community)
+
+	// search for 4 cards with the same rank
+	winningCards := []*sngpoker.Card{}
+	for index := 0; index < len(handByRank)-3; index++ {
+		if handByRank[index].Rank == handByRank[index+1].Rank &&
+			handByRank[index].Rank == handByRank[index+2].Rank &&
+			handByRank[index].Rank == handByRank[index+3].Rank {
+			winningCards = []*sngpoker.Card{
+				handByRank[index],
+				handByRank[index+1],
+				handByRank[index+2],
+				handByRank[index+3],
+			}
+			break
+		}
+	}
+
+	// no 4 same rank cards found
+	if len(winningCards) != 4 {
+		return RankingDetails{}, false
+	}
+
+	// 4 same card rank
+	sameCardsRank := winningCards[0].Rank
+
+	// get remaining 1 kicking cards
+	kickingCards := make([]*sngpoker.Card, 0)
+	for _, card := range handByRank {
+		// if same card rank skip
+		if sameCardsRank == card.Rank {
+			continue
+		}
+
+		// 1 kicking cards must be found
+		kickingCards = append(kickingCards, card)
+		break
+	}
+
+	// calculate score
+	ranking := FourOfAKind
+
+	baseScore := rankingScale * int64(ranking)
+
+	// add score based on top card and kicks to break ties
+	score := int64(sameCardsRank) * 15
+	score = score + int64(kickingCards[0].Rank) // add kicking card
+	score += baseScore
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: kickingCards,
+	}, true
 }
 
 func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
@@ -322,7 +382,7 @@ func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, 
 	// 3 same card rank
 	sameCardsRank := winningCards[0].Rank
 
-	// get remaining 3 kicking cards
+	// get remaining 2 kicking cards
 	kickingCards := make([]*sngpoker.Card, 0)
 	for _, card := range handByRank {
 		// if same card rank skip
