@@ -80,6 +80,11 @@ var SuitNames = map[sngpoker.Suit]string{
 func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
 
+	rankingResult, isRoyalFlush := getRoyalFlushRanking(holes, communityCards)
+	if isRoyalFlush {
+		return rankingResult
+	}
+
 	rankingResult, isStraightFlush := getStraightFlushRanking(holes, communityCards)
 	if isStraightFlush {
 		return rankingResult
@@ -126,9 +131,32 @@ func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) Ranki
 }
 
 func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	straighResult, isStraightFlush := getStraightFlushRanking(holes, community)
+	// check if hand has straight flush cards
+	straightRanking, isStraightFlush := getStraightFlushRanking(holes, community)
 
-	return straighResult, isStraightFlush
+	// check if straight flush found
+	if !isStraightFlush {
+		return RankingDetails{}, false
+	}
+
+	// check if found straight flush cards high cards is ace
+	if straightRanking.WinningCards[0].Rank != sngpoker.CardRank_ACE {
+		return RankingDetails{}, false
+	}
+
+	// calculate score
+	ranking := RoyalFlush
+
+	baseScore := rankingScale * int64(ranking)
+
+	// score and baseScore are the same for royal flush
+	score := baseScore
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: straightRanking.WinningCards,
+		KickingCards: []*sngpoker.Card{},
+	}, true
 }
 
 func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
@@ -145,7 +173,8 @@ func getStraightFlushRanking(holes, community []*sngpoker.Card) (RankingDetails,
 	}
 
 	// sort cards properly for special case five high to ace low straight cards
-	if flushRanking.WinningCards[0].Rank == sngpoker.CardRank_ACE {
+	if flushRanking.WinningCards[0].Rank == sngpoker.CardRank_ACE &&
+		flushRanking.WinningCards[1].Rank == sngpoker.CardRank_FIVE {
 		flushRanking.WinningCards = append(flushRanking.WinningCards[1:], flushRanking.WinningCards[0])
 	}
 
