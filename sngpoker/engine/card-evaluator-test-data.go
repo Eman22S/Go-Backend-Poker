@@ -13,11 +13,11 @@ func getRankingTestData() []*RankingTestData {
 		// high card ranking
 		{
 			communityCards: []*sngpoker.Card{
-				{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
-				{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
-				{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 				{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
+				{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 				{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
 			},
 
 			players: [][]*sngpoker.Player{
@@ -26,14 +26,14 @@ func getRankingTestData() []*RankingTestData {
 						Id: 1,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
-							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
 						},
 					},
 					{
 						Id: 2,
 						Cards: []*sngpoker.Card{
-							{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_HEART},
-							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 						},
 					},
 				},
@@ -49,7 +49,7 @@ func getRankingTestData() []*RankingTestData {
 						Id: 2,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_HEART},
-							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_SPADE},
 						},
 					},
 				},
@@ -59,7 +59,7 @@ func getRankingTestData() []*RankingTestData {
 					PlayerId: 1,
 					Ranking:  HighCard,
 					WinningCards: []*sngpoker.Card{
-						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
 					},
 				},
 				{
@@ -273,11 +273,11 @@ func getRankingTestData() []*RankingTestData {
 		// straight ranking
 		{
 			communityCards: []*sngpoker.Card{
-				{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
+				{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
 				{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
-				{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
-				{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
-				{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
+				{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_HEART},
+				{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 			},
 
 			players: [][]*sngpoker.Player{
@@ -285,7 +285,7 @@ func getRankingTestData() []*RankingTestData {
 					{
 						Id: 1,
 						Cards: []*sngpoker.Card{
-							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
 						},
 					},
@@ -301,14 +301,30 @@ func getRankingTestData() []*RankingTestData {
 					{
 						Id: 1,
 						Cards: []*sngpoker.Card{
-							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_CLUB},
 						},
 					},
 					{
 						Id: 2,
 						Cards: []*sngpoker.Card{
-							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_HEART},
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						},
+					},
+				},
+				{
+					{
+						Id: 1,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_CLUB},
+						},
+					},
+					{
+						Id: 2,
+						Cards: []*sngpoker.Card{
+							{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_HEART},
 							{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
 						},
 					},
@@ -319,26 +335,37 @@ func getRankingTestData() []*RankingTestData {
 					PlayerId: 1,
 					Ranking:  Straight,
 					WinningCards: []*sngpoker.Card{
-						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
-						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
-						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
 						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_HEART},
 					},
 				},
 				{
 					PlayerId: 2,
 					Ranking:  Straight,
 					WinningCards: []*sngpoker.Card{
-						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
-						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
-						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
-						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
 						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
+					},
+				},
+				// special straight five high to ace low
+				{
+					PlayerId: 1,
+					Ranking:  Straight,
+					WinningCards: []*sngpoker.Card{
+						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_HEART},
+						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_CLUB},
 					},
 				},
 			},
 		},
 	}
-
 }
