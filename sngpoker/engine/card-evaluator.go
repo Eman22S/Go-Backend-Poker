@@ -23,11 +23,11 @@ const (
 
 // mapping of each card rank internal representation with user friendly strings
 var RankingTypeNames = map[RankingType]string{
-	RoyalFlush:    "",
-	StraightFlush: "",
-	FourOfAKind:   "",
-	FullHouse:     "",
-	Flush:         "",
+	RoyalFlush:    "ROYAL FLUSH",
+	StraightFlush: "STRAIGHT FLUSH",
+	FourOfAKind:   "FOUR OF A KIND",
+	FullHouse:     "FULL HOUSE",
+	Flush:         "FLUSH",
 	Straight:      "STRAIGHT",
 	ThreeOfAKind:  "THREE OF A KIND",
 	TwoPair:       "TWO PAIR",
@@ -80,6 +80,11 @@ var SuitNames = map[sngpoker.Suit]string{
 func getBestHand(player *sngpoker.Player, communityCards []*sngpoker.Card) RankingDetails {
 	holes := player.Cards
 
+	rankingResult, isFlush := getFlushRanking(holes, communityCards)
+	if isFlush {
+		return rankingResult
+	}
+
 	rankingResult, isStraight := getStraightRanking(holes, communityCards)
 	if isStraight {
 		return rankingResult
@@ -125,7 +130,48 @@ func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, boo
 }
 
 func getFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	return RankingDetails{}, false
+	handCards := append(holes, community...)
+	cardsBySuit := make(map[sngpoker.Suit][]*sngpoker.Card)
+
+	// collect cards by suit
+	var maxSuitType sngpoker.Suit
+	maxSuitTypeFound := false
+	for _, card := range handCards {
+		cardsBySuit[card.Suit] = append(cardsBySuit[card.Suit], card)
+		if len(cardsBySuit[card.Suit]) >= 5 {
+			maxSuitTypeFound = true
+			maxSuitType = card.Suit
+		}
+	}
+
+	// check we get more than 5 cards with the same suit
+	if !maxSuitTypeFound {
+		return RankingDetails{}, false
+	}
+
+	// sort and extract winning cards of the same suit
+	maxSuitHandByRank := sortHandByRank(cardsBySuit[maxSuitType], []*sngpoker.Card{})
+	winningCards := maxSuitHandByRank[:5]
+
+	ranking := Flush
+
+	baseScore := int64(ranking) * rankingScale
+
+	subScoreMultiplier := int64(100000)
+	score := int64(0)
+	for _, card := range winningCards {
+		score += subScoreMultiplier * int64(card.Rank)
+		subScoreMultiplier /= 10
+	}
+
+	score += baseScore
+
+	return RankingDetails{
+		Ranking:      ranking,
+		Score:        score,
+		WinningCards: winningCards,
+		KickingCards: []*sngpoker.Card{},
+	}, true
 }
 
 func getStraightRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
