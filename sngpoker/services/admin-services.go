@@ -22,8 +22,20 @@ func (s *Server) RankHands(ctx context.Context, req *sngpoker.RankHandsRequest) 
 	if err != nil {
 		return &sngpoker.RankHandsResult{}, err
 	}
-	players, communityCards := req.Players, req.CommunityCards
-	handTestResult := engine.GetHandTestResult(players, communityCards)
+	rankHandResult := engine.RankHands(req.Players, req.CommunityCards)
 
-	return &handTestResult, nil
+	rankResult := make([]*sngpoker.RankingData, 0)
+	for _, v := range rankHandResult {
+		rankResult = append(rankResult, &sngpoker.RankingData{
+			PlayerId:        v.PlayerId,
+			Score:           v.Score,
+			WinningCards:    v.WinningCards,
+			KickingCards:    v.KickingCards,
+			HandDescription: v.HandDescription,
+		})
+	}
+	return &sngpoker.RankHandsResult{
+		WinnerPlayerId: rankHandResult[0].PlayerId,
+		RankResult:     rankResult,
+	}, nil
 }

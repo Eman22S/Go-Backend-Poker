@@ -23,22 +23,52 @@ func TestRankings(t *testing.T) {
 	}
 }
 
-func checkRankingIntegrity(t *testing.T, players []*sngpoker.Player, communityCards []*sngpoker.Card, expectedWinnerRanking *RankingDetails) {
-	rankingResult := rankHands(players, communityCards)
+func checkRankingIntegrity(
+	t *testing.T,
+	players []*sngpoker.Player,
+	communityCards []*sngpoker.Card,
+	expectedWinnerRanking *RankingDetails,
+) {
+	rankingResult := RankHands(players, communityCards)
 
-	expectedWinner := expectedWinnerRanking.PlayerId
+	expectedWinnerIndex := 0
 	expectedRanking := expectedWinnerRanking.Ranking
-	if rankingResult[expectedWinner].Ranking != expectedRanking {
-		t.Errorf("%s ranking: Expected winner should have %s ranking.", RankingTypeNames[expectedRanking], RankingTypeNames[expectedRanking])
+	if rankingResult[expectedWinnerIndex].Ranking != expectedRanking {
+		t.Errorf(
+			"%s ranking: Expected winner should have %s ranking.",
+			RankingTypeNames[expectedRanking],
+			RankingTypeNames[expectedRanking],
+		)
+	}
+
+	expectedWinnerId := expectedWinnerRanking.PlayerId
+	if rankingResult[expectedWinnerIndex].PlayerId != expectedWinnerId {
+		t.Errorf(
+			"%s ranking: Expected winner id should be %d.",
+			RankingTypeNames[expectedRanking],
+			expectedWinnerId,
+		)
 	}
 
 	expectedWiningCards := expectedWinnerRanking.WinningCards
-	winnningCards := rankingResult[expectedWinner].WinningCards
+	winnningCards := rankingResult[expectedWinnerIndex].WinningCards
 	if len(winnningCards) != len(expectedWiningCards) {
-		t.Errorf("%s ranking: Winning cards must be %d cards", RankingTypeNames[expectedRanking], len(expectedWiningCards))
+		t.Errorf(
+			"%s ranking: Winning cards must be %d cards",
+			RankingTypeNames[expectedRanking],
+			len(expectedWiningCards),
+		)
 	}
 
-	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinner].WinningCards) {
-		t.Errorf("%s ranking: The winning cards are incorrect.", RankingTypeNames[expectedRanking])
+	if !reflect.DeepEqual(expectedWiningCards, rankingResult[expectedWinnerIndex].WinningCards) {
+		t.Errorf(
+			`%s ranking: Winner player id: %d
+			 	Expected winning cards: %v
+				Actual winning cards: %v`,
+			RankingTypeNames[expectedRanking],
+			expectedWinnerId,
+			expectedWiningCards,
+			rankingResult[expectedWinnerIndex].WinningCards,
+		)
 	}
 }
