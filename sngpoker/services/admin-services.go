@@ -32,6 +32,7 @@ func (s *Server) RankHands(ctx context.Context, req *sngpoker.RankHandsRequest) 
 			WinningCards:    v.WinningCards,
 			KickingCards:    v.KickingCards,
 			HandDescription: v.HandDescription,
+			HoleCards:       v.HoleCards,
 		})
 	}
 	return &sngpoker.RankHandsResult{
