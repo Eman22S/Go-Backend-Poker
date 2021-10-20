@@ -43,6 +43,7 @@ type RankingDetails struct {
 	Score                 int64
 	WinningCards          []*sngpoker.Card
 	KickingCards          []*sngpoker.Card
+	HoleCards             []*sngpoker.Card
 	HandDescription       string
 	KickingCardsUsedToWin []*sngpoker.Card
 }
@@ -158,6 +159,7 @@ func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bo
 		Ranking:      ranking,
 		Score:        score,
 		WinningCards: straightRanking.WinningCards,
+		HoleCards:    holes,
 		KickingCards: []*sngpoker.Card{},
 	}, true
 }
@@ -204,6 +206,7 @@ func getStraightFlushRanking(
 		Ranking:      ranking,
 		Score:        score,
 		WinningCards: winningCards,
+		HoleCards:    holes,
 		KickingCards: []*sngpoker.Card{},
 	}, true
 }
@@ -267,6 +270,7 @@ func getFourOfAKindRanking(
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: kickingCards,
+		HoleCards:    holes,
 	}, true
 }
 
@@ -332,6 +336,7 @@ func getFullHouseRanking(holes, community []*sngpoker.Card) (RankingDetails, boo
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: []*sngpoker.Card{},
+		HoleCards:    holes,
 	}, true
 }
 
@@ -377,6 +382,7 @@ func getFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: []*sngpoker.Card{},
+		HoleCards:    holes,
 	}, true
 }
 
@@ -441,6 +447,7 @@ func getStraightRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: []*sngpoker.Card{},
+		HoleCards:    holes,
 	}, true
 }
 
@@ -500,6 +507,7 @@ func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, 
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: kickingCards,
+		HoleCards:    holes,
 	}, true
 }
 
@@ -569,6 +577,7 @@ func getTwoPairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 		Score:        score,
 		WinningCards: append(highRankPair, lowRankPair...),
 		KickingCards: kickingCards,
+		HoleCards:    holes,
 	}, true
 }
 
@@ -626,6 +635,7 @@ func getOnePairRanking(holes, community []*sngpoker.Card) (RankingDetails, bool)
 		Score:        score,
 		WinningCards: winningCards,
 		KickingCards: kickingCards,
+		HoleCards:    holes,
 	}, true
 }
 
@@ -660,6 +670,7 @@ func getHighCardRanking(holes, community []*sngpoker.Card) (RankingDetails, bool
 		Score:        score,
 		WinningCards: []*sngpoker.Card{highCard},
 		KickingCards: kickingCards,
+		HoleCards:    holes,
 	}, true
 }
 
@@ -829,8 +840,8 @@ func getHandDescription(rankingData RankingDetails) string {
 			}
 			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
-	case OnePair:
-	case ThreeOfAKind:
+		return handDescription
+	case OnePair, ThreeOfAKind:
 		highPairCard := rankingData.WinningCards[0]
 
 		handDescription = fmt.Sprintf(
@@ -852,6 +863,7 @@ func getHandDescription(rankingData RankingDetails) string {
 			}
 			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
+		return handDescription
 	case TwoPair:
 		highPairCard := rankingData.WinningCards[0]
 		lowPairCard := rankingData.WinningCards[2]
@@ -879,6 +891,66 @@ func getHandDescription(rankingData RankingDetails) string {
 				handDescription += CardRankNames[kick.Rank].name + ", "
 			}
 		}
+		return handDescription
+	case Straight:
+		highestCard := rankingData.WinningCards[0]
+		lowestCard := rankingData.WinningCards[len(rankingData.WinningCards)-1]
+		handDescription = fmt.Sprintf(
+			"%s: %s TO %s",
+			RankingTypeNames[rankingData.Ranking],
+			CardRankNames[lowestCard.Rank].name,
+			CardRankNames[highestCard.Rank].name,
+		)
+		return handDescription
+	case Flush:
+		highestCard := rankingData.WinningCards[0]
+		handDescription = fmt.Sprintf(
+			"%s %s, %s HIGH",
+			RankingTypeNames[rankingData.Ranking],
+			SuitNames[highestCard.Suit],
+			CardRankNames[highestCard.Rank].name,
+		)
+		return handDescription
+	case FullHouse:
+		threeOfAKindCard := rankingData.WinningCards[0]
+		pairCard := rankingData.WinningCards[3]
+		handDescription = fmt.Sprintf(
+			"%s %s%s FULLOF %s%s",
+			RankingTypeNames[rankingData.Ranking],
+			CardRankNames[threeOfAKindCard.Rank].name,
+			CardRankNames[threeOfAKindCard.Rank].multiplier,
+			CardRankNames[pairCard.Rank].name,
+			CardRankNames[pairCard.Rank].multiplier,
+		)
+		return handDescription
+	case FourOfAKind:
+		fourOfAKindCard := rankingData.WinningCards[0]
+		kickingCard := rankingData.WinningCards[4]
+		handDescription = fmt.Sprintf(
+			"%s %s%s %s KICKER",
+			RankingTypeNames[rankingData.Ranking],
+			CardRankNames[fourOfAKindCard.Rank].name,
+			CardRankNames[fourOfAKindCard.Rank].multiplier,
+			CardRankNames[kickingCard.Rank].name,
+		)
+		return handDescription
+	case StraightFlush:
+		highestCard := rankingData.WinningCards[0]
+		handDescription = fmt.Sprintf(
+			"%s %s, %s HIGH",
+			RankingTypeNames[rankingData.Ranking],
+			SuitNames[highestCard.Suit],
+			CardRankNames[highestCard.Rank].name,
+		)
+		return handDescription
+	case RoyalFlush:
+		highestCard := rankingData.WinningCards[0]
+		handDescription = fmt.Sprintf(
+			"%s %s",
+			RankingTypeNames[rankingData.Ranking],
+			SuitNames[highestCard.Suit],
+		)
+		return handDescription
 	}
 
 	return handDescription
