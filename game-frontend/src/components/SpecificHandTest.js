@@ -470,11 +470,7 @@ const on_stat_response = function(response){
   //response after cards are ranked
   const rank_cards_response = (response)=>{
     const rankResponse = response.toObject()
-    let player_cards = [];
-    players.forEach((player=>{
-      player_cards.push(player.cards);
-    }));
-    let json_response =transformRankHandResult(rankResponse,player_cards)
+    let json_response =transformRankHandResult(rankResponse)
     let winning_hands = json_response.winners;
     setPlayerDescription([...json_response.hand_description])
     setWinning({
@@ -493,7 +489,7 @@ const on_stat_response = function(response){
       winner_card_sample[(wild_card_value * 4) + 3] = true; 
       winner_card_sample[(wild_card_value * 4) + 4] = true; 
     }
-    setWinnerCards(winner_card_sample);
+    setWinnerCards(winning_hands);
     
   }
   useEffect(()=>{
@@ -512,8 +508,13 @@ const on_stat_response = function(response){
   const getCardDescription = (first_card , second_card) =>{
     let description = ""
     playerDescription.map(player=>{
-    
-      if(player.hand.includes(first_card) && player.hand.includes(second_card)){
+      const containsFirst = player.hand.find(card => {
+        return card.rank === first_card.rank && card.suit === first_card.suit
+      })
+      const containsSecond = player.hand.find(card => {
+        return card.rank === second_card.rank && card.suit === second_card.suit
+      })
+      if(!!containsFirst && !!containsSecond){
         description = player.description;
       }
       return null; 
@@ -1002,7 +1003,7 @@ function setCardFromHistory(history, index){
                           
                           {crdsym.map((rank, index) =>{
                               return (
-                                  <MenuItem key={index} value={crdsym.length - 1 - index}>{rank}</MenuItem>
+                                  <MenuItem key={index} value={index}>{rank}</MenuItem>
 
                               );
                           })}

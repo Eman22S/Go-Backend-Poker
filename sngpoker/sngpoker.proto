@@ -344,7 +344,8 @@ message RankingData {
     int64 score = 2;
     repeated Card winningCards = 3;
     repeated Card kickingCards = 4;
-    string handDescription = 5;
+    repeated Card holeCards = 5;
+    string hand_description = 6;
 }
 
 message GetStatusResult {

@@ -84,14 +84,13 @@ function getExpectedPlayersData(playersData) {
     };
   }
 
-  function transformRankHandResult (rankHand, originalHands) {
-    console.log("original hands ", originalHands)
+  function transformRankHandResult (rankHand) {
     const hands = rankHand.rankresultList
-    const winners = [...hands[0].winningCardsList, ...hands[0].kickingCardsList]
+    const winners = [...hands[0].winningcardsList, ...hands[0].kickingcardsList]
 
     const hand_description = hands.map((hand, index) => {
       return {
-        hand: originalHands[index],
+        hand: hand.holecardsList,
         description:  hand.handDescription
       }
     })

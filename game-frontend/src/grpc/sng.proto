@@ -365,7 +365,28 @@ message Player {
     bool is_automuck_enabled = 30;
     google.protobuf.Any resit_at_next_big_blind = 31;
 }
+enum CardRank {
+    TWO    = 0;
+    THREE  = 1;
+	FOUR   = 2;
+	FIVE   = 3;
+	SIX    = 4;
+	SEVEN  = 5;
+    EIGHT  = 6;
+	NINE   = 7;
+	TEN    = 8;
+	JACK   = 9;
+	QUEEN  = 10;
+	KING   = 11;
+	ACE    = 12;
+}
 
+enum Suit {
+    CLUB = 0;
+    SPADE = 1;
+    HEART = 2;
+    DIAMOND = 3;
+}
 message PayoutDetails {
     string username = 1;
     int32 user_id = 2;
@@ -467,8 +488,8 @@ message DeckData {
 }
 
 message Card {
-    int32 rank = 1;
-    int32 suit = 2;
+    CardRank rank = 1;
+    Suit suit = 2;
 }
 
 // represents blind level and its value
@@ -1351,10 +1372,11 @@ message RankHandsResult {
 
 message RankingData {
     int32 playerId = 1;
-    int32 score = 2;
-    repeated Card winning_cards = 3;
-    repeated Card kicking_cards = 4;
-    string hand_description = 5;
+    int64 score = 2;
+    repeated Card winningCards = 3;
+    repeated Card kickingCards = 4;
+    repeated Card holeCards = 5;
+    string hand_description = 6;
 }
 
 

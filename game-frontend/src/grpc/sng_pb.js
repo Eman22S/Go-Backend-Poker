@@ -62,6 +62,7 @@ goog.exportSymbol('proto.sngpoker.CaptureDepositResponse', null, global);
 goog.exportSymbol('proto.sngpoker.CaptureWithdrawalRequest', null, global);
 goog.exportSymbol('proto.sngpoker.CaptureWithdrawalResponse', null, global);
 goog.exportSymbol('proto.sngpoker.Card', null, global);
+goog.exportSymbol('proto.sngpoker.CardRank', null, global);
 goog.exportSymbol('proto.sngpoker.ChangePasswordRequest', null, global);
 goog.exportSymbol('proto.sngpoker.ChangePasswordResponse', null, global);
 goog.exportSymbol('proto.sngpoker.ClientAddRequest', null, global);
@@ -217,6 +218,7 @@ goog.exportSymbol('proto.sngpoker.StartTournamentTableInstanceRequest', null, gl
 goog.exportSymbol('proto.sngpoker.StartTournamentTableInstanceResponse', null, global);
 goog.exportSymbol('proto.sngpoker.StatusResponse', null, global);
 goog.exportSymbol('proto.sngpoker.Street', null, global);
+goog.exportSymbol('proto.sngpoker.Suit', null, global);
 goog.exportSymbol('proto.sngpoker.TableSubscribeRequest', null, global);
 goog.exportSymbol('proto.sngpoker.TableSubscribeResponse', null, global);
 goog.exportSymbol('proto.sngpoker.ThemesRequest', null, global);
@@ -14079,11 +14081,11 @@ proto.sngpoker.Card.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {!proto.sngpoker.CardRank} */ (reader.readEnum());
       msg.setRank(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {!proto.sngpoker.Suit} */ (reader.readEnum());
       msg.setSuit(value);
       break;
     default:
@@ -14116,15 +14118,15 @@ proto.sngpoker.Card.prototype.serializeBinary = function() {
 proto.sngpoker.Card.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getRank();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f !== 0.0) {
+    writer.writeEnum(
       1,
       f
     );
   }
   f = message.getSuit();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f !== 0.0) {
+    writer.writeEnum(
       2,
       f
     );
@@ -14133,38 +14135,38 @@ proto.sngpoker.Card.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int32 rank = 1;
- * @return {number}
+ * optional CardRank rank = 1;
+ * @return {!proto.sngpoker.CardRank}
  */
 proto.sngpoker.Card.prototype.getRank = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.sngpoker.CardRank} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {number} value
+ * @param {!proto.sngpoker.CardRank} value
  * @return {!proto.sngpoker.Card} returns this
  */
 proto.sngpoker.Card.prototype.setRank = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
 /**
- * optional int32 suit = 2;
- * @return {number}
+ * optional Suit suit = 2;
+ * @return {!proto.sngpoker.Suit}
  */
 proto.sngpoker.Card.prototype.getSuit = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.sngpoker.Suit} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {number} value
+ * @param {!proto.sngpoker.Suit} value
  * @return {!proto.sngpoker.Card} returns this
  */
 proto.sngpoker.Card.prototype.setSuit = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
@@ -40781,7 +40783,7 @@ proto.sngpoker.RankHandsResult.prototype.clearRankresultList = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.sngpoker.RankingData.repeatedFields_ = [3,4];
+proto.sngpoker.RankingData.repeatedFields_ = [3,4,5];
 
 
 
@@ -40816,11 +40818,13 @@ proto.sngpoker.RankingData.toObject = function(includeInstance, msg) {
   var f, obj = {
     playerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
     score: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    winningCardsList: jspb.Message.toObjectList(msg.getWinningCardsList(),
+    winningcardsList: jspb.Message.toObjectList(msg.getWinningcardsList(),
     proto.sngpoker.Card.toObject, includeInstance),
-    kickingCardsList: jspb.Message.toObjectList(msg.getKickingCardsList(),
+    kickingcardsList: jspb.Message.toObjectList(msg.getKickingcardsList(),
     proto.sngpoker.Card.toObject, includeInstance),
-    handDescription: jspb.Message.getFieldWithDefault(msg, 5, "")
+    holecardsList: jspb.Message.toObjectList(msg.getHolecardsList(),
+    proto.sngpoker.Card.toObject, includeInstance),
+    handDescription: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -40862,20 +40866,25 @@ proto.sngpoker.RankingData.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPlayerid(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setScore(value);
       break;
     case 3:
       var value = new proto.sngpoker.Card;
       reader.readMessage(value,proto.sngpoker.Card.deserializeBinaryFromReader);
-      msg.addWinningCards(value);
+      msg.addWinningcards(value);
       break;
     case 4:
       var value = new proto.sngpoker.Card;
       reader.readMessage(value,proto.sngpoker.Card.deserializeBinaryFromReader);
-      msg.addKickingCards(value);
+      msg.addKickingcards(value);
       break;
     case 5:
+      var value = new proto.sngpoker.Card;
+      reader.readMessage(value,proto.sngpoker.Card.deserializeBinaryFromReader);
+      msg.addHolecards(value);
+      break;
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setHandDescription(value);
       break;
@@ -40917,12 +40926,12 @@ proto.sngpoker.RankingData.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getScore();
   if (f !== 0) {
-    writer.writeInt32(
+    writer.writeInt64(
       2,
       f
     );
   }
-  f = message.getWinningCardsList();
+  f = message.getWinningcardsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       3,
@@ -40930,7 +40939,7 @@ proto.sngpoker.RankingData.serializeBinaryToWriter = function(message, writer) {
       proto.sngpoker.Card.serializeBinaryToWriter
     );
   }
-  f = message.getKickingCardsList();
+  f = message.getKickingcardsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       4,
@@ -40938,10 +40947,18 @@ proto.sngpoker.RankingData.serializeBinaryToWriter = function(message, writer) {
       proto.sngpoker.Card.serializeBinaryToWriter
     );
   }
+  f = message.getHolecardsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      5,
+      f,
+      proto.sngpoker.Card.serializeBinaryToWriter
+    );
+  }
   f = message.getHandDescription();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      6,
       f
     );
   }
@@ -40967,7 +40984,7 @@ proto.sngpoker.RankingData.prototype.setPlayerid = function(value) {
 
 
 /**
- * optional int32 score = 2;
+ * optional int64 score = 2;
  * @return {number}
  */
 proto.sngpoker.RankingData.prototype.getScore = function() {
@@ -40985,10 +41002,10 @@ proto.sngpoker.RankingData.prototype.setScore = function(value) {
 
 
 /**
- * repeated Card winning_cards = 3;
+ * repeated Card winningCards = 3;
  * @return {!Array<!proto.sngpoker.Card>}
  */
-proto.sngpoker.RankingData.prototype.getWinningCardsList = function() {
+proto.sngpoker.RankingData.prototype.getWinningcardsList = function() {
   return /** @type{!Array<!proto.sngpoker.Card>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.sngpoker.Card, 3));
 };
@@ -40998,7 +41015,7 @@ proto.sngpoker.RankingData.prototype.getWinningCardsList = function() {
  * @param {!Array<!proto.sngpoker.Card>} value
  * @return {!proto.sngpoker.RankingData} returns this
 */
-proto.sngpoker.RankingData.prototype.setWinningCardsList = function(value) {
+proto.sngpoker.RankingData.prototype.setWinningcardsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
@@ -41008,7 +41025,7 @@ proto.sngpoker.RankingData.prototype.setWinningCardsList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.sngpoker.Card}
  */
-proto.sngpoker.RankingData.prototype.addWinningCards = function(opt_value, opt_index) {
+proto.sngpoker.RankingData.prototype.addWinningcards = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.sngpoker.Card, opt_index);
 };
 
@@ -41017,16 +41034,16 @@ proto.sngpoker.RankingData.prototype.addWinningCards = function(opt_value, opt_i
  * Clears the list making it empty but non-null.
  * @return {!proto.sngpoker.RankingData} returns this
  */
-proto.sngpoker.RankingData.prototype.clearWinningCardsList = function() {
-  return this.setWinningCardsList([]);
+proto.sngpoker.RankingData.prototype.clearWinningcardsList = function() {
+  return this.setWinningcardsList([]);
 };
 
 
 /**
- * repeated Card kicking_cards = 4;
+ * repeated Card kickingCards = 4;
  * @return {!Array<!proto.sngpoker.Card>}
  */
-proto.sngpoker.RankingData.prototype.getKickingCardsList = function() {
+proto.sngpoker.RankingData.prototype.getKickingcardsList = function() {
   return /** @type{!Array<!proto.sngpoker.Card>} */ (
     jspb.Message.getRepeatedWrapperField(this, proto.sngpoker.Card, 4));
 };
@@ -41036,7 +41053,7 @@ proto.sngpoker.RankingData.prototype.getKickingCardsList = function() {
  * @param {!Array<!proto.sngpoker.Card>} value
  * @return {!proto.sngpoker.RankingData} returns this
 */
-proto.sngpoker.RankingData.prototype.setKickingCardsList = function(value) {
+proto.sngpoker.RankingData.prototype.setKickingcardsList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
@@ -41046,7 +41063,7 @@ proto.sngpoker.RankingData.prototype.setKickingCardsList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.sngpoker.Card}
  */
-proto.sngpoker.RankingData.prototype.addKickingCards = function(opt_value, opt_index) {
+proto.sngpoker.RankingData.prototype.addKickingcards = function(opt_value, opt_index) {
   return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.sngpoker.Card, opt_index);
 };
 
@@ -41055,17 +41072,55 @@ proto.sngpoker.RankingData.prototype.addKickingCards = function(opt_value, opt_i
  * Clears the list making it empty but non-null.
  * @return {!proto.sngpoker.RankingData} returns this
  */
-proto.sngpoker.RankingData.prototype.clearKickingCardsList = function() {
-  return this.setKickingCardsList([]);
+proto.sngpoker.RankingData.prototype.clearKickingcardsList = function() {
+  return this.setKickingcardsList([]);
 };
 
 
 /**
- * optional string hand_description = 5;
+ * repeated Card holeCards = 5;
+ * @return {!Array<!proto.sngpoker.Card>}
+ */
+proto.sngpoker.RankingData.prototype.getHolecardsList = function() {
+  return /** @type{!Array<!proto.sngpoker.Card>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.sngpoker.Card, 5));
+};
+
+
+/**
+ * @param {!Array<!proto.sngpoker.Card>} value
+ * @return {!proto.sngpoker.RankingData} returns this
+*/
+proto.sngpoker.RankingData.prototype.setHolecardsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
+};
+
+
+/**
+ * @param {!proto.sngpoker.Card=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sngpoker.Card}
+ */
+proto.sngpoker.RankingData.prototype.addHolecards = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.sngpoker.Card, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sngpoker.RankingData} returns this
+ */
+proto.sngpoker.RankingData.prototype.clearHolecardsList = function() {
+  return this.setHolecardsList([]);
+};
+
+
+/**
+ * optional string hand_description = 6;
  * @return {string}
  */
 proto.sngpoker.RankingData.prototype.getHandDescription = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
@@ -41074,7 +41129,7 @@ proto.sngpoker.RankingData.prototype.getHandDescription = function() {
  * @return {!proto.sngpoker.RankingData} returns this
  */
 proto.sngpoker.RankingData.prototype.setHandDescription = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -55662,5 +55717,34 @@ proto.sngpoker.FloatResponse.prototype.setData = function(value) {
   return jspb.Message.setProto3FloatField(this, 1, value);
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.sngpoker.CardRank = {
+  TWO: 0,
+  THREE: 1,
+  FOUR: 2,
+  FIVE: 3,
+  SIX: 4,
+  SEVEN: 5,
+  EIGHT: 6,
+  NINE: 7,
+  TEN: 8,
+  JACK: 9,
+  QUEEN: 10,
+  KING: 11,
+  ACE: 12
+};
+
+/**
+ * @enum {number}
+ */
+proto.sngpoker.Suit = {
+  CLUB: 0,
+  SPADE: 1,
+  HEART: 2,
+  DIAMOND: 3
+};
 
 goog.object.extend(exports, proto.sngpoker);
