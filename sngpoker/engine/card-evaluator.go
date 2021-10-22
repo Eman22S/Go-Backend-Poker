@@ -53,7 +53,7 @@ type RankName struct {
 	multiplier string
 }
 
-type CardRep struct {
+type CardRepresentation struct {
 	class     string
 	suitName  string
 	character string
@@ -962,8 +962,8 @@ func getHandDescription(rankingData RankingDetails) string {
 	return handDescription
 }
 
-func getCardRepresentation(card *sngpoker.Card) CardRep {
-	var cardRep CardRep
+func getCardRepresentation(card *sngpoker.Card) CardRepresentation {
+	var cardRep CardRepresentation
 	cardRep.suitName = SuitNames[card.Suit]
 	switch card.Suit {
 	case 0:
