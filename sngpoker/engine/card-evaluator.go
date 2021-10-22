@@ -53,6 +53,12 @@ type RankName struct {
 	multiplier string
 }
 
+type CardRep struct {
+	class     string
+	suitName  string
+	character string
+}
+
 // mapping of each card rank internal representation with user friendly strings
 var CardRankNames = map[sngpoker.CardRank]RankName{
 	sngpoker.CardRank_TWO:   {name: "DEUCE", multiplier: "s"},
@@ -956,20 +962,23 @@ func getHandDescription(rankingData RankingDetails) string {
 	return handDescription
 }
 
-// ! function trying to dictate/contain UI explicit syntax, consider removing this in future
-func getCardHtmlRepresentation(card *sngpoker.Card) string {
-	var cardClass string
+func getCardRepresentation(card *sngpoker.Card) CardRep {
+	var cardRep CardRep
+	cardRep.suitName = SuitNames[card.Suit]
 	switch card.Suit {
 	case 0:
-		cardClass = "card_diamond"
+		cardRep.class = "card_diamond"
+		cardRep.character = "&diams;"
 	case 1:
-		cardClass = "card_club"
+		cardRep.class = "card_club"
+		cardRep.character = "&clubs;"
 	case 2:
-		cardClass = "card_spade"
+		cardRep.class = "card_spade"
+		cardRep.character = "&spades;"
 	case 3:
-		cardClass = "card_head"
+		cardRep.class = "card_head"
+		cardRep.character = "&hearts;"
 	}
 
-	// ! script injection attack possible here beware when changing here
-	return fmt.Sprintf(`<span class="%s"> %s </span>`, cardClass, SuitNames[card.Suit])
+	return cardRep
 }
