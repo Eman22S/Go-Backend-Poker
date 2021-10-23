@@ -15,14 +15,13 @@ import (
 
 func TestRankings(t *testing.T) {
 	for _, testData := range getRankingTestData() {
+
 		for index, expectedWinnerRanking := range testData.expectedWinnerRanking {
-			if expectedWinnerRanking.Ranking == HighCard {
-				checkRankingIntegrity(
-					t, testData.players[index],
-					testData.communityCards,
-					expectedWinnerRanking,
-				)
-			}
+			checkRankingIntegrity(
+				t, testData.players[index],
+				testData.communityCards,
+				expectedWinnerRanking,
+			)
 		}
 	}
 }
@@ -34,6 +33,8 @@ func checkRankingIntegrity(
 	expectedWinnerRanking *RankingDetails,
 ) {
 	rankingResult := RankHands(players, communityCards)
+
+	// fmt.Printf("%+v\n\n\n", rankingResult)
 	expectedWinnerIndex := 0
 	expectedRanking := expectedWinnerRanking.Ranking
 	if rankingResult[expectedWinnerIndex].Ranking != expectedRanking {
@@ -102,6 +103,16 @@ func checkRankingIntegrity(
 			expectedWinnerId,
 			expectedWiningCards,
 			winnningCards,
+		)
+	}
+
+	expectedWinningHandDescription := expectedWinnerRanking.HandDescription
+	winningHandDescription := rankingResult[expectedWinnerIndex].HandDescription
+
+	if winningHandDescription != expectedWinningHandDescription {
+		t.Errorf(
+			`Expected winning hand description: %s
+			Instead got: %s`, expectedWinningHandDescription, winningHandDescription,
 		)
 	}
 }

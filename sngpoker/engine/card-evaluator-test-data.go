@@ -33,7 +33,7 @@ func getRankingTestData() []*RankingTestData {
 						Id: 2,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_HEART},
-							{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_HEART},
 						},
 					},
 				},
@@ -61,6 +61,7 @@ func getRankingTestData() []*RankingTestData {
 					WinningCards: []*sngpoker.Card{
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "HIGHCARD: JACK, KICKERS: NINE, SEVEN, SIX AND FIVE",
 				},
 				{
 					PlayerId: 2,
@@ -68,6 +69,7 @@ func getRankingTestData() []*RankingTestData {
 					WinningCards: []*sngpoker.Card{
 						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "HIGHCARD: ACE, KICKERS: TEN, NINE, SEVEN AND SIX",
 				},
 			},
 		},
@@ -124,6 +126,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "ONE PAIR: NINEs, KICKERS: ACE, TEN AND SEVEN",
 				},
 				{
 					PlayerId: 2,
@@ -132,6 +135,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "ONE PAIR: ACEs, KICKERS: NINE, EIGHT AND SEVEN",
 				},
 			},
 		},
@@ -190,6 +194,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_DIAMOND},
 					},
+					HandDescription: "TWO PAIR: JACKs AND EIGHTs, KICKERS: NINE",
 				},
 				{
 					PlayerId: 1,
@@ -200,6 +205,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "TWO PAIR: JACKs AND NINEs, KICKERS: EIGHT",
 				},
 			},
 		},
@@ -257,6 +263,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_CLUB},
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "THREE OF A KIND: NINEs, KICKERS: JACK AND EIGHT",
 				},
 				{
 					PlayerId: 2,
@@ -266,6 +273,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_CLUB},
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "THREE OF A KIND: JACKs, KICKERS: NINE AND EIGHT",
 				},
 			},
 		},
@@ -309,7 +317,7 @@ func getRankingTestData() []*RankingTestData {
 						Id: 2,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_HEART},
-							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+							{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_DIAMOND},
 						},
 					},
 				},
@@ -341,6 +349,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "STRAIGHT: THREE TO SEVEN",
 				},
 				{
 					PlayerId: 2,
@@ -348,10 +357,11 @@ func getRankingTestData() []*RankingTestData {
 					WinningCards: []*sngpoker.Card{
 						{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_DIAMOND},
-						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+						{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_DIAMOND},
 						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "STRAIGHT: FOUR TO EIGHT",
 				},
 				// special straight five high to ace low
 				{
@@ -364,6 +374,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_CLUB},
 					},
+					HandDescription: "STRAIGHT: ACE TO FIVE",
 				},
 			},
 		},
@@ -423,6 +434,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "FLUSH SPADES, SEVEN HIGH",
 				},
 				{
 					PlayerId: 2,
@@ -434,6 +446,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "FLUSH SPADES, JACK HIGH",
 				},
 			},
 		},
@@ -493,6 +506,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "FULL HOUSE SEVENs FULL OF JACKs",
 				},
 				{
 					PlayerId: 2,
@@ -504,6 +518,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_HEART},
 						{Rank: sngpoker.CardRank_SEVEN, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "FULL HOUSE JACKs FULL OF SEVENs",
 				},
 			},
 		},
@@ -562,6 +577,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_DIAMOND},
 						{Rank: sngpoker.CardRank_NINE, Suit: sngpoker.Suit_HEART},
 					},
+					HandDescription: "FOUR OF A KIND NINEs JACK KICKER",
 				},
 				{
 					PlayerId: 2,
@@ -572,6 +588,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_DIAMOND},
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "FOUR OF A KIND JACKs NINE KICKER",
 				},
 			},
 		},
@@ -647,6 +664,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_THREE, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "STRAIGHT FLUSH SPADES, SEVEN HIGH",
 				},
 				{
 					PlayerId: 2,
@@ -658,6 +676,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_FOUR, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "STRAIGHT FLUSH SPADES, EIGHT HIGH",
 				},
 				// special straight flush five high to ace low
 				{
@@ -670,6 +689,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "STRAIGHT FLUSH SPADES, FIVE HIGH",
 				},
 			},
 		},
@@ -729,6 +749,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "ROYAL FLUSH SPADES",
 				},
 				{
 					PlayerId: 2,
@@ -740,6 +761,7 @@ func getRankingTestData() []*RankingTestData {
 						{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
 						{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_SPADE},
 					},
+					HandDescription: "ROYAL FLUSH SPADES",
 				},
 			},
 		},
