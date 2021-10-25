@@ -84,22 +84,6 @@ function getExpectedPlayersData(playersData) {
     };
   }
 
-  function transformRankHandResult (rankHand) {
-    const hands = rankHand.rankresultList
-    const winners = [...hands[0].winningcardsList, ...hands[0].kickingcardsList]
-
-    const hand_description = hands.map((hand, index) => {
-      return {
-        hand: hand.holecardsList,
-        description:  hand.handDescription
-      }
-    })
-
-    return {
-      hand_description,
-      winners
-    }
-
-  }
+ 
   
-export { tranformData, transformRankHandResult } 
+export { tranformData } 

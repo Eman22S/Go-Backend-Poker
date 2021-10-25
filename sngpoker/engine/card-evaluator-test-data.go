@@ -5,7 +5,7 @@ import "sngrpc/sngpoker"
 type RankingTestData struct {
 	communityCards        []*sngpoker.Card
 	players               [][]*sngpoker.Player
-	expectedWinnerRanking []*RankingDetails
+	expectedRankingDetail []*RankingDetails
 }
 
 func getRankingTestData() []*RankingTestData {
@@ -54,7 +54,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  HighCard,
@@ -118,7 +118,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  OnePair,
@@ -184,7 +184,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 2,
 					Ranking:  TwoPair,
@@ -254,7 +254,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  ThreeOfAKind,
@@ -338,7 +338,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  Straight,
@@ -423,7 +423,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  Flush,
@@ -495,7 +495,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  FullHouse,
@@ -567,7 +567,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  FourOfAKind,
@@ -653,7 +653,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  StraightFlush,
@@ -707,6 +707,7 @@ func getRankingTestData() []*RankingTestData {
 			players: [][]*sngpoker.Player{
 				{
 					{
+
 						Id: 1,
 						Cards: []*sngpoker.Card{
 							{Rank: sngpoker.CardRank_JACK, Suit: sngpoker.Suit_SPADE},
@@ -738,7 +739,7 @@ func getRankingTestData() []*RankingTestData {
 					},
 				},
 			},
-			expectedWinnerRanking: []*RankingDetails{
+			expectedRankingDetail: []*RankingDetails{
 				{
 					PlayerId: 1,
 					Ranking:  RoyalFlush,
@@ -766,4 +767,8 @@ func getRankingTestData() []*RankingTestData {
 			},
 		},
 	}
+}
+
+func getKickingTestData() []*RankingTestData {
+	return []*RankingTestData{}
 }

@@ -53,12 +53,6 @@ type RankName struct {
 	multiplier string
 }
 
-type CardRepresentation struct {
-	class     string
-	suitName  string
-	character string
-}
-
 // mapping of each card rank internal representation with user friendly strings
 var CardRankNames = map[sngpoker.CardRank]RankName{
 	sngpoker.CardRank_TWO:   {name: "DEUCE", multiplier: "s"},
@@ -90,14 +84,17 @@ func getBestHand(
 ) RankingDetails {
 	holes := player.Cards
 
-	rankingResult, isRoyalFlush := getRoyalFlushRanking(holes, communityCards)
-	if isRoyalFlush {
-		return rankingResult
-	}
+	straightRankingResult, isStraight := getStraightRanking(holes, communityCards)
+	if isStraight {
+		straightFlushRanking, isStraightFlush := getStraightFlushRanking(holes, communityCards, straightRankingResult)
+		if isStraightFlush {
+			rankingResult, isRoyalFlush := getRoyalFlushRanking(holes, communityCards, straightFlushRanking)
+			if isRoyalFlush {
+				return rankingResult
+			}
 
-	rankingResult, isStraightFlush := getStraightFlushRanking(holes, communityCards)
-	if isStraightFlush {
-		return rankingResult
+			return straightFlushRanking
+		}
 	}
 
 	rankingResult, isFourOfAKind := getFourOfAKindRanking(holes, communityCards)
@@ -115,9 +112,8 @@ func getBestHand(
 		return rankingResult
 	}
 
-	rankingResult, isStraight := getStraightRanking(holes, communityCards)
 	if isStraight {
-		return rankingResult
+		return straightRankingResult
 	}
 
 	rankingResult, isThreeOfAKind := getThreeOfAKindRanking(holes, communityCards)
@@ -140,17 +136,11 @@ func getBestHand(
 	return rankingResult
 }
 
-func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bool) {
-	// check if hand has straight flush cards
-	straightRanking, isStraightFlush := getStraightFlushRanking(holes, community)
-
-	// check if straight flush found
-	if !isStraightFlush {
-		return RankingDetails{}, false
-	}
-
+func getRoyalFlushRanking(
+	holes,
+	community []*sngpoker.Card, straightFlushRanking RankingDetails) (RankingDetails, bool) {
 	// check if found straight flush cards high cards is ace
-	if straightRanking.WinningCards[0].Rank != sngpoker.CardRank_ACE {
+	if straightFlushRanking.WinningCards[0].Rank != sngpoker.CardRank_ACE {
 		return RankingDetails{}, false
 	}
 
@@ -164,7 +154,7 @@ func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bo
 	return RankingDetails{
 		Ranking:      ranking,
 		Score:        score,
-		WinningCards: straightRanking.WinningCards,
+		WinningCards: straightFlushRanking.WinningCards,
 		HoleCards:    holes,
 		KickingCards: []*sngpoker.Card{},
 	}, true
@@ -173,14 +163,10 @@ func getRoyalFlushRanking(holes, community []*sngpoker.Card) (RankingDetails, bo
 func getStraightFlushRanking(
 	holes,
 	community []*sngpoker.Card,
+	straightRankingResult RankingDetails,
 ) (RankingDetails, bool) {
-	// check if hand has straight cards
-	straightRanking, isStraight := getStraightRanking(holes, community)
-	if !isStraight {
-		return RankingDetails{}, false
-	}
 	// check if found straight cards are also flush cards
-	winningCards := straightRanking.WinningCards
+	winningCards := straightRankingResult.WinningCards
 	flushRanking, isFlush := getFlushRanking(winningCards, []*sngpoker.Card{})
 	if !isFlush {
 		return RankingDetails{}, false
@@ -713,7 +699,7 @@ func determineKickerCardsUsedToWin(rankedPlayerHands []RankingDetails) []Ranking
 		// determine if kickers should be added to cards involved in the win for
 		// the winning player(s) compared to the other hands that were defeated
 		if possibleWinningHand.Score == highScore &&
-			// these rankingss have no kicker possibilites so skip if these rankings found
+			// these rankings have no kicker possibilites so skip if these rankings found
 			!containsItem([]RankingType{
 				RoyalFlush,
 				StraightFlush,
@@ -748,8 +734,8 @@ func determineKickerCardsUsedToWin(rankedPlayerHands []RankingDetails) []Ranking
 				if highScoreHand.Ranking == TwoPair {
 					if (highScoreHand.WinningCards[0].Rank >
 						rankedPlayerHands[defeatedIndex].WinningCards[0].Rank) ||
-						(highScoreHand.WinningCards[1].Rank >
-							rankedPlayerHands[defeatedIndex].WinningCards[1].Rank) {
+						(highScoreHand.WinningCards[2].Rank >
+							rankedPlayerHands[defeatedIndex].WinningCards[2].Rank) {
 						continue
 					}
 					// for the rest (Four of A Kind, Three of A Kind, One pair or highcard)
@@ -774,9 +760,9 @@ func determineKickerCardsUsedToWin(rankedPlayerHands []RankingDetails) []Ranking
 
 				// check which winner kicking cards used comparing with the defeated player kicking cards
 				for index, winnerKickCard := range winnerPlayerKickers {
-					kickingCardsUsedToWin = append(kickingCardsUsedToWin, winnerKickCard)
 
 					if winnerKickCard.Rank > defeatedPlayerKickers[index].Rank {
+						kickingCardsUsedToWin = append(kickingCardsUsedToWin, winnerKickCard)
 						break
 					}
 				}
@@ -844,7 +830,6 @@ func getHandDescription(rankingData RankingDetails) string {
 			} else {
 				handDescription += CardRankNames[kick.Rank].name + ", "
 			}
-			// cardStringRepresentation = getCardStringRepresentation(kick)
 		}
 		return handDescription
 	case OnePair, ThreeOfAKind:
@@ -921,7 +906,7 @@ func getHandDescription(rankingData RankingDetails) string {
 		threeOfAKindCard := rankingData.WinningCards[0]
 		pairCard := rankingData.WinningCards[3]
 		handDescription = fmt.Sprintf(
-			"%s %s%s FULLOF %s%s",
+			"%s %s%s FULL OF %s%s",
 			RankingTypeNames[rankingData.Ranking],
 			CardRankNames[threeOfAKindCard.Rank].name,
 			CardRankNames[threeOfAKindCard.Rank].multiplier,
@@ -931,7 +916,7 @@ func getHandDescription(rankingData RankingDetails) string {
 		return handDescription
 	case FourOfAKind:
 		fourOfAKindCard := rankingData.WinningCards[0]
-		kickingCard := rankingData.WinningCards[4]
+		kickingCard := rankingData.KickingCards[0]
 		handDescription = fmt.Sprintf(
 			"%s %s%s %s KICKER",
 			RankingTypeNames[rankingData.Ranking],
@@ -960,25 +945,4 @@ func getHandDescription(rankingData RankingDetails) string {
 	}
 
 	return handDescription
-}
-
-func getCardRepresentation(card *sngpoker.Card) CardRepresentation {
-	var cardRep CardRepresentation
-	cardRep.suitName = SuitNames[card.Suit]
-	switch card.Suit {
-	case 0:
-		cardRep.class = "card_diamond"
-		cardRep.character = "&diams;"
-	case 1:
-		cardRep.class = "card_club"
-		cardRep.character = "&clubs;"
-	case 2:
-		cardRep.class = "card_spade"
-		cardRep.character = "&spades;"
-	case 3:
-		cardRep.class = "card_head"
-		cardRep.character = "&hearts;"
-	}
-
-	return cardRep
 }
