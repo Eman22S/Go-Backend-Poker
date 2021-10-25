@@ -143,7 +143,7 @@ export default function SpecificHandTest({  ...props }) {
 
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
-  
+
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -175,7 +175,7 @@ export default function SpecificHandTest({  ...props }) {
     winning_first_hand: 0,
     winning_second_card : 0
   });
-  const [playerDescription, setPlayerDescription] = useState(null);
+  const [rankedHands, setRankingResult] = useState(null)
 
   const [winnerCards, setWinnerCards] = useState(null);
   const {flop0, flop1, flop2, river, turn} = metaData;
@@ -240,6 +240,7 @@ export default function SpecificHandTest({  ...props }) {
   },[numberOfPlayers])
   const setUpTable = () =>{
     setWinnerCards(null);
+    setRankingResult(null)
     let tempDeck = deck;
 
     setMetaData({
@@ -470,15 +471,17 @@ const on_stat_response = function(response){
   //response after cards are ranked
   const rank_cards_response = (response)=>{
     const rankResponse = response.toObject()
-    let json_response =transformRankHandResult(rankResponse)
-    let winning_hands = json_response.winners;
-    setPlayerDescription([...json_response.hand_description])
+    setRankingResult(rankResponse)
+    const allScoresEqual = rankResponse.rankresultList.reduce((prev, current) => prev.score === current.score)
+    console.log('all score equal', allScoresEqual)
+    const winningPlayer = rankResponse.rankresultList[0]
+    let winningHand = [...winningPlayer.winningcardsList, ...winningPlayer.kickingcardsList]
     setWinning({
-      winning_first_hand:winning_hands[0],
-      winning_second_card: winning_hands[1]
+      winning_first_hand:winningHand[0],
+      winning_second_card: winningHand[1]
     })
     let winner_card_sample = {}
-    winning_hands.forEach(hand=>{
+    winningHand.forEach(hand=>{
      winner_card_sample[hand] = true; 
     })
     // set all possible wild card values as part of the winning hand
@@ -489,38 +492,27 @@ const on_stat_response = function(response){
       winner_card_sample[(wild_card_value * 4) + 3] = true; 
       winner_card_sample[(wild_card_value * 4) + 4] = true; 
     }
-    setWinnerCards(winning_hands);
+    setWinnerCards(winningHand);
     
   }
   useEffect(()=>{
-    if(playerDescription){
-  
-        let player_description = players.map(player_data=>{
+    if(rankedHands){
+
+        let rakedPlayers = players.map((player, index)=>{
+          const rankedHandList = rankedHands.rankresultList
+          const description = (rankedHandList
+            .find(hand => hand.playerid === index) || {})
+            .handDescription || ''
           return {
-            ...player_data,
-            description : getCardDescription(player_data.cards[0], player_data.cards[1])
+            ...player,
+            description
           }
         })
-        setPlayers([...player_description]);
+        setPlayers([...rakedPlayers]);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  },[playerDescription]);
-  const getCardDescription = (first_card , second_card) =>{
-    let description = ""
-    playerDescription.map(player=>{
-      const containsFirst = player.hand.find(card => {
-        return card.rank === first_card.rank && card.suit === first_card.suit
-      })
-      const containsSecond = player.hand.find(card => {
-        return card.rank === second_card.rank && card.suit === second_card.suit
-      })
-      if(!!containsFirst && !!containsSecond){
-        description = player.description;
-      }
-      return null; 
-    })
-    return description;
-  }
+  },[rankedHands]);
+  
 
   useEffect(() => {
     get_all_hand_history(false);
@@ -699,7 +691,7 @@ function setCardFromHistory(history, index){
                 
                 disabled={Boolean(loading)}
                 endIcon={loading ? <Loading size={20} /> : null}
-              >
+              >￼
                 Reset
               </Buttonx>
               </div>
@@ -756,7 +748,7 @@ function setCardFromHistory(history, index){
                                 winners_cards={winnerCards}
                                 />
                                 <IconButton aria-label="update" className={classes.iconButton} name="river" onClick={()=>selectCard("river")} color="primary">
-                                    <AddIcon />
+                                    <AddIcon />￼
                                 </IconButton>
 
                             </Grid>
@@ -816,10 +808,12 @@ function setCardFromHistory(history, index){
                 <Grid container spacing={2}>
                   {players &&
                   players.length > 0 &&
-                    players.map((player, index) => (
+                    players.map((player, index) => {
+                      const isWinner = rankedHands && rankedHands.winnerPlayerid === index
+                      return (
                       <Grid item xs={players.length > 2 ? 4 : 6}  key={index}>
-                        <Card className={classes.background}>
-                          <CardContent>
+                        <Card >
+                          <CardContent >
                             <Grid container>
                             <Grid item xs={12}>
                               
@@ -841,8 +835,6 @@ function setCardFromHistory(history, index){
                                     )) 
                                   
                                     }
-                              
-                                    
                                    
                                   
                                 </Grid>
@@ -860,7 +852,12 @@ function setCardFromHistory(history, index){
                                 </Grid>
                                 <Grid container justify="center" spacing={5}>
 
-                                  <Grid item>{player.description}</Grid>
+                                  <Grid style={{
+                                      backgroundColor: `${isWinner ? '#4a8769': ''}`,
+                                      borderRadius: 8
+                                    }} item>
+                                      {player.description}
+                                  </Grid>
                                 </Grid>
                                 </Grid>
                             
@@ -868,7 +865,7 @@ function setCardFromHistory(history, index){
                           </CardContent>
                         </Card>
                       </Grid>
-                    ))}
+                    )})}
                 </Grid>
               </Grid>
 
