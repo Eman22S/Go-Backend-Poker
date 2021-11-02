@@ -25,8 +25,8 @@ import (
 {
 	listName, entryValue, defaultFunctionName, functionArguments, timeout, actionTaken, createdAt
 }
-
 */
+
 type Payload struct {
 	Id                  string `json:"id"`
 	ListName            string `json:"listName"`
@@ -38,13 +38,30 @@ type Payload struct {
 }
 
 type Action struct {
-	id           string
-	functionName string
-	timeout      *time.Timer
+	id                string
+	functionName      string
+	functionArguments string
+	timeout           *time.Timer
 }
 
 var ctx = context.Background()
 var actionSlice []Action
+
+// map function-references from any package to their functionNames
+var callbackMap = map[string]func(*[]string){
+	"foldOnTurn":  foldOnTurn,
+	"checkOnTurn": checkOnTurn,
+}
+
+// sample functions to test the callbackExecutor
+func foldOnTurn(args *[]string) {
+	fmt.Println("folding", args)
+}
+
+// sample functions to test the callbackExecutor
+func checkOnTurn(args *[]string) {
+	fmt.Println("checking", args)
+}
 
 // This is the main entry function for the scheduler
 func ScheduleOperations() {
@@ -106,9 +123,7 @@ func manageSubscritpionPayload(message string, redisClient *redis.Client) {
 
 // Use the payload from the subscription to create an action and set the timer
 func createActionFromPayloadToSetTimer(payload *Payload, redisClient *redis.Client) {
-	action := Action{}
-	action.id = payload.Id
-	action.functionName = payload.DefaultFunctionName
+	action := Action{id: payload.Id, functionName: payload.DefaultFunctionName, functionArguments: payload.FunctionArguments}
 	createdTime, err := time.Parse(time.RFC3339, payload.CreatedAt)
 	if err != nil {
 		panic(err)
@@ -122,8 +137,8 @@ func createActionFromPayloadToSetTimer(payload *Payload, redisClient *redis.Clie
 	}
 	timeLeftInSeconds := time.Until(endTime).Seconds()
 	action.timeout = createNewTimer(int(timeLeftInSeconds), func() {
-		fmt.Println("performing " + action.functionName + " for id " + payload.Id)
 		// other function calls go here
+		callbackExecuter(action.functionArguments, callbackMap[action.functionName])
 		removePendingAction(payload, nil)
 		removeActionFromOperationList(payload, redisClient)
 	})
@@ -205,4 +220,13 @@ func createNewTimer(seconds int, action func()) *time.Timer {
 	}()
 	fmt.Println("timer set for", seconds, "seconds")
 	return timer
+}
+
+// execute the callback function on timer end
+func callbackExecuter(functionArguments string, f func(params *[]string)) {
+	args := strings.Split(functionArguments, ",")
+	for i := range args {
+		args[i] = strings.TrimSpace(args[i])
+	}
+	f(&args)
 }
