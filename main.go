@@ -8,7 +8,6 @@ import (
 
 	sngpoker "sngrpc/sngpoker"
 	services "sngrpc/sngpoker/services"
-	scheduler "sngrpc/sngscheduler"
 
 	"google.golang.org/grpc"
 )
@@ -28,7 +27,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	var opts []grpc.ServerOption
-	go scheduler.ScheduleOperations()
+	// go scheduler.ScheduleOperations()
 	grpcServer := grpc.NewServer(opts...)
 	sngpoker.RegisterSngServer(grpcServer, &services.Server{})
 	grpcServer.Serve(lis)

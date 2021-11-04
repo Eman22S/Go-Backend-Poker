@@ -9,6 +9,7 @@ service Sng {
     rpc getStatus(GetStatusRequest) returns (stream GetStatusResult) {}
     rpc getShuffledDeck(google.protobuf.Empty) returns (DeckData) {}
     rpc rankHands(RankHandsRequest) returns (RankHandsResult) {}
+    rpc perform (SchedulerQuery) returns (Result) {}
 }
 
 message UiSettingsRequest {
@@ -19,6 +20,20 @@ message AllUiSettingsRequest {
 }
 message UiSettingsResponse {
     string result = 1;
+}
+
+message SchedulerQuery {
+    string id = 1;
+    string list_name = 2;
+    string default_function_name = 3;
+    string function_arguments = 4;
+    int32 timeout = 5;
+    bool action_taken = 6;
+    string created_at = 7;
+}
+
+message Result {
+    string msg = 1;
 }
 
 
