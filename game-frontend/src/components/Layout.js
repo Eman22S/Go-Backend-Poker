@@ -357,19 +357,19 @@ export default function Layout({ component: Component, ...props }) {
             </Container>
           </Box>
           <Box m={0.5}>
-            {localUser.is_suspended && 
+            {!!localUser ? localUser.is_suspended && 
               <Box className={classes.alignItems} p={0.5}>
                 <Badgex color="CANCELLED">
                   Account Suspended
                 </Badgex>
-              </Box>
+              </Box>:''
             }
-            {localUser.has_pending_investigation && 
+            {!!localUser? localUser.has_pending_investigation && 
               <Box className={classes.alignItems} p={0.5}>
                 <Badgex color="CANCELLED">
                   Investigation Pending
                 </Badgex>
-              </Box>
+              </Box>:''
             }
           </Box>
         </Toolbar>
@@ -406,7 +406,7 @@ export default function Layout({ component: Component, ...props }) {
       </SwipeableViews>
       <Box className={classes.background}>
         <Container align="right">
-          <Typographyx color="textSecondary" pb={1}><b>Last Login: </b>{localUser.last_login} </Typographyx>
+          <Typographyx color="textSecondary" pb={1}><b>Last Login: </b>{!!localUser?localUser.last_login:''} </Typographyx>
         </Container>
       </Box>
     </div>
