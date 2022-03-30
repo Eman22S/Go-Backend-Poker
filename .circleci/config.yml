@@ -28,10 +28,10 @@ jobs:
             unzip protoc-3.15.8-linux-x86_64.zip -d $HOME/.local
             export PATH="$PATH:$HOME/.local/bin"
             protoc --version
+            export GO111MODULE=on
             go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
             go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
             export PATH="$PATH:$(go env GOPATH)/bin"
-            export GO111MODULE=on
             protoc --go_out=. --go_opt=paths=source_relative  --go-grpc_out=. --go-grpc_opt=paths=source_relative sngpoker/sngpoker.proto
       - save_cache:
           key: go-mod-v4-{{ checksum "go.sum" }}
