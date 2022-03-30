@@ -1,6 +1,12 @@
 # Go Poker
+# Installation 
+Download and Install Go from https://go.dev/doc/install
 
-Command to generate proto for go(protobuf version was 3.17 at the time of documentation)
+Install pre-compiled binaries of protobuf following instruction from https://grpc.io/docs/protoc-installation/. 
+
+Install gRPC following instruction from https://grpc.io/docs/languages/go/quickstart/ .
+
+Run
 
 - `protoc --go_out=. --go_opt=paths=source_relative  --go-grpc_out=. --go-grpc_opt=paths=source_relative sngpoker/sngpoker.proto`
 
