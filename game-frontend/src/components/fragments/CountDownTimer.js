@@ -7,10 +7,10 @@ function zeroPad(num, places) {
 
 function CountdownTimer(props) {
   const calculateTimeLeft = () => {
-      
+
     const difference = (props.date && props.timer) ?
       +new Date(props.date * 1000  + (props.timer *  1000)) - +new Date() : 0;
-    if (props.date && props.timer && (difference <= 0)) props.timeOut();  
+    if (props.date && props.timer && (difference <= 0)) props.timeOut();
     let timeLeft = {};
     timeLeft = {
       minutes: zeroPad(

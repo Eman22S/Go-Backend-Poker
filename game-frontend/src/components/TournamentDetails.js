@@ -69,8 +69,8 @@ export default function TournamentDetails(props) {
 
   const onResponse = (response) => {
     let tournamentDetails = response.getTournamentDetails();
-    setTournamentDetails(JSON.parse(tournamentDetails)); 
-    setPlayers(response.getPlayersList()); 
+    setTournamentDetails(JSON.parse(tournamentDetails));
+    setPlayers(response.getPlayersList());
     let flash_prize_pools =
       JSON.parse(tournamentDetails).flash_prize_pool_values;
     if (flash_prize_pools) {
@@ -86,7 +86,7 @@ export default function TournamentDetails(props) {
     grpc_client.getTournamentTemplateDetail(
       tournamentID,
       (response) => {
-        let templateDetail = JSON.parse(response.getTournamentTempalteDetail()); 
+        let templateDetail = JSON.parse(response.getTournamentTempalteDetail());
         if (templateDetail?.additional_payout_structure) {
           setAdditionalPayoutPerHand(templateDetail?.additional_player_payout);
         }
@@ -115,7 +115,7 @@ export default function TournamentDetails(props) {
     // return () => clearInterval(subscription);
     //eslint-disable-next-line
   }, [props.id]);
- 
+
 
   return (
     <div className={`${classes.root}`}>
@@ -741,7 +741,7 @@ export default function TournamentDetails(props) {
 
               {tournamentDetails?.has_additional_payout === "1" && (
                 <Grid item xs={12}>
-                 
+
                     <AdditionalPayoutTable additionalPayoutPerHand={additionalPayoutPerHand} addons_permitted={tournamentDetails.addons_permitted} />
                  </Grid>
               )}

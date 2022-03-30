@@ -123,7 +123,7 @@ export default function Administrators(props) {
         }else{
             addAdmin();
         }
-        
+
         setIsLoading(false);
     }
     useEffect(() => {
@@ -156,7 +156,7 @@ export default function Administrators(props) {
             getDistinctRoles();
             if(res.payload){
                 setAdminCount(res.pagination_data.number_of_pages);
-        
+
               }
         }, on_error);
     }
@@ -222,10 +222,10 @@ export default function Administrators(props) {
                             <AddIcon />
                         </IconButton>
                         </Typographyx>
-                       
+
                     </Grid>
                     <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"
@@ -275,7 +275,7 @@ export default function Administrators(props) {
                                                             <StyledTableCell align="center"> {admin.email} </StyledTableCell>
                                                             <StyledTableCell align="center">
                                                                 <React.Fragment>
-                                                                
+
                                                                     <IconButton onClick={() => editAdmin(admin)}>
                                                                         <EditIcon fontSize="small"/>
                                                                     </IconButton>
@@ -283,7 +283,7 @@ export default function Administrators(props) {
                                                                          <DeleteIcon />
                                                                         </IconButton>
                                                                         <IconButton aria-label="delete" style={{color:"lightBlue"}} onClick={() => {
-                                                                            
+
                                                                             getAdminRoles(admin);
                                                                             }} color="secondary">
                                                                          <TrackChanges />
@@ -312,7 +312,7 @@ export default function Administrators(props) {
                                                 }
                                             </TableContainer>
                                         </PaperTable>
-                                    </Grid> 
+                                    </Grid>
                                 </Grid>
                                 {/* Create geofence name dialog */}
                                 <Dialog open={adminRoleOpen} onClose={handleAdminRoleClose} aria-labelledby="form-dialog-title" classes={{scrollPaper: classes.scrollPaper }} >
@@ -326,15 +326,15 @@ export default function Administrators(props) {
                                             {roles && roles.map((role, index) =>{
                                                 return(
                                                     <FormControlLabel
-                                                    key={index}  
-                                                    style={{flexBasis:"30%"}}                                   
+                                                    key={index}
+                                                    style={{flexBasis:"30%"}}
                                                     control={ <Checkbox checked={adminRoles.includes(role.role)}    onChange={(event)=>{
                                                         if(event.target.checked){
                                                             grpc_client.addAdminRole({admin_id : selectedAdmin.id,role:event.target.value},(response)=>{
                                                                 getAdminRoles(selectedAdmin);
                                                                 showSnackBar('Role Added!', 'success')
                                                             })
-                                                            
+
                                                         }else{
                                                             grpc_client.removeAdminRole({admin_id : selectedAdmin.id,role:event.target.value},(response)=>{
                                                                 getAdminRoles(selectedAdmin);
@@ -345,20 +345,20 @@ export default function Administrators(props) {
                                                     }} name={"selectALL"} value={role.role}  color="default" />}
                                                     label={<Typographyx variant="caption" color="textSecondary">{role.role}</Typographyx>}
                                                     />
-                                                ) 
+                                                )
                                             })}
                                         </div>
-                                   
+
                                     </DialogContent>
                                     <DialogActions>
-                                    
+
                                     <Buttonx onClick={handleAdminRoleClose} color="primary" disabled={Boolean(isLoading)}
                                                 endIcon={isLoading ? <Loading size={20} /> : null}>
                                         Done
                                     </Buttonx>
                                     </DialogActions>
                                 </Dialog>
-                            
+
                                 {/* Create geofence name dialog */}
                                 <Dialog open={adminOpen} onClose={handleAdminClose} aria-labelledby="form-dialog-title" classes={{scrollPaper: classes.scrollPaper }} >
                                     <DialogTitle id="form-dialog-title">{selectedAdmin ? 'Update' : 'Create'} admin</DialogTitle>
@@ -381,7 +381,7 @@ export default function Administrators(props) {
                                         onChange={(ev)=>{
                                             handleAdminChange(ev)
                                         }}
-                                        
+
                                     />
                                      <TextField
                                         autoFocus
@@ -396,7 +396,7 @@ export default function Administrators(props) {
                                         onChange={(ev)=>{
                                         handleAdminChange(ev)
                                         }}
-                                       
+
                                     />
                                      <TextField
                                         autoFocus
@@ -411,7 +411,7 @@ export default function Administrators(props) {
                                         onChange={(ev)=>{
                                         handleAdminChange(ev)
                                         }}
-                                        
+
                                     />
                                      {!id && <TextField
                                         autoFocus
@@ -426,7 +426,7 @@ export default function Administrators(props) {
                                         onChange={(ev)=>{
                                             handleAdminChange(ev)
                                         }}
-                                       
+
                                     />}
                                     </DialogContent>
                                     <DialogActions>
@@ -442,7 +442,7 @@ export default function Administrators(props) {
                             </Grid>
                             {/* </form> */}
                         </Container>
-                        
+
                     </Grid>
                 </Grid>
             </Container>

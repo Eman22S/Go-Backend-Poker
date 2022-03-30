@@ -155,7 +155,7 @@ const UserProfile = () => {
     }
 
     //selectedClient?clientRewardData[selectedClient]?clientRewardData[selectedClient]:"":""
-    
+
   }
 
 
@@ -204,7 +204,7 @@ const UserProfile = () => {
     setClientRewardList(rewardList)
 
 }, [clients,clientRewardListTemp]);
-  
+
 
   const onUpdateResponse = response => {
     if (response.getStatus() === "204") {
@@ -516,16 +516,16 @@ const UserProfile = () => {
                                 handleClientChange(ev.target.value);
                                 ev.preventDefault();
                             }}
-                            >   
+                            >
                                 <MenuItem value="0">Default</MenuItem>
                                 {clients && clients.map((client)=>{
                                     return (<MenuItem key ={client.id} value={client.id}>{client.name}</MenuItem>);
                                 })}
-                                
-                            
+
+
                         </Select>
-                    
-                    </Grid>  
+
+                    </Grid>
                     <Grid item xs={8}>
                       <TextField
                         name="user_rewards_id"

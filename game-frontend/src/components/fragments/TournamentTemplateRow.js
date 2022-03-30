@@ -11,7 +11,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import React, { Fragment, useState, useEffect } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-import Typographyx from "./Typographyx";  
+import Typographyx from "./Typographyx";
 import useGrpcClient from "../../contexts/grpc_client";
 import { useSnackBarContext } from '../../contexts/snackbar';
 import StyledTableCell from './StyledTableCell';
@@ -37,17 +37,17 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
 
     const handleGameModeChange = (event) => {
         const name = event.target.name;
-        const checked = event.target.checked;        
+        const checked = event.target.checked;
         if (name === "is_flash_mode" && checked) {
             setGameMode({
-                ...gameMode, 
+                ...gameMode,
                 is_flash_mode: true,
                 is_single_hand: false
             });
         }
         else if (name === "is_single_hand" && checked) {
             setGameMode({
-                ...gameMode, 
+                ...gameMode,
                 is_flash_mode: false,
                 is_single_hand: true
             });
@@ -76,18 +76,18 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
      */
     const onLobbyVisibilityChanged = (event) => {
         let checked = event.target.checked;
-        
+
         if (checked) {
             setGameMode({
                 is_flash_mode: false,
                 is_single_hand: false,
-                has_additional_payout: false 
+                has_additional_payout: false
             });
             setShowLaunchDialog(true);
         }
         else {
             setLobbyVisibilit(checked);
-            grpcClient.removeTournamentTemplateFromLobby(template.id, (response) => {}, 
+            grpcClient.removeTournamentTemplateFromLobby(template.id, (response) => {},
                 (error) => {
                     if (error) {
                         showSnackBar(error);
@@ -114,14 +114,14 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
             gameMode.is_single_hand,
             gameMode.has_additional_payout,
             gameMode.is_turbo_mode,
-            onTournamentTemplateLaunchSuccess, 
+            onTournamentTemplateLaunchSuccess,
             onTournamentTemplateLaunchFailure
         );
     }
 
     /**
      * On Tournament Template Launch Success
-     * @param {*} response 
+     * @param {*} response
      */
     const onTournamentTemplateLaunchSuccess = (response) => {
         setLobbyVisibilit(true);
@@ -130,7 +130,7 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
 
     /**
      * On Tournament Template Launch Failure
-     * @param {*} error 
+     * @param {*} error
      */
     const onTournamentTemplateLaunchFailure= (error) => {
         if (error) {
@@ -198,7 +198,7 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
                     <FormControlLabel
                             control={ <Switch checked={lobbyVisibility} onChange={onLobbyVisibilityChanged} color="primary" inputProps={{ 'aria-label': 'primary checkbox' }}/>}/>
                     </FormGroup>
-                    
+
                 </StyledTableCell>
             </StyledTableRow>
             <Dialog aria-labelledby="simple-dialog-title" open={showLaunchDialog} fullWidth={true}>
@@ -213,14 +213,14 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Modes</FormLabel>
                                 <FormGroup>
-                                    <FormControlLabel 
+                                    <FormControlLabel
                                         disabled={disableFlashMode}
                                         checked={gameMode.is_flash_mode}
                                         label={<Typographyx color="textSecondary">Flash Mode</Typographyx>}
                                         control={
                                             <Checkbox checked={gameMode.is_flash_mode} onChange={handleGameModeChange} name="is_flash_mode" color="primary" />
                                         }/>
-                                    <FormControlLabel 
+                                    <FormControlLabel
                                         disabled={disableSingleHand}
                                         checked={gameMode.is_single_hand}
                                         label={<Typographyx color="textSecondary">Single Hand</Typographyx>}
@@ -229,7 +229,7 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
                                         }/>
                                     {
                                         isFiveCardDraw() && (
-                                            <FormControlLabel 
+                                            <FormControlLabel
                                                 checked={gameMode.is_turbo_mode}
                                                 label={<Typographyx color="textSecondary">Turbo Mode</Typographyx>}
                                                 control={
@@ -244,7 +244,7 @@ const TournamentTemplateRow = ({ template, index, hover, selected, checked, onCl
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Other Options</FormLabel>
                                 <FormGroup>
-                                    <FormControlLabel 
+                                    <FormControlLabel
                                         checked={gameMode.has_additional_payout}
                                         label={<Typographyx color="textSecondary">Additional Payout</Typographyx>}
                                         control={

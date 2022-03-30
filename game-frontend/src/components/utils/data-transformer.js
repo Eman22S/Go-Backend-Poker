@@ -7,7 +7,7 @@ function tranformData (data, name) {
         default:
             return data;
     }
-}   
+}
 
 function transformTableSate (data) {
     const players = getExpectedPlayersData(data.players)
@@ -53,7 +53,7 @@ function getExpectedPlayersData(playersData) {
     playersData.forEach(function (grpc_player, index) {
       players[grpc_player.md5] = getExpectedPlayer(grpc_player);
     });
-  
+
     return players;
   }
 
@@ -84,6 +84,6 @@ function getExpectedPlayersData(playersData) {
     };
   }
 
- 
-  
-export { tranformData } 
+
+
+export { tranformData }

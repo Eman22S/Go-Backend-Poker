@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
    structure:{
        flex:"1",
    },
-  
+
    opponents:{
      flex:"2",
     display:"flex",
@@ -49,13 +49,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent:"space-between",
     flexWrap:"wrap"
    },
-   
+
    /* Standard Syntax */
    "@keyframes PULSE" : {
     "0%" : {
       fontSize:"16px",
       color:"rgba(0,255,255)"
-    },	
+    },
      "110%" :{
       fontSize:"24px",
        color: "black"
@@ -652,38 +652,38 @@ export default function TurboDealer({ ...props }) {
                                                 {
                                                     tableState.players[key].cards.map(card=>{
                                                         return(
-                                                        
+
                                                             <UnpositionedCard
                                                             number={card}
-                                                            />   
+                                                            />
                                                         )
                                                     })
                                                 }
-                                            
+
                                         </div>
                                     </div>);
                                 }else{
                                     return (<></>);
                                 }
-                                
+
                             })
                         }
                     </div>
 
             </div>
              <div style={{ display:"flex", justifyContent:"space-around", marginTop:"20px"}} spacing={1}>
-                 
+
              {tableState.players[localUser.md5].cards.map(card=>{
                                                         return(
-                                                        
+
                                                             <UnpositionedCard
                                                             number={card}
-                                                            />   
+                                                            />
                                                         )
                                                     })}
-                                
+
              </div>
-       
+
         </React.Fragment>
     );
 }

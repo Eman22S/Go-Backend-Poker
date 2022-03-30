@@ -34,7 +34,7 @@ import Typographyx from "../fragments/Typographyx";
 import { useForm } from "react-hook-form";
 import  IconButton from "@material-ui/core/IconButton";
 import  TextField from "@material-ui/core/TextField";
-import CloseIcon from '@material-ui/icons/Close'; 
+import CloseIcon from '@material-ui/icons/Close';
 import { DEV_IMAGE_URL } from "../../utils/image_utils";
 
 
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     minHeight: '100vh',
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 
@@ -109,14 +109,14 @@ const DialogTitle = withStyles(dialogStyles)((props) => {
 });
 
 /**
- * get user location from browser using the html geolocation api 
- * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object  
+ * get user location from browser using the html geolocation api
+ * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object
 */
 const getLocation = (callback) => {
   if(navigator && navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       callback(null, position);
-    }, 
+    },
     (error) => {
       callback(error);
     });
@@ -145,10 +145,10 @@ export default function SignIn(props) {
   const [logo, setLogo] = useState(null);
   const [loginBtnLoading, setLoginBtnLoading] = useState(false);
 
-  const [tosUpdates, setTOSUpdates] = useState(null); 
+  const [tosUpdates, setTOSUpdates] = useState(null);
   const [open, setOpen] = React.useState(false);
   const [agree, setAgree] = useState(false);
-  const [loginRespose, setLoginRespose] = useState(null); 
+  const [loginRespose, setLoginRespose] = useState(null);
   const [openSecurityQ, setOpenSecurityQ] = React.useState(false);
   const [securityQuestions, setSecurityQuestions] = React.useState(null);
 
@@ -378,7 +378,7 @@ export default function SignIn(props) {
       return parseInt(a.questionId) - parseInt(b.questionId);
     });
     console.log(answers);
-    grpc_client.validateSecurityQuestionsForLogin( 
+    grpc_client.validateSecurityQuestionsForLogin(
       username,
       JSON.stringify(answers),
       '',
@@ -530,7 +530,7 @@ export default function SignIn(props) {
             )
         }
 
-         {securityQuestions && 
+         {securityQuestions &&
             <Dialog
               aria-labelledby="simple-dialog-title2"
               scroll="paper"
@@ -542,7 +542,7 @@ export default function SignIn(props) {
                 <DialogTitle id="simple-dialog-title2" style={{textAlign:"center"}} onClose={() => {setOpenSecurityQ(false)}}>
                       Answer Security Questions to Login as {username}
                 </DialogTitle>
-               
+
                   <DialogContent>
                     <form onSubmit={handleSubmit(handleSecurityQLogin)}>
                       <Grid container spacing={2}>

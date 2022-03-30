@@ -8,7 +8,7 @@ Start webapp using
 This command will
 * build and bundle all the required grpc resources with the right configurations
 * setup and start grpc-http mapping proxy in appropriate configuration
-* setup and start nginx server that serves static webpage and its resources with right configurations 
+* setup and start nginx server that serves static webpage and its resources with right configurations
 
 Don't forget to use `--build` flag whenever there is source code change.
 
@@ -16,8 +16,8 @@ Don't forget to use `--build` flag whenever there is source code change.
 
 ### How to generate necessary client side grpc code from sng.proto file (Optional if your system is linux-based recent system)
 
-* You must install `protoc` on your system and its correspoding `protoc-gen-grpc-web` protoc plugin. For more information, see the oficial grpc-web code-generator section on their README https://github.com/grpc/grpc-web#code-generator-plugin 
-  
+* You must install `protoc` on your system and its correspoding `protoc-gen-grpc-web` protoc plugin. For more information, see the oficial grpc-web code-generator section on their README https://github.com/grpc/grpc-web#code-generator-plugin
+
 * Use the below command inside `src/grpc/` folder of the project
   * `protoc -I=. sng.proto --js_out=import_style=commonjs:. --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.`
   * This command will generate two javascript files; `sng_grpc_web_pb.js` and `sng_pb.js`. Note if the project failed to compile after the above command, enter `/* eslint-disable */` comment in the start of the generated files to disable eslint in them.

@@ -89,7 +89,7 @@
         postal_code,
         latitude,
         longitude,
-        accuracy_radius) SET 
+        accuracy_radius) SET
         ip_from = INET_ATON(SUBSTRING(@network, 1, LOCATE('/', @network) - 1)),
         ip_to = (INET_ATON(SUBSTRING(@network, 1, LOCATE('/', @network) - 1)) + (pow(2, (32-CONVERT(SUBSTRING(@network, LOCATE('/', @network) + 1), UNSIGNED INTEGER)))-1));
 ```
@@ -98,7 +98,7 @@
     LOAD DATA LOCAL INFILE '/tmp/GeoLite2-ASN-Blocks-IPv4.csv' INTO TABLE ip_asn COLUMNS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' IGNORE 1 LINES (
         @network,
         autonomous_system_number,
-        autonomous_system_organization) SET 
+        autonomous_system_organization) SET
         ip_from = INET_ATON(SUBSTRING(@network, 1, LOCATE('/', @network) - 1)),
         ip_to = (INET_ATON(SUBSTRING(@network, 1, LOCATE('/', @network) - 1)) + (pow(2, (32-CONVERT(SUBSTRING(@network, LOCATE('/', @network) + 1), UNSIGNED INTEGER)))-1));
 ```
@@ -213,12 +213,12 @@ Get distance between two co-ordinates
     CREATE FUNCTION `getDistance`(`lat1` FLOAT, `lng1` FLOAT, `lat2` FLOAT, `lng2` FLOAT) RETURNS FLOAT
     begin
     return (acos(
-            cos( radians(lat2) ) 
-            * cos( radians( lat1 ) ) 
-            * cos( radians( lng1 ) - radians(lng2) ) 
-            + sin( radians(lat2) ) 
+            cos( radians(lat2) )
+            * cos( radians( lat1 ) )
+            * cos( radians( lng1 ) - radians(lng2) )
+            + sin( radians(lat2) )
             * sin( radians( lat1 ) )
-            ) * 6371 ); 
+            ) * 6371 );
     end $$
     DELIMITER ;
 ```

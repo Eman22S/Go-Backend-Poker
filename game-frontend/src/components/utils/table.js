@@ -123,7 +123,7 @@ function getWinnersCardsUsed(tableState) {
  */
 function getNumberCardWinnerClass(winner_cards, number_card) {
   if (winner_cards) {
-    
+
     const isPartOfWinnerCards = winner_cards.find(card => {
       return card.rank === number_card.rank && card.suit === number_card.suit
     })

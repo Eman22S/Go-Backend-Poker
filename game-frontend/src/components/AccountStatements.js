@@ -37,12 +37,12 @@ const useStyles = makeStyles((theme) => ({
   background: {
     backgroundColor: theme.palette.background.paper,
     margin: theme.spacing(2),
-     
+
   },
   default_background: {
     //backgroundColor: theme.palette.background.paper,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat       
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 

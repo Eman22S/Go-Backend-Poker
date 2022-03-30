@@ -37,13 +37,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
     join_any_status,
   } from "../../components/utils/constants";
- 
+
 
 const useStyles = makeStyles((theme) => ({
     default_background: {
     //   backgroundColor: theme.palette.background.paper,
       backgroundImage: `url(${theme.backgroundImg.image})`,
-      backgroundRepeat:  theme.backgroundImg.repeat       
+      backgroundRepeat:  theme.backgroundImg.repeat
     },
     root: {
         minHeight: '100vh',
@@ -87,7 +87,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
     const showSnackBar = useSnackBarContext();
     const [globalSettings, setGlobalSettings] = useState({});
 
-    
+
         useEffect(()=>{
             const getGlobalSettings = () => {
                 grpcClient.getGlobalSettings((resp) => {
@@ -100,8 +100,8 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
     const onTemplateClick = (e, item) => {
         e.stopPropagation();
         setCurrentTemplate(item);
-      } 
-    
+      }
+
     // Fetch Tournament Templates
     const filterTournamentTemplates = useCallback(() => {
         setLoading(true);
@@ -119,7 +119,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
                 pagination_current_page: page,
                 pagination_items_per_page: 10
             },
-            onGetTournamentTemplateSuccess, 
+            onGetTournamentTemplateSuccess,
             onGetTournamentTemplateFailure
         );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -152,7 +152,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
         updateBalance();
         pollingInterval = setInterval(() => {
             grpcClient.getTournamentTemplateBufferState(
-                tournament_template.id, 
+                tournament_template.id,
                 onGetTournamentTemplateBufferStateSuccess,
                 onTournamentTemplateBufferStateFailure
             )
@@ -161,7 +161,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
 
     // On Get Tournament Template Buffer State Success
     const onGetTournamentTemplateBufferStateSuccess = (response) => {
-        
+
         if (response?.buffer_state) {
             if (response?.buffer_state?.status === tournament_template_buffer_status.tournament_created) {
                 console.log("*************")
@@ -214,7 +214,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
         const { type, checked } = event.target;
         if (type === "checkbox") {
             valueSetter(checked);
-        } 
+        }
         else {
             let value = event.target.value;
             if (typeof value === "string") value = value.trim();
@@ -227,7 +227,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
     const handleUnsubscribeFromBuffer = () => {
         setActionBtnLoading(true);
         grpcClient.unsubscribeFromTournamentTemplateBuffer(
-            selectedTournamentTemplate.id, 
+            selectedTournamentTemplate.id,
             () => {
                 setWaiting(false);
                 setActionBtnLoading(false);
@@ -262,7 +262,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
     const activeFiveTurbo = () => {
         history.push("/active_five_turbo_tournaments")
     }
-    
+
       const onJoinAnyTournament = (response) => {
         grpcClient.getJoinAnyTournamentStatus(
           (response) => {
@@ -275,7 +275,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
           showSnackBar
         );
       }
-    
+
       const unregisterJoinAnyTournaments = () => {
         setJoinAnyLoading(true)
         grpcClient.unregisterAnyTournament((req) => {
@@ -315,7 +315,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
 
       useEffect(() => {
         getJoinAnyTournamentStatus();
-      }, [getJoinAnyTournamentStatus]);    
+      }, [getJoinAnyTournamentStatus]);
 
     return (
         <div className={classes.default_background}>
@@ -458,7 +458,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
                                             variant="outlined"
                                             margin="normal"
                                             m={1}
-                                        >                                      
+                                        >
                                         {join_any_limit.map((amount, index) => (
                                             <StyledMenuItem dense value={amount} key={index}>
                                             {amount}
@@ -474,7 +474,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
                                         >
                                             Active Five Turbo Tournaments
                                         </Buttonx>
-                                    </Container> 
+                                    </Container>
                                 }
                                 </Grid>
                             </Grid>
@@ -565,7 +565,7 @@ export const TournamentTemplateLobby = ({updateBalance, toggleJoinAny, ...props}
                                                         onClick={(e) => onTemplateClick(e, item)}
                                                         onJoinTournamnetTemplate={onJoinTournamnetTemplate}
                                                         endIcon={actionBtnLoading ? <Loading size={20} /> : null}>
-                                                        
+
                                                     </TournamentTemplateLobbyRow>
                                                 ))
                                             }

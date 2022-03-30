@@ -2,7 +2,7 @@
   "short_name": "Texas Hold'em App",
   "name": "Texas Hold'em Poker App",
   "icons": [
-  
+
   ],
   "start_url": ".",
   "display": "standalone",

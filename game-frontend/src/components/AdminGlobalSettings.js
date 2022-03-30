@@ -88,13 +88,13 @@ export default function PlayerAccountManagement(props) {
         }, on_error);
     }
     const handleSetWebClientId = (value) => {
-        
+
         grpc_client.setGlobalSettings({ name: 'web_client_id', value: value }, (response) => {
             showSnackBar('Global Setting Updated!', 'success')
             getGlobalSettings();
         }, on_error)
-        
-       
+
+
     }
 
     const on_error = (custom_msg) => {
@@ -144,7 +144,7 @@ export default function PlayerAccountManagement(props) {
             getGlobalSettings();
         }, on_error)
     }
-    
+
     const handleSetProcessingFeePercentage = (e) => {
         grpc_client.setGlobalSettings({ name: 'processing_fee_percentage', value: processingFeePercentage }, (response) => {
             showSnackBar('Global Setting Updated!', 'success')
@@ -191,7 +191,7 @@ export default function PlayerAccountManagement(props) {
                     </Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="lg" align="center" className={classes.root}>
-                              
+
                             {/* <form
                                 className={classes.form}
                                 noValidate
@@ -243,7 +243,7 @@ export default function PlayerAccountManagement(props) {
                                         Save
                                 </Buttonx>
                             </Box>
-                            
+
                             <Grid container spacing={1}>
                                 <Grid item xs={12}>
                                     <FormControlLabel
@@ -280,15 +280,15 @@ export default function PlayerAccountManagement(props) {
                                             handleSetWebClientId(ev.target.value);
                                             ev.preventDefault();
                                         }}
-                                        >   
+                                        >
                                             {clients && clients.map((client)=>{
                                                 return (<MenuItem key ={client.id} value={client.id}>{client.name}</MenuItem>);
                                             })}
-                                         
-                                    
+
+
                                     </Select>
                                         </div>
-                                    
+
                                     <Box my={4}>
                                         <TextFieldx
                                             name={"session_timeout"}

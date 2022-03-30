@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.default,
     },
     lobbyCardBtn:{
-        width:"100%", 
+        width:"100%",
         marginBottom:"15px",
         borderRadius:"20px",
         border:"2px solid #ffd06a",
@@ -144,15 +144,15 @@ export default function TemplateLobbyCard({ tournamentTemplate, onJoinTournamnet
         console.log("addOnAmount!"+(tournamentTemplate?.addons_permitted - addonsLeft))
         grpcClient.joinTournamentTempalte(
             tournamentTemplate.id,
-            (tournamentTemplate?.addons_permitted - addonsLeft), 
-            onJoinTournamentSuccess, 
+            (tournamentTemplate?.addons_permitted - addonsLeft),
+            onJoinTournamentSuccess,
             onJoinTournamentFailure
         );
     }
-    
+
     /**
-     * Open tournamentTemplate Detail Dialog 
-     * @param {*} tournament_template_id 
+     * Open tournamentTemplate Detail Dialog
+     * @param {*} tournament_template_id
      */
     const onTournamentDetailOpen = (tournament_template_id) => {
         setOpenTournamentTemplateDetail(true);
@@ -167,7 +167,7 @@ export default function TemplateLobbyCard({ tournamentTemplate, onJoinTournamnet
 
     /**
      * On Join tournamentTemplate Success
-     * @param {*} response 
+     * @param {*} response
      */
     const onJoinTournamentSuccess = (response) => {
         setActionBtnLoading(false);
@@ -185,7 +185,7 @@ export default function TemplateLobbyCard({ tournamentTemplate, onJoinTournamnet
 
     /**
      * On Join tournamentTemplate Failure
-     * @param {*} error 
+     * @param {*} error
      */
     const onJoinTournamentFailure = (error) => {
         setActionBtnLoading(false);
@@ -281,7 +281,7 @@ export default function TemplateLobbyCard({ tournamentTemplate, onJoinTournamnet
                         </div>
                         <Divider />
                         <div className={classes.lobbyCardRow}>
-                            <Typographyx variant="subtitle2" color="textSecondary" display="inline" className={classes.centerRow}> 
+                            <Typographyx variant="subtitle2" color="textSecondary" display="inline" className={classes.centerRow}>
                             <   Icon className="fa" color="primary">table_chart</Icon>
                                 {"Table Type: "}
                             </Typographyx>
@@ -290,7 +290,7 @@ export default function TemplateLobbyCard({ tournamentTemplate, onJoinTournamnet
                             </Typographyx>
                         </div>
                         <Divider />
-                        
+
                         <div className={classes.lobbyCardRow}>
                             <Typographyx variant="subtitle2" color="textSecondary" display="inline" pr={1} className={classes.centerRow}>
                                 <Icon className="fa" color="primary">account_balance_wallet</Icon>

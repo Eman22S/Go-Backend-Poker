@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   default_background: {
     //backgroundColor: theme.palette.background.default,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat   
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 
@@ -480,11 +480,11 @@ export default function HandHistory({ gameplay_history_id, ...props }) {
             </Grid>
           ))}
 
-            <GameResult  
-              players={Object.values(payoutDetails || {}).sort((a,b) => a.rank - b.rank)} 
+            <GameResult
+              players={Object.values(payoutDetails || {}).sort((a,b) => a.rank - b.rank)}
               hasAdditionalPayout={true}
               showStandardPayout={true}
-              totalPayout={totalPayout} 
+              totalPayout={totalPayout}
               isHistory={true}
               showAll={true}/>
       </Grid>

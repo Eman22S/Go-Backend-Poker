@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   background: {
     //backgroundColor: theme.palette.background.paper,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
   container: {
     maxHeight: 630,
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px 0",
   },
   lobbyCardBtn:{
-    width:"100%", 
+    width:"100%",
     marginBottom:"15px",
     borderRadius:"20px",
     border:"2px solid #ffd06a",
@@ -284,7 +284,7 @@ export default function TournamentTemplateList(props) {
       return ids;
     });
     confirm({ description: 'Remove tournament template and cancel all active and pending tournament instances?' })
-    .then(() => { 
+    .then(() => {
       grpc_client.removeTournamentTemplate(
         ids,
         (response)=>{
@@ -295,9 +295,9 @@ export default function TournamentTemplateList(props) {
           custom_msg && showSnackBar(custom_msg);
         }
       );
-   
+
   })
-   
+
   }
 
 
@@ -337,7 +337,7 @@ export default function TournamentTemplateList(props) {
   };
 
   const tour_detail = (index) => (event) => setDetail(index);
-  
+
   const launch_tour = () => {
     setLbtnLoading(true);
     let ids = {};
@@ -486,7 +486,7 @@ export default function TournamentTemplateList(props) {
                         onCheckboxChange={handleChange}>
 
                       </TournamentTemplateRow>
-                      
+
                     ))}
                 </TableBody>
               </Table>

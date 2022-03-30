@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
      animation: "$PULSE 1.25s infinite"
    },
    table_container:{
-   
+
        marginTop:"150px",
        width:"100%"
    },
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom:"10px"
 
    },
-   
+
    structure:{
        flex:"1",
        display:"flex",
@@ -73,13 +73,13 @@ const useStyles = makeStyles((theme) => ({
     display:"flex",
     justifyContent:"center",
    },
-   
+
    /* Standard Syntax */
    "@keyframes PULSE" : {
     "0%" : {
       fontSize:"16px",
       color:"rgba(0,255,255)"
-    },	
+    },
      "110%" :{
       fontSize:"24px",
        color: "black"
@@ -173,7 +173,7 @@ const [localUser, ] = useLocalStorage("user");
 //   }
   console.log(localUser);
   return (
-   
+
            <div className={classes.table_container}>
            <div className={classes.flex_row}>
                    <div className={classes.structure}>
@@ -197,29 +197,29 @@ const [localUser, ] = useLocalStorage("user");
                                                {
                                                    tableState.players[key].cards.map(card=>{
                                                        return(
-                                                       
+
                                                            <UnpositionedCard
                                                            number={card}
                                                            winners_cards={winners_cards}
-                                                           />   
+                                                           />
                                                        )
                                                    })
                                                }
-                                           
+
                                        </div>
                                    </div>);
                                }else{
                                    return (<></>);
                                }
-                               
+
                            })
                        }
-                        
+
                    </div>
 
            </div>
             <div style={{ display:"flex", justifyContent:"center", marginTop:"20px", alignContent:"center", alignItems:"center"}} spacing={1}>
-                
+
             <div className="avatar_marker">
                 <PlayerInfo player={tableState.players[localUser.md5]} on_new_table_state={on_new_table_state} />
             </div>
@@ -230,13 +230,13 @@ const [localUser, ] = useLocalStorage("user");
                 player={tableState.players[localUser.md5]}
                 winners_cards={winners_cards}
                 on_new_table_state={on_new_table_state}
-             />  
-            
-                               
+             />
+
+
             </div>
-      
+
        </div>
-       
+
   );
 }
 

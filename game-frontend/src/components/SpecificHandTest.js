@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   default_background: {
     backgroundColor: theme.palette.background.default,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
   iconButton: {
     margin: theme.spacing(0),
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   flex_row:{
     display:"flex",
     alignItems:"center",
-    justifyContent:"space-between"  
+    justifyContent:"space-between"
   },
   stat_btn:{
     border:"solid 2px lightBlue",
@@ -127,9 +127,9 @@ export default function SpecificHandTest({  ...props }) {
   const showSnackBar = useSnackBarContext();
 
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);  
+  const [open, setOpen] = useState(false);
   const [openStat, setOpenStat] = useState(false);
-  
+
   const [cardNumber, setCardNumber] = useState(-1);
   const [cardSymbol, setCardSymbol] = useState(-1)
 
@@ -179,14 +179,14 @@ export default function SpecificHandTest({  ...props }) {
 
   const [winnerCards, setWinnerCards] = useState(null);
   const {flop0, flop1, flop2, river, turn} = metaData;
-  
+
 
   const setupDeck = () =>{
     setSelectedHistoryId(null);
     if(uniqueDeck){
       for (var i =0; i < numberOfPlayers; i ++){
         console.log("set up");
-        
+
         grpc_client.getNewDeck({}, (response)=>{
           let temp = playersDeck;
           temp.push(JSON.parse(response)[0]);
@@ -215,7 +215,7 @@ export default function SpecificHandTest({  ...props }) {
   },[uniqueDeck])
 
 
- 
+
   useEffect(()=>{
     if(deck && deck.length === 52 && players && players.length >= 2){
       setUpTable()
@@ -269,7 +269,7 @@ export default function SpecificHandTest({  ...props }) {
 
       }
       newPlayerDeck.push({
-        
+
         cards : player_cards
       })
     })
@@ -284,8 +284,8 @@ export default function SpecificHandTest({  ...props }) {
   },[deck]);
 
 
-  
-  const assignCard = () =>{  
+
+  const assignCard = () =>{
     setWinnerCards(null);
 
     const card = {rank: cardNumber, suit: cardSymbol};
@@ -305,14 +305,14 @@ export default function SpecificHandTest({  ...props }) {
       });
     }
     setOpen(false);
-     
+
   }
 
   const isCardSelected = card => {
     const cardSelectedInMeta = Object.keys(metaData).find((meta, key)  => {
       return card.rank === metaData[meta].rank && card.suit === metaData[meta].suit
     })
-    
+
     const cardSelectedInPlayers = Object.keys(players).find((selectedPlayer, index) => {
       const player = players[selectedPlayer]
       const cardInPlayer = Object.keys(player.cards).find((card, key)  => {
@@ -362,7 +362,7 @@ export default function SpecificHandTest({  ...props }) {
         on_history_response,
         on_grpc_error
       );
-   
+
   }
   function get_hand_history_stat() {
 
@@ -372,7 +372,7 @@ export default function SpecificHandTest({  ...props }) {
       on_stat_response,
       on_grpc_error
     );
- 
+
 }
 
 const on_stat_response = function(response){
@@ -380,7 +380,7 @@ const on_stat_response = function(response){
     let parsed_stats = JSON.parse(response.getResult());
     setStats(parsed_stats);
     // change players_data structure to be keyed by player id
-   
+
   }
 }
   const on_history_response = function (response) {
@@ -392,7 +392,7 @@ const on_stat_response = function(response){
       setHistories(parsed_history.payload);
       setCount(parsed_history.pagination_data.number_of_pages)
       // change players_data structure to be keyed by player id
-     
+
     }
   };
   function on_grpc_error(custom_msg) {
@@ -401,7 +401,7 @@ const on_stat_response = function(response){
         showSnackBar(custom_msg);
     }
 }
-  //rank selected cards 
+  //rank selected cards
   const rankCards = () =>{
     let player_cards = [];
     players.forEach((player=>{
@@ -413,11 +413,11 @@ const on_stat_response = function(response){
     let isComplete = true;
     let community_cards = [flop0,flop1,flop2, turn , river];
     player_cards.forEach(card=>{
-   
+
         if(!card){
           isComplete = false;
         }
-  
+
     })
 
     community_cards.forEach((card)=>{
@@ -434,7 +434,7 @@ const on_stat_response = function(response){
       let payload = {
         player_cards: JSON.stringify(player_cards),
         additionalChecks: additionalChecks,
-        wildcardValue: wildcardEnabled ? Number(wildcardValue) : - 1 
+        wildcardValue: wildcardEnabled ? Number(wildcardValue) : - 1
       }
       if(gameType !== game_type_values["FIVE_CARD"]){
         payload = {
@@ -451,7 +451,7 @@ const on_stat_response = function(response){
           p['Cards'] = card
           reqPlayers.push(p)
       })
-      
+
       const reqObj = {
         players: reqPlayers,
         communityCards: payload.table_cards
@@ -465,7 +465,7 @@ const on_stat_response = function(response){
     }else{
       showSnackBar("Please select all cards");
     }
-    
+
 
   }
   //response after cards are ranked
@@ -482,18 +482,18 @@ const on_stat_response = function(response){
     })
     let winner_card_sample = {}
     winningHand.forEach(hand=>{
-     winner_card_sample[hand] = true; 
+     winner_card_sample[hand] = true;
     })
     // set all possible wild card values as part of the winning hand
     if(wildcardEnabled){
       let wild_card_value = 12 - wildcardValue;
-      winner_card_sample[(wild_card_value * 4) + 1] = true; 
-      winner_card_sample[(wild_card_value * 4) + 2] = true; 
-      winner_card_sample[(wild_card_value * 4) + 3] = true; 
-      winner_card_sample[(wild_card_value * 4) + 4] = true; 
+      winner_card_sample[(wild_card_value * 4) + 1] = true;
+      winner_card_sample[(wild_card_value * 4) + 2] = true;
+      winner_card_sample[(wild_card_value * 4) + 3] = true;
+      winner_card_sample[(wild_card_value * 4) + 4] = true;
     }
     setWinnerCards(winningHand);
-    
+
   }
   useEffect(()=>{
     if(rankedHands){
@@ -512,7 +512,7 @@ const on_stat_response = function(response){
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   },[rankedHands]);
-  
+
 
   useEffect(() => {
     get_all_hand_history(false);
@@ -606,9 +606,9 @@ function setCardFromHistory(history, index){
                             color="primary"
                           />
                         }
-                    
+
                         label={<Typographyx variant="button" color="textSecondary">Use Unique Deck For Each Player</Typographyx>}
-                      /> 
+                      />
                       <FormControlLabel
                         control={
                           <Checkbox
@@ -620,9 +620,9 @@ function setCardFromHistory(history, index){
                             color="primary"
                           />
                         }
-                    
+
                         label={<Typographyx variant="button" color="textSecondary">Evaluate Additional Payout Hands</Typographyx>}
-                      /> 
+                      />
                        <div>
                          <FormControlLabel
                             control={
@@ -633,7 +633,7 @@ function setCardFromHistory(history, index){
                                 color="primary"
                               />
                             }
-                        
+
                             label={<Typographyx variant="button" color="textSecondary">Enable Wildcards</Typographyx>}
                           />
                           </div>
@@ -641,7 +641,7 @@ function setCardFromHistory(history, index){
                           {
                             wildcardEnabled &&
                             <FormControl>
-                              <InputLabel id="demo-simple-select-label">Wild Card</InputLabel> 
+                              <InputLabel id="demo-simple-select-label">Wild Card</InputLabel>
                               <Select
                                   labelId="demo-simple-select-label"
                                   id="demo-simple-select"
@@ -653,14 +653,14 @@ function setCardFromHistory(history, index){
                                       ev.preventDefault();
                                   }}
                                   >
-                                      
+
                                       {crdsym.map((sym, index) =>{
                                           return (
                                               <MenuItem key={index} value={index}>{sym}</MenuItem>
 
                                           );
                                       })}
-                              
+
                               </Select>
                             </FormControl>
                           }
@@ -670,25 +670,25 @@ function setCardFromHistory(history, index){
               <Buttonx
               className={classes.stat_btn}
                 onClick={() => rankCards()}
-               
+
                 color="primary"
                 my={1}
                 py={1}
-                
+
                 disabled={Boolean(loading)}
                 endIcon={loading ? <Loading size={20} /> : null}
               >
                 Test Cards
               </Buttonx>
-             
+
               <Buttonx
               className={classes.stat_btn}
                 onClick={() => setupDeck()}
-               
+
                 color="primary"
                 my={1}
                 py={1}
-                
+
                 disabled={Boolean(loading)}
                 endIcon={loading ? <Loading size={20} /> : null}
               >￼
@@ -696,18 +696,18 @@ function setCardFromHistory(history, index){
               </Buttonx>
               </div>
               </Grid>
-              
-             
+
+
             </Grid>
 
-            {gameType && gameType !== "five_card" && 
+            {gameType && gameType !== "five_card" &&
             <Grid item xs={12}>
               {/* General Table Information */}
               <Typographyx variant="h6" color="textSecondary" pb={0.5} pt={0}>
                 Table Community Cards
               </Typographyx>
               {loading && <Loading />}
-        
+
                 <Card className={classes.background}>
                   <CardContent>
                     <Grid container>
@@ -762,7 +762,7 @@ function setCardFromHistory(history, index){
                                 </IconButton>
 
                             </Grid>
-                            
+
                         </Grid>
                         <Grid container justify="center" spacing={5}>
                           <Grid item xs={3}>
@@ -771,15 +771,15 @@ function setCardFromHistory(history, index){
                           <Grid item>Turn</Grid>
                           <Grid item>River</Grid>
                         </Grid>
-                      
+
                       </Grid>
                     </Grid>
                   </CardContent>
                 </Card>
-          
+
             </Grid>
               }
-        
+
               <Grid  item xs={12}>
                 {/* Players on table */}
                 <Typographyx variant="h6" color="textSecondary" pb={0.5} pt={2}>
@@ -795,14 +795,14 @@ function setCardFromHistory(history, index){
                           ev.preventDefault();
                       }}
                       >
-                          
+
                         <MenuItem value={1}>{1}</MenuItem>
                         <MenuItem value={2}>{2}</MenuItem>
                         <MenuItem value={3}>{3}</MenuItem>
                         <MenuItem value={4}>{4}</MenuItem>
                         <MenuItem value={5}>{5}</MenuItem>
 
-                  
+
                   </Select>
                 {loading && <Loading />}
                 <Grid container spacing={2}>
@@ -816,10 +816,10 @@ function setCardFromHistory(history, index){
                           <CardContent >
                             <Grid container>
                             <Grid item xs={12}>
-                              
+
 
                                 <Grid container justify="center" spacing={4}>
-                              
+
                                     {player.cards && player.cards.length > 0 &&
                                     player.cards.map((card, card_index)=>(
                                      <Grid item key={card_index}>
@@ -829,14 +829,14 @@ function setCardFromHistory(history, index){
                                         selectPlayerCard(index,card_index)
                                     }} color="primary">
                                       <AddIcon />
-                              
+
                                       </IconButton>
                                   </Grid>
-                                    )) 
-                                  
+                                    ))
+
                                     }
-                                   
-                                  
+
+
                                 </Grid>
                                 <Grid container justify="center" spacing={5}>
                                   {player.user_id ?  <Grid item> UserId -{player.user_id} </Grid> : ""}
@@ -860,7 +860,7 @@ function setCardFromHistory(history, index){
                                   </Grid>
                                 </Grid>
                                 </Grid>
-                            
+
                             </Grid>
                           </CardContent>
                         </Card>
@@ -872,7 +872,7 @@ function setCardFromHistory(history, index){
             </Grid>
             <div className={classes.flex_row}>
             <Typographyx variant="h6" mt={2} pb={5} pt={3}>
-                      Hand History                                         
+                      Hand History
 
                   </Typographyx>
                   <Buttonx className={classes.stat_btn} onClick={()=>{
@@ -882,7 +882,7 @@ function setCardFromHistory(history, index){
               Open Hand History Stats
           </Buttonx>
             </div>
-            
+
             <Grid item xs={12}>
                     <Card>
                         <PaperTable>
@@ -931,24 +931,24 @@ function setCardFromHistory(history, index){
                                                 {histories[index].meta_data.big_blind_user_id}
                                             </StyledTableCell>
                                             <StyledTableCell align="center">
-                                           
-                                             {histories[index].meta_data.fold && 
+
+                                             {histories[index].meta_data.fold &&
                                               <>
                                               {
                                                Object.keys(histories[index].final_pots_data[0].winners_data).map((key=>{
                                                   return histories[index].final_pots_data[0].winners_data[key].user_id;
-                                                  
+
                                                   }))
                                                 }
 
                                                 <Chip label="folded" color="secondary" size="small"/>
                                               </>
                                            }
-                                           {!histories[index].meta_data.fold && 
-                                            
+                                           {!histories[index].meta_data.fold &&
+
                                                Object.keys(histories[index].final_pots_data[0].winners_data).map((key=>{
                                                   return histories[index].final_pots_data[0].winners_data[key].user_id;
-                                                
+
                                                 }))
                                            }
                                             </StyledTableCell>
@@ -979,7 +979,7 @@ function setCardFromHistory(history, index){
                         }
                     </Card>
                 </Grid>
-            
+
         {/* Select card dialog */}
         <Dialog open={open}  aria-labelledby="form-dialog-title" >
         <DialogTitle id="form-dialog-title">Select Card</DialogTitle>
@@ -997,14 +997,14 @@ function setCardFromHistory(history, index){
                           ev.preventDefault();
                       }}
                       >
-                          
+
                           {crdsym.map((rank, index) =>{
                               return (
                                   <MenuItem key={index} value={index}>{rank}</MenuItem>
 
                               );
                           })}
-                  
+
                   </Select>
                   <Select
                       labelId="demo-simple-select-label"
@@ -1015,19 +1015,19 @@ function setCardFromHistory(history, index){
                           ev.preventDefault();
                       }}
                       >
-                          
+
                           {colsym.map((suit, index) =>{
                               return (
                                   <MenuItem key={index} value={colsym.length - 1 - index}>{suit}</MenuItem>
 
                               );
                           })}
-                  
+
                   </Select>
-              </div>        
-                 
-           
-       
+              </div>
+
+
+
         </DialogContent>
         <DialogActions>
           <Button onClick={closeSelectCard} color="primary">
@@ -1039,7 +1039,7 @@ function setCardFromHistory(history, index){
           </Buttonx>
         </DialogActions>
       </Dialog>
-      
+
 
 
         {/* Select card dialog */}
@@ -1051,7 +1051,7 @@ function setCardFromHistory(history, index){
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-               Shows the amount of times in percent each hand has occured in the hand history. 
+               Shows the amount of times in percent each hand has occured in the hand history.
             </DialogContentText>
               <TableContainer component={classes.paper}>
                 <Table>
@@ -1064,7 +1064,7 @@ function setCardFromHistory(history, index){
                         </StyledTableRow>
                     </TableHead>
                     <TableBody style={styles.card_content}>
-                                    
+
                       {stats && Object.keys(stats).map((key)=>{
                         return (
                           <StyledTableRow key={key} hover={true}>
@@ -1074,18 +1074,18 @@ function setCardFromHistory(history, index){
                             <StyledTableCell align="center">
                                 {Number(stats[key] || 0 ).toFixed(2)}%
                             </StyledTableCell>
-                            
+
                           </StyledTableRow>
                         );
                       })}
-                      
+
                   </TableBody>
                 </Table>
               </TableContainer>
-        
+
           </DialogContent>
           <DialogActions>
-          
+
             <Buttonx onClick={()=>{
               setOpenStat(false)
             }} color="primary" disabled={Boolean(loading)}

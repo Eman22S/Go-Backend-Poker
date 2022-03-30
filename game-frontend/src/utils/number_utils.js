@@ -26,7 +26,7 @@ function format_dates(date, secondDate, locale, separator = '') {
 
   if(secondDate){
     let secondNewDate = new Date(secondDate);
-    
+
     let formattedSecondDate = secondNewDate.toLocaleDateString(locale, {hour:'2-digit', minute: '2-digit', hour12: false});
     let formattedSecondTime = secondNewDate.toLocaleTimeString(locale, {hour:'2-digit', minute: '2-digit',  hour12: false});
 

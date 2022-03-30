@@ -36,9 +36,9 @@ const ChangePassword = () => {
         else {
             setLoading(true);
             grpcClient.changePassword(
-                data.current_password, 
-                data.new_password, 
-                onChangePasswordResponse, 
+                data.current_password,
+                data.new_password,
+                onChangePasswordResponse,
                 onChangePasswordError
             );
         }
@@ -77,28 +77,28 @@ const ChangePassword = () => {
                             <form className={classes.form} noValidate>
                                 <Box py={1 }>
                                     <Grid item xs={8}>
-                                        <TextField 
-                                            id="outlined-basic" 
-                                            type="password" 
-                                            name="current_password" 
-                                            label="Old Password" 
-                                            variant="outlined" 
-                                            margin="normal" 
+                                        <TextField
+                                            id="outlined-basic"
+                                            type="password"
+                                            name="current_password"
+                                            label="Old Password"
+                                            variant="outlined"
+                                            margin="normal"
                                             fullWidth
                                             size="small"
-                                            inputRef={register}/>     
+                                            inputRef={register}/>
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <TextField 
-                                            id="outlined-basic" 
-                                            type="password" 
-                                            name="new_password" 
-                                            label="New Password" 
-                                            variant="outlined"  
-                                            margin="normal" 
+                                        <TextField
+                                            id="outlined-basic"
+                                            type="password"
+                                            name="new_password"
+                                            label="New Password"
+                                            variant="outlined"
+                                            margin="normal"
                                             fullWidth
                                             size="small"
-                                            inputRef={register}/>     
+                                            inputRef={register}/>
                                     </Grid>
                                     <Grid item xs={8}>
                                         <TextField
@@ -110,7 +110,7 @@ const ChangePassword = () => {
                                             margin="normal"
                                             fullWidth
                                             size="small"
-                                            inputRef={register}/>    
+                                            inputRef={register}/>
                                     </Grid>
                                 </Box>
                                 <Box mt={3} mb={1}>
@@ -120,7 +120,7 @@ const ChangePassword = () => {
                                         </Button>
                                     </Grid>
                                 </Box>
-                                
+
                             </form>
                         </Grid>
                     </Grid>

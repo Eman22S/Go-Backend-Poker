@@ -177,7 +177,7 @@ export default function Signup(props) {
             submitLoading={signupBtnLoading}
           />
         );
-      default: 
+      default:
           return "";
     }
   }

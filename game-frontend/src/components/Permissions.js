@@ -72,7 +72,7 @@ export default function ComponentPermissionistrators(props) {
     const showSnackBar = useSnackBarContext();
     const [componentPermissions, setComponentPermissions] = useState([]);
     const [selectedComponentPermission, setSelectedComponentPermission] = useState(null);
-   
+
     const [componentPermissionPage, setComponentPermissionPage] = useState(1);
     const [componentPermissionCount, setComponentPermissionCount] = useState(1);
     const [loading,] = useState(false);
@@ -81,10 +81,10 @@ export default function ComponentPermissionistrators(props) {
     const [componentPermissionRoles, setComponentPermissionRoles] = useState([]);
     const [roles, setRoles] = useState([]);
     const [component, setComponent] = useState(null);
- 
+
     const handleComponentPermissionClose = () =>{
         setComponentPermissionOpen(false);
-      
+
     }
 
 
@@ -93,7 +93,7 @@ export default function ComponentPermissionistrators(props) {
         e.preventDefault();
         setIsLoading(true);
         updateComponentPermission();
-        
+
         setIsLoading(false);
     }
     useEffect(() => {
@@ -123,7 +123,7 @@ export default function ComponentPermissionistrators(props) {
             getDistinctRoles();
             if(res.payload){
                 setComponentPermissionCount(res.pagination_data.number_of_pages);
-        
+
             }
         }, on_error);
     }
@@ -131,7 +131,7 @@ export default function ComponentPermissionistrators(props) {
     const updateComponentPermission = () =>{
         console.log(componentPermissionRoles);
         let roles = componentPermissionRoles.filter((permission=>permission !== "")).join(",");
-        
+
         grpc_client.updateComponentPermissionData({ id:selectedComponentPermission.id, component: selectedComponentPermission.component, roles:roles }, (response) => {
             showSnackBar('Component Permission Updated!', 'success');
             getComponentPermissions();
@@ -139,8 +139,8 @@ export default function ComponentPermissionistrators(props) {
 
         }, on_error);
     }
-  
-    // get distinct roles 
+
+    // get distinct roles
     const getDistinctRoles = () => {
         grpc_client.getDistinctRole({}, (response) => {
             setRoles(JSON.parse(response.getData()));
@@ -160,13 +160,13 @@ export default function ComponentPermissionistrators(props) {
                     <Grid item xs={12}>
                         <Typographyx variant="h6" color="textSecondary" style={{marginTop:"20px"}}>
                             <span>Component Permission List</span>
-                               
+
                         </Typographyx>
-                         
+
                     </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Component"
@@ -201,7 +201,7 @@ export default function ComponentPermissionistrators(props) {
                                                     <StyledTableRow>
                                                     <StyledTableCell align="center">Name</StyledTableCell>
                                                     <StyledTableCell align="center">Role</StyledTableCell>
-                                
+
                                                     <StyledTableCell align="center">Action</StyledTableCell>
                                                     </StyledTableRow>
                                                 </TableHead>
@@ -215,9 +215,9 @@ export default function ComponentPermissionistrators(props) {
 
                                                             <StyledTableCell align="center">
                                                                 <React.Fragment>
-                                                                
+
                                                                         <IconButton aria-label="delete" style={{color:"lightBlue"}} onClick={() => {
-                                                                            
+
                                                                             selectComponentPermission(componentPermission);
                                                                             }} color="secondary">
                                                                          <TrackChanges />
@@ -246,7 +246,7 @@ export default function ComponentPermissionistrators(props) {
                                                 }
                                             </TableContainer>
                                         </PaperTable>
-                                    </Grid> 
+                                    </Grid>
                                 </Grid>
                                 {/* Create geofence name dialog */}
                                 <Dialog open={componentPermissionOpen} onClose={handleComponentPermissionClose} aria-labelledby="form-dialog-title" classes={{scrollPaper: classes.scrollPaper }} >
@@ -264,14 +264,14 @@ export default function ComponentPermissionistrators(props) {
                                                 }
                                             }} name={"selectALL"}  color="default" />}
                                             label={<Typographyx variant="caption" color="textSecondary">Select All</Typographyx>}
-                                            />} 
+                                            />}
                                         <div style={{display:"flex", justifyContent:"space-between", flexWrap:"wrap"}}>
                                             {roles && roles.map((role, index) =>{
                                                 return(
-                                                    
+
                                                     <FormControlLabel
-                                                    key={index}  
-                                                    style={{flexBasis:"30%"}}      
+                                                    key={index}
+                                                    style={{flexBasis:"30%"}}
                                                     control={ <Checkbox checked={componentPermissionRoles.includes(role.role)}    onChange={(e)=>{
                                                         if(e.target.checked){
                                                         setComponentPermissionRoles([
@@ -290,7 +290,7 @@ export default function ComponentPermissionistrators(props) {
                                                     }} name={"selectALL"} value={role.role}  color="default" />}
                                                     label={<Typographyx variant="caption" color="textSecondary">{role.role}</Typographyx>}
                                                     />
-                                                ) 
+                                                )
                                             })}
                                         </div>
                                     </DialogContent>
@@ -305,13 +305,13 @@ export default function ComponentPermissionistrators(props) {
                                     </Buttonx>
                                     </DialogActions>
                                 </Dialog>
-                            
+
                           </Grid>
                             {/* </form> */}
                         </Container>
-                        
+
                     </Grid>
-              
+
             </Container>
         </Fragment>
     );

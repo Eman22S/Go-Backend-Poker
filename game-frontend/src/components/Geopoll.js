@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       minHeight: '100vh'
     },
-  
+
     bullet: {
       display: "inline-block",
       margin: "0 2px",
@@ -75,15 +75,15 @@ const useStyles = makeStyles((theme) => ({
       width: 400,
     },
   }));
-  
+
   const styles = {
       card_content: {
         paddingBottom: 1,
         paddingTop: 1,
       },
-  }; 
-    
-  
+  };
+
+
 export default function Geopoll(props) {
     const classes = useStyles();
     const grpc_client = useGrpcClient();
@@ -130,7 +130,7 @@ export default function Geopoll(props) {
         if(ipAddress) {
             query.ip_address = ipAddress
         }
-        
+
         grpc_client.getGeopollList(
             query,
             on_search_response,
@@ -164,7 +164,7 @@ export default function Geopoll(props) {
                 </Grid>
 
                 <Grid md={6} container spacing={1} justify="space-evenly" alignItems="center">
-                    
+
                         <Grid item xs={6} sm={4}>
                             <TextFieldx
                                 name={"session_id"}
@@ -236,7 +236,7 @@ export default function Geopoll(props) {
 
                                                 </StyledTableRow>
 
-                                                
+
                                             )
                                         })
                                     }

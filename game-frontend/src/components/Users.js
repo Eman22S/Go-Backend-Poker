@@ -206,7 +206,7 @@ export default function Users({ temp, ...props }) {
         <Route path={`${path}/uisettings`}>
           <UiSettings />
         </Route>
-       
+
       </Switch>
 
     </div>

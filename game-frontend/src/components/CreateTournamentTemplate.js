@@ -69,11 +69,11 @@ const onBlurErrObject = {
     tourPlayersMinErr : [false, ""],
     blindsIncreaseIntervalRoundsErr: [false, ""],
     blindsIncreaseIntervalSecondsErr: [false, ""],
-    tableTimer: [false, ""], 
+    tableTimer: [false, ""],
     timeLimitSecondsErr: [false, ""],
-    rebuysRoundEndErr: [false, ""], 
-    addonsRoundEndErr: [false, ""], 
-    tourPlayersMaxErr: [false, ""], 
+    rebuysRoundEndErr: [false, ""],
+    addonsRoundEndErr: [false, ""],
+    tourPlayersMaxErr: [false, ""],
     maxPlayersPerTableErr: [false, ""],
     minPlayersPerTableErr: [false, ""],
     prizeAndBlindErr: [],
@@ -201,7 +201,7 @@ export default function CreateTournamentTemplate(props) {
       }
       if(props.temp.table_type){
         setTableType(props.temp.table_type);
-      }      
+      }
       else if(props.temp.tableType){
         setTableType(props.temp.tableType);
       }
@@ -269,8 +269,8 @@ export default function CreateTournamentTemplate(props) {
       showSnackBar(custom_msg);
     }
   }
- 
-  const onSubmit = (data) => {   
+
+  const onSubmit = (data) => {
 
     // check weather the each and every field is without error or not
     var err = false;
@@ -300,11 +300,11 @@ export default function CreateTournamentTemplate(props) {
     if(data.min_players_per_table && data.min_players_per_table < 2){
       return showSnackBar("Minimum value for min players per table is 2!");
     }
- 
+
     if(data.min_players_per_table && parseInt(data.min_players_per_table) > parseInt(data.max_players_per_table)){
       return showSnackBar("Minimum players table can't be greater than maximum players per table!");
     }
-    
+
     if (!selectedAdditionalPayoutId && !tempValues.to_update) {
       return showSnackBar("Please select one Additional Prize Pool Payout!");
     }
@@ -361,8 +361,8 @@ export default function CreateTournamentTemplate(props) {
 
     data.flashPrizePool = JSON.stringify({
       prizePool
-    }) 
-    
+    })
+
     let additionalPayoutPerHandListNewCopy = [...additionalPayoutPerHandList];
     additionalPayoutPerHandList.map(
         (additionalPayoutPerHand, index) => {
@@ -389,7 +389,7 @@ export default function CreateTournamentTemplate(props) {
           return null;
         }
     )
-    
+
     let hand = additionalHandPayoutList.slice()[0]
     additionalHandPayoutList.shift()
     let hands = {}
@@ -400,8 +400,8 @@ export default function CreateTournamentTemplate(props) {
     data.additionalPayoutPlayer = JSON.stringify({
       hand,
       hands
-    }); 
-     
+    });
+
     data.tournamentImage = tournamentImage;
     if (tempValues.to_update) {
       grpc_client.updateTournamentTemplate(
@@ -422,41 +422,41 @@ export default function CreateTournamentTemplate(props) {
     }
    }
   };
- 
+
   const validateFlashPrizeValue = (flashPrizes) => {
     let current_value = null;
     let value_in_order = true;
-    flashPrizes.forEach((hand, key) => { 
+    flashPrizes.forEach((hand, key) => {
       if(parseInt(current_value) && parseInt(hand.value) > parseInt(current_value)){
         value_in_order = false;
         return;
       }
-      current_value = parseInt(hand.value); 
+      current_value = parseInt(hand.value);
     });
 
     return value_in_order;
   }
 
-  const validateAdditionalPayout = (hands) => {  
-    return hands.royal_flush >= hands.straight_flush 
-      && hands.straight_flush >= hands.four_of_a_kind 
-      && hands.four_of_a_kind >= hands.four_aces 
+  const validateAdditionalPayout = (hands) => {
+    return hands.royal_flush >= hands.straight_flush
+      && hands.straight_flush >= hands.four_of_a_kind
+      && hands.four_of_a_kind >= hands.four_aces
       && hands.four_aces >= hands.four_fives_through_kings
       && hands.four_fives_through_kings >= hands.four_twos_threes_or_fours
       && hands.four_twos_threes_or_fours >= hands.full_house
-      && hands.full_house >= hands.flush 
-      && hands.flush >= hands.straight 
-      && hands.straight >= hands.three_of_a_kind 
-      && hands.three_of_a_kind >= hands.two_pair 
-      && hands.two_pair >= hands.jacks_or_better 
-      && hands.jacks_or_better >= hands.pair 
-      && hands.pair >= hands.one_jack_or_better 
-      && hands.one_jack_or_better >= hands.high_card; 
+      && hands.full_house >= hands.flush
+      && hands.flush >= hands.straight
+      && hands.straight >= hands.three_of_a_kind
+      && hands.three_of_a_kind >= hands.two_pair
+      && hands.two_pair >= hands.jacks_or_better
+      && hands.jacks_or_better >= hands.pair
+      && hands.pair >= hands.one_jack_or_better
+      && hands.one_jack_or_better >= hands.high_card;
   }
 
   /**
    * Function to check weather the number is non-negative float or not
-   * 
+   *
    * @param String name : name of the field
    * @param Object e: the event triggered
    * @param Boolean equalToZero: to check weather the number can be equal to zero or not
@@ -486,7 +486,7 @@ export default function CreateTournamentTemplate(props) {
 
   /**
    * Function to check weather the number is non-negative number or not
-   * 
+   *
    * @param String name : name of the field
    * @param Object e: the event triggered
    * @param Boolean equalToZero: to check weather the number can be equal to zero or not
@@ -531,7 +531,7 @@ export default function CreateTournamentTemplate(props) {
     if (name === "gameType") {
       let _gameType = e.target.value;
       if(_gameType == 'five_card_stud' && tableType == 'NO_LIMIT'){
-        showSnackBar("Table type selected is NO_LIMIT which is not allowed for five card stud please change it first", 'error');                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        showSnackBar("Table type selected is NO_LIMIT which is not allowed for five card stud please change it first", 'error');
         return;
       }
       setGameType(e.target.value);
@@ -541,7 +541,7 @@ export default function CreateTournamentTemplate(props) {
       let _tableType = e.target.value;
       if(_tableType == 'NO_LIMIT'){
         if(gameType == 'five_card_stud'){
-          showSnackBar("Table type NO_LIMIT is not allowed for five card stud game ", "error");          
+          showSnackBar("Table type NO_LIMIT is not allowed for five card stud game ", "error");
           return;
         }
         setValue('table_max_num_raises', 'NO_LIMIT');
@@ -553,7 +553,7 @@ export default function CreateTournamentTemplate(props) {
         else{
           setValue('table_max_num_raises', 0);
         }
-      } 
+      }
 
       setTableType(e.target.value);
 
@@ -567,31 +567,31 @@ export default function CreateTournamentTemplate(props) {
     }
 
   };
-  
-  /**  
-  *  The Function to be called during on focus out or (on blur) 
+
+  /**
+  *  The Function to be called during on focus out or (on blur)
   * @param String fieldErr : the name of field error in the useState that helps to store the error message
   */
   const focusOutFunction2 = (fieldErr) => (e) => {
       let name = e.target.name;
       setValue(name, e.target.value);
-      
+
       if (name === "buyin" || name === "rake"  ||
           name === "buyin_chips" || name === "addon_chips"
-          ) 
+          )
         {
-            validateNonNegativeFloat(name, e, false, fieldErr);  
+            validateNonNegativeFloat(name, e, false, fieldErr);
         }
 
       if (name === "min_prize_pool_value" || name === "scheduled_breaks" ||
-          name === "small_blind_max_value") 
+          name === "small_blind_max_value")
         {
-            validateNonNegativeFloat(name, e, true, fieldErr);    
+            validateNonNegativeFloat(name, e, true, fieldErr);
         }
 
-      if (name === "table_timer"      || name === "time_limit_seconds" || 
+      if (name === "table_timer"      || name === "time_limit_seconds" ||
           name === "blinds_increase_interval_rounds" ||
-          name === "blinds_increase_interval_seconds" 
+          name === "blinds_increase_interval_seconds"
           ){
               validateNonNegativeInteger(name, e, false, fieldErr);
         }
@@ -600,8 +600,8 @@ export default function CreateTournamentTemplate(props) {
           name === "addon_threshold" || name === "rebuys_permitted" ||
           name === "rebuys_round_start" || name === "addons_permitted" ||
           name === "addons_round_start" || name === "min_players_per_table" ||
-          name === "tour_players_min" || name === "pending_timeout_seconds")  { 
-            validateNonNegativeInteger(name, e, true, fieldErr); 
+          name === "tour_players_min" || name === "pending_timeout_seconds")  {
+            validateNonNegativeInteger(name, e, true, fieldErr);
       }
 
       if (name === "table_max_num_raises") {
@@ -613,9 +613,9 @@ export default function CreateTournamentTemplate(props) {
       }
   }
 
-  /**  
-  *  The Function to be called during on focus out or (on blur) esp for the end or maximum field  
-  * @param String otherFieldId : the id of the start/minimum value to be compared with, 
+  /**
+  *  The Function to be called during on focus out or (on blur) esp for the end or maximum field
+  * @param String otherFieldId : the id of the start/minimum value to be compared with,
   * @param String fieldErr : the name of field error in the useState that helps to store the error message
   */
   const focusOutFunction = (otherFieldId, fieldErr) => (e) => {
@@ -831,9 +831,9 @@ export default function CreateTournamentTemplate(props) {
 
   useEffect(() => {
     if (tempValues.prizePoolValues) {
-      let prizePool = JSON.parse(tempValues.prizePoolValues)?.prizePool; 
+      let prizePool = JSON.parse(tempValues.prizePoolValues)?.prizePool;
       let blindLevels = tempValues.blindLevels && tempValues.blindLevels !== "" ? JSON.parse(tempValues.blindLevels)?.blindValues : [];
-      
+
       setFlashPrizePool([
         {name: "royal_flush", value: prizePool?.royal_flush?.prize || "", timer: prizePool?.royal_flush?.timer || ""},
         {
@@ -992,7 +992,7 @@ export default function CreateTournamentTemplate(props) {
 
               setAdditionalPayoutPerHandList(additionalPayoutPerHandListNew);
 
-            } else if ('hands' in templateDetail?.additional_player_payout) { 
+            } else if ('hands' in templateDetail?.additional_player_payout) {
               let additionalPayoutPerHandListNew = [];
               let tempAdditionalPayoutPerHand = [
                 {
@@ -1192,7 +1192,7 @@ export default function CreateTournamentTemplate(props) {
 
   const handleChangePayout = (id) => (event) => {
     setSelectedPayoutId(id);
-  } 
+  }
   //Handle additional payout per hand
   //eslint-disable-next-line
   const [additionalPayoutPerHand, setAdditionalPayoutPerHand] = useState([
@@ -1327,7 +1327,7 @@ export default function CreateTournamentTemplate(props) {
     };
     reader2.readAsDataURL(file);
     e.target.value = "";
-  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+  }
 
   const handleXmlChange = e => {
     const file = e.target.files[0];
@@ -1340,7 +1340,7 @@ export default function CreateTournamentTemplate(props) {
       reader.onload = function () {
         const xmlAsString = reader.result;
         parseString(xmlAsString, {trim: true, explicitRoot:false, explicitArray:false}, function (err, result){
-          if(err)  showSnackBar("Please Upload the Correct Document !.", "error");          
+          if(err)  showSnackBar("Please Upload the Correct Document !.", "error");
           /**
            * if data is exported as table_type set tableType z
            */
@@ -1408,7 +1408,7 @@ export default function CreateTournamentTemplate(props) {
       }
       else if(resultJson.tableType){
         setTableType(resultJson.tableType)
-      } 
+      }
 
       if(resultJson.type){
         setTournamentType(resultJson.type);
@@ -1677,7 +1677,7 @@ export default function CreateTournamentTemplate(props) {
                               })}
                               onBlur={focusOutFunction2("minPrizePoolErr")}
                               error={onBlurErr.minPrizePoolErr[0] || Boolean(errors.minPrizePoolValue)}
-                              helperText={onBlurErr.minPrizePoolErr[0]?onBlurErr.minPrizePoolErr[1]:errors.minPrizePoolValue?.message}                              
+                              helperText={onBlurErr.minPrizePoolErr[0]?onBlurErr.minPrizePoolErr[1]:errors.minPrizePoolValue?.message}
                               InputLabelProps={{shrink : true}}
                           />
                           <TextFieldx
@@ -1700,7 +1700,7 @@ export default function CreateTournamentTemplate(props) {
                               })}
                               onBlur={focusOutFunction2("blindsIncreaseIntervalSecondsErr")}
                               error={onBlurErr.blindsIncreaseIntervalSecondsErr[0] || Boolean(errors.blindsIncreaseIntervalSeconds)}
-                              helperText={onBlurErr.blindsIncreaseIntervalSecondsErr[0]?onBlurErr.blindsIncreaseIntervalSecondsErr[1]:errors.blindsIncreaseIntervalSeconds?.message}                              
+                              helperText={onBlurErr.blindsIncreaseIntervalSecondsErr[0]?onBlurErr.blindsIncreaseIntervalSecondsErr[1]:errors.blindsIncreaseIntervalSeconds?.message}
                               InputLabelProps={{shrink : true}}
                           />
                           <TextFieldx
@@ -1727,7 +1727,7 @@ export default function CreateTournamentTemplate(props) {
                               }
                               helperText={
                                 onBlurErr.blindsIncreaseIntervalRoundsErr[0]?onBlurErr.blindsIncreaseIntervalRoundsErr[1]:errors.blindsIncreaseIntervalRounds?.message
-                              }                              
+                              }
                               InputLabelProps={{shrink : true}}
                           />
 
@@ -2069,7 +2069,7 @@ export default function CreateTournamentTemplate(props) {
                               })}
                               onBlur={focusOutFunction2("smallBlindMaxValueErr")}
                               error={onBlurErr.smallBlindMaxValueErr[0] || Boolean(errors.smallBlindMaxValue)}
-                              helperText={onBlurErr.smallBlindMaxValueErr[0]?onBlurErr.smallBlindMaxValueErr[1]:errors.smallBlindMaxValue?.message}      
+                              helperText={onBlurErr.smallBlindMaxValueErr[0]?onBlurErr.smallBlindMaxValueErr[1]:errors.smallBlindMaxValue?.message}
                               InputLabelProps={{shrink : true}}
                           />
                           <TextFieldx
@@ -2091,7 +2091,7 @@ export default function CreateTournamentTemplate(props) {
                               })}
                               onBlur={focusOutFunction2("tableTimer")}
                               error={onBlurErr.tableTimer[0] || Boolean(errors.tableTimer)}
-                              helperText={onBlurErr.tableTimer[0]?onBlurErr.tableTimer[1]:errors.tableTimer?.message}                              
+                              helperText={onBlurErr.tableTimer[0]?onBlurErr.tableTimer[1]:errors.tableTimer?.message}
                               InputLabelProps={{shrink : true}}
                           />
                           <TextFieldx
@@ -2113,7 +2113,7 @@ export default function CreateTournamentTemplate(props) {
                               })}
                               onBlur={focusOutFunction2("tourPlayersMinErr")}
                               error={onBlurErr.tourPlayersMinErr[0] || Boolean(errors.tourPlayersMin)}
-                              helperText={onBlurErr.tourPlayersMinErr[0]?onBlurErr.tourPlayersMinErr[1]:errors.tourPlayersMin?.message}                                    
+                              helperText={onBlurErr.tourPlayersMinErr[0]?onBlurErr.tourPlayersMinErr[1]:errors.tourPlayersMin?.message}
                               InputLabelProps={{shrink : true}}
                           />
 
@@ -2156,7 +2156,7 @@ export default function CreateTournamentTemplate(props) {
                               fullWidth
                               id="tournamentType"
                               label="Tournament Type"
-                              autoComplete="tournamentType" 
+                              autoComplete="tournamentType"
                               autoFocus
                               my={0.5}
                               onChange={changeSelectUsing("tournamentType")}
@@ -2177,7 +2177,7 @@ export default function CreateTournamentTemplate(props) {
                               required
                               fullWidth
                               id="tableMaxNumRaises"
-                              label="Table Max Num Raises" 
+                              label="Table Max Num Raises"
                               autoComplete="tableMaxNumRaises"
                               readOnly={tableType === "NO_LIMIT"}
                               value={tableType==="NO_LIMIT"?0:props.temp?.tableMaxNumRaises}
@@ -2207,7 +2207,7 @@ export default function CreateTournamentTemplate(props) {
                               fullWidth
                               id="rebalancingTableAlgorithm"
                               label="Rebalancing Table Algorithm"
-                              autoComplete="rebalancingTableAlgorithm" 
+                              autoComplete="rebalancingTableAlgorithm"
                               autoFocus
                               my={0.5}
                               onChange={changeSelectUsing("rebalancing_table_algorithm")}
@@ -2242,7 +2242,7 @@ export default function CreateTournamentTemplate(props) {
                               helperText={errors.status?.message}
                               InputLabelProps={{shrink : true}}
                           />
-                          
+
                           <TextFieldx
                               name="max_players_per_table"
                               size="small"
@@ -2266,7 +2266,7 @@ export default function CreateTournamentTemplate(props) {
                               helperText={onBlurErr.maxPlayersPerTableErr[0]?onBlurErr.maxPlayersPerTableErr[1]:errors.maxPlayersPerTable?.message}
                               InputLabelProps={{shrink : true}}
                           />
-                          
+
                         </Grid>
                       </Grid>
                       <Grid>
@@ -2655,7 +2655,7 @@ export default function CreateTournamentTemplate(props) {
                                         <FormHelperText error={true} id={hand.name}></FormHelperText>
                                       </Grid>
                                       <Grid item xs={2}>
-                                        
+
                                         <TextFieldx
                                             name={hand.name+"_timer"}
                                             size="small"
@@ -2702,7 +2702,7 @@ export default function CreateTournamentTemplate(props) {
                     <CardContent style={styles.card_content}>
                       <Grid container spacing={1}>
                         <Grid item xs={12}>
-                        
+
                           {gameType === 'five_card_stud' ?
                           <Typographyx variant="button" color="textSecondary">
                               ANTE
@@ -2718,7 +2718,7 @@ export default function CreateTournamentTemplate(props) {
                           >
                             Add Blind Level
                           </Buttonx> }
-                          
+
                         </Grid>
                         {gameType !== 'five_card_stud' ?
                         <Grid item xs={12}>
@@ -2874,13 +2874,13 @@ export default function CreateTournamentTemplate(props) {
                               {
                                 additionalPayoutPerHandList.map((value, index) => (
                                     <MenuItem value={index} key={index} disabled={!isAddon0Valid(index)}>
-                                   
+
                                     {(index === 0) ? 1 + " Buyin":
 
                                       [(index === 1) ? 1 + " Buyin and " + 1 + " add-on":
 
-                                        [(index === (additionalPayoutPerHandList.length -1)) ? 1 + " Buyin and "+(additionalPayoutPerHandList.length -2)+ " addons" : 
-                                          
+                                        [(index === (additionalPayoutPerHandList.length -1)) ? 1 + " Buyin and "+(additionalPayoutPerHandList.length -2)+ " addons" :
+
                                           1 + " Buyin and "+ (index-1) + " addons"
                                         ]
                                       ]

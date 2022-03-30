@@ -92,7 +92,7 @@ function PlayerCardsAlternate({ player, winners_cards, on_new_table_state, ...pr
             if (winners_cards) {
                 if (winners_cards[player_card]) {
                     card_attributes.winner_class = "part_of_winning_hand";
-                } 
+                }
                 else {
                     card_attributes.winner_class = "not_part_of_winning_hand";
                 }
@@ -111,13 +111,13 @@ function PlayerCardsAlternate({ player, winners_cards, on_new_table_state, ...pr
     }
 
     function undisperseCards() {
-       
+
     }
 
     function selectedCardFound() {
         if (selectedCards.some((selected) => selected)) {
             return true;
-        } 
+        }
         else {
             return false;
         }
@@ -126,10 +126,10 @@ function PlayerCardsAlternate({ player, winners_cards, on_new_table_state, ...pr
     function shouldShowDispersedCards() {
         if (!player.meta?.can_draw) {
             return false;
-        } 
+        }
         else if (!isFiveCardDrawTurboMode() && !player.is_myturn) {
             return false;
-        } 
+        }
         else if (cardGap !== partial_visible_card_width) {
           return true;
         }
@@ -234,7 +234,7 @@ function PlayerCardsAlternate({ player, winners_cards, on_new_table_state, ...pr
 
     return (
         <div className="card_container" style={{ marginLeft:"50px", marginTop:"50px"}}>
-         
+
         <div id="spacer" style={{
                 width: (cards_options.length - 1) * cardGap + card_width,
                 height: card_height + 100,
@@ -276,10 +276,10 @@ function PlayerCardsAlternate({ player, winners_cards, on_new_table_state, ...pr
                                 </Buttonx>
                         )
                     }
-                    
+
                 </ButtonGroup>
                 // <Fragment>
-                    
+
                 // </Fragment>
             )
         }

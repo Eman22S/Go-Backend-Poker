@@ -56,7 +56,7 @@ function TableChat({ ...props }) {
         messagesEndEl.current.scrollIntoView({ behavior: "smooth" })
       }
     }, [messagesEndEl, tableState.game.winners_data, tableState.game.bet, betCount]);
-  
+
 
   const winner_descriptions = [];
   if (tableState.game?.winners_data && tableState.players) {
@@ -156,10 +156,10 @@ function TableChat({ ...props }) {
             {round_bet_data.map((bet_data, index) => (
               /* bet_data structure
                 bet_data[0]=player_md5,
-                bet_data[1]=bet_amount, 
+                bet_data[1]=bet_amount,
                 bet_data[2]=bet_action_message,
                 bet_data[3]=weird_unique_hash,
-                bet_data[4]=bet_action_timestamp 
+                bet_data[4]=bet_action_timestamp
               */
               <div id={bet_data[3]} className="game_announce">
                 <span className="time">{getTimeDisplay(bet_data[4])}</span>
@@ -190,7 +190,7 @@ function TableChat({ ...props }) {
              ref={messagesEndEl}>
         </div>
       </div>
-      
+
       {/* chat text input */}
       <input className="new_table_chat" type="text" name="new_table_chat" />
     </div>

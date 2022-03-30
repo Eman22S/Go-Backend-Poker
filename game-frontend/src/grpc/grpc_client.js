@@ -481,7 +481,7 @@ class GrpcClient {
 
   createTournamentTemplate(data, on_response, on_error) {
     let request = new CreateTournamentTemplateRequest();
-     
+
     request.setName(data.name);
     request.setBuyin(data.buyin);
     request.setBuyinChips(data.buyin_chips);
@@ -691,7 +691,7 @@ class GrpcClient {
   getTournamentsAdmin(data, on_response, on_error, user_only = false, all_tournaments = false, simulation_only = false) {
     let request = new GetTournamentsRequest();
     request.setUserOnly(user_only);
-    request.setAllTournaments(all_tournaments); 
+    request.setAllTournaments(all_tournaments);
     // change "all" or "*" value to backend expectation which is empty
     request.setStatusList(data.status.filter(val => val !== "*"));
     request.setLimitsList(data.tableType.filter(val => val !== "*"));
@@ -1116,7 +1116,7 @@ class GrpcClient {
     request.setGameType(game_type);
     this.call_grpc("joinAnyTournament", request, on_change, on_err);
   }
- 
+
   unregisterAnyTournament(on_change, on_err) {
     let request = new UnregisterAnyTournamentRequest();
 
@@ -1330,7 +1330,7 @@ class GrpcClient {
 
     this.call_grpc("setGeofenceClientGlobalRule", request, on_change, on_err, true); //admin
   }
-  
+
   rankHands(data, on_change, on_err) {
     let request = new RankHandsRequest();
     let communityCards = data.communityCards.map(communityCard => {
@@ -1366,7 +1366,7 @@ class GrpcClient {
 
   getNewDeck(data, on_change, on_err) {
     let request = new NewDeckRequest();
-  
+
     this.call_grpc(
       "getShuffledDeck",
       request,
@@ -1484,7 +1484,7 @@ class GrpcClient {
     this.call_grpc("editTheme", request, on_change, on_err, true); //admin
   }
 
-  
+
 
   deleteTheme(name, on_change, on_err) {
     let request = new ThemesRequest();
@@ -1541,7 +1541,7 @@ class GrpcClient {
 
     this.call_grpc("validateSecurityQuestionsForLogin", request, on_response, on_error);
   }
-  
+
   getTournamentPayoutStructure(tournament_instance_id, on_response, on_error){
     let request = new TournamentDetailsRequest();
     request.setTournamentInstanceId(tournament_instance_id);
@@ -1670,7 +1670,7 @@ class GrpcClient {
     this.call_grpc("getDistinctRole", request, on_change, on_err, true); //admin
   }
 
-  
+
   /**
    * Admin CRUD Opertions
    */
@@ -1789,7 +1789,7 @@ class GrpcClient {
     request.setAddonsAmount(addons_amount);
     request.setNoOfPlayers(numberOfPlayers);
     this.call_grpc("simulateGames", request, on_change, on_err, true);
-    
+
   }
   deletePrizePoolPayout(payout_id, on_change, on_err){
     let request = new DeletePrizePoolStatusRequest();
@@ -1798,7 +1798,7 @@ class GrpcClient {
     console.log(request)
 
     this.call_grpc("deletePrizePoolPayout", request, on_change, on_err, true);
-    
+
   }
 
   getPendingRequests(data, on_change, on_err){
@@ -1813,7 +1813,7 @@ class GrpcClient {
         : "10"
     );
     this.call_grpc("getPendingRequest", request, on_change, on_err, true);
-    
+
   }
 
   getApprovedRequests(data, on_change, on_err){
@@ -1835,7 +1835,7 @@ class GrpcClient {
     request.setCashierRequestId(cashier_request_id);
     request.setAction(is_deposit ? "Accept" : '');
     this.call_grpc("actionOnPendingRequest", request, on_change, on_err, true);
-    
+
   }
 
   getBotList(data, on_response, on_error) {
@@ -1856,7 +1856,7 @@ class GrpcClient {
   createBots(number_of_bots, on_response, on_error) {
     let request = new CreateMultipleUsersRequest();
     request.setNumberOfUsers(number_of_bots);
-  
+
     this.call_grpc("createMultipleUsers", request, on_response, on_error, true); //admin
   }
 
@@ -1893,7 +1893,7 @@ class GrpcClient {
         ? String(data.pagination_items_per_page)
         : "10"
     );
-    
+
     request.setSessionDataId(data.session_id);
     request.setIpAddress(data.ip_address)
 

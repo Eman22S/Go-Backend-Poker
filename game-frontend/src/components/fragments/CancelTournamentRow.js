@@ -50,10 +50,10 @@ const CancelTournamentRow = ({ tournament, refreshTournaments, index, checked, o
     const cancelTournament = () => {
         setActionBtnLoading(true);
         setShowConfirmation(false);
-        
+
         grpcClient.cancelTournament(tournament.tournament_instance_id, onSuccess, onFailure)
     }
-    
+
     const onSuccess = (response) => {
         setActionBtnLoading(false);
         refreshTournaments();
@@ -116,7 +116,7 @@ const CancelTournamentRow = ({ tournament, refreshTournaments, index, checked, o
                     <Typographyx variant="h6" style={{ color: "#fff", textTransform: "inherit" }} >
                         Confirm
                     </Typographyx>
-                    
+
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
@@ -133,7 +133,7 @@ const CancelTournamentRow = ({ tournament, refreshTournaments, index, checked, o
                 </DialogActions>
             </Dialog>
         </Fragment>
-        
+
     );
 };
 
