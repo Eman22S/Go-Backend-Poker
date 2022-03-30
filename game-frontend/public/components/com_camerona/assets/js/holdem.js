@@ -5,7 +5,7 @@ function getPlayerGameSetting(setting) {
 	if (player_game_settings && player_game_settings[setting]) {
 		return_val = player_game_settings[setting];
 	}
-	if (setting == 'disable_animations' && Browser.ie8) {	
+	if (setting == 'disable_animations' && Browser.ie8) {
 		return_val = 1;
 	}
 	return return_val;
@@ -517,7 +517,7 @@ var HoldemTableDom = new Class({
 	},
 
 
-	//TODO remove the ids from these cards but make sure css and other js 
+	//TODO remove the ids from these cards but make sure css and other js
 	//doesn't break when done
 	createCommunityCards: function(){
 		var flop1 = new  Element('div' , { 'id':'flop_1',  'class':'card flop1'}).injectInside(this.options.table_div.getElement('.community_cards'));
@@ -613,7 +613,7 @@ var HoldemTableDom = new Class({
 
 	/**
 	 * Show an indicator that a player at the table has posted a new chat msg
-	 * 
+	 *
 	 **/
 	showPlayerChat: function(player_md5, shout_msg){
 		var latest_action_id = 'latest_action_' + player_md5;
@@ -698,7 +698,7 @@ var HoldemTableDom = new Class({
 
 			['card1_', 'card2_'].each(function(card_id_prefix, i){
 
-				Object.each(players_by_sb_ordering, function(player_data, player_index) { 
+				Object.each(players_by_sb_ordering, function(player_data, player_index) {
 					//only pass cards to active players. skip over the other clients
 					if ('active' != this.game.players_data[player_data.md5].status.toLowerCase()) {
 						return;
@@ -810,7 +810,7 @@ var HoldemTableDom = new Class({
 		var one_styles = {
 				'top': new_pos.y,
 				'left': new_pos.x
-		}; 
+		};
 		this.playSound('card_deal');
 		var one = undefined;
 		var animation = $('turn').get('morph');
@@ -839,7 +839,7 @@ var HoldemTableDom = new Class({
 		var one_styles = {
 				'top': new_pos.y,
 				'left': new_pos.x
-		}; 
+		};
 		this.playSound('card_deal');
 		var one = undefined;
 		var animation = $('river').get('morph');
@@ -900,7 +900,7 @@ var HoldemTableDom = new Class({
 	 * the hand_data bet array:
 	 * first level - the betsRound
 	 * 2nd level: an ordered list of the bets for the parent bet round
-	 * 3rd level: 
+	 * 3rd level:
 	 *  0 => md5 of player
 	 *  1 -> the bet amount
 	 *  2 -> 'bet message' (action like bet X, check, etc)
@@ -921,8 +921,8 @@ var HoldemTableDom = new Class({
 					return true;
 				});
 				//loop over each bet known to this.game round
-				if(!this.game.betCounter.contains(element[3])) {						
-					//the bet has not yet been processed by the client 
+				if(!this.game.betCounter.contains(element[3])) {
+					//the bet has not yet been processed by the client
 					if (_('COM_CAMERONA_ACTION_FOLD').toLowerCase() == element[2].toLowerCase() && element[0] == this.game.md5){
 						['card1_', 'card2_'].each(function(card_id_prefix, i){
 							if($(card_id_prefix + this.game.md5)) {
@@ -932,7 +932,7 @@ var HoldemTableDom = new Class({
 							}
 						}.bind(this));
 					}
-					this.game.betCounter[this.game.betCounter.length] = element[3];												
+					this.game.betCounter[this.game.betCounter.length] = element[3];
 					if(element[1] > 0) {
 						//amount of bet is greater than 0
 						//pull X(element[1]) chips from the player and into the pot
@@ -1123,9 +1123,9 @@ var HoldemTableDom = new Class({
 
 		var dealer_div = new	Element('div' , {'class':'dealer','title':'Dealer Button', 'styles': {'display': 'none'}});
 		dealer_div.injectInside(indicators_div);
-		var small_blind = new Element('div' , {'class':'small_blind','title':'Small Blind', 'styles': {'display': 'none'}}); 
+		var small_blind = new Element('div' , {'class':'small_blind','title':'Small Blind', 'styles': {'display': 'none'}});
 		small_blind.injectInside(indicators_div);
-		var big_blind = new Element('div' , {'class':'big_blind','title':'Big Blind', 'styles': {'display': 'none'}}); 
+		var big_blind = new Element('div' , {'class':'big_blind','title':'Big Blind', 'styles': {'display': 'none'}});
 		big_blind.injectInside(indicators_div);
 
 		var box_infos_container = new Element('div', {'class': 'player_info_container'});
@@ -1203,7 +1203,7 @@ var HoldemTableDom = new Class({
 		box_infos_container.setStyle('top', marker_pos.y);
 
 		var betting_round_sum_el = new Element('div', {'id': 'betting_round_sum_' + player_data.md5, 'class': 'betting_round_sum label success'});
-		betting_round_sum_position = $('chair_' + this.translateChairIndex(player_data.chair)).getElement('.betting_round_sum_marker').getPosition(this.options.table_div); 
+		betting_round_sum_position = $('chair_' + this.translateChairIndex(player_data.chair)).getElement('.betting_round_sum_marker').getPosition(this.options.table_div);
 		betting_round_sum_el.setStyle('left', betting_round_sum_position.x);
 		betting_round_sum_el.setStyle('top', betting_round_sum_position.y);
 		betting_round_sum_el.setStyle('visibility', 'hidden');
@@ -1358,7 +1358,7 @@ var HoldemTableDom = new Class({
 			if (-1 != winnerPlayers.indexOf(this.game.md5)) {
 				this.playSound('winner_is');
 			}
-			
+
 			Object.each(this.game.players_data, function(element, index) {
 				if(winnerPlayers.contains(element.md5)) {
 					$(element.md5).addClass('winner');
@@ -1391,7 +1391,7 @@ var HoldemTableDom = new Class({
 					if ('refund' == this.game.hand_data.winners_data[element.md5].hand_description.toLowerCase()) {
 						hand_description_text = _('COM_CAMERONA_REFUNDED');
 						this.showLatestPlayerAction(element.md5, _('COM_CAMERONA_REFUNDED') + ' ' + Number.format(String(this.game.hand_data.winners_data[element.md5]['total']).toFloat(), this.options.default_format_options), true);
-						this.displayGameAction(0, username,	_('COM_CAMERONA_REFUNDED') + ' ' + Number.format(String(this.game.hand_data.winners_data[element.md5]['total']).toFloat(), this.options.default_format_options), 'yes'); 
+						this.displayGameAction(0, username,	_('COM_CAMERONA_REFUNDED') + ' ' + Number.format(String(this.game.hand_data.winners_data[element.md5]['total']).toFloat(), this.options.default_format_options), 'yes');
 					} else {
 						this.showLatestPlayerAction(element.md5, _('COM_CAMERONA_WON') + ' ' + Number.format(String(this.game.hand_data.winners_data[element.md5]['total']).toFloat(), this.options.default_format_options), true);
 						this.displayGameAction(0, username,	_('COM_CAMERONA_WON') + ' ' + Number.format(String(this.game.hand_data.winners_data[element.md5]['total']).toFloat(), this.options.default_format_options) + ' ' + hand_description_text, 'yes');
@@ -1405,7 +1405,7 @@ var HoldemTableDom = new Class({
 						this.addCardClass($('card2_' + element.md5), element.cards[1]);
 					}
 				}
-			}.bind(this));	
+			}.bind(this));
 		}
 	},
 
@@ -1432,10 +1432,10 @@ var HoldemTableDom = new Class({
 			};
 			var valid_layout = layouts[num_chairs];
 			for (i=0; i < valid_layout.length; i++) {
-				var new_chair = new Element ('div' , { 'id': 'chair_' + i, 'class': 'chair open'}); 
+				var new_chair = new Element ('div' , { 'id': 'chair_' + i, 'class': 'chair open'});
 				new_chair.addClass(valid_layout[i][1]);
 				this.options.table_div.getElement('.table_and_chairs').grab(new_chair);
-				var chair_img = new Element ('img' , { 'src': this.game.options.image_path + this.game.options.theme_path + 'chairs/' + valid_layout[i][0] + '.png', 'class': valid_layout[i][0]}); 
+				var chair_img = new Element ('img' , { 'src': this.game.options.image_path + this.game.options.theme_path + 'chairs/' + valid_layout[i][0] + '.png', 'class': valid_layout[i][0]});
 				new_chair.grab(chair_img);
 				var avatar_marker = new Element('div', {'class': 'avatar_marker'});
 				new_chair.grab(avatar_marker);
@@ -1528,7 +1528,7 @@ var HoldemTableDom = new Class({
 		if (null === this.options.table_div.getElement('.pot_' + pot_index)) {
 			//position pots X vertical pixels apart
 			var pot = new  Element('div' , { 'class':'btn info pot disable_selection pot_'+pot_index, 'style': 'top: ' + (pot_index * 30) + 'px'});
-			pot.innerHTML =  0; 
+			pot.innerHTML =  0;
 			pot.inject(pots_container);
 		}
 	},
@@ -1633,10 +1633,10 @@ var HoldemTableDom = new Class({
 				} else {
 					$('btnAllIn').removeClass('disabled');
 				}
-				
+
 				max_raise_bet_amount = Math.min(this.game.players_data[this.game.md5].chips, min_raise_bet_amount + this.game.getPotSum());
 			} else if (this.game.isTypeLimit()) {
-				if (this.game.players_data[this.game.md5].chips > 0 && this.game.players_data[this.game.md5].chips <= this.game.players_data[this.game.md5].bet2do) { 
+				if (this.game.players_data[this.game.md5].chips > 0 && this.game.players_data[this.game.md5].chips <= this.game.players_data[this.game.md5].bet2do) {
 					$('btnAllIn').removeClass('disabled');
 				} else {
 					$('btnAllIn').addClass('disabled');
@@ -1644,7 +1644,7 @@ var HoldemTableDom = new Class({
 				if (this.game.hand_data.game_turn <= 1) {
 					//in pre-flop and flop
 					raise_ceil = Number.toFloat(this.game.hand_data.smallblind);
-					raise_floor = Number.toFloat(this.game.hand_data.smallblind);	
+					raise_floor = Number.toFloat(this.game.hand_data.smallblind);
 				} else {
 					//in turn or river
 					raise_ceil = Number.toFloat(this.game.hand_data.bigblind);
@@ -1662,7 +1662,7 @@ var HoldemTableDom = new Class({
 			}
 		} else {
 			//not an active player
-			this.options.table_div.getElements('.game_action_controls_container > div').each(function(el, i) { 
+			this.options.table_div.getElements('.game_action_controls_container > div').each(function(el, i) {
 				el.setStyle('display', 'none');
 			});
 			this.options.table_div.getElements('#btnStandUp, #btnAway').each(function(el){
@@ -1673,7 +1673,7 @@ var HoldemTableDom = new Class({
 
 	movePotChipsToPlayer: function(player_md5, num_chips_to_move) {
 		this.animation_chains.chips.chain(function(){
-			var player_coords	= $(player_md5).getCoordinates();					
+			var player_coords	= $(player_md5).getCoordinates();
 
 			if (undefined == num_chips_to_move) {
 				num_chips_to_move = Math.floor(this.options.table_div.getElements('.chipsIn').length);
@@ -1710,12 +1710,12 @@ var HoldemTableDom = new Class({
 
 	moveChipsToPot: function(total_chips_value, potDIV, player_md5){
 		this.animation_chains.chips.chain(function(){
-			this.createPlayerChips(player_md5, total_chips_value);	
+			this.createPlayerChips(player_md5, total_chips_value);
 			var chips2Show = this.options.table_div.getElements('.chips_'+player_md5);
-			var newLeft = 0;	
-			var newTop = 0;	
+			var newLeft = 0;
+			var newTop = 0;
 			chips2Show.reverse();
-			var coords	= $(player_md5).getCoordinates();		
+			var coords	= $(player_md5).getCoordinates();
 
 			chips2Show.each(function(element, index) {
 				var newPos = this.createRandomPotChipPosition(element, potDIV);
@@ -1726,9 +1726,9 @@ var HoldemTableDom = new Class({
 				} else {
 					animation.setOptions({duration: 250, transition: Fx.Transitions.Sine.easeOut});
 				}
-				element.setStyle('display', 'block');						
+				element.setStyle('display', 'block');
 				element.removeClass('chips_'+player_md5);
-				element.addClass('chipsIn');	
+				element.addClass('chipsIn');
 				animation.start({
 					'left': [(coords.left+(coords.width/2)), newPos[0]],
 					'top': [(coords.top+(coords.height/2)), newPos[1]]});
@@ -1754,11 +1754,11 @@ var HoldemTableDom = new Class({
 
 
 	createPlayerChipsHelper: function(chip_value, player_md5, total_chips_value, num_chips_allowed_to_add_to_dom) {
-		var max_num_chips_to_create = Math.floor(total_chips_value / chip_value);			
+		var max_num_chips_to_create = Math.floor(total_chips_value / chip_value);
 		var return_data = {'total_chips_value': total_chips_value, 'num_chips_created': 0, 'num_chips_to_create': 0};
 		if(max_num_chips_to_create > 0) {
 			return_data.num_chips_to_create = max_num_chips_to_create;
-			return_data.total_chips_value -= (chip_value * max_num_chips_to_create); 
+			return_data.total_chips_value -= (chip_value * max_num_chips_to_create);
 			var chip_id_suffix = '';
 			for (i=1;i<=max_num_chips_to_create;i++) {
 				if (chip_value < 1) {
@@ -1776,7 +1776,7 @@ var HoldemTableDom = new Class({
 				}
 				return_data.num_chips_created++;
 			}
-		}					
+		}
 		return return_data;
 	},
 
@@ -1808,14 +1808,14 @@ var HoldemTableDom = new Class({
 	 **/
 	createRandomPotChipPosition: function(chip, pot){
 		var potCoords = pot.getCoordinates();
-		var chipCoords	= chip.getCoordinates();				
+		var chipCoords	= chip.getCoordinates();
 		var newLeft = (potCoords.left -	chipCoords.width - 30);
 		var newRight = (potCoords.left + potCoords.width + 30 );
 		var newTop = (potCoords.top - chipCoords.height - 10);
 		var newBottom =  (potCoords.top + potCoords.height + 10);
-		var randPos = [];			
+		var randPos = [];
 		randPos[0] = Math.round(newLeft + (Math.random()*(newRight - newLeft)));
-		randPos[1] = Math.round(newTop + (Math.random()*(newBottom - newTop)));			
+		randPos[1] = Math.round(newTop + (Math.random()*(newBottom - newTop)));
 		return randPos;
 	},
 
@@ -1880,13 +1880,13 @@ var HoldemTableDom = new Class({
 
 		var marker_names = ['avatar_marker', 'betting_round_sum_marker', 'latest_action_marker', 'countdown_marker'];
 		var elements_to_move = [avatar_el, betting_round_sum_el, latest_action_el, countdown_el];
-		
+
 		marker_names.each(function(marker_class_name, i){
 			new_position = $('chair_' + new_chair_index).getElement('.' + marker_class_name).getPosition(this.options.table_div);
 			var new_styles = {
 					'top': new_position.y,
 					'left': new_position.x
-			}; 
+			};
 			if (parseInt(this.game.getPlayerGameSetting('disable_animations'))) {
 				elements_to_move[i].setStyles(new_styles);
 			} else {
@@ -1909,7 +1909,7 @@ var HoldemTableDom = new Class({
 		if (parseInt(this.game.getPlayerGameSetting('disable_animations'))) {
 			card1_el.setStyles(card1_new_styles);
 			card2_el.setStyles(card2_new_styles);
-		} else { 
+		} else {
 			var move_tween = new Fx.Morph(card1_el, {duration: 500, transition: Fx.Transitions.Sine.easeOut});
 			card1_el.store('running_animations', [move_tween]);
 			move_tween.start(card1_new_styles);
@@ -1967,7 +1967,7 @@ var HoldemTableDom = new Class({
 		var btnallin = $('btnAllIn');
 		if (btnallin) {
 			btnallin.addEvent('click', function(e){
-				new Event(e).stopPropagation(); 
+				new Event(e).stopPropagation();
 				if (btnallin.hasClass('disabled')) {
 					return false;
 				}
@@ -1984,7 +1984,7 @@ var HoldemTableDom = new Class({
 		/// button pass
 		var btnpass = $('btnPass');
 		btnpass.addEvent('click', function(e){
-			new Event(e).stopPropagation(); 
+			new Event(e).stopPropagation();
 			if (btnpass.hasClass('disabled')) {
 				return false;
 			}
@@ -1993,7 +1993,7 @@ var HoldemTableDom = new Class({
 				btnpass.getElement('input').click();
 			}
 			if (this.game.is_my_turn) {
-				this.game.sendPlayerAction('pass', 0); 
+				this.game.sendPlayerAction('pass', 0);
 			}
 		}.bind(this));
 
@@ -2004,7 +2004,7 @@ var HoldemTableDom = new Class({
 				new Event(e).stop();
 				return;
 			}
-			new Event(e).stopPropagation(); 
+			new Event(e).stopPropagation();
 			if ('input' != e.target.nodeName.toLowerCase() && ! this.game.is_my_turn) {
 				btncheck.getElement('input').click();
 			}
@@ -2031,7 +2031,7 @@ var HoldemTableDom = new Class({
 				if (! game_this.players_data || ! game_this.players_data[game_this.md5]) {
 					return;
 				}
-				var new_step = (!isNaN(step) ? step : this.min); 
+				var new_step = (!isNaN(step) ? step : this.min);
 				var raise_floor = 0;
 				var raise_ceil = 1;
 				if (game_this.players_data && game_this.hand_data) {
@@ -2064,7 +2064,7 @@ var HoldemTableDom = new Class({
 				this.set(new_step);
 			}
 		});
-		btnraise.store('slider', raise_slider); 
+		btnraise.store('slider', raise_slider);
 
 		var inputraise = $('currentRaise');
 		if (inputraise) {
@@ -2098,7 +2098,7 @@ var HoldemTableDom = new Class({
 		var btnraiseplus = $('btnRaisePlus');
 		if (btnraiseplus) {
 			btnraiseplus.addEvent('click', function(e){
-				new Event(e).stop(); 
+				new Event(e).stop();
 				if (btnraiseplus.hasClass('disabled')) {
 					return false;
 				}
@@ -2106,7 +2106,7 @@ var HoldemTableDom = new Class({
 			}.bind(this));
 			var btnraiseminus = $('btnRaiseMinus');
 			btnraiseminus.addEvent('click', function(e){
-				new Event(e).stop(); 
+				new Event(e).stop();
 				if (btnraiseminus.hasClass('disabled')) {
 					return false;
 				}
@@ -2117,7 +2117,7 @@ var HoldemTableDom = new Class({
 		var btncall = $('btnCall');
 		btncall.store('bet_amount', 0);
 		btncall.addEvent('click', function(e){
-			new Event(e).stopPropagation(); 
+			new Event(e).stopPropagation();
 			if (btncall.hasClass('disabled')) {
 				return false;
 			}
@@ -2139,7 +2139,7 @@ var HoldemTableDom = new Class({
 		var btncallany = $('btnCallAny');
 		if (btncallany) {
 			btncallany.addEvent('click', function(e){
-				new Event(e).stopPropagation(); 
+				new Event(e).stopPropagation();
 				if (btncallany.hasClass('disabled')) {
 					return false;
 				}
@@ -2159,14 +2159,14 @@ var HoldemTableDom = new Class({
 					new Event(e).stop();
 					return;
 				}
-				new Event(e).stopPropagation(); 
+				new Event(e).stopPropagation();
 				if ('input' != e.target.nodeName.toLowerCase() && ! this.game.is_my_turn) {
 					btncheckfold.getElement('input').click();
 				}
 				this.game.doCheckFold();
-			}.bind(this)); 
+			}.bind(this));
 		}
-		
+
 		//handle embedded checkbox that acts to queue events
 		var old_this = this;
 		this.options.table_div.getElements('.autoUserAction').addEvent('click', function(e){
@@ -2245,7 +2245,7 @@ var HoldemTableDom = new Class({
 			this.game.makePlayerAway();
 		}.bind(this));
 
-		//TODO automuck is no longer accurate. rename to player game settings or 
+		//TODO automuck is no longer accurate. rename to player game settings or
 		//such
 		var btnautomuck = $('btnAutomuck');
 		if (btnautomuck) {
@@ -2325,7 +2325,7 @@ var HoldemTableDom = new Class({
 		}
 
 		new Request.HTML({
-			url: popup_data.url, 
+			url: popup_data.url,
 			filter: '.modal',
 			evalScripts: true,
 			append: this.options.table_div,
@@ -2579,7 +2579,7 @@ var HoldemGame = new Class({
 		is_for_money: null,
 		is_part_of_tournament: null,
 		is_random_seating_required: null,
-		md5: null,	
+		md5: null,
 		table_div: null,
 		table_instance_id: null,
 		image_path: '',
@@ -2588,15 +2588,15 @@ var HoldemGame = new Class({
 		ready: undefined,
 		max_display_messages: 100
 	},
-	
+
 	initialize: function(options){
-		this.setOptions(options);		
+		this.setOptions(options);
 		this.getMyCards_timeout = null;
 		this.getMyCards_failures = 0;
 		this.getMyCards_request = null;
 		this.max_debug_log_length = 500;
 		this.debug_log = [];
-		this.md5=this.options.md5;	
+		this.md5=this.options.md5;
 		this.table_div = $(this.options.table_div);
 		var table_dom_options = {
 			base_url: this.options.base_url,
@@ -2611,7 +2611,7 @@ var HoldemGame = new Class({
 		this.is_user_authorized = false;
 		this.is_random_seating_required = this.options.is_random_seating_required;
 		this.is_part_of_tournament = this.options.is_part_of_tournament;
-		this.is_my_turn = false;	
+		this.is_my_turn = false;
 		this.betCounter = [];
 		this.current_table_round = undefined;
 		this.betting_round = 0;
@@ -2626,7 +2626,7 @@ var HoldemGame = new Class({
 		//TODO :( hacky
 		this.seatPlayer_extra_dialog_message = undefined;
 
-		this.table_dom.createCommunityCards();	
+		this.table_dom.createCommunityCards();
 		this.table_dom.initBtnHandlers();
 
 		var communicator_options = {
@@ -2669,7 +2669,7 @@ var HoldemGame = new Class({
 			this.removeEvent(event_name, callback);
 			this.addEvent(event_name, callback);
 		}.bind(this));
-	}, 
+	},
 
 
 	log: function(log_str, section) {
@@ -2728,12 +2728,12 @@ var HoldemGame = new Class({
 		} else if (this.isTypeLimit()) {
 			if (this.hand_data.game_turn <= 1) {
 				//in pre-flop or flop
-				var base = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(this.players_data[player_md5].md5, this.betting_round); 
+				var base = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(this.players_data[player_md5].md5, this.betting_round);
 				var raise_amount = Number.toFloat(this.hand_data.bigblind);
 				raise_to_ceil = base + raise_amount;
 			} else {
 				//in turn or river
-				var base = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(this.players_data[player_md5].md5, this.betting_round); 
+				var base = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(this.players_data[player_md5].md5, this.betting_round);
 				var raise_amount = Number.toFloat(this.hand_data.bigblind * 2);
 				raise_to_ceil = base + raise_amount;
 			}
@@ -2748,7 +2748,7 @@ var HoldemGame = new Class({
 	getMinRaiseTo: function(player_md5) {
 		var raise_to_floor = 0;
 		if (this.isTypeNoLimit() || this.isTypePotLimit()) {
-			raise_to_floor = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(player_md5, this.betting_round); 
+			raise_to_floor = Number.toFloat(this.players_data[player_md5].bet2do) + this.getBettingRoundSum(player_md5, this.betting_round);
 			//also need to add on the minimum raise/bet amount
 			min_raise = Math.max(this.hand_data.bigblind, this.hand_data.raise_data.last_valid_raise);
 			raise_to_floor += min_raise;
@@ -2761,7 +2761,7 @@ var HoldemGame = new Class({
 
 
 	defaultBtnRaiseCallback: function(e){
-		new Event(e).stop(); 
+		new Event(e).stop();
 		var btnRaise = $('btnRaise');
 
 		if (btnRaise.hasClass('disabled')) {
@@ -2798,7 +2798,7 @@ var HoldemGame = new Class({
 				if (this.hand_data.game_turn <= 1) {
 					//in pre-flop or flop
 					raise_ceil = Number.toFloat(this.hand_data.smallblind);
-					raise_floor = Number.toFloat(this.hand_data.smallblind);				
+					raise_floor = Number.toFloat(this.hand_data.smallblind);
 				} else {
 					//in turn or river
 					raise_ceil = Number.toFloat(this.hand_data.bigblind);
@@ -2867,7 +2867,7 @@ var HoldemGame = new Class({
 		//TODO hacky :(
 		//when the table_action is empty , we do want to clear the table, but it should be more seemlessly handled by
 		//the sequence of events rather than being so explicit
-		if('' == this.hand_data.table_action) { 
+		if('' == this.hand_data.table_action) {
 			this.table_dom.cleanTable();
 			Object.each(this.players_data, function(player_data){
 				$(player_data.md5).fade(1);
@@ -2908,7 +2908,7 @@ var HoldemGame = new Class({
 			}
 		} else {
 			did_player_turn_change = (current_active_player_data !== undefined);
-		} 
+		}
 		if (did_player_turn_change || was_switch_table_detected) {
 			this.fireEvent('playerTurnChange', [prev_active_player_data, current_active_player_data]);
 		}
@@ -2927,7 +2927,7 @@ var HoldemGame = new Class({
 				this.fireEvent('startTournament');
 			}
 		}
-		
+
 		if (undefined == prev_game_meta && 'winner' == this.hand_data.table_action && 5 == this.hand_data.game_turn) {
 			this.fireEvent('initOnWinningHand');
 		}
@@ -2952,7 +2952,7 @@ var HoldemGame = new Class({
 			if (this.hand_data && 'winner' == this.hand_data.table_action) {
 				this.fireEvent('endHand');
 			}
-		} 
+		}
 	},
 
 
@@ -3097,7 +3097,7 @@ var HoldemGame = new Class({
 		return 'pot_limit' == this.game_meta.table_type.toLowerCase();
 	},
 
-		
+
 	playerTimerFinished: function(player_info_id){
 		//check if default check/fold action should be invoked
 		if (player_info_id == this.md5) {
@@ -3167,7 +3167,7 @@ var HoldemGame = new Class({
 	 * showdown
 	 * not an active or in-active table, but in the winning state
 	 * so have the display catch up quickly
-	 **/ 
+	 **/
 	initOnWinningHandEvent: function() {
 		this.table_dom.showFlop();
 		this.table_dom.showTurn();
@@ -3204,7 +3204,7 @@ var HoldemGame = new Class({
 		}
 		if (this.hand_data.blinds_announce) {
 			this.table_dom.displayGameAction(0, _('COM_CAMERONA_GAME_ANNOUNCE'),  this.hand_data.blinds_announce);
-		} 
+		}
 	},
 
 
@@ -3236,7 +3236,7 @@ var HoldemGame = new Class({
 		this.is_state_initialized = true;
 	},
 
-	
+
 	playerAuthorizedEvent: function() {
 		this.is_user_authorized = true;
 		this.table_dom.showSitDownButtons();
@@ -3267,7 +3267,7 @@ var HoldemGame = new Class({
 		}
 	},
 
-	addPlayerToTableEvent: function(player_data){ 
+	addPlayerToTableEvent: function(player_data){
 		this.table_dom.createPlayerAvatar(player_data);
 		if (player_data.md5 == this.md5) {
 			this.is_user_seated = true;
@@ -3491,7 +3491,7 @@ var HoldemGame = new Class({
 
 	/**
 	 *  Called with the table data for the new table
-	 *  
+	 *
 	 **/
 	switchTableCallback: function(new_table_instance_id ) {
 		if (new_table_instance_id != this.options.table_instance_id) {

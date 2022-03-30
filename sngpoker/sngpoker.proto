@@ -51,7 +51,7 @@ message GameMeta {
     // dynamic fields
     int64 server_time = 1;
     bool is_hand_in_progress = 2;
-    
+
     // static fields per table
     bool is_tournament = 3;
     string table_type = 4;  // texas_holdem | omaha | five_card_draw | five_card_stud
@@ -351,7 +351,7 @@ message RankHandsRequest {
 
 message RankHandsResult {
     int32 winnerPlayerId = 1;
-    repeated RankingData rankResult = 2; 
+    repeated RankingData rankResult = 2;
 }
 
 message RankingData {

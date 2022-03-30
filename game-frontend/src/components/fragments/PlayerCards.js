@@ -91,7 +91,7 @@ function PlayerCards({ player, winners_cards, on_new_table_state, ...props }) {
                 type_class: numberCardClass(player_card),
                 winner_class: "",
             };
-            
+
             if (winners_cards) {
                 if (winners_cards[player_card]) {
                     if(tableState.game_meta.game_type === "five_card_draw" || tableState.game_meta.game_type === "five_card_stud"){
@@ -104,17 +104,17 @@ function PlayerCards({ player, winners_cards, on_new_table_state, ...props }) {
                             card_attributes.winner_class = "not_part_of_winning_hand";
 
                         }
-                       
+
 
                     }
-                } 
+                }
                 else {
                     card_attributes.winner_class = "not_part_of_winning_hand";
                 }
             }
             cards_options.push(card_attributes);
         }
-    }   
+    }
 
     function isWinnerPlayer(cards, winning_cards){
         let is_winner = true;
@@ -146,7 +146,7 @@ function PlayerCards({ player, winners_cards, on_new_table_state, ...props }) {
     function selectedCardFound() {
         if (selectedCards.some((selected) => selected)) {
             return true;
-        } 
+        }
         else {
             return false;
         }
@@ -155,10 +155,10 @@ function PlayerCards({ player, winners_cards, on_new_table_state, ...props }) {
     function shouldShowDispersedCards() {
         if (!player.meta?.can_draw) {
             return false;
-        } 
+        }
         else if (!isFiveCardDrawTurboMode() && !player.is_myturn) {
             return false;
-        } 
+        }
         else if (cardGap !== partial_visible_card_width) {
           return true;
         }
@@ -296,10 +296,10 @@ function PlayerCards({ player, winners_cards, on_new_table_state, ...props }) {
                                 </Buttonx>
                         )
                     }
-                    
+
                 </ButtonGroup>
                 // <Fragment>
-                    
+
                 // </Fragment>
             )
         }

@@ -5,11 +5,11 @@ import "google/protobuf/any.proto";
 
 service Sng{
     rpc Test(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-    
+
     rpc getStatus (GetStatusRequest) returns (stream GetStatusResult) {}
     rpc MakeSng (MakeSngRequest) returns (MakeSngResponse) {}
     rpc MakePlayerAction (MakePlayerActionRequest) returns (GetStatusResult) {}
-    
+
     /**
      * Tournament Services
      */
@@ -53,7 +53,7 @@ service Sng{
     rpc vaultPaymentMethod(VaultPaymentMethodRequest) returns (VaultPaymentMethodResponse) {}
 
     rpc validateExperian(SignupRequest) returns (SignupResult) {}
-    
+
     rpc GetUserByEmail(GetUserByEmailRequest) returns (GetUserByEmailResponse) {}
     rpc MakeSngWithRandomUsers (MakeSngWithRandomUsersRequest) returns (GetStatusResult) {}
 
@@ -91,7 +91,7 @@ service Sng{
     rpc cancelTournaments(CancelTournamentsRequest) returns (CancelTournamentsResponse) {}
     rpc addonPlayer(AddonPlayerRequest) returns (AddonPlayerResponse) {}
     rpc setPrizeAsRevealed(PrizeRevealRequest) returns (PrizeRevealResponse) {}
-    
+
     rpc getGeofenceData(GeofenceRequest) returns (GeofenceResponse) {}
     rpc addGeofenceData(GeofenceAddRequest) returns (GeofenceAddResponse) {}
     rpc updateGeofenceData(GeofenceUpdateRequest) returns (GeofenceUpdateResponse) {}
@@ -106,8 +106,8 @@ service Sng{
     rpc getWhitelistedClientsonGeofence(GeofenceClientsRequest) returns (GeofenceClientsResponse) {}
     rpc getBlacklistedClientsonGeofence(GeofenceClientsRequest) returns (GeofenceClientsResponse) {}
     rpc setGeofenceClientGlobalRule(GeofenceClientGlobalRuleRequest) returns (GeofenceClientGlobalRuleResponse) {}
-    rpc getClients(WhitelistedClientsRequest) returns (WhitelistedClientsResult) {}    
-    
+    rpc getClients(WhitelistedClientsRequest) returns (WhitelistedClientsResult) {}
+
     rpc updatePlayerAccountBalance(UpdateAccountBalanceRequest) returns (UpdateAccountBalanceResponse) {}
 
     rpc rankHands(RankHandsRequest) returns (RankHandsResult) {}
@@ -122,7 +122,7 @@ service Sng{
     rpc fetchSecurityQuestions(FetchSecurityQuestionsRequest) returns (FetchSecurityQuestionsResponse) {}
     rpc resetPassword(ResetPasswordRequest) returns (ResetPasswordResponse) {}
     rpc verifyUserPassword(VerifyUserPasswordRequest) returns (VerifyUserPasswordResponse) {}
-    
+
     rpc adminLogin(LoginRequest) returns (LoginResult) {}
 
     rpc validateSecurityQuestionsForLogin(ValidateSecurityQuestionsRequest) returns (ValidateSecurityQuestionsResponse) {}
@@ -191,7 +191,7 @@ service Sng{
     rpc deleteTheme(ThemesRequest) returns (ThemesResponse) {}
     rpc getGeopoll(GeopollRequest) returns (GeopollResponse) {}
 
-    rpc updateSecurityQuestions(UpdateSecurityQuestionsRequest) returns (UpdateSecurityQuestionsResponse) {} 
+    rpc updateSecurityQuestions(UpdateSecurityQuestionsRequest) returns (UpdateSecurityQuestionsResponse) {}
     rpc getUserSecurityQuestions(FetchSecurityQuestionsResponse) returns (FetchSecurityQuestionsResponse) {}
     rpc updateCustomCss(CustomCssRequest) returns (CustomCssResponse) {}
     rpc getCustomCss(CustomCssRequest) returns (CustomCssResponse) {}
@@ -218,7 +218,7 @@ message GameMeta {
     // dynamic fields
     int64 server_time = 1;
     bool is_hand_in_progress = 2;
-    
+
     // static fields per table
     bool is_tournament = 3;
     string table_type = 4;  // texas_holdem | omaha | five_card_draw | five_card_stud
@@ -591,18 +591,18 @@ message GetTournamentsRequest {
     repeated string buyin_low = 3;
     repeated string buyin_high = 4;
     repeated string status = 5; // 'registering' | 'running' | 'finished'
-    repeated string timer_low = 6; 
+    repeated string timer_low = 6;
     repeated string timer_high = 7;
     repeated string limits = 8; //  'fixed' | 'pot_limit' | 'none'
     repeated string openings = 9;   // 'one_open' | 'all_open' | 'all_occupied'
     repeated string search_text = 10;   // search target.name or target.id
-    repeated string game_type = 11; // 'texas_holdem' | 'omaha' | 'five_card_stud' | 'five_card_draw'    
+    repeated string game_type = 11; // 'texas_holdem' | 'omaha' | 'five_card_stud' | 'five_card_draw'
     string pagination_curr_page = 12;
     string pagination_items_per_page = 13;
     bool all_tournaments = 14;
     bool simulation_only = 15;
     repeated string entry_fee_low = 16;
-    repeated string entry_fee_high = 17; 
+    repeated string entry_fee_high = 17;
 
 }
 
@@ -642,7 +642,7 @@ message GetHandHistoryRequest {
 }
 
 message GetHandHistoryResponse {
-    string result = 1; 
+    string result = 1;
 }
 
 message GetGameplayHistoriesRequest {
@@ -864,7 +864,7 @@ message CreateTournamentTemplateResponse {
     bool success = 1;
 }
 
-message GetTournamentTemplateListRequest { 
+message GetTournamentTemplateListRequest {
     string filter = 1;
     string pagination_current_page = 2;
     string pagination_items_per_page = 3;
@@ -882,20 +882,20 @@ message GetTournamentTemplateBufferStateResponse {
     string result = 1;
 }
 
-message GetLobbyTournamentTemplateListRequest { 
+message GetLobbyTournamentTemplateListRequest {
     repeated string status = 1;
     repeated string buyin_low = 2;
     repeated string buyin_high = 3;
-    repeated string timer_low = 4; 
+    repeated string timer_low = 4;
     repeated string timer_high = 5;
     // 'Fixed' | 'Pot_limit' | 'None'
     repeated string limits = 6;
-    // 'Texas_holdem' | 'Omaha' | 'Five_card_stud' | 'Five_card_draw'    
-    repeated string game_type = 7; 
+    // 'Texas_holdem' | 'Omaha' | 'Five_card_stud' | 'Five_card_draw'
+    repeated string game_type = 7;
     string pagination_current_page = 8;
     string pagination_items_per_page = 9;
     repeated string entry_fee_low = 10;
-    repeated string entry_fee_high = 11; 
+    repeated string entry_fee_high = 11;
 }
 
 message GetLobbyTournamentTemplateListResponse {
@@ -975,12 +975,12 @@ message CaptureWithdrawalRequest {
     string transaction_id = 1;  // braintree transaction id that can be used to verify transaction
     bool is_id_from_graphql_api = 2;  // whether transaction id found from braintree graphql api
     string deposit_type = 3;    // 'PayPal' | 'ApplePay' | 'CreditCard' | 'ACH' | 'Venmo'
-    // in case of 'CreditCard' deposit_type, institution should be specific credit card brand like mastercard, visa 
+    // in case of 'CreditCard' deposit_type, institution should be specific credit card brand like mastercard, visa
     // in case of 'ACH' deposit_type, institution should be specific US bank name
     // in case of 'PayPal', 'ApplePay', 'Venmo'  deposit_type, institution should be the same as the deposit_type
-    string institution = 4;   
+    string institution = 4;
     // in case of 'CreditCard' and 'ACH' deposit_type, account_number should be last 4 digit of bank account number or credit card number
-    // in case of 'PayPal', 'ApplePay', 'Venmo' deposit_type, account_number should be id of the payment account  
+    // in case of 'PayPal', 'ApplePay', 'Venmo' deposit_type, account_number should be id of the payment account
     string account_number = 5;
     // in case of 'ACH' deposit_type, routing_number should be specific US bank routing number
     // in case of other payments, routing_number should be 'N/A'
@@ -1043,7 +1043,7 @@ message PayoutOptions {
 }
 
 message AddPayoutStructureResponse {
-    string result = 1; 
+    string result = 1;
 }
 
 message GetPayoutStructureRequest {
@@ -1095,7 +1095,7 @@ message WhitelistUserResult {
 }
 
 message AcceptTOSRequest {
-    
+
 }
 
 message AcceptTOSResult {
@@ -1156,11 +1156,11 @@ message JoinAnyTournamentRequest {
 }
 
 message JoinAnyTournamentResult {
-    string result = 1;   
+    string result = 1;
 }
 
 message UnregisterAnyTournamentRequest {
-    
+
 }
 
 message UnregisterAnyTournamentResult {
@@ -1367,7 +1367,7 @@ message RankHandsRequest {
 
 message RankHandsResult {
     int32 winner_playerId = 1;
-    repeated RankingData rankResult = 2; 
+    repeated RankingData rankResult = 2;
 }
 
 message RankingData {
@@ -1456,7 +1456,7 @@ message ResetPasswordRequest {
     string username = 1;
     string answers = 2;
     string new_password = 3;
-    string confirm_password = 4; 
+    string confirm_password = 4;
 }
 
 message ResetPasswordResponse {
@@ -1507,7 +1507,7 @@ message TournamentPayoutStructureResponse{
 }
 
 message ActiveUsersRequest {
-    
+
     string pagination_current_page = 1;
     string pagination_items_per_page = 2;
     string username = 3;
@@ -1613,7 +1613,7 @@ message AdminAddRequest {
     string username = 2;
     string email = 3;
     string password = 4;
-    
+
 }
 
 message AdminUpdateRequest {
@@ -1685,7 +1685,7 @@ message UpdateTournamentTemplateRequest{
 
 message PlayerTournamentRequest {
     repeated string search_text = 1;   // search target.name or target.id
-    repeated string game_type = 2; 
+    repeated string game_type = 2;
     string pagination_curr_page = 3;
     string pagination_items_per_page = 4;
 }

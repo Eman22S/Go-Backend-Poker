@@ -196,7 +196,7 @@ export default function StepForm1({
             helperText={errors.user_rewards_id?.message}
           />
         </Grid>
-        
+
 
         <Grid item xs={12} sm={6}>
           <TextFieldx

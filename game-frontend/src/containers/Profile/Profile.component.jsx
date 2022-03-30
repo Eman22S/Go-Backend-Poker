@@ -17,7 +17,7 @@ export const a11yProps = (index) => {
     };
 };
 
-export const TabContainer = (props) => {  
+export const TabContainer = (props) => {
     return (
         <Typography component="div" style={{ padding: 24 }}>
             { props.children }
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     background: {
       //backgroundColor: theme.palette.background.paper,
       backgroundImage: `url(${theme.backgroundImg.image})`,
-      backgroundRepeat:  theme.backgroundImg.repeat       
+      backgroundRepeat:  theme.backgroundImg.repeat
     },
     root: {
         minHeight: '100vh',
@@ -56,7 +56,7 @@ export const Profile = () => {
                             <MyTab label='Profile' />
                             <MyTab label='Change Password' />
                             <MyTab label='Security Questions' />
-                            
+
                         </VerticalTabs>
                     </Grid>
                     <Grid item xs={10}>
@@ -72,7 +72,7 @@ export const Profile = () => {
                     </Grid>
                 </Grid>
             </Container>
-            
+
         </Fragment>
         </div>
     )

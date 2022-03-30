@@ -44,7 +44,7 @@ export default function TournamentRow({ tournament, selected, onClick, ...props 
   return (
     <StyledTableRow hover={true} selected={selected} onClick={onClick} className={classes.pointer}>
       <StyledTableCell component="th" scope="row" padding="default" style={{whiteSpace:"nowrap"}}>
-      {tournament.name} &nbsp;{" "} {alreadyRegistered === "1" && <Active fontSize="small" className={classes.joined_icon} />} 
+      {tournament.name} &nbsp;{" "} {alreadyRegistered === "1" && <Active fontSize="small" className={classes.joined_icon} />}
       </StyledTableCell>
       <StyledTableCell align="center" padding="default">
         <Badgex color={tournament.status}>
@@ -80,6 +80,6 @@ export default function TournamentRow({ tournament, selected, onClick, ...props 
         </StyledTableCell><StyledTableCell align="center" padding="default">
         {tournament.actual_start_time ? format_dates(tournament.actual_start_time, tournament.finish_time, navigator.language, '-') : '-'}
         </StyledTableCell>
-    </StyledTableRow> 
+    </StyledTableRow>
   );
 }

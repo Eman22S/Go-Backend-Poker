@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     minHeight: '100vh',
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 
@@ -80,7 +80,7 @@ export default function CreatePrizePayoutTemplate(props) {
 
   const [percentagesList, setPercentagesList] = useState([]);
   const [selectedPayoutId, setSelectedPayoutId] = useState(null);
-  
+
   useEffect(() => {
     getPayoutStructure();
     //eslint-disable-next-line
@@ -129,14 +129,14 @@ export default function CreatePrizePayoutTemplate(props) {
   }
 
   const onSubmit = (data) => {
-    
+
     let payoutStructure = "a:"+data.winners+":{"
     let totalPercentage = percentages.reduce((a,b) => a + parseInt(b),0);
     if(totalPercentage <= 100){
          payoutStructure += percentages.map( (val,i) => {
           return `i:${i};i:${val};`
         }).join("") + "}"
-        
+
         data.payoutStructure = payoutStructure;
         console.log("data");
         console.log(data)
@@ -148,9 +148,9 @@ export default function CreatePrizePayoutTemplate(props) {
     } else{
       showSnackBar("Prize Prize Pool Payout Total Percentages Should be less than or equal to 100%.", "error");
     }
- 
+
   };
- 
+
   //Dynamic number of levels and small blinds values
   const [percentages, setPercentages] = useState([100]);
 
@@ -164,7 +164,7 @@ export default function CreatePrizePayoutTemplate(props) {
     setPercentages(prevPercentage => {
       if(Number(e.target.value) > prevPercentage.length) {
         let newVal = [...prevPercentage, ...Array(Number(e.target.value) - prevPercentage.length).fill(0)];
-        return newVal; 
+        return newVal;
       } else {
         return prevPercentage.slice(0, Number(e.target.value));
       }
@@ -181,7 +181,7 @@ export default function CreatePrizePayoutTemplate(props) {
 
   const handleChangePayout = (id) => (event) => {
     setSelectedPayoutId(id);
-  } 
+  }
   const handlePayoutDelete = ()  => {
     console.log("selected payout id  " + selectedPayoutId);
     grpc_client.deletePrizePoolPayout(
@@ -199,13 +199,13 @@ export default function CreatePrizePayoutTemplate(props) {
       },
       (error) => {
         if (error){
-          console.log("error") 
-          console.log(error) 
+          console.log("error")
+          console.log(error)
         }
       }
 
     );
-  } 
+  }
 
   return (
     <div className={classes.background}>
@@ -363,7 +363,7 @@ export default function CreatePrizePayoutTemplate(props) {
 
 
               <Grid item xs={12}>
-              
+
               <Card>
                 <CardContent style={styles.card_content}>
                   <Grid item xs={12}>

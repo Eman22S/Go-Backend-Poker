@@ -86,8 +86,8 @@ const styles = {
       paddingBottom: 1,
       paddingTop: 1,
     },
-}; 
-  
+};
+
 
 export default function BotList(props) {
     const classes = useStyles();
@@ -125,7 +125,7 @@ export default function BotList(props) {
         }
     }
 
- 
+
 
 
     const handlePaginationChange = (event, value) => {
@@ -172,7 +172,7 @@ export default function BotList(props) {
         let timer = null;
         // eslint-disable-next-line
         if(recordsToFetch != 0 && recordsToFetch > totalRecords) {
-            
+
             timer = setInterval(() => {
                 if((parseInt(recordsToFetch, 10) <= parseInt(totalRecords, 10)) || (pollingCount === 1000)) {
                     clearInterval(timer);
@@ -195,7 +195,7 @@ export default function BotList(props) {
         }
     // eslint-disable-next-line
     }, [recordsToFetch, totalRecords])
-    
+
     useEffect(() => {
         fetchBotList()
     // eslint-disable-next-line
@@ -207,7 +207,7 @@ export default function BotList(props) {
             (response)=>{
                 console.log("hihi")
                 console.log(response)
-              
+
                 showSnackBar("Bots Join Any Activated Successfully", "success");
                 fetchBotList();
             },
@@ -218,7 +218,7 @@ export default function BotList(props) {
     const handleDeactivation = (user_id) => {
         grpc_client.cancelJoinAny( user_id,
             ()=>{
-              
+
                 showSnackBar("Bots Join Any Deactivated Successfully", "success");
                 fetchBotList();
 
@@ -236,7 +236,7 @@ export default function BotList(props) {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"
@@ -284,7 +284,7 @@ export default function BotList(props) {
 
                                                 </StyledTableRow>
 
-                                                
+
                                             )
                                         })
                                     }

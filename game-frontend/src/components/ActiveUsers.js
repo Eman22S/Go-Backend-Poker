@@ -84,8 +84,8 @@ const styles = {
       paddingBottom: 1,
       paddingTop: 1,
     },
-}; 
-  
+};
+
 
 export default function ActiveUsers(props) {
     const classes = useStyles();
@@ -116,7 +116,7 @@ export default function ActiveUsers(props) {
         }
     }
 
- 
+
 
 
     const handlePaginationChange = (event, value) => {
@@ -144,7 +144,7 @@ export default function ActiveUsers(props) {
         }
     };
 
-    
+
 
 
 
@@ -164,7 +164,7 @@ export default function ActiveUsers(props) {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"

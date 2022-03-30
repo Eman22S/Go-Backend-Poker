@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${theme.backgroundImg.image})`,
     backgroundRepeat:  theme.backgroundImg.repeat,
    // backgroundSize: 'cover'
-   
+
   },
   background_dark: {
     backgroundColor: theme.palette.background.dark,
@@ -105,7 +105,7 @@ const styles = {
   },
 };
 
-const background_repeat_types = ['round','space','repeat','repeat-y','repeat-x','no-repeat'] 
+const background_repeat_types = ['round','space','repeat','repeat-y','repeat-x','no-repeat']
 
 
 
@@ -196,7 +196,7 @@ export default function UiSettings(props) {
     console.log(data);
 
 
-    
+
     grpc_client.setTheme(
       themeName,
       data,
@@ -287,8 +287,8 @@ export default function UiSettings(props) {
       setSelectedColor(data.data.selectedColor)
     }
 
-  
-   
+
+
   }
 
   const onSubmit = (data) => {
@@ -341,12 +341,12 @@ export default function UiSettings(props) {
     setValue("fontFamily", defaultStyle['fontFamily']);
   }
 
-  const saveTheme = () => {    
+  const saveTheme = () => {
     setThemeName("")
     setIsActionEdit(false)
     setOpen(true);
   }
-  const editTheme = () => {    
+  const editTheme = () => {
     setThemeName(selectedThemeName)
     setIsActionEdit(true)
     setOpen(true);
@@ -396,7 +396,7 @@ export default function UiSettings(props) {
       code,
       (response)=>{
         showSnackBar('Saved', 'success')
-        
+
       },
       on_error
     );
@@ -409,7 +409,7 @@ export default function UiSettings(props) {
   }
 
   const handleImageChange = e => {
-    
+
     const file = e.target.files[0];
     const reader = new FileReader();
 
@@ -433,7 +433,7 @@ export default function UiSettings(props) {
     };
     reader2.readAsDataURL(file);
     e.target.value= "";
-  
+
   }
   const handleBackgroundImgChange = e => {
     const file = e.target.files[0];
@@ -482,28 +482,28 @@ export default function UiSettings(props) {
       console.log("ui_settings");
       console.log(ui_settings);
       if(ui_settings.backgroundDark){
-        setBackgroundDark(ui_settings.backgroundDark)  
+        setBackgroundDark(ui_settings.backgroundDark)
       }
       if(ui_settings.backgroundLight){
-        setBackgroundLight(ui_settings.backgroundLight)  
+        setBackgroundLight(ui_settings.backgroundLight)
       }
       if(ui_settings.backgroundDefault){
-        setBackgroundDefault(ui_settings.backgroundDefault)  
+        setBackgroundDefault(ui_settings.backgroundDefault)
       }
       if(ui_settings.backgroundPaper){
-        setBackgroundPaper(ui_settings.backgroundPaper)  
+        setBackgroundPaper(ui_settings.backgroundPaper)
       }
 
       if(ui_settings.primaryColor){
-        setPrimaryColor(ui_settings.primaryColor)  
+        setPrimaryColor(ui_settings.primaryColor)
       }
 
       if(ui_settings.selectedColor){
-        setSelectedColor(ui_settings.selectedColor)  
+        setSelectedColor(ui_settings.selectedColor)
       }
 
       if(ui_settings.backgroundRepeat){
-        setBackgroundRepeat(ui_settings.backgroundRepeat)  
+        setBackgroundRepeat(ui_settings.backgroundRepeat)
       }
 
 
@@ -519,8 +519,8 @@ export default function UiSettings(props) {
         let temp_img_src = DEV_IMAGE_URL + ui_settings.backgroundImg.replace("./","/");
         setTempBackground(temp_img_src);
       }
-      
-      
+
+
     }, on_error);
   }
 
@@ -528,8 +528,8 @@ export default function UiSettings(props) {
     grpc_client.getThemes((resp) => {
       setThemes(JSON.parse(resp));
       setSelectedThemeId("")
-      console.log(JSON.parse(resp)); 
-      
+      console.log(JSON.parse(resp));
+
     }, on_error);
   }
 
@@ -556,7 +556,7 @@ export default function UiSettings(props) {
     getAllUiSettings();
     getThemes();
     getCustomCss();
-  //eslint-disable-next-line  
+  //eslint-disable-next-line
   }, [])
 
   return (
@@ -578,9 +578,9 @@ export default function UiSettings(props) {
                   <Typographyx variant="h6" color="textSecondary">
                     Ui Settings
                   </Typographyx>
-                </Grid>   
+                </Grid>
               <Grid  xs={6}>
-       
+
                 <Grid  xs={3}></Grid>
 
                 <Grid item xs={6}>
@@ -624,11 +624,11 @@ export default function UiSettings(props) {
                                 deleteBackgroundImg()
                               }}
                               color="default"
-                              
+
                               />
                             }
                             label={<Typographyx variant="body2" color="textSecondary">Delete Background Image</Typographyx>} />
-                    
+
                         </Grid>
 
 
@@ -637,7 +637,7 @@ export default function UiSettings(props) {
                             select={true}
                             name="backgroundRepeat"
                             onChange={changeBackgroundRepeat("backgroundRepeat")}
-                          
+
                             value={backgroundRepeat}
                             size="small"
                             variant="outlined"
@@ -692,112 +692,112 @@ export default function UiSettings(props) {
                           </Grid>
 
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >Background Default </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="backgroundDefault" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setBackgroundDefault,"backgroundDefault")}}
                                     value={backgroundDefault}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >Background Dark </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="backgroundDark" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setBackgroundDark,"backgroundDark")}}
                                     value={backgroundDark}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >Background Light </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="backgroundLight" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setBackgroundLight,"backgroundLight")}}
                                     value={backgroundLight}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >Background Paper </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="backgroundPaper" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setBackgroundPaper,"backgroundPaper")}}
                                     value={backgroundPaper}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >
                                     Primary Color </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="primaryColor" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setPrimaryColor,"primaryColor")}}
                                     value={primaryColor}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
                           <Grid item xs={12} container>
-                              <Grid 
+                              <Grid
                               container
                               direction="column"
                               alignItems="center"
                               justify="center">
-                                  <InputLabel  
+                                  <InputLabel
                                   >
                                     Selected Color </InputLabel>
                               </Grid>
                               <Grid item >
-                                  <ColorPicker  
+                                  <ColorPicker
                                     name="primaryColor" variant="outlined"
                                     onChange={  (value) =>{handleBgChange(value,setSelectedColor,"selectedColor")}}
                                     value={selectedColor}
-                                    
+
                                     />
                               </Grid>
                           </Grid>
@@ -817,7 +817,7 @@ export default function UiSettings(props) {
                               </Grid>
                           </Grid>
                           <Grid  xs={12} align="center">
-                          
+
                           <Grid item xs={12} spacing={1}>
                           <Buttonx
                                 variant="contained"
@@ -857,7 +857,7 @@ export default function UiSettings(props) {
                           </Grid>
                           <Grid  xs={4} ></Grid>
                         </Grid>
-    
+
                 </Grid>
               </Grid>
 
@@ -866,7 +866,7 @@ export default function UiSettings(props) {
               <Grid   xs={6}>
                 <Grid item xs={12}>
                       <Grid xs={12} style={{height:"200px"}} ></Grid>
-                   
+
                       <Grid item xs={12}>
                           <Typographyx variant="button" color="textSecondary">
                             Themes
@@ -977,7 +977,7 @@ export default function UiSettings(props) {
               </Grid>
 
 
-             </Grid>  
+             </Grid>
 
 
 
@@ -1017,7 +1017,7 @@ export default function UiSettings(props) {
             </DialogActions>
           </Dialog>
 
-          
+
         </div>
         <Box mt={2}>
           <Copyright />

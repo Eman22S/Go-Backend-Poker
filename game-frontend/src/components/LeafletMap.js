@@ -17,8 +17,8 @@ const L = window.L;
 
 
 /**
- * get user location from browser using the html geolocation api 
- * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object  
+ * get user location from browser using the html geolocation api
+ * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object
 */
 const getLocation = (callback) => {
   if (navigator && navigator.geolocation) {
@@ -36,14 +36,14 @@ const getLocation = (callback) => {
 }
 
 export default function LeafletMap() {
-  
+
   const [currentMap, setCurrentMap] = React.useState(null);
   const grpc_client = useGrpcClient();
   const [isLoading, setIsLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [createdLayer, setCreatedLayer] = React.useState(null);
   const [geofences, setGeofences] = React.useState(null);
-  
+
   const [identifier, setIdentifier] = React.useState("");
 
   //handle the input change on the modal
@@ -56,13 +56,13 @@ export default function LeafletMap() {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  //handle modal close and clear the polygon currently 
+  //handle modal close and clear the polygon currently
   const handleClose = () => {
     setOpen(false);
     if(createdLayer && currentMap){
       currentMap.removeLayer(createdLayer);
       setCreatedLayer(null)
-    }  
+    }
   };
 
   //clear map of all polygon
@@ -72,10 +72,10 @@ export default function LeafletMap() {
         if (layer instanceof L.Polygon) {
           currentMap.removeLayer(layer);
         }
-        
+
       })
     }
-   
+
   }
 
   //fetch and draw all the layers and the lifecyle method
@@ -105,19 +105,19 @@ export default function LeafletMap() {
           layer.on('click', (e) => {
             console.log("Clicked");
           })
-  
+
           layer.on('pm:update', (e) => {
             //When A polygon is updated (the vertices edited)
             console.log(e);
             exportGeoJSON(map);
           });
-  
+
           layer.on('pm:dragend', (e) => {
             //When A polygon is dragged
             console.log(e);
             exportGeoJSON(map);
           })
-  
+
           layer.on('pm:remove', (e) => {
             //when a polygon is removed
             console.log(e);
@@ -135,8 +135,8 @@ export default function LeafletMap() {
     console.log("---------------")
     console.log(geofences);
   }
- 
-  
+
+
   //add geofencing
   const addGeoRefs = (data) =>{
     setIsLoading(true);
@@ -165,7 +165,7 @@ export default function LeafletMap() {
       }
     });
   }
-  
+
   //handle modal submit with identifier
   const handleSubmit = ()=>{
     if(createdLayer && currentMap ){
@@ -183,7 +183,7 @@ export default function LeafletMap() {
         setIdentifier(null);
         addGeoRefs(data);
       }
-     
+
     }
   }
 
@@ -194,7 +194,7 @@ export default function LeafletMap() {
       const map = L.map('mapid').setView([latitude, longitude], 13);
       setCurrentMap(map);
       //import layers
-      
+
       map.pm.addControls({
         position: 'topleft',
         drawMarker: false,
@@ -292,7 +292,7 @@ export default function LeafletMap() {
         </DialogActions>
       </Dialog>
     </>
-      
+
   );
 
 }

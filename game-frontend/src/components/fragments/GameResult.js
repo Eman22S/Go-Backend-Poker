@@ -1,4 +1,4 @@
- 
+
 import React,{useState} from 'react';
 import {makeStyles } from '@material-ui/core';
 
@@ -53,12 +53,12 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                   <StyledTableRow>
                     <StyledTableCell align="center">Rank</StyledTableCell>
                     <StyledTableCell align="center">Player</StyledTableCell>
-        
-                    { ((isFiveCardDrawTurboMode && expanded) || !isFiveCardDrawTurboMode) ? 
+
+                    { ((isFiveCardDrawTurboMode && expanded) || !isFiveCardDrawTurboMode) ?
                       isFlashMode ?
                       <React.Fragment>
                           {
-                            showStandardPayout && 
+                            showStandardPayout &&
                             <React.Fragment>
                               <StyledTableCell align="center">Prize Pool Payout</StyledTableCell>
                               <StyledTableCell align="center">Prize Pool Payout Percentage</StyledTableCell>
@@ -66,13 +66,13 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                           }
                           <StyledTableCell align="center"> Additional Prize Pool Payout</StyledTableCell>
                           <StyledTableCell align="center">Additional Prize Pool Payout Percentage</StyledTableCell>
-                      </React.Fragment> 
+                      </React.Fragment>
                       :
                       <React.Fragment>
                         <StyledTableCell align="center">Prize Pool Payout</StyledTableCell>
                         <StyledTableCell align="center">Prize Pool Payout Percentage</StyledTableCell>
                       </React.Fragment>
-                      
+
                     :""}
 
                     {(hasAdditionalPayout && expanded && isFiveCardDrawTurboMode) || (hasAdditionalPayout && !isFiveCardDrawTurboMode)?
@@ -83,14 +83,14 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                     :""
                     }
                     {
-                      isHistory ? 
+                      isHistory ?
                       <React.Fragment>
                         <StyledTableCell align="center">Rake</StyledTableCell>
                         <StyledTableCell align="center">Addons Used</StyledTableCell>
                       </React.Fragment>:""
                     }
 
-                    
+
                     <StyledTableCell align="center">Total Won</StyledTableCell>
                   </StyledTableRow>
                 </TableHead>
@@ -111,7 +111,7 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                       { ((expanded & isFiveCardDrawTurboMode) || !isFiveCardDrawTurboMode) ?
                         isFlashMode ?
                           <React.Fragment>
-                            { showStandardPayout && 
+                            { showStandardPayout &&
                               <React.Fragment>
                                 <StyledTableCell component="th" align="center" scope="row">
                                   ${player.payout}
@@ -127,8 +127,8 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                               <StyledTableCell component="th" align="center" scope="row">
                                   {Number(player.flash_mode_payout_percentage).toFixed(2)} %
                               </StyledTableCell>
-                          </React.Fragment> 
-                          : 
+                          </React.Fragment>
+                          :
                           <React.Fragment>
                             <StyledTableCell component="th" align="center" scope="row">
                                 ${player.payout}
@@ -147,10 +147,10 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                                 <div dangerouslySetInnerHTML={{__html: hand}}>
                                 </div>
                             </StyledTableCell>
-                        </React.Fragment> 
+                        </React.Fragment>
                       }
                        {
-                      isHistory ? 
+                      isHistory ?
                       <React.Fragment>
                         <StyledTableCell align="center">${Number(player.rake).toFixed(2)}</StyledTableCell>
                         <StyledTableCell align="center">{player.addons_used}</StyledTableCell>
@@ -166,7 +166,7 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                   <StyledTableRow>
                       <StyledTableCell component="th" align="center" scope="row">
                       </StyledTableCell>
-                    { ((expanded & isFiveCardDrawTurboMode) || !isFiveCardDrawTurboMode) && 
+                    { ((expanded & isFiveCardDrawTurboMode) || !isFiveCardDrawTurboMode) &&
                     <React.Fragment>
 
                       <StyledTableCell component="th" align="center" scope="row">
@@ -194,7 +194,7 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                       </React.Fragment>
                     }
                     <StyledTableCell component="th" align="center" scope="row">
-                      <b>Total Payout:</b> 
+                      <b>Total Payout:</b>
                     </StyledTableCell>
                     <StyledTableCell component="th" align="center" scope="row">
                       <b>${Number(props.totalPayout).toFixed(2)}</b>
@@ -204,7 +204,7 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                 </TableBody>
               </Table>
             </TableContainer>
-          
+
             {
               isFiveCardDrawTurboMode ?
               <IconButton
@@ -212,7 +212,7 @@ export default function GameResult({players, isFlashMode, hasAdditionalPayout, s
                 onClick={()=>{ setExpanded(!expanded)}}
               >
               {expanded ? <ArrowRight/>:<ArrowLeft/>  }
-              </IconButton> 
+              </IconButton>
               :""
             }
           </PaperTable>

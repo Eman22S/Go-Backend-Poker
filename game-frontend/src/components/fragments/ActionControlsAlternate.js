@@ -79,14 +79,14 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
         tableState.game.last_valid_raise,
         store.player.md5,
         store.player.bet2do
-    )  
+    )
     setMinRaise(
         minimumRaise
     );
-    if(tableState.game_meta.table_type !== "NO_LIMIT"){    
+    if(tableState.game_meta.table_type !== "NO_LIMIT"){
     setCurrentRaise(minimumRaise);
-  };      
-    
+  };
+
   }, [
     tableState.game_meta.table_type,
     tableState.game.game_turn,
@@ -143,10 +143,10 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
 
   // check weather or not the raise exceed the max number of raises in limit table type
   // with checking weather the button is RAISE TO or BET.
-  // const raiseExceedLimit = tableState.game_meta.table_type==="LIMIT" && 
+  // const raiseExceedLimit = tableState.game_meta.table_type==="LIMIT" &&
   //                        getBtnRaiseText().includes("Raise") &&
   //                        currentRaise > Number(tableState.tournament_meta.table_max_num_raises);
-  //TODO: issue with the above condition currentRaise is not the number of raises 
+  //TODO: issue with the above condition currentRaise is not the number of raises
   //TODO: it's the amount to raise so not 0,1,2... it's 20, 40, ...
   //TODO: look into 'getThisTurnRaisesNum' function instead of the currentRaise value
 
@@ -155,7 +155,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
     !canRaise(tableState, minRaise, maxRaise, store.player) ||
     !inRaiseRange ||
     raiseBtnLoading;
-  
+
   const disable_raise_slider = disable_raise || minRaise === maxRaise;
 
   const disable_minus_raise = disable_raise_slider || sliderValue <= sliderMin;
@@ -356,7 +356,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
       store.player.md5
     );
     let raise_bet = parseFloat(currentRaise) - betting_round_sum;
-    
+
     //This is a bet not a raise
     if (getThisTurnRaisesNum(tableState) === 0) {
       onPlayerAction("check", currentRaise, setRaiseBtnLoading);
@@ -443,7 +443,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
         <Grid item xs={2} className={classes.center_content}>
           <TextFieldx
             value={currentRaise}
-            onChange={changeCurrentRaise} 
+            onChange={changeCurrentRaise}
             disabled={parseInt(minRaise) === parseInt(maxRaise)}
             variant="outlined"
             size="small"
@@ -464,7 +464,7 @@ function ActionControlsAlternate({ on_new_table_state, disable_actions, ...props
             }} // html input element
             mt={1}
             mb={2}
-          /> 
+          />
         </Grid>
 
         <Grid item xs={4}>

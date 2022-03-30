@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     minHeight: '100vh',
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat   
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
   page: {
     '& > *': {
@@ -150,9 +150,9 @@ export default function ActiveTournaments({updateBalance, toggleJoinAny, ...prop
             if (win) {
                 win.focus();
             }
-          
+
           }
-          
+
         }
       },
       showSnackBar
@@ -183,7 +183,7 @@ export default function ActiveTournaments({updateBalance, toggleJoinAny, ...prop
   const onTournamentClick = (e, tournament) => {
     e.stopPropagation();
     setCurrentTournament(tournament);
-  } 
+  }
 
   const unregisterJoinAnyTournaments = () => {
     setJoinAnyLoading(true)
@@ -344,7 +344,7 @@ export default function ActiveTournaments({updateBalance, toggleJoinAny, ...prop
                       ))}
                     </TextFieldx>
                   </Box>
-                </Container> 
+                </Container>
               }
             </Grid>
             <Grid item xs={6}>
@@ -391,7 +391,7 @@ export default function ActiveTournaments({updateBalance, toggleJoinAny, ...prop
                 </TableBody>
               </Table>
               {loading ? <Loading size={20}/> : <Box style={{height:"24px"}} />}
-          
+
               {tournaments && tournaments.length === 0 ? (
                 <Typographyx variant="subtitle2" pb={5} pt={3}>
                   No tournaments found.
@@ -414,7 +414,7 @@ export default function ActiveTournaments({updateBalance, toggleJoinAny, ...prop
               <label for="test1" style={{color:"#fff"}}></label>
               <p style={{marginLeft:"15px"}}>Open New Games In A New Tab</p>
             </div>}
-       
+
           <TournamentLobbyCard newTab={true} tournament={currentTournament} updateTournament={updateTournament} />
         </Box>
       </Grid>

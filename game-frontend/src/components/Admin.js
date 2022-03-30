@@ -69,7 +69,7 @@ const StyledMenuItem = withStyles((theme) => ({
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
         color: theme.palette.common.white,
       },
-      
+
     },
     width: '100%',
     maxWidth: 360,
@@ -190,7 +190,7 @@ export default function Admin({ component: Component, ...props }) {
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 
   const [logo, setLogo] = React.useState(null);
-  
+
 
   const handleClick = (setFunc,event) => {
     hideAllPopups();
@@ -299,7 +299,7 @@ export default function Admin({ component: Component, ...props }) {
                 <Avatar src={logo ? logo:nunet_logo} alt="Logo" className={classes.logo} />
               </Link>
           </Box>
-          
+
 
           <Popper
             id="customized-menu"
@@ -313,7 +313,7 @@ export default function Admin({ component: Component, ...props }) {
             <StyledMenuItem component={Link} to="/templates/create_tournament_template" onClick={()=>{handleMenuClose(setAnchorEl1)}}>Add  Template</StyledMenuItem>
             <StyledMenuItem component={Link} to="/templates/template_list" onClick={()=>{handleMenuClose(setAnchorEl1)}}>Tournament Templates</StyledMenuItem>
             <StyledMenuItem component={Link} to={'/templates/create_payout_template'} onClick={()=>{handleMenuClose(setAnchorEl1)}}>Add Payout Template</StyledMenuItem>
-        
+
           </Popper>
           {/* tournaments */}
 
@@ -331,8 +331,8 @@ export default function Admin({ component: Component, ...props }) {
             <StyledMenuItem component={Link} to="/users/account_balance" onClick={()=>{handleMenuClose(setAnchorEl2)}}>User Accounts</StyledMenuItem>
             <StyledMenuItem component={Link} to="/users/adjustments" onClick={()=>{handleMenuClose(setAnchorEl2)}}>Pending Adjustments</StyledMenuItem>
             <StyledMenuItem component={Link} to="/users/bots" onClick={()=>{handleMenuClose(setAnchorEl2)}}>Bots</StyledMenuItem>
-        
-          </Popper>  
+
+          </Popper>
 
 
 
@@ -346,10 +346,10 @@ export default function Admin({ component: Component, ...props }) {
           >
             <div >
               <StyledMenuItem component={Link} to="/tournaments/cancel_tournaments" onClick={()=>{handleMenuClose(setAnchorEl3)}}>Cancel Tournaments</StyledMenuItem>
-              <StyledMenuItem component={Link} to="/tournaments/cancel_join_any" onClick={()=>{handleMenuClose(setAnchorEl3)}}>Cancel Join Any</StyledMenuItem> 
-            </div>      
-          </Popper>  
-          
+              <StyledMenuItem component={Link} to="/tournaments/cancel_join_any" onClick={()=>{handleMenuClose(setAnchorEl3)}}>Cancel Join Any</StyledMenuItem>
+            </div>
+          </Popper>
+
           <Popper
             id="customized-menu-settings"
             anchorEl={anchorEl4}
@@ -360,10 +360,10 @@ export default function Admin({ component: Component, ...props }) {
           >
             <div >
               <StyledMenuItem component={Link} to="/settings/global_settings" onClick={()=>{handleMenuClose(setAnchorEl4)}}>Global Settings</StyledMenuItem>
-              <StyledMenuItem component={Link} to="/settings/cash_back_settings" onClick={()=>{handleMenuClose(setAnchorEl4)}}>Cash Back Settings</StyledMenuItem> 
-              <StyledMenuItem component={Link} to="/settings/ui_settings" onClick={()=>{handleMenuClose(setAnchorEl4)}}>UI Settings</StyledMenuItem> 
-            </div>      
-          </Popper>  
+              <StyledMenuItem component={Link} to="/settings/cash_back_settings" onClick={()=>{handleMenuClose(setAnchorEl4)}}>Cash Back Settings</StyledMenuItem>
+              <StyledMenuItem component={Link} to="/settings/ui_settings" onClick={()=>{handleMenuClose(setAnchorEl4)}}>UI Settings</StyledMenuItem>
+            </div>
+          </Popper>
 
 
           <Tabs
@@ -403,7 +403,7 @@ export default function Admin({ component: Component, ...props }) {
                 <AccountCircle fontSize="large" />
               </IconButton>
               </Avatar>
-              
+
             </Container>
           </Box>
           <Menu
@@ -430,8 +430,8 @@ export default function Admin({ component: Component, ...props }) {
                 {localUser?.admin_username?.toUpperCase()}
               </div>
               <div className={classes.account_info_container}>
-                <Button variant="contained" color="primary" onClick={handleLobby} className={classes.account_option_admin_button} size="small">Lobby</Button>              
-              </div>   
+                <Button variant="contained" color="primary" onClick={handleLobby} className={classes.account_option_admin_button} size="small">Lobby</Button>
+              </div>
               <Divider />
               <div className={classes.account_options_container}>
               <Button variant="contained" color="primary" autoFocus className={classes.account_option_admin_button} onClick={handleAccount}>
@@ -443,7 +443,7 @@ export default function Admin({ component: Component, ...props }) {
               </div>
             </div>
           </Menu>
-        
+
         </Toolbar>
       </AppBar>
       <SwipeableViews

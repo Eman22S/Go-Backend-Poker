@@ -20,13 +20,13 @@ RUN apt-get update \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install mail sending tool
-RUN apt-get update \ 
+RUN apt-get update \
     && apt-get -y install sendmail
 
 # Use PHP 7.3
 RUN update-alternatives --set php /usr/bin/php7.3
 RUN update-alternatives --set phar /usr/bin/phar7.3
-RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.3 
+RUN update-alternatives --set phar.phar /usr/bin/phar.phar7.3
 
 RUN service php7.3-fpm restart
 

@@ -26,4 +26,4 @@ function StyledMenuItemComponent({ ...props }) {
 }
 
 export default StyledMenuItemComponent;
-  
+

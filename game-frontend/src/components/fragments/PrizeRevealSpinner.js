@@ -57,7 +57,7 @@ const PrizeRevealerSpinner = ({
                 className={i === 0 ? "prize-blink" : ""}
                 style={{ padding: "20px 0px" }}
               >
-                <div className='prize-div'> 
+                <div className='prize-div'>
                   {currency}
                   {n}
                 </div>

@@ -181,7 +181,7 @@ export default function Layout({ component: Component, ...props }) {
 
   useEffect(() => {
     getJoinAnyTournamentStatus();
-  }, [getJoinAnyTournamentStatus]); 
+  }, [getJoinAnyTournamentStatus]);
 
   const getPlayerAccountBalance = useCallback(
     function() {
@@ -295,7 +295,7 @@ export default function Layout({ component: Component, ...props }) {
                 <AccountCircle fontSize="large" />
               </IconButton>
               </Avatar>
-              
+
             </Container>
           </Box>
           <Menu
@@ -325,9 +325,9 @@ export default function Layout({ component: Component, ...props }) {
                   is_admin() ? (
                     <div className={classes.account_info_container}>
                       <Button variant="contained" color="primary" onClick={handleAdmin} className={classes.account_option_admin_button} size="small">Admin Dashboard</Button>
-                    </div>                      
+                    </div>
                   ) : ( null )
-              }              
+              }
               <Divider />
               <div className={classes.account_options_container}>
                 <Button variant="contained" color="primary" autoFocus className={classes.account_option_admin_button} onClick={handleAccount}>
@@ -357,14 +357,14 @@ export default function Layout({ component: Component, ...props }) {
             </Container>
           </Box>
           <Box m={0.5}>
-            {localUser.is_suspended && 
+            {localUser.is_suspended &&
               <Box className={classes.alignItems} p={0.5}>
                 <Badgex color="CANCELLED">
                   Account Suspended
                 </Badgex>
               </Box>
             }
-            {localUser.has_pending_investigation && 
+            {localUser.has_pending_investigation &&
               <Box className={classes.alignItems} p={0.5}>
                 <Badgex color="CANCELLED">
                   Investigation Pending

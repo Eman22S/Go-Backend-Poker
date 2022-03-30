@@ -5,7 +5,7 @@ const TimesUp = ({
   closeModal,
   style
 }) => {
-  
+
 
   useEffect(() => {
     setTimeout(()=> {

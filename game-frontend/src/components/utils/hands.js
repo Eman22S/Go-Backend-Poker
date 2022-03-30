@@ -18,8 +18,8 @@ let hands = {
 
   /**
    *  extract nul
-   * @param {*} obj 
-   * @returns 
+   * @param {*} obj
+   * @returns
    */
   const extratZeroHands = (obj) => {
     const zeroHands = []
@@ -29,17 +29,17 @@ let hands = {
       } else {
       if(key in hands) {
           hands= {...hands , [key]: hands[key]+ obj[key] };
-          
+
           }
       }
     });
-    
+
     for(let keys in hands){
         if(hands[keys] === 0){
           zeroHands.push(keys)
       }
     }
-    
+
     return zeroHands;
   }
 

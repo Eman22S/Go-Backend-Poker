@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     background: {
         //backgroundColor: theme.palette.background.paper,
         backgroundImage: `url(${theme.backgroundImg.image})`,
-        backgroundRepeat:  theme.backgroundImg.repeat   
+        backgroundRepeat:  theme.backgroundImg.repeat
     },
 }));
 
@@ -133,7 +133,7 @@ export default function TableHisotories({ tournament_instance_id, ...props }) {
             search: `?tid=${tournament_instance_id}&gid=${gameplay_history_id}`,
         });
         }
-        
+
     };
 
   return (

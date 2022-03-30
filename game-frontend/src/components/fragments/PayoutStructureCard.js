@@ -14,7 +14,7 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import { filterHands }  from '../utils/hands';
 
 const useStyles = makeStyles((theme) => ({
-   
+
 
 
   hand_name : {
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   "0%" : {
     fontSize:"13.5px",
     color:"rgba(0,255,255)"
-  },	
+  },
    "110%" :{
     fontSize:"24px",
      color: "black"
@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PayoutStructureCard({ additionalHand, payoutHand,currentAddOnAmount,addons_permitted,  ...props }) {
     const classes = useStyles();
-  
-    
+
+
     const payoutHandValue = (({hand, hands}) =>({hand,hands}))(payoutHand);
     //eslint-disable-next-line
     const filltredPayoutHand = filterHands(payoutHandValue)
@@ -75,11 +75,11 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
       //eslint-disable-next-line
     }, [currentAddOnAmount]);
 
-   
+
     const upFirst = word => word[0].toUpperCase() + word.toLowerCase().slice(1) + " "
 
     const camelize = text => {
-    const words = text.split("_") 
+    const words = text.split("_")
     return  words.map(upFirst);
     }
 
@@ -93,7 +93,7 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                 <PaperTable >
                           <TableContainer component={classes.paper}>
                             <Table>
-                         
+
                               <TableHead>
                                 <StyledTableRow>
                                   <StyledTableCell align="left" >Hand</StyledTableCell>
@@ -112,7 +112,7 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                                 <StyledTableCell align="left" >1 Buyin and {addons_permitted} addons</StyledTableCell>
                                               )
                                             }else{
-                                              
+
                                                 if(parseInt(buyin.addon) > 0)
                                                 {
                                                   return (
@@ -125,11 +125,11 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                                 <StyledTableCell align="left" >1 Buyin</StyledTableCell>
                                                   )
                                                 }
-                                              
+
                                             }
-                                          
+
                                         }
-                                       
+
 
                                       })
                                     }
@@ -148,7 +148,7 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                                 <StyledTableCell align="left" >1 Buyin and {addons_permitted} addons</StyledTableCell>
                                               )
                                             }else{
-                                              
+
                                                 if(index > 0){
                                                   return(
                                                   <StyledTableCell align="left" >1 Buyin and { index } addons</StyledTableCell>
@@ -159,19 +159,19 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                                   <StyledTableCell align="left" >1 Buyin</StyledTableCell>
                                                   )
                                                 }
-                                              
+
                                             }
-                                          
+
                                         }
-                                       
+
 
                                       })
                                     }
-                                
+
                                 </StyledTableRow>
                               </TableHead>
                               <TableBody >
-                              
+
                                 {payoutHand.buyin.length > 0 && Object.keys(payoutHandValue.hand).map((hand,index)=>{
                                 return (
                                     <StyledTableRow key={index}>
@@ -196,11 +196,11 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                         </td>
                                           )
                                         }
-                                       
+
                                       })
                                     }
                                   </StyledTableRow>
-                                  
+
                                 )
                                 })}
 
@@ -216,7 +216,7 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                         {camelize(hand)}
                                       </td>
                                       {
-                                      
+
                                       Object.keys(payoutHandValue.hands).map((key, index)=>{
                                         let current_hand = payoutHandValue.hands[key][hand]
                                         // eslint-disable-next-line
@@ -232,11 +232,11 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                                         </td>
                                           )
                                         }
-                                       
+
                                       })
                                     }
                                   </StyledTableRow>
-                                  
+
                                 )
                                 })}
                               </TableBody>
@@ -250,13 +250,13 @@ export default function PayoutStructureCard({ additionalHand, payoutHand,current
                              onClick={()=>{ setExpanded(!expanded)}}
                            >
                             {expanded ? <ArrowBack/> : <ArrowRight/>}
-                           </IconButton> 
+                           </IconButton>
                         }
-                         
-                 
+
+
                   </div>
-                
-     
+
+
                     </div>
         </React.Fragment>
     );

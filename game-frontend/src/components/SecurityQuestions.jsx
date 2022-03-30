@@ -72,7 +72,7 @@ const useStyles = makeStyles({
 
 export default function SecurityQuestions({
   submitLoading,
-  
+
 }) {
 
   const showSnackBar = useSnackBarContext();
@@ -117,7 +117,7 @@ export default function SecurityQuestions({
 
 
 
-    
+
    grpc_client.updateSecurityQuestions(
       data,
       (response)=>{
@@ -139,7 +139,7 @@ export default function SecurityQuestions({
 
   const onFormSubmit = (data) => {
     console.log("data!!!!!!!!")
-    
+
     delete data["question1"];
     delete data["question2"] ;
     data["question1"] = question1;
@@ -176,7 +176,7 @@ export default function SecurityQuestions({
 
   useEffect(() => {
     getSecurityQuestions();
-    //eslint-disable-next-line  
+    //eslint-disable-next-line
   }, [])
 
 
@@ -351,7 +351,7 @@ export default function SecurityQuestions({
                         </Grid>
 
 
-                        <Grid item xs={3}></Grid>  
+                        <Grid item xs={3}></Grid>
                         <Grid item xs={6}>
 
                           <Box mt={3} mb={1}>

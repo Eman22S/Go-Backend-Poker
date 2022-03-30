@@ -46,7 +46,7 @@ const CashBackSettings = () => {
 
             setGlobalSettings(settings?.cash_back_settings || {});
             setCashBackClient(settings?.cash_back_client);
-            
+
         }, on_error);
     }
 
@@ -67,14 +67,14 @@ const CashBackSettings = () => {
                 threshold: 0
             }
         }
-        
+
         setGlobalSettings({...globalSettings, [index]: temp_settings});
     }
 
     const onCashBackPercentageThreshold = (index, value) => {
         let val = parseFloat(value);
         let temp_settings = globalSettings[index] || {};
-    
+
         if(temp_settings) {
             temp_settings.threshold = val;
         } else {
@@ -87,13 +87,13 @@ const CashBackSettings = () => {
     }
 
     const handleSetCashBackClientId = (value) => {
-        
+
         grpc_client.setGlobalSettings({ name: 'cash_back_client', value: value }, (response) => {
             showSnackBar('Global Setting Updated!', 'success')
             getGlobalSettings();
         }, on_error)
-        
-       
+
+
     }
 
     const handleSave = () => {
@@ -126,7 +126,7 @@ const CashBackSettings = () => {
                                     <Box my={5}>
                                         <div style={{display:"flex",justifyContent:"space-evenly", alignContent:"center", alignItems:"center"}}>
                                             <Typographyx variant="body2" color="textSecondary" style={{marginRight:"10px", width: '120px'}}>
-                                                Cash Back Clients : 
+                                                Cash Back Clients :
                                             </Typographyx>
                                             <Select
                                                 labelId="demo-simple-select-label"
@@ -137,13 +137,13 @@ const CashBackSettings = () => {
                                                     handleSetCashBackClientId(ev.target.value);
                                                     ev.preventDefault();
                                                 }}
-                                                >   
+                                                >
                                                     <MenuItem value="0">All Clients</MenuItem>
                                                     {clients && clients.map((client)=>{
                                                         return (<MenuItem key ={client.id} value={client.id}>{client.name}</MenuItem>);
                                                     })}
-                                                    
-                                                
+
+
                                             </Select>
                                         </div>
                                     </Box>
@@ -167,7 +167,7 @@ const CashBackSettings = () => {
                                         value={globalSettings?.global?.percentage !== undefined? globalSettings?.global?.percentage : '0'}
                                         type="number"
                                         inputProps={{
-                                            inputProps: { 
+                                            inputProps: {
                                                 max: 100,
                                                 min: 0
                                             }
@@ -213,7 +213,7 @@ const CashBackSettings = () => {
                                                     value={globalSettings[client.id]?.percentage !== undefined? globalSettings[client.id]?.percentage : ''}
                                                     type="number"
                                                     inputProps={{
-                                                        inputProps: { 
+                                                        inputProps: {
                                                             max: 100,
                                                             min: 0
                                                         }
@@ -256,7 +256,7 @@ const CashBackSettings = () => {
                             </Grid>
                         </Container>
                     </Grid>
-                    
+
                 </Grid>
             </Container>
         </Fragment>

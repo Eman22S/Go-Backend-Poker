@@ -20,5 +20,5 @@ const StyledTableCell = withStyles((theme) => ({
 function StyledTableCellComponent({ ...props }) {
     return <StyledTableCell {...props}>{props.children}</StyledTableCell>;
   }
-  
-export default StyledTableCellComponent;  
+
+export default StyledTableCellComponent;

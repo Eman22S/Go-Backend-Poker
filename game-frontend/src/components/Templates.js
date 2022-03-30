@@ -148,7 +148,7 @@ export default function Templates({ temp, ...props }) {
         <li><Link  to={`${url}/template_list`}>Testttt</Link></li>
         <li><Link  to={`${url}/create_payout_template`}>Testttt</Link></li>
       </ul>
-      
+
       */}
 
 

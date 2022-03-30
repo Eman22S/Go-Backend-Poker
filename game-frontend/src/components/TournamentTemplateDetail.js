@@ -65,44 +65,44 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
   const [flashPrizePoolValues, setFlashPrizePoolValues] = useState(null);
   const [additionalPayoutStructure, setAdditionalPayoutStructure] = useState([]);
   const [tournamentTemplateDetail, setTournamentTemplateDetail] = useState(null);
-  
+
   useEffect(() => {
     grpcClient.getTournamentTemplateDetail(
-      id, 
-      onGetTournamnetDetailChange, 
+      id,
+      onGetTournamnetDetailChange,
       onGetTournamentDetailFailure);
       //eslint-disable-next-line
     }, []);
-    
+
     const onGetTournamnetDetailChange = (response) => {
-      let templateDetail = JSON.parse(response.getTournamentTempalteDetail()); 
+      let templateDetail = JSON.parse(response.getTournamentTempalteDetail());
       setTournamentTemplateDetail(templateDetail);
-      let flash_prize_pools = templateDetail.flash_prize_pool_values; 
+      let flash_prize_pools = templateDetail.flash_prize_pool_values;
       if (flash_prize_pools) {
         let flashPrize = JSON.parse(flash_prize_pools);
         setFlashPrizePoolValues(flashPrize);
       }
       let blindValues = JSON.parse(templateDetail.blind_level_and_values);
       setBlindLevelAndValues(blindValues.blindValues);
-      
+
       let payoutStructure = JSON.parse(templateDetail.additional_payout_structure);
       setAdditionalPayoutStructure(payoutStructure);
-      
+
       let additionalPlayerPayout = templateDetail?.additional_player_payout;
-      
+
       // setAdditionalPayoutBuyin(additionalPlayerPayout?.buyin ? additionalPlayerPayout.buyin : []);
       setAdditionalPayoutPerHand(additionalPlayerPayout);
-      
+
       let waitingUsers = JSON.parse(response.getWaitingUsers());
       setWaitingUsers(waitingUsers);
-    } 
-    
+    }
+
     const onGetTournamentDetailFailure = (error) => {
       if (error) {
         showSnackBar(error);
       }
     }
-    
+
     return (
       <div className={`${classes.root}`}>
       <Container maxWidth="lg" align="center">
@@ -121,14 +121,14 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
       <b> {"Name: "} </b>
       </Typographyx>
       <Typographyx variant="subtitle1" color="textSecondary" display="inline">
-      {tournamentTemplateDetail?.name} 
+      {tournamentTemplateDetail?.name}
       </Typographyx>
       <Divider />
       <Typographyx variant="subtitle2" color="textSecondary" display="inline">
       <b> {"Game Type: "} </b>
       </Typographyx>
       <Typographyx variant="subtitle1" color="textSecondary" display="inline">
-      {game_type_labels[tournamentTemplateDetail?.game_type]}  {table_type_labels[tournamentTemplateDetail?.table_type]} 
+      {game_type_labels[tournamentTemplateDetail?.game_type]}  {table_type_labels[tournamentTemplateDetail?.table_type]}
       </Typographyx>
       <Divider />
       <Typographyx variant="subtitle2" color="textSecondary" display="inline">
@@ -218,8 +218,8 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
       </Grid>
       <Grid item xs={12}>
       <Grid container spacing={1}>
-      
-      
+
+
       <Grid item xs={4}>
       <Typographyx variant="button" color="textSecondary" pt={3}>
       Waiting Players
@@ -252,14 +252,14 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
               No waiting users!
               </StyledTableCell>
               </StyledTableRow>
-              )                  
+              )
             }
             </TableBody>
             </Table>
             </TableContainer>
             </PaperTable>
             </Grid>
-            
+
             <Grid item xs={4}>
             <Typographyx variant="button" color="textSecondary" pt={3}>
             Betting Structure
@@ -298,14 +298,14 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                       </StyledTableCell>
                       </StyledTableRow>
                       )
-                      
+
                     }
                     </TableBody>
                     </Table>
                     </TableContainer>
                     </PaperTable>
                     </Grid>
-                    
+
                     <Grid item xs={4}>
                     <Typographyx variant="button" color="textSecondary" pt={3}>
                     Additional Prize Pool Payout Structure
@@ -343,35 +343,35 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             </StyledTableCell>
                             </StyledTableRow>
                             )
-                            
+
                           }
                           </TableBody>
                           </Table>
                           </TableContainer>
                           </PaperTable>
                           </Grid>
-                          
+
                           </Grid>
-                          </Grid>    
-                          
-                          
-                          
-                          
+                          </Grid>
+
+
+
+
                           {
-                            tournamentTemplateDetail?.has_additional_payout === '1' && 
+                            tournamentTemplateDetail?.has_additional_payout === '1' &&
                             <Grid item xs={12}>
                             <AdditionalPayoutTable additionalPayoutPerHand={additionalPayoutPerHand} addons_permitted={tournamentTemplateDetail.addons_permitted} />
-                            
-                            </Grid> 
+
+                            </Grid>
                           }
-                          
+
                           {
                             tournamentTemplateDetail?.is_flash_mode === '1' &&  <Grid item xs={12}>
                             <Box m={4}>
                             <Typographyx variant="button" color="textSecondary" pt={3}>
                             ADDITIONAL PRIZE POOL PAYOUT VALUES
                             </Typographyx>
-                            
+
                             <PaperTable className={classes.paperTable}>
                             <TableContainer className={classes.tableContainer}>
                             <Table size="small" stickyHeader>
@@ -418,7 +418,7 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             }
                             </StyledTableCell>
                             </StyledTableRow>
-                            
+
                             <StyledTableRow>
                             <StyledTableCell
                             component="th"
@@ -448,7 +448,7 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             }
                             </StyledTableCell>
                             </StyledTableRow>
-                            
+
                             <StyledTableRow>
                             <StyledTableCell
                             component="th"
@@ -478,7 +478,7 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             }
                             </StyledTableCell>
                             </StyledTableRow>
-                            
+
                             <StyledTableRow>
                             <StyledTableCell
                             component="th"
@@ -560,7 +560,7 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             }
                             </StyledTableCell>
                             </StyledTableRow>
-                            
+
                             <StyledTableRow>
                             <StyledTableCell
                             component="th"
@@ -677,15 +677,15 @@ const TournamentTemplateDetail = ({ id, ...props }) => {
                             </PaperTable>
                             </Box>
                             </Grid>
-                            
-                            
+
+
                           }
-                          
-                          </Grid>  
+
+                          </Grid>
                           </Container>
                           </div>
                           );
-                          
+
                         };
-                        
+
                         export default TournamentTemplateDetail;

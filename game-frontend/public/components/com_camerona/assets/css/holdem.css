@@ -451,7 +451,7 @@ body {
     left: -300px;
     z-index: 9;
     overflow: hidden;
-        
+
     transition: top 2s, left 2s;
     -webkit-transition: top 2s, left 2s;
     -moz-transition: top 2s, left 2s;
@@ -1179,7 +1179,7 @@ top:-40px;
 	width: 44px;
 	height: 67px;
     overflow: hidden;
-    
+
     transition: top 1s, left 1s;
     -webkit-transition: top 1s, left 1s;
     -moz-transition: top 1s, left 1s;

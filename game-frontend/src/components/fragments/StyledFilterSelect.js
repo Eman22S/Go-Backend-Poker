@@ -4,7 +4,7 @@ import TextFieldx from "./TextFieldx";
 
 
 function StyledFilterSelectComponent({ ...props }) {
-    return <TextFieldx 
+    return <TextFieldx
                 {...props}
                 select
                 size="small"

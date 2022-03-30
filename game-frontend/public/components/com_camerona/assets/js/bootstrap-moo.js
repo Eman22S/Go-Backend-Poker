@@ -96,7 +96,7 @@ script: Element.Data.js
 			}
 		},
 
-		/* 
+		/*
 			arguments:
 				name - (string) the data name to store; will be automatically prefixed with 'data-'
 				value - (string, array, or object) if an object or array the object will be JSON encoded; otherwise stored as provided.
@@ -107,7 +107,7 @@ script: Element.Data.js
 
 		/*
 			retrieves a property from HTML5 data property you specify
-		
+
 			arguments:
 				name - (retrieve) the data name to store; will be automatically prefixed with 'data-'
 				strict - (boolean) if true, will set the JSON.decode's secure flag to true; otherwise the value is still tested but allows single quoted attributes.

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     background: {
         //backgroundColor: theme.palette.background.paper,
         backgroundImage: `url(${theme.backgroundImg.image})`,
-        backgroundRepeat:  theme.backgroundImg.repeat  
+        backgroundRepeat:  theme.backgroundImg.repeat
     },
 }));
 
@@ -89,7 +89,7 @@ export default function ClientManagement(props) {
         }else{
             addClient(clientName);
         }
-        
+
         setIsLoading(false);
         setSelectedClient(null);
         setClientName(null);
@@ -112,7 +112,7 @@ export default function ClientManagement(props) {
 
             if(res.payload){
                 setClientCount(res.pagination_data.number_of_pages);
-        
+
               }
         }, on_error);
     }
@@ -156,17 +156,17 @@ export default function ClientManagement(props) {
                         <Typographyx variant="h6" color="textSecondary" style={{marginTop:"20px"}}>
                             <span>Client List</span>
 
-                          
+
                             <IconButton aria-label="delete" className={classes.iconButton} style={{float:"right"}} onClick={() => {setClientOpen(true)}} >
                             <AddIcon />
                         </IconButton>
                         </Typographyx>
                         <div>
-                  
-                        
+
+
                         </div>
-                       
-                       
+
+
                     </Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="lg" align="center" className={classes.root}>
@@ -197,7 +197,7 @@ export default function ClientManagement(props) {
                                                             <StyledTableCell align="center"> {client.name} </StyledTableCell>
                                                             <StyledTableCell align="center">
                                                                 <React.Fragment>
-                                                                
+
                                                                     <IconButton onClick={() => editClient(client)}>
                                                                         <EditIcon fontSize="small"/>
                                                                     </IconButton>
@@ -228,7 +228,7 @@ export default function ClientManagement(props) {
                                                 }
                                             </TableContainer>
                                         </PaperTable>
-                                    </Grid> 
+                                    </Grid>
                                 </Grid>
                                 {/* Create geofence name dialog */}
                                 <Dialog open={clientOpen} onClose={handleClientClose} aria-labelledby="form-dialog-title" classes={{scrollPaper: classes.scrollPaper }} >
@@ -270,7 +270,7 @@ export default function ClientManagement(props) {
                             </Grid>
                             {/* </form> */}
                         </Container>
-                        
+
                     </Grid>
                 </Grid>
             </Container>

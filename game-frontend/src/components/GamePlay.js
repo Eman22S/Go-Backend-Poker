@@ -92,7 +92,7 @@ function GamePlay(props) {
     const grpc_client = useGrpcClient();
     const history = useHistory();
     const params = useParams();
-    
+
     const [store, updateStore] = useStore();
     const showSnackBar = useSnackBarContext();
     const [localUser, ] = useLocalStorage("user");
@@ -110,7 +110,7 @@ function GamePlay(props) {
     const [paramsLoading, setParamsLoading] = useState(false);
     const [isDealingCards, setIsDealingCards] = useState(false);
 
-    //show prize pool values 
+    //show prize pool values
     const [showPrizeDialog, setShowPrizeDialog] = useState(true);
     const [showTimesUpDialogue, setShowTimesUpDialogue] = useState(false);
     const [timedOut, setTimedOut] = useState(false);
@@ -127,7 +127,7 @@ function GamePlay(props) {
 
     const [addonsPermitted, setAddonsPermitted] =useState(null);
 
-    
+
     const [waiting, setWaiting] = useState(false);
     //store account balance info
     const [cashInAcount, setCashInAccount] = useState(0);
@@ -142,18 +142,18 @@ function GamePlay(props) {
      * Handler when new table state is encountered
      * This should be used in any components to handle new table state
      */
-    const on_new_table_state = useCallback(        
+    const on_new_table_state = useCallback(
         (tableStateResponse) => {
         setNextTournamentLoading(false);
         setParamsLoading(false);
         setTableState(tableStateResponse);
         console.log("tableStateResponse")
         console.log(tableStateResponse)
-  
+
         if (tableStateResponse?.tournament_meta?.status && (tableStateResponse.tournament_meta.status.toLowerCase() === tournament_states_labels.STATUS_CANCELLED)) {
             setShowCancelledDialog(true);
         }
-        
+
         setHandCompletedAfterTimeOut((showTimesUpDialogue || timedOut) && (tableStateResponse?.game?.table_action === 'winner' || !tableStateResponse?.game?.table_action));
         grpc_client.getRankings(tableStateResponse?.game_meta?.tournament_instance_id, (response) =>{
             let data = JSON.parse(response.getPayoutDetails());
@@ -162,7 +162,7 @@ function GamePlay(props) {
         }
         , (custom_msg) => custom_msg && showSnackBar(custom_msg)
         );
-        
+
         // development purpose only
         // make user the same as player with current turn
         // if (tableStateResponse?.game_meta?.user_id_that_is_up) {
@@ -226,10 +226,10 @@ function GamePlay(props) {
             setWaiting(false);
 
         }
-        if(tableState?.game?.additional_payout_hand && tableState?.game?.additional_payout_hand.length !== 0 ){      
+        if(tableState?.game?.additional_payout_hand && tableState?.game?.additional_payout_hand.length !== 0 ){
             const additional_payout_hand = tableState?.game?.additional_payout_hand;
             if(additional_payout_hand[localUser.md5]){
-                setAdditionalHand(convertRankingDetailsToHandName(additional_payout_hand[localUser.md5]?.hand));   
+                setAdditionalHand(convertRankingDetailsToHandName(additional_payout_hand[localUser.md5]?.hand));
             }
         }else{
             setAdditionalHand(null);
@@ -253,7 +253,7 @@ function GamePlay(props) {
                     if(!payout_hand?.hands){
                         payout_hand["hands"] = []
                     }else{
-                        payout_hand["hands"][0] =payout_hand["hand"] 
+                        payout_hand["hands"][0] =payout_hand["hand"]
                     }
                     setPayoutHand(payout_hand);
                     console.log("setPayoutHand")
@@ -262,8 +262,8 @@ function GamePlay(props) {
                 },(custom_msg)=>{
                     custom_msg && showSnackBar(custom_msg);
                 })
-                
-               
+
+
         }
 
         setAddonsPermitted(tableState?.tournament_meta?.addons_permitted);
@@ -284,14 +284,14 @@ function GamePlay(props) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[tableState, grpc_client, showSnackBar])
-    
+
     //don't show controls after hand completes
     const [handCompletedAfterTimeOut, setHandCompletedAfterTimeOut] = useState(false);
 
     const joinNextTournament = (event) => {
         setNextTournamentLoading(true);
         grpc_client.getNextTournament(
-            tableState.game_meta?.tournament_instance_id, 
+            tableState.game_meta?.tournament_instance_id,
             onNextTournamentFound,
             (custom_msg) => {
                 custom_msg && showSnackBar(custom_msg);
@@ -311,8 +311,8 @@ function GamePlay(props) {
         console.log("=================tournamentBatch"+ tournamentBatchId+"  addOnAmount"+addOnAmount+"tour_id "+tableState?.tournament_meta?.tournament_id);
         grpc_client.joinTournamentTempalte(
             tableState?.tournament_meta?.tournament_id,
-            addOnAmount, 
-            onJoinTournamentSuccess, 
+            addOnAmount,
+            onJoinTournamentSuccess,
             (error)=>{
                 if(error){
                     showSnackBar(error);
@@ -323,7 +323,7 @@ function GamePlay(props) {
     }
 
 
-    
+
     const handleUnsubscribeFromBuffer = () => {
         if(tableState?.game_meta?.is_turbo_mode === "1"){
             grpc_client.unsubscribeFromTournamentTemplateBuffer(
@@ -332,7 +332,7 @@ function GamePlay(props) {
                     setWaiting(false);
                     clearInterval(pollingInterval);
                     history.push("/template_lobby");
-    
+
                 },
                 (error) => {
                     if (error) {
@@ -356,10 +356,10 @@ function GamePlay(props) {
     }
 
 
- 
+
     /**
      * On Join tournamentTemplate Success
-     * @param {*} response 
+     * @param {*} response
      */
     const onJoinTournamentSuccess = (response) => {
         //clear previously selected addons
@@ -383,7 +383,7 @@ function GamePlay(props) {
         setWaiting(true);
         pollingInterval = setInterval(() => {
             grpc_client.getTournamentTemplateBufferState(
-                tableState?.tournament_meta?.tournament_id, 
+                tableState?.tournament_meta?.tournament_id,
                 onGetTournamentTemplateBufferStateSuccess,
                 (error)=>{
                     if(error){
@@ -430,18 +430,18 @@ function GamePlay(props) {
                 if(!initialBalance || initialBalance === 0){
                     setInitialBalance(cash);
                 }else{
-                    
+
                     let balance = JSON.parse(response.getGameplayBalance());
                     console.log("----------=-===Balance====-----");
                     console.log(balance);
                     if(balance){
                         setWinnings(parseFloat(balance.total_balance));
                     }
-                    
+
                 }
             },
             showSnackBar,
-            tableState?.game_meta?.tournament_instance_id 
+            tableState?.game_meta?.tournament_instance_id
         )
     }
 
@@ -470,7 +470,7 @@ function GamePlay(props) {
             },
           };
           updateStore("startingTableState", () => tableStateResponse);
-   
+
         } else {
           if (joinResponse.error_msgs) {
             for (let err of joinResponse.error_msgs) {
@@ -479,7 +479,7 @@ function GamePlay(props) {
           }
         }
       };
-    
+
     const isGameIncomplete = ()=>{
         return tableState?.game?.table_action !== "finished" && tableState?.tournament_meta?.status !== "FINISHED"
     }
@@ -560,7 +560,7 @@ function GamePlay(props) {
                                 setParamsLoading(false);
                                 custom_msg && showSnackBar(custom_msg);
                             }
-                        );                 
+                        );
                       } else {
                         setParamsLoading(false);
                         if (response.error_msgs) {
@@ -643,7 +643,7 @@ function GamePlay(props) {
 
     }
     function openAddonDialog(){
-        
+
         setAddonOpen(true);
     }
     function handleAddonClose(){
@@ -673,9 +673,9 @@ function GamePlay(props) {
                     </Typographyx>
                 )}
 
-          
 
-                {!(tableState?.game_meta?.is_single_hand === '1' || tableState?.game_meta?.is_turbo_mode === '1' ) && Number(tableState?.tournament_meta?.addons_round_start) <= tableState?.game?.round && Number(tableState?.tournament_meta?.addons_round_end)  >= tableState?.game?.round  && Number(tableState?.tournament_meta?.addon_threshold) >= tableState?.players[localUser.md5]?.chips && 
+
+                {!(tableState?.game_meta?.is_single_hand === '1' || tableState?.game_meta?.is_turbo_mode === '1' ) && Number(tableState?.tournament_meta?.addons_round_start) <= tableState?.game?.round && Number(tableState?.tournament_meta?.addons_round_end)  >= tableState?.game?.round  && Number(tableState?.tournament_meta?.addon_threshold) >= tableState?.players[localUser.md5]?.chips &&
                     //TODO[ADDON]: here add loading when button is clicked, find a better place for the addon, add more information, ui improvement
                     <>
                     {/* <Buttonx
@@ -696,7 +696,7 @@ function GamePlay(props) {
                 }
 
 
-                  
+
 
                         {addonOpen &&
                              (
@@ -774,10 +774,10 @@ function GamePlay(props) {
                 {
                     isGameOver() && isFiveCardDrawTurboMode() &&
                     <div item xs={12} style={{position:"absolute", top:"10px", right:"0px", zIndex:"999"}}>
-                        
+
                         { isGameResultVisible?
-                        <GameResult  
-                            players={Object.values(payoutDetails || {}).sort((a,b) => a.rank - b.rank)} 
+                        <GameResult
+                            players={Object.values(payoutDetails || {}).sort((a,b) => a.rank - b.rank)}
                             hasAdditionalPayout={tableState.game_meta?.has_additional_payout === '1'}
                             showStandardPayout={true}
                             isFiveCardDrawTurboMode={isFiveCardDrawTurboMode()}
@@ -785,7 +785,7 @@ function GamePlay(props) {
                         }
             </div>
                 }
-             
+
                     <div
                     className="holdem_table_body"
                     style={{
@@ -869,7 +869,7 @@ function GamePlay(props) {
                         PaperProps={{ style: { alignItems: "center" , backgroundColor: 'transparent', alignSelf:"start", marginTop:"215px" ,
                         boxShadow: 'none',} }}
                         >
-                           
+
                             <DialogContent>
                                 <div className="loading-container">
                                     <div className="loading"></div>
@@ -910,9 +910,9 @@ function GamePlay(props) {
                                 </Box>
                                 </DialogContent>
                             </Dialog>
-                        )}         
+                        )}
                         {/* PRIZE POOL DRAW DIALOG */}
-                        {tableState?.players[localUser.md5]?.meta?.should_show_prize_revealer !== false && tableState?.game_meta?.is_flash_mode === '1' && tableState?.game?.additional_prize_pool_payout 
+                        {tableState?.players[localUser.md5]?.meta?.should_show_prize_revealer !== false && tableState?.game_meta?.is_flash_mode === '1' && tableState?.game?.additional_prize_pool_payout
                         && tableState?.game_meta?.flash_prize_pool_values && tableState?.tournament_meta?.status === "ACTIVE" && (tableState?.game?.table_action !== "finished" && tableState?.tournament_meta?.status !== "FINISHED" )  && !timedOut &&(
                         <Dialog
                             aria-labelledby="prize-dialog-title"
@@ -924,7 +924,7 @@ function GamePlay(props) {
                                 tournament_instance_id={tableState.game_meta?.tournament_instance_id}
                                 closeModal={() => setShowPrizeDialog(false)}
                                 prizes={[
-                                    tableState?.game?.additional_prize_pool_payout, 
+                                    tableState?.game?.additional_prize_pool_payout,
                                     ...getPrizePoolMoneyValuesOnly(tableState?.game_meta?.flash_prize_pool_values, tableState?.game?.additional_prize_pool_payout )
                                 ]}
                                 transitionDuration={5}
@@ -956,9 +956,9 @@ function GamePlay(props) {
                                 </Typographyx>
                             </DialogTitle>
                             <DialogContent>
-                                <GameResult  
-                                players={Object.values(payoutDetails).sort((a,b) => a.rank - b.rank)} 
-                                isFlashMode={tableState?.game_meta?.is_flash_mode === '1'} 
+                                <GameResult
+                                players={Object.values(payoutDetails).sort((a,b) => a.rank - b.rank)}
+                                isFlashMode={tableState?.game_meta?.is_flash_mode === '1'}
                                 hasAdditionalPayout={tableState.game_meta?.has_additional_payout === '1'}
                                 showStandardPayout={tableState.game_meta?.use_additional_payout_only !== "1"}
                                 isFiveCardDrawTurboMode={isFiveCardDrawTurboMode()}
@@ -976,8 +976,8 @@ function GamePlay(props) {
                                             >
                                             Back to Lobby
                                         </Buttonx>
-                                        
-                                        
+
+
                                     </Box>
                                     {!isFiveCardDrawTurboMode() &&
                                         <Box m={2}>
@@ -1073,7 +1073,7 @@ function GamePlay(props) {
                                 disable_actions={nextHandLoading || handCompletedAfterTimeOut}
                             />
                             )}
-                            {(tableState?.game_meta?.is_turbo_mode === '1' && tableState?.game_meta?.game_type === 'five_card_draw') && tableState && 
+                            {(tableState?.game_meta?.is_turbo_mode === '1' && tableState?.game_meta?.game_type === 'five_card_draw') && tableState &&
                             <React.Fragment>
                             <Grid container spacing={0} alignItems="center" justify="center">
                               <Grid
@@ -1111,7 +1111,7 @@ function GamePlay(props) {
                                 >
                                  1 Buyin and {displayAddon-1} addons
                                 </button>
-                               
+
                                 <IconButton
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
@@ -1122,13 +1122,13 @@ function GamePlay(props) {
                                 >
                                       <Add />
                                 </IconButton>
-                                
-                                </Grid>)}   
+
+                                </Grid>)}
                             {tableState?.tournament_meta?.addons_permitted && tableState?.tournament_meta?.addons_permitted > 1 && (<Grid
                                 item
                                 xs={3}
                                 style={{ display: "flex", justifyContent: "space-around" }}
-                              >    
+                              >
                                 <button
                                   className="game_btn game_grey"
                                   variant="contained"
@@ -1145,7 +1145,7 @@ function GamePlay(props) {
                                 item
                                 xs={3}
                                 style={{ display: "flex", justifyContent: "space-around" }}
-                              >  
+                              >
                                 <button
                                     className="game_btn game_blue"
                                   variant="contained"
@@ -1157,10 +1157,10 @@ function GamePlay(props) {
                                 >
                                   Deal
                                 </button>
-                      
-                              
+
+
                               </Grid>
-                      
+
                              </Grid>
                           </React.Fragment>
 
@@ -1220,7 +1220,7 @@ function GamePlay(props) {
     );
 
   /**
-   * Convert the prize pool value object into  
+   * Convert the prize pool value object into
    * number values of the prize pool
    *
    * @param Object prize: prize value object as it is sent from the server / backend
