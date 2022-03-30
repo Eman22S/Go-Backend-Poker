@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            apt install -y protobuf-compiler
+            sudo apt install -y protobuf-compiler
             protoc --version
             go mod download
             protoc --go_out=. --go_opt=paths=source_relative  --go-grpc_out=. --go-grpc_opt=paths=source_relative sngpoker/sngpoker.proto
