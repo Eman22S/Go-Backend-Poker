@@ -14,8 +14,7 @@ func PrintError(err error) {
 }
 
 // help get statck trace on test env and fails the test
-func PrintErrorAndFailTest(err error, t *testing.T) error {
+func PrintErrorAndFailTest(err error, t *testing.T) {
 	t.Errorf("# Stack Trace:\n%+v\n\n", err)
 	t.FailNow()
-	return nil
 }

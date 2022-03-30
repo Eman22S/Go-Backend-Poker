@@ -87,6 +87,7 @@ This method should be called at the beginning of the scheduler
 // Re-Initialize timers upon server restart
 func reInitializeTimers(redisClient *redis.Client) {
 	keys, _ := redisClient.Scan(ctx, 0, "", 0).Val()
+	println(keys)
 	for _, list := range keys {
 		fmt.Println("checking operations in list", list)
 		n := redisClient.LLen(ctx, list).Val()
@@ -97,7 +98,7 @@ func reInitializeTimers(redisClient *redis.Client) {
 				panic(err)
 			} else {
 				payload := Payload{}
-				json.Unmarshal([]byte(val), &payload)
+				_ = json.Unmarshal([]byte(val), &payload)
 				if payload.CreatedAt != "" {
 					createActionFromPayloadToSetTimer(&payload, redisClient)
 				}
@@ -109,7 +110,7 @@ func reInitializeTimers(redisClient *redis.Client) {
 // Evaluates what action to perform on the publised message
 func manageSubscritpionPayload(message string, redisClient *redis.Client) {
 	payload := Payload{}
-	json.Unmarshal([]byte(message), &payload)
+	_ = json.Unmarshal([]byte(message), &payload)
 	fmt.Println("looking for action in ", payload.ListName)
 	if payload.ActionTaken {
 		removeActionFromActionSlice(&payload)

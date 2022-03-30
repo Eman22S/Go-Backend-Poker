@@ -769,6 +769,6 @@ func getRankingTestData() []*RankingTestData {
 	}
 }
 
-func getKickingTestData() []*RankingTestData {
-	return []*RankingTestData{}
-}
+// func getKickingTestData() []*RankingTestData {
+// 	return []*RankingTestData{}
+// }
