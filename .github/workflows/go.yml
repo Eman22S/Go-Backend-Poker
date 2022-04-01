@@ -12,14 +12,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
+    
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.17
+      
+    - name: Install protoc
+      uses: arduino/setup-protoc@v1
+      with:
+        version: '3.x'
+        
+    - name: Set env
+      run: export PATH="$PATH:$HOME/.local/bin"
+    
+          
+    - name: Installing protoc-gen-go
+      run:
+          go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+          
+    - name: Installing protoc-gen-go-grpc
+      run:
+          go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1  
+          
+    - name: Set env for protoc
+      run: export PATH="$PATH:$(go env GOPATH)/bin"
 
+    - name: Generating protos
+      run:
+          protoc --go_out=. --go_opt=paths=source_relative  --go-grpc_out=. --go-grpc_opt=paths=source_relative sngpoker/sngpoker.proto 
+        
     - name: Build
       run: go build -v ./...
-
+    
+    - name: Gotestsum installer
+      run:
+        go get gotest.tools/gotestsum
+    
     - name: Test
       run: gotestsum -f short-verbose ./...
