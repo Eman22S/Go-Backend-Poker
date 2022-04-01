@@ -1,0 +1,19 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
+  hooks:
+    - id: trailing-whitespace
+- repo: https://github.com/dnephin/pre-commit-golang
+  rev: ff05dff219bf08fb704e470117650205b8d1e8af
+  hooks:
+    - id: go-fmt
+    - id: golangci-lint
+    - id: go-vet
+    - id: go-imports
+    - id: go-cyclo
+      args: [-over=20]
+    - id: no-go-testing
+    - id: go-unit-tests
+    - id: go-mod-vendor
+    - id: go-mod-tidy
+    - id: go-build
