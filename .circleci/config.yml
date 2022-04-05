@@ -18,9 +18,9 @@ jobs:
       - restore_cache:
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}
-      - run:
-          name: Install Dependencies
-          command: |
+#      - run:
+#          name: Install Dependencies
+ #         command: |
 #            #go mod download
 
 #            PB_REL="https://github.com/protocolbuffers/protobuf/releases"
