@@ -14,7 +14,8 @@ RUN apt-get update -y \
   unzip \
   ssh \
   tar \
-  gzip
+  gzip \
+  gotestsum
 
 ENV GO111MODULE=on 
 # Golang installation
