@@ -11,7 +11,10 @@ RUN apt-get update -y \
   curl \
   wget \
   git \
-  unzip
+  unzip \
+  ssh \
+  tar \
+  gzip
 
 ENV GO111MODULE=on 
 # Golang installation
@@ -40,6 +43,5 @@ RUN protoc --version
 RUN mkdir go-backend-poker 
 WORKDIR go-backend-poker
 COPY . .
-
 # Generate Protoc files
 RUN protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative sngpoker/sngpoker.proto
