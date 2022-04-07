@@ -83,12 +83,12 @@ export default function TournamentDetails(props) {
 
   const getTournamentDetail = (tournamentID) =>{
     grpc_client.getTournamentTemplateDetailAdmin(
-      tournamentID, 
-      (response) => {          
+      tournamentID,
+      (response) => {
 
-        let templateDetail = JSON.parse(response.getTournamentTempalteDetail());      
+        let templateDetail = JSON.parse(response.getTournamentTempalteDetail());
         console.log('templateDetail');
-        console.log(JSON.parse(templateDetail.flash_prize_pool_values));    
+        console.log(JSON.parse(templateDetail.flash_prize_pool_values));
         if (templateDetail?.additional_payout_structure){
           setTournament({
             ...props.tournament,
@@ -102,7 +102,7 @@ export default function TournamentDetails(props) {
         if(templateDetail?.flash_prize_pool_values){
           setFlashPrizePoolValues(JSON.parse(templateDetail.flash_prize_pool_values));
         }
-      }, 
+      },
       (error) => {
         if (error) {
           showSnackBar(error);
@@ -248,7 +248,7 @@ export default function TournamentDetails(props) {
                     <Table size="small" stickyHeader>
                       <TableHead>
                         <StyledTableRow>
-           
+
                           <StyledTableCell align="center">
                             Place
                           </StyledTableCell>
@@ -680,7 +680,7 @@ export default function TournamentDetails(props) {
                   ADDITIONAL PRIZE POOL PAYOUT (FLASH MODE PAYOUT)
                   </Typographyx>
                   <Grid container spacing={1}>
-              
+
               <Grid item xs={6}>
                   <PaperTable className={classes.paperTable}>
                       <TableContainer className={classes.tableContainer}>
@@ -689,7 +689,7 @@ export default function TournamentDetails(props) {
                                   <StyledTableRow>
                                       <StyledTableCell align="center">Hand</StyledTableCell>
                                       <StyledTableCell align="center">Prize</StyledTableCell>
-                                      <StyledTableCell align="center">Timer</StyledTableCell> 
+                                      <StyledTableCell align="center">Timer</StyledTableCell>
                                   </StyledTableRow>
                               </TableHead>
                               <TableBody>
@@ -715,31 +715,31 @@ export default function TournamentDetails(props) {
                                       </StyledTableCell>
                                       <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.straight_flush.timer }
-                                      </StyledTableCell> 
+                                      </StyledTableCell>
                                   </StyledTableRow>
- 
+
                                   <StyledTableRow >
                                   <StyledTableCell component="th" align="center" scope="row">
                                           Four of a Kind
-                                      </StyledTableCell>                                     
+                                      </StyledTableCell>
                                      <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.four_of_a_kind.prize}
                                       </StyledTableCell>
                                       <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.four_of_a_kind.timer }
-                                      </StyledTableCell> 
+                                      </StyledTableCell>
                                   </StyledTableRow>
 
                                   <StyledTableRow>
                                   <StyledTableCell component="th" align="center" scope="row">
                                           Full house
-                                      </StyledTableCell>                                     
+                                      </StyledTableCell>
                                       <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.full_house.prize}
                                       </StyledTableCell>
                                       <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.full_house.timer }
-                                      </StyledTableCell> 
+                                      </StyledTableCell>
                                   </StyledTableRow>
                                   <StyledTableRow>
                                   <StyledTableCell component="th" align="center" scope="row">
@@ -750,8 +750,8 @@ export default function TournamentDetails(props) {
                                       </StyledTableCell>
                                       <StyledTableCell component="th" align="center" scope="row">
                                           { flashPrizePoolValues?.prizePool?.flush.timer }
-                                      </StyledTableCell> 
-                                      
+                                      </StyledTableCell>
+
                                   </StyledTableRow>
                               </TableBody>
                           </Table>
@@ -766,10 +766,10 @@ export default function TournamentDetails(props) {
                                   <StyledTableRow>
                                       <StyledTableCell align="center">Hand</StyledTableCell>
                                       <StyledTableCell align="center">Prize</StyledTableCell>
-                                      <StyledTableCell align="center">Timer</StyledTableCell> 
+                                      <StyledTableCell align="center">Timer</StyledTableCell>
                                   </StyledTableRow>
                               </TableHead>
-                              <TableBody> 
+                              <TableBody>
                                   <StyledTableRow >
                                       <StyledTableCell component="th" align="center" scope="row">
                                           Straight
@@ -804,7 +804,7 @@ export default function TournamentDetails(props) {
                                           { flashPrizePoolValues?.prizePool?.two_pair.timer }
                                       </StyledTableCell>
                                   </StyledTableRow>
-                                  <StyledTableRow >                                     
+                                  <StyledTableRow >
                                       <StyledTableCell component="th" align="center" scope="row">
                                           Pair
                                       </StyledTableCell>
@@ -826,7 +826,7 @@ export default function TournamentDetails(props) {
                                           { flashPrizePoolValues?.prizePool?.high_card.timer }
                                       </StyledTableCell>
                                   </StyledTableRow>
-                                   
+
                               </TableBody>
                           </Table>
                       </TableContainer>
@@ -835,8 +835,8 @@ export default function TournamentDetails(props) {
               </Grid>
               </Grid>
 
-            
-              <Grid item xs={12}> 
+
+              <Grid item xs={12}>
                   <Typographyx variant="button" color="textSecondary" pt={3}>
                   ADDITIONAL PAYOUT BASED ON PLAYER HAND
                   </Typographyx>

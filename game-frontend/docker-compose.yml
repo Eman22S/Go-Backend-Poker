@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-    # static server 
+    # static server
     static_server:
         build:
             context: ./

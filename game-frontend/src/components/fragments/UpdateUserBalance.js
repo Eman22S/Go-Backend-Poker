@@ -96,19 +96,19 @@ export default function UpdateUserBalance({
       </Grid>
       <Container align="center">
         <Box m={2}>
-          <Buttonx 
-            variant="outlined" 
-            endIcon={btnLoading && <Loading size={12}/>} 
+          <Buttonx
+            variant="outlined"
+            endIcon={btnLoading && <Loading size={12}/>}
             color="default"
             m={1}
             onClick={onCancel}
           >
               Cancel
           </Buttonx>
-          <Buttonx 
+          <Buttonx
             type="submit"
-            variant="outlined" 
-            endIcon={btnLoading && <Loading size={12}/>} 
+            variant="outlined"
+            endIcon={btnLoading && <Loading size={12}/>}
             bgcolor={type === 'Credit' ? "primary.main" : "secondary.main"}
             m={1}
           >

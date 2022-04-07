@@ -53,7 +53,7 @@ const CardSuits = ["c", "s", "h", "d"];
 const numberCardClass = function (server_rank_number, server_suit_number) {
   let card_type = "back"; // default to back
 
-  if (number_exists(server_rank_number) && number_exists(server_suit_number) 
+  if (number_exists(server_rank_number) && number_exists(server_suit_number)
    && server_rank_number >= 0 && server_suit_number >= 0) {
     card_type = `${CardRanks[server_rank_number]}${CardSuits[server_suit_number]}`;
   }

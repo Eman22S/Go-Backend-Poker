@@ -81,8 +81,8 @@ const styles = {
       paddingBottom: 1,
       paddingTop: 1,
     },
-}; 
-  
+};
+
 
 export default function PendingRequest(props) {
     const classes = useStyles();
@@ -114,7 +114,7 @@ export default function PendingRequest(props) {
         }
     }
 
- 
+
 
 
     const handlePaginationChange = (event, value) => {
@@ -133,7 +133,7 @@ export default function PendingRequest(props) {
         );
     };
 
-    
+
     const approveRequest = (request)=>{
         setBtnLoading(true);
         grpc_client.actionOnPendingRequest(request.id, true,
@@ -202,10 +202,10 @@ export default function PendingRequest(props) {
 
                                                     <StyledTableCell align="center"> { request.amount } </StyledTableCell>
                                                     <StyledTableCell align="center">
-                                                    <Buttonx 
+                                                    <Buttonx
                                                         type="submit"
-                                                        variant="outlined" 
-                                                        endIcon={btnLoading && <Loading size={12}/>} 
+                                                        variant="outlined"
+                                                        endIcon={btnLoading && <Loading size={12}/>}
                                                         bgcolor={"primary.main"}
                                                         m={1}
                                                         onClick={()=>{
@@ -215,10 +215,10 @@ export default function PendingRequest(props) {
                                                     >
                                                         Approve
                                                     </Buttonx>
-                                                    <Buttonx 
+                                                    <Buttonx
                                                         type="submit"
-                                                        variant="outlined" 
-                                                        endIcon={btnLoading && <Loading size={12}/>} 
+                                                        variant="outlined"
+                                                        endIcon={btnLoading && <Loading size={12}/>}
                                                         bgcolor={"secondary.main"}
                                                         m={1}
                                                         onClick={()=>{

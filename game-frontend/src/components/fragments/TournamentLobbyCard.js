@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     lobbyCardBtn:{
-        width:"100%", 
+        width:"100%",
         marginBottom:"15px",
         borderRadius:"20px",
         border:"2px solid #ffd06a",
@@ -300,7 +300,7 @@ export default function TournamentLobbyCard({ tournament, ...props }) {
                     title={
                         <div className={classes.alignItems}>
                             {tournament?.name}
-                            &nbsp;{" "} {alreadyRegistered === "1" && <Active fontSize="small" style={{color:green[500]}} />} 
+                            &nbsp;{" "} {alreadyRegistered === "1" && <Active fontSize="small" style={{color:green[500]}} />}
                         </div>
                     }
                     subheader={
@@ -364,7 +364,7 @@ export default function TournamentLobbyCard({ tournament, ...props }) {
                     </CardContent>
                 </Container>
                 <CardActions>
-                        {tournament ? 
+                        {tournament ?
                         <Container align="right">
                             <Buttonx
                                 className={classes.lobbyCardBtn}

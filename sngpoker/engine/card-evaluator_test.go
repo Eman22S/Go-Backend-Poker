@@ -17,13 +17,11 @@ func TestRankings(t *testing.T) {
 	for _, testData := range getRankingTestData() {
 
 		for index, expectedRankingDetail := range testData.expectedRankingDetail {
-			if false {
-				checkRankingIntegrity(
-					t, testData.players[index],
-					testData.communityCards,
-					expectedRankingDetail,
-				)
-			}
+			checkRankingIntegrity(
+				t, testData.players[index],
+				testData.communityCards,
+				expectedRankingDetail,
+			)
 		}
 	}
 }
@@ -215,12 +213,12 @@ func TestKickingCards(t *testing.T) {
 		}
 	})
 
-	t.Run("Test kicking card used to win with THREE OF A KIND rank", func(t *testing.T) {
+	t.Run("Test kicking card used to win with THEREE OF A KIND rank", func(t *testing.T) {
 		communityCards := []*sngpoker.Card{
 			{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_CLUB},
 			{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_SPADE},
 			{Rank: sngpoker.CardRank_TWO, Suit: sngpoker.Suit_DIAMOND},
-			{Rank: sngpoker.CardRank_TEN, Suit: sngpoker.Suit_CLUB},
+			{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_CLUB},
 			{Rank: sngpoker.CardRank_FIVE, Suit: sngpoker.Suit_CLUB},
 		}
 
@@ -229,24 +227,24 @@ func TestKickingCards(t *testing.T) {
 				Id: 1,
 				Cards: []*sngpoker.Card{
 					{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_DIAMOND},
-					{Rank: sngpoker.CardRank_SIX, Suit: sngpoker.Suit_SPADE},
+					{Rank: sngpoker.CardRank_KING, Suit: sngpoker.Suit_SPADE},
 				},
 			},
 			{
 				Id: 2,
 				Cards: []*sngpoker.Card{
-					{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_HEART},
-					{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_CLUB},
+					{Rank: sngpoker.CardRank_ACE, Suit: sngpoker.Suit_DIAMOND},
+					{Rank: sngpoker.CardRank_QUEEN, Suit: sngpoker.Suit_CLUB},
 				},
 			},
 		}
 		rankingResult := RankHands(players, communityCards)
 		expectedKickingCardUsedToWin := []*sngpoker.Card{
-			{Rank: sngpoker.CardRank_EIGHT, Suit: sngpoker.Suit_CLUB},
+			{Rank: sngpoker.CardRank_KING, Suit: sngpoker.Suit_SPADE},
 		}
 
 		if rankingResult[0].Ranking != ThreeOfAKind {
-			t.Error("Hand rank must be THREE OF A KIND")
+			t.Error("Hand rank must be TWO PAIR")
 		}
 		if !reflect.DeepEqual(
 			rankingResult[0].KickingCardsUsedToWin,

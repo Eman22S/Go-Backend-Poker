@@ -1,10 +1,10 @@
-import React from 'react' 
-import Typographyx from "./Typographyx"; 
+import React from 'react'
+import Typographyx from "./Typographyx";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
-import PaperTable from "./PaperTable"; 
+import PaperTable from "./PaperTable";
 import StyledTableCell from "./StyledTableCell";
 import StyledTableRow from "./StyledTableRow";
 import { makeStyles } from "@material-ui/core";
@@ -52,7 +52,7 @@ function AdditionalPayoutTable(props) {
     const createTableHeaders = () => {
 		let headers = [];
 		if(addons_permitted > 1){
-			for(let i = 0; i <= addons_permitted; i++){ 
+			for(let i = 0; i <= addons_permitted; i++){
 				headers.push(<StyledTableCell align="center">
 					1 buyin { i === 0 ? '' : addons_permitted > 1 ? (i === 1) ? ' & 1 addon' : ' & ' + i +' addons' : ''}
 				</StyledTableCell>)
@@ -60,7 +60,7 @@ function AdditionalPayoutTable(props) {
 		}
     else {
       headers.push(<StyledTableCell align="center">
-        1 buyin 
+        1 buyin
       </StyledTableCell>)
     }
 		return headers;
@@ -98,7 +98,7 @@ function AdditionalPayoutTable(props) {
 
                             {
 								 createTableHeaders()
-                            } 
+                            }
                           </StyledTableRow>
                         </TableHead>
                         <TableBody>
@@ -191,7 +191,7 @@ function AdditionalPayoutTable(props) {
                                 : 0}
                             </StyledTableCell>
                            {createValuesForHands('four_aces')}
-                            
+
                           </StyledTableRow>
 
                           <StyledTableRow>
@@ -210,7 +210,7 @@ function AdditionalPayoutTable(props) {
                                 : 0}
                             </StyledTableCell>
                            {createValuesForHands('four_fives_through_kings')}
-                            
+
                           </StyledTableRow>
 
                           <StyledTableRow>
@@ -357,14 +357,14 @@ function AdditionalPayoutTable(props) {
                               component="th"
                               align="center"
                               scope="row">
-                              {additionalPayoutPerHand?.hand?.one_jack_or_better 
+                              {additionalPayoutPerHand?.hand?.one_jack_or_better
                                 ? additionalPayoutPerHand.hand.one_jack_or_better
                                 : 0}
-                            </StyledTableCell> 
+                            </StyledTableCell>
 							{createValuesForHands('one_jack_or_better')}
 
                             </StyledTableRow>
-                           
+
                             <StyledTableRow>
                             <StyledTableCell
                               component="th"
@@ -379,17 +379,17 @@ function AdditionalPayoutTable(props) {
                               {additionalPayoutPerHand?.hand?.high_card
                                 ? additionalPayoutPerHand.hand.high_card
                                 : 0}
-                            </StyledTableCell>  
+                            </StyledTableCell>
 							{createValuesForHands('high_card')}
- 
-                          </StyledTableRow> 
+
+                          </StyledTableRow>
                         </TableBody>
                       </Table>
                     </TableContainer>
                   </PaperTable>
-                
+
         </div>
     )
-} 
+}
 export default AdditionalPayoutTable
 

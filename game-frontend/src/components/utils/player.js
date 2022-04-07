@@ -333,7 +333,7 @@ function convertRankingDetailsToHandName(msg){
 
   } else  if (msg.includes('ONE JACK OR BETTER')) {
     return rank_map[10];
-  } 
+  }
   else  if (msg.includes('FOUR ACES')) {
     return rank_map[12];
   }

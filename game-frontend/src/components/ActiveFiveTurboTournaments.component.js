@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         //margin: theme.spacing(2),
         backgroundImage: `url(${theme.backgroundImg.image})`,
-        backgroundRepeat:  theme.backgroundImg.repeat   
+        backgroundRepeat:  theme.backgroundImg.repeat
     },
     row: {
       padding: '20px'
@@ -89,10 +89,10 @@ export const ActiveFiveTurboTournaments = () => {
         setTournaments(parsed_touranments.payload);
         setCount(parsed_touranments.pagination_data.number_of_pages);
     };
-  
+
     function on_tournaments_error(custom_msg) {
         setLoading(false);
-    
+
         if (custom_msg) {
           showSnackBar(custom_msg);
         }
@@ -102,7 +102,7 @@ export const ActiveFiveTurboTournaments = () => {
       return (event) => {
         setSelectedTournament(tournament_instance_id);
         setJoining(true);
-  
+
         grpc_client.joinTournament(
           tournament_instance_id,
           0,
@@ -114,7 +114,7 @@ export const ActiveFiveTurboTournaments = () => {
 
     const on_join_response = function (joinResponse) {
       setJoining(false);
-  
+
       if (joinResponse.was_subscribed) {
         let tableStateResponse = {
           game_meta: {
@@ -124,7 +124,7 @@ export const ActiveFiveTurboTournaments = () => {
         };
         updateStore("startingTableState", () => tableStateResponse);
        history.push(`/gameplay/${joinResponse.tournament_instance_id}`);
-  
+
       } else {
         if (joinResponse.error_msgs) {
           setSelectedTournament(false);
@@ -135,11 +135,11 @@ export const ActiveFiveTurboTournaments = () => {
         }
       }
     };
-  
+
     function on_join_error(custom_msg) {
       setSelectedTournament(null);
       setJoining(false);
-  
+
       if (custom_msg) {
         showSnackBar(custom_msg);
       }

@@ -90,8 +90,8 @@ const styles = {
       paddingBottom: 1,
       paddingTop: 1,
     },
-}; 
-  
+};
+
 
 export default function PlayerAccountManagement(props) {
     const classes = useStyles();
@@ -198,7 +198,7 @@ export default function PlayerAccountManagement(props) {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"
@@ -275,7 +275,7 @@ export default function PlayerAccountManagement(props) {
                     <Typographyx variant="h6" style={{ color: "#fff", textTransform: "inherit" }} >
                         Update Player Balance
                     </Typographyx>
-                    
+
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">

@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
   background: {
     backgroundColor: theme.palette.background.default,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat   
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 
@@ -99,7 +99,7 @@ export default function Templates({ temp, ...props }) {
 
   return (
     <div className={`${classes.root} ${classes.background}`}>
-       
+
 
       <Switch>
         <Route exact path={path}>

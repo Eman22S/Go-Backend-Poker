@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       minHeight: '100vh'
     },
-  
+
     bullet: {
       display: "inline-block",
       margin: "0 2px",
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
     background: {
      // backgroundColor: theme.palette.background.paper,
       backgroundImage: `url(${theme.backgroundImg.image})`,
-      backgroundRepeat:  theme.backgroundImg.repeat  
+      backgroundRepeat:  theme.backgroundImg.repeat
     },
     full: {
       color: theme.palette.error.main
@@ -117,9 +117,9 @@ const useStyles = makeStyles((theme) => ({
     available: {
       color: theme.palette.success.main
     }
-   
+
   }));
-  
+
   const styles = {
     card_content: {
       paddingBottom: 1,
@@ -140,18 +140,18 @@ export default function SimulationManagement(props) {
     const [isSimulationOn, setIsSimulationOn] = useState(false);
 
     const history = useHistory();
-  
+
     const [, updateStore] = useStore();
-  
+
     const showSnackBar = useSnackBarContext();
-  
+
     const [loading, setLoading] = useState(false);
     const [joining, ] = useState(false);
     const [waiting, ] = useState(false);
     const [tournamentTemps, setTournamentTemps] = useState([])
     const [tournaments, setTournaments] = useState(null);
     const [selectedTournament, ] = useState(null);
-  
+
     const [gameType, setGameType] = useState(select_game_types[0].value);
     const [buyIn, setBuyIn] = useState(select_buyins[0].value);
     const [timer, setTimer] = useState(select_timers[0].value);
@@ -160,7 +160,7 @@ export default function SimulationManagement(props) {
     );
     const [entryFee, setEntryFee] = useState(select_entry_fee[0].value)
 
-  
+
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(0);
 
@@ -181,7 +181,7 @@ export default function SimulationManagement(props) {
     const get_tournaments = useCallback(
       function () {
         setLoading(true);
-        
+
         // set filter values to corresponding filter options
         const data = {
           status: [],
@@ -197,7 +197,7 @@ export default function SimulationManagement(props) {
           pagination_items_per_page: 10
         };
         console.log('-----Data----', data);
-                
+
         grpc_client.getTournamentsAdmin(
           data,
           on_tournaments_response,
@@ -209,7 +209,7 @@ export default function SimulationManagement(props) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [grpc_client, tableType, buyIn, timer, gameType, page, entryFee]
     );
-   
+
     useEffect(() => {
         //
         get_tournaments();
@@ -241,7 +241,7 @@ export default function SimulationManagement(props) {
 
     const simulateGames = (e)=>{
         e.preventDefault();
- 
+
         grpc_client.simulateGames(tournamentTemplateId, tournamentLimit, addonsAmount, numberOfPlayers,(response) => {
             showSnackBar('Game Simulation Started!', 'success')
             setTournamentTemplateId("");
@@ -249,7 +249,7 @@ export default function SimulationManagement(props) {
             setAddonsAmount("");
             setNumberOfPlayers("");
             getGlobalSettings();
-       
+
         }, on_error)
     }
 
@@ -269,18 +269,18 @@ export default function SimulationManagement(props) {
       setLoading(false);
       let parsedResponse = JSON.parse(response.getResult());
       let tournament_templates = parsedResponse.payload;
-  
+
       setTournamentTemps(tournament_templates);
     };
-  
+
     function on_tournaments_temp_error(custom_msg) {
       setLoading(false);
-  
+
       if (custom_msg) {
         showSnackBar(custom_msg);
       }
     }
-  
+
     const changeUsing = (valueSetter, validator = (value) => {}) => (event) => {
       const { type, checked } = event.target;
       if (type === "checkbox") {
@@ -292,11 +292,11 @@ export default function SimulationManagement(props) {
         validator(value);
       }
     };
-  
+
     const on_tournaments_response = function (response) {
       setLoading(false);
       let parsed_touranments = JSON.parse(response.getResult());
-  
+
       let sit_n_go_tournaments = parsed_touranments.payload;
       let pagination_num_pages = parsed_touranments.pagination_data.number_of_pages;
       // sit_n_go_tournaments.sort(
@@ -307,22 +307,22 @@ export default function SimulationManagement(props) {
       setTournaments(sit_n_go_tournaments);
       setCount(pagination_num_pages);
     };
-  
+
     function on_tournaments_error(custom_msg) {
       setLoading(false);
-  
+
       if (custom_msg) {
         showSnackBar(custom_msg);
       }
     }
-  
-   
-  
 
- 
+
+
+
+
     const go_to_hand_history = (tournament_instance_id) => (event) => {
       event.stopPropagation();
-  
+
       updateStore("tournament_instance_id", () => tournament_instance_id);
       history.push(
         `/simulation_management?tid=${tournament_instance_id}`,
@@ -366,13 +366,13 @@ export default function SimulationManagement(props) {
                 onChange={(e)=>{
                   setTournamentTemplateId(e.target.value)
               }}
-                >   
+                >
                     <MenuItem value="0">None</MenuItem>
                     {tournamentTemps && tournamentTemps.map((client)=>{
                         return (<MenuItem key ={client.id} value={client.id}>{client.name}</MenuItem>);
                     })}
-                
-            
+
+
             </Select>
                 {/* <TextFieldx
                     name={"tournamentTemplateId"}
@@ -439,7 +439,7 @@ export default function SimulationManagement(props) {
                     >
                         Simulate Games
                 </Buttonx>
-               
+
             </Box>
         </Grid>
         <div  className="simulation_status" style={{display:"flex", justifyContent:"center", alignItems:"center",width:"100%"}}>
@@ -448,9 +448,9 @@ export default function SimulationManagement(props) {
                 </Badgex> </p>}
                 {!isSimulationOn &&<Badgex color="FINISHED">
                   No Simulation Running
-                </Badgex> } 
+                </Badgex> }
         </div>
-                      
+
         <Grid item xs={12}>
           <Grid container spacing={1}>
             <Grid item xs={6} sm={2}>
@@ -561,7 +561,7 @@ export default function SimulationManagement(props) {
                       <StyledTableRow
                         key={index}
                         hover={true}
-                       
+
                       >
                         <StyledTableCell component="th" scope="row">
                           {tournaments[index].name} &nbsp;{" "}
@@ -634,5 +634,5 @@ export default function SimulationManagement(props) {
     </Container>
     </div>
     )
-       
+
 }

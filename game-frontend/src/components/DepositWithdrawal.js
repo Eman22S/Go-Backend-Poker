@@ -26,7 +26,7 @@ import dropin from "braintree-web-drop-in";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh'
-    
+
   },
   paper: {
     display: "flex",
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   default_background: {
     //backgroundColor: theme.palette.background.paper,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat   
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 
 
@@ -72,8 +72,8 @@ export default function DepositWithdrawal({updateBalance, ...props }) {
   const [processingFeePercentage, setProcessingFeePercentage] = useState(0);
   const [processingFeeValue, setProcessingFeeValue] = useState(0);
 
-  
-  
+
+
   const depositDisabled = !agreeDeposit || depositBtnLoading;
   const withdrawalDisabled = !agreeWithdrawal || withdrawalBtnLoading;
 
@@ -141,7 +141,7 @@ export default function DepositWithdrawal({updateBalance, ...props }) {
         console.log(settings)
         setProcessingFeeValue(parseFloat(settings.processing_fee_value))
         setProcessingFeePercentage(parseFloat(settings.processing_fee_percentage))
-       
+
     }, () => {});
   }
   useEffect(() => {
@@ -205,7 +205,7 @@ export default function DepositWithdrawal({updateBalance, ...props }) {
 
         if (payload.nonce) {
           data.nonce = payload.nonce;
-          data.amount = Number(data.amount) + Number(totalDepositStr || 0); 
+          data.amount = Number(data.amount) + Number(totalDepositStr || 0);
 
           grpc_client.makeDeposit(data, on_deposit_response, on_deposit_error);
         } else {

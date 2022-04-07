@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     minHeight: '100vh',
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
 }));
 
@@ -85,8 +85,8 @@ export default function SignIn(props) {
   const [logo, setLogo] = useState(null);
   const [loginBtnLoading, setLoginBtnLoading] = useState(false);
 
-  
- 
+
+
   const changeUsing = (valueSetter, validator = (value) => {}) => (event) => {
     const { type, checked } = event.target;
     if (type === "checkbox") {

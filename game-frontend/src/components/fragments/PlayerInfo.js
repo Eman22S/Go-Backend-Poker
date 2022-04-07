@@ -35,7 +35,7 @@ function PlayerInfo({ player, on_new_table_state, ...props }) {
     is_small_blind = tableState.game.sb_player_key === player.md5;
     is_big_blind = tableState.game.bb_player_key === player.md5;
 
-                
+
     if(tableState.game_meta.game_type === "five_card_stud") //Don't show any big/ small blind badge for five stud
     {
       is_small_blind = false;

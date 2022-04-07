@@ -50,8 +50,8 @@ const L = window.L;
 
 
 /**
- * get user location from browser using the html geolocation api 
- * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object  
+ * get user location from browser using the html geolocation api
+ * @param {function} callback : a callback function that accepts two parameters - first : error object, second: geolocation object
 */
 const getLocation = (callback) => {
   if (navigator && navigator.geolocation) {
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
   background: {
   //  backgroundColor: theme.palette.background.paper,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat  
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
   container: {
     minHeight: 480,
@@ -238,21 +238,21 @@ export default function PlayerGeofencing(props) {
     setSelectedIdentifier(event.target.value)
   }
   const handleStatusChange = (event)=>{
-  
+
     setStatus(status === "ACTIVE"?"INACTIVE":"ACTIVE");
-   
+
   }
   //open modal
   const handleClickOpen = () => {
     setOpen(true);
   };
-  //handle modal close and clear the polygon currently 
+  //handle modal close and clear the polygon currently
   const handleIdentifierClose = () => {
     setOpen(false);
     if(createdLayer && currentMap){
       currentMap.removeLayer(createdLayer);
       setCreatedLayer(null)
-    }  
+    }
   };
 
   //clear map of all polygon
@@ -262,21 +262,21 @@ export default function PlayerGeofencing(props) {
         if (layer instanceof L.Polygon) {
           currentMap.removeLayer(layer);
         }
-        
+
       })
     }
-   
+
   }
 
-  //clear map colors 
+  //clear map colors
   const clearMapColors = () =>{
     if(currentMap){
       currentMap.eachLayer(function (layer) {
         if (layer instanceof L.Polygon) {
           layer.closePopup();
-          layer.setStyle({fillColor :'blue'}); 
+          layer.setStyle({fillColor :'blue'});
         }
-        
+
       })
     }
   }
@@ -294,7 +294,7 @@ export default function PlayerGeofencing(props) {
         setGeorefCount(res.pagination_data.number_of_pages);
 
       }
-      
+
 
       //add to the map
       results.forEach(result=>{
@@ -312,12 +312,12 @@ export default function PlayerGeofencing(props) {
             }
           });
           dbGeofences.addTo(map);
-        
+
           Object.values(dbGeofences._layers).forEach( layer => {
             layer.on('click', (e) => {
               setSelectedFenceID(layer.feature.id);
             })
-    
+
             layer.on('pm:update', (e) => {
               //When A polygon is updated (the vertices edited)
               console.log("Updating");
@@ -349,27 +349,27 @@ export default function PlayerGeofencing(props) {
               }
               exportGeoJSON(map);
             });
-    
+
             layer.on('pm:dragend', (e) => {
-      
+
               setSelectedGeofenceData(JSON.stringify(layer.toGeoJSON()));
               exportGeoJSON(map);
             })
-    
+
             layer.on('pm:remove', (e) => {
-              
+
               exportGeoJSON(map);
             })
           });
         }
-       
+
       })
       setGeofences(tempFences);
 
     },on_error)
   }
-  
-  //set the selected fence or clear 
+
+  //set the selected fence or clear
   useEffect(()=>{
     if(selectedFenceID){
       clearMapColors();
@@ -380,7 +380,7 @@ export default function PlayerGeofencing(props) {
     }
     //eslint-disable-next-line
   },[selectedFenceID,geofences])
-  //set the selected fence or clear 
+  //set the selected fence or clear
   useEffect(()=>{
     if(selectedFence){
       setSelectedIdentifier(selectedFence.name);
@@ -392,15 +392,15 @@ export default function PlayerGeofencing(props) {
       clearMapColors();
       if(currentMap){
         currentMap.eachLayer(function (layer) {
-          
+
           if (layer instanceof L.Polygon) {
             if(layer.feature.id === selectedFenceID){
-              layer.setStyle({fillColor :'red'}); 
+              layer.setStyle({fillColor :'red'});
               layer.openPopup()
             }
-           
+
           }
-          
+
         })
       }      currentMap.flyTo(selectedLayer.getBounds().getCenter(),11);
 
@@ -410,7 +410,7 @@ export default function PlayerGeofencing(props) {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[selectedFence])
-  
+
   const setWhiteAndBlackListUsers= () =>{
     grpc_client.getWhitelistedUsersonGeofence({id:selectedFence.id},(response)=>{
       setWhiteListedUsers(JSON.parse(response.array))
@@ -420,18 +420,18 @@ export default function PlayerGeofencing(props) {
       setBlackListedUsers(JSON.parse(response.array))
     },on_error)
   }
-  
+
 
   const setWhiteAndBlackListClients= () =>{
     grpc_client.getWhitelistedClientsonGeofence({id:selectedFence.id},(response)=>{
       setWhiteListedClients(JSON.parse(response.array))
     },on_error)
-    
+
     grpc_client.getBlacklistedClientsonGeofence({id:selectedFence.id},(response)=>{
       setBlackListedClients(JSON.parse(response.array))
     },on_error)
   }
-  
+
 
 
   useEffect(()=>{
@@ -440,16 +440,16 @@ export default function PlayerGeofencing(props) {
         if(selectedGeofenceData && selectedFence){
           selectedFence.name = selectedIdentifier;
           selectedFence.isActive = status === "ACTIVE";
-          selectedFence.geofenceData = selectedGeofenceData;      
+          selectedFence.geofenceData = selectedGeofenceData;
           confirm({ description: 'Update geofence?' })
-          .then(() => { 
+          .then(() => {
             grpc_client.updateGeofenceData(selectedFence,(response)=>{
               getGeoRefs();
               setSelectedGeofenceData(null);
             },on_error) })
-         
+
         }
-       
+
       }
       handlePolygonUpdate()
     }
@@ -484,7 +484,7 @@ export default function PlayerGeofencing(props) {
         });
         addGeoRefs(data);
       }
-     
+
     }
   }
   //add geofencing
@@ -512,19 +512,19 @@ export default function PlayerGeofencing(props) {
       }
     });
   }
-  
+
   //handle geofence update of the name and status
   const handleUpdate = () =>{
     selectedFence.name = selectedIdentifier;
     selectedFence.isActive = status === "ACTIVE";
     selectedFence.geofenceData = selectedFence.polygon;
-    
+
     setEditName(false);
     confirm({ description: 'Update geofence?' })
       .then(() => { grpc_client.updateGeofenceData(selectedFence,(response)=>{
         getGeoRefs();
       },on_error) })
-   
+
   }
 
   const cancelUpdate = () =>{
@@ -535,13 +535,13 @@ export default function PlayerGeofencing(props) {
   //remove selected fence
   const removeSelectedFence = ()=>{
     confirm({ description: 'Remove selected fence?' })
-      .then(() => {  
+      .then(() => {
         grpc_client.removeGeofenceData(selectedFence.id,(respopnse)=>{
         getGeoRefs();
       },on_error)
       setSelectedFenceID(null); })
       .catch(() => {console.log("No") });
-   
+
   }
 
   //setup up map location and map layer
@@ -552,7 +552,7 @@ export default function PlayerGeofencing(props) {
       const map = L.map('mapid', { drawControl: true }).setView([latitude, longitude], 11);
       setCurrentMap(map);
       //import layers
-      
+
       map.pm.addControls({
         position: 'topleft',
         drawMarker: false,
@@ -589,7 +589,7 @@ export default function PlayerGeofencing(props) {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
-      
+
       map.on('pm:create', ({layer, ...e}) => {
         //When A polygon is created
         //save the created layer
@@ -617,7 +617,7 @@ export default function PlayerGeofencing(props) {
           setCreatedLayer(layer);
           handleClickOpen()
         }
-        
+
       });
     });
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -630,7 +630,7 @@ export default function PlayerGeofencing(props) {
     }
   },[errorMessage, showSnackBar])
 
- 
+
 
   const handleClose = () => {
     setShowConfirmation(false);
@@ -701,7 +701,7 @@ const addClients = ()  =>{
       setWhiteAndBlackListClients();
       setLoading(false);
       setShowClientConfirmation(false);
-    },on_error)  
+    },on_error)
   }
 }
 
@@ -723,7 +723,7 @@ const addUsers = ()  =>{
       setWhiteAndBlackListUsers();
       setLoading(false);
       setShowConfirmation(false);
-    },on_error)  
+    },on_error)
   }
 }
 function on_error(custom_msg) {
@@ -733,7 +733,7 @@ function on_error(custom_msg) {
   }
 }
 const getUsers = ()=>{
- 
+
   if (username) {
       grpc_client.searchByUsername(
           { username: username, pagination_current_page: page, pagination_items_per_page: 10 },
@@ -748,7 +748,7 @@ const getUsers = ()=>{
           on_search_error
       );
   }
-  
+
 }
 
 const getClients = ()=>{
@@ -758,7 +758,7 @@ const getClients = ()=>{
         on_client_response,
         on_search_error
     );
-   
+
 }
 
 const on_client_response = (response) =>{
@@ -803,7 +803,7 @@ const handleWhitelistGlobalRule = (e) => {
     setWhiteAndBlackListUsers();
     setLoading(false);
     setShowConfirmation(false);
-  },on_error)  
+  },on_error)
 }
 const handleBlacklistGlobalRule = (e) => {
   grpc_client.setGeofenceGlobalRule({id: selectedFence.id, blacklistAll: e.target.checked},(response)=>{
@@ -811,7 +811,7 @@ const handleBlacklistGlobalRule = (e) => {
     setWhiteAndBlackListUsers();
     setLoading(false);
     setShowConfirmation(false);
-  },on_error)  
+  },on_error)
 }
 
 
@@ -822,7 +822,7 @@ const handleBlacklistClientGlobalRule = (e) => {
     setWhiteAndBlackListUsers();
     setLoading(false);
     setShowConfirmation(false);
-  },on_error)  
+  },on_error)
 }
 
 const handleWhitelistClientGlobalRule = (e) => {
@@ -831,7 +831,7 @@ const handleWhitelistClientGlobalRule = (e) => {
     setWhiteAndBlackListClients();
     setLoading(false);
     setShowConfirmation(false);
-  },on_error)  
+  },on_error)
 }
 
 
@@ -894,7 +894,7 @@ const removeClientFromWhitelist = (id) => {
                       <Grid item xs={12}>
                         <Grid container spacing={1} alignItems="center" justify="center">
                           <Grid item xs={6}>
-                            { editName? 
+                            { editName?
                               <Box mx={2}>
                                 <TextField
                                   autoFocus
@@ -913,8 +913,8 @@ const removeClientFromWhitelist = (id) => {
                                    <EditIcon fontSize="small"/>
                                 </IconButton>
                               </React.Fragment>
-                            } 
-                          </Grid>              
+                            }
+                          </Grid>
                           <Grid item xs={3}>
                             <FormControlLabel
                                 control={
@@ -950,7 +950,7 @@ const removeClientFromWhitelist = (id) => {
                         </Grid>
                       </Grid>
                       </Card>
-                      : 
+                      :
                       <Card className={classes.selectedGeofence}>
                         <Box mt={1} mb={4} mx={2}>
                           <Typographyx variant="body2" color="textSecondary">No Geofence Selected.</Typographyx>
@@ -961,7 +961,7 @@ const removeClientFromWhitelist = (id) => {
                   </Grid>
 
             </Grid>
-            
+
             {selectedFence && <Grid item xs={12}>
               <Card className={classes.usersList}>
                 <AppBar position="static">
@@ -971,7 +971,7 @@ const removeClientFromWhitelist = (id) => {
                   </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0}>
-                  
+
                   <Grid item xs={12}>
                         <FormControlLabel
                           control={
@@ -1006,7 +1006,7 @@ const removeClientFromWhitelist = (id) => {
                                     <StyledTableCell align="center"> {user.username} </StyledTableCell>
                                     <StyledTableCell align="center"> {user.name} </StyledTableCell>
                                     <StyledTableCell align="center"> {user.email} </StyledTableCell>
-                                    <StyledTableCell align="center"> 
+                                    <StyledTableCell align="center">
                                       <IconButton aria-label="remove" className={classes.iconButton} onClick={()=>{removeFromWhitelist(user.id)}} color="secondary">
                                         <DeleteIcon />
                                       </IconButton>
@@ -1072,7 +1072,7 @@ const removeClientFromWhitelist = (id) => {
                                   <StyledTableCell align="center"> {user.username} </StyledTableCell>
                                   <StyledTableCell align="center"> {user.name} </StyledTableCell>
                                   <StyledTableCell align="center"> {user.email} </StyledTableCell>
-                                  <StyledTableCell align="center"> 
+                                  <StyledTableCell align="center">
                                     <IconButton aria-label="remove" className={classes.iconButton} onClick={()=>{removeFromBlacklist(user.id)}} color="secondary">
                                       <DeleteIcon />
                                     </IconButton>
@@ -1101,7 +1101,7 @@ const removeClientFromWhitelist = (id) => {
                     }
                   </Grid>
                 </Grid>
-              </TabPanel>      
+              </TabPanel>
               </Card>
             </Grid>}
 
@@ -1114,7 +1114,7 @@ const removeClientFromWhitelist = (id) => {
                 </Tabs>
               </AppBar>
               <TabPanel value={clientValue} index={0}>
-                
+
                 <Grid item xs={12}>
                 <FormControlLabel
                           control={
@@ -1145,7 +1145,7 @@ const removeClientFromWhitelist = (id) => {
                               return (
                                 <StyledTableRow key={user.id} hover={true}>
                                   <StyledTableCell align="center"> {user.name} </StyledTableCell>
-                                  <StyledTableCell align="center"> 
+                                  <StyledTableCell align="center">
                                   <IconButton aria-label="remove" className={classes.iconButton} onClick={()=>{removeClientFromWhitelist(user.id)}} color="secondary">
                                     <DeleteIcon />
                                   </IconButton>
@@ -1206,7 +1206,7 @@ const removeClientFromWhitelist = (id) => {
                             return (
                               <StyledTableRow key={user.id} hover={true}>
                                 <StyledTableCell align="center"> {user.name} </StyledTableCell>
-                                <StyledTableCell align="center"> 
+                                <StyledTableCell align="center">
                                   <IconButton aria-label="remove" className={classes.iconButton} onClick={()=>{removeClientFromBlacklist(user.id)}} color="secondary">
                                     <DeleteIcon />
                                   </IconButton>
@@ -1235,10 +1235,10 @@ const removeClientFromWhitelist = (id) => {
                   }
                 </Grid>
               </Grid>
-            </TabPanel>      
+            </TabPanel>
             </Card>
             </Grid>}
- 
+
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -1288,7 +1288,7 @@ const removeClientFromWhitelist = (id) => {
                 }
               </TableContainer>
             </PaperTable>
-            </Grid> 
+            </Grid>
         </Grid>
       </Grid>
       {/* Add User Dialog */}
@@ -1301,7 +1301,7 @@ const removeClientFromWhitelist = (id) => {
         </DialogTitle>
         <DialogContent>
                 <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"
@@ -1330,7 +1330,7 @@ const removeClientFromWhitelist = (id) => {
                                       control={ <Checkbox value={"selectAll"} checked={selectAll} onChange={handleSelectAll} name={"selectALL"} color="default" />}
                                       label={<Typographyx variant="caption" color="textSecondary"></Typographyx>}
                                   />
-                              </FormGroup> 
+                              </FormGroup>
                             </StyledTableCell>
                             <StyledTableCell align="center">Username</StyledTableCell>
                             <StyledTableCell align="center">Name</StyledTableCell>
@@ -1383,7 +1383,7 @@ const removeClientFromWhitelist = (id) => {
           </Button>
         </DialogActions>
       </Dialog>
-      
+
       {/* Add User Dialog */}
       <Dialog open={showClientConfirmation} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title" style={{ color: "#fff" }}>
@@ -1394,7 +1394,7 @@ const removeClientFromWhitelist = (id) => {
         </DialogTitle>
         <DialogContent>
                 {/* <Grid item xs={12}>
-                        <Paper component="form" className={classes.rootSearch}>    
+                        <Paper component="form" className={classes.rootSearch}>
                             <InputBase
                                 className={classes.input}
                                 placeholder="Search By Username"
@@ -1423,7 +1423,7 @@ const removeClientFromWhitelist = (id) => {
                                       control={ <Checkbox value={"selectAll"} checked={selectAll} onChange={handleSelectAll} name={"selectALL"} color="default" />}
                                       label={<Typographyx variant="caption" color="textSecondary"></Typographyx>}
                                   />
-                              </FormGroup> 
+                              </FormGroup>
                             </StyledTableCell>
                             <StyledTableCell align="center">Name</StyledTableCell>
                             </StyledTableRow>
@@ -1473,7 +1473,7 @@ const removeClientFromWhitelist = (id) => {
         </DialogActions>
       </Dialog>
 
-      
+
       {/* Create geofence name dialog */}
       <Dialog open={open} onClose={handleIdentifierClose} aria-labelledby="form-dialog-title" classes={{scrollPaper: classes.scrollPaper }} >
         <DialogTitle id="form-dialog-title">Create geofence</DialogTitle>
@@ -1512,7 +1512,7 @@ const removeClientFromWhitelist = (id) => {
           </Buttonx>
         </DialogActions>
       </Dialog>
-              
+
     </Fragment>
   );
 }

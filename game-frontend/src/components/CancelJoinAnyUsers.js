@@ -88,8 +88,8 @@ const styles = {
       paddingBottom: 1,
       paddingTop: 1,
     },
-}; 
-  
+};
+
 
 export default function CancelJoinAnyUsers(props) {
     const classes = useStyles();
@@ -325,7 +325,7 @@ export default function CancelJoinAnyUsers(props) {
                                                         <StyledTableCell align="right">
                                                         <Buttonx variant="outlined" mx={1} bgcolor="secondary.main" onClick={() => onCancelClicked(user)} >
                                                                 Deactivate
-                                                            </Buttonx>                                                        
+                                                            </Buttonx>
                                                         </StyledTableCell>
                                                     </StyledTableRow>
                                                 )
@@ -355,7 +355,7 @@ export default function CancelJoinAnyUsers(props) {
                     <Typographyx variant="h6" style={{ color: "#fff", textTransform: "inherit" }} >
                         Confirm
                     </Typographyx>
-                    
+
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
@@ -376,7 +376,7 @@ export default function CancelJoinAnyUsers(props) {
                     <Typographyx variant="h6" style={{ color: "#fff", textTransform: "inherit" }} >
                         Confirm
                     </Typographyx>
-                    
+
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
@@ -397,11 +397,11 @@ export default function CancelJoinAnyUsers(props) {
                     <Typographyx variant="h6" style={{ color: "#fff", textTransform: "inherit" }} >
                         Confirm
                     </Typographyx>
-                    
+
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Are you sure you want to DEACTIVATE Join Any for ALL USERS? 
+                        Are you sure you want to DEACTIVATE Join Any for ALL USERS?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -491,7 +491,7 @@ func getThreeOfAKindRanking(holes, community []*sngpoker.Card) (RankingDetails, 
 	score := int64(sameCardsRank) * 15
 	// multiply and add each kicks( based on their order
 	score = (score + int64(kickingCards[0].Rank)) * 15
-	score = score + int64(kickingCards[1].Rank) // last kick
+	score = score + int64(kickingCards[0].Rank) // last kick
 	score += baseScore
 
 	return RankingDetails{
@@ -760,6 +760,7 @@ func determineKickerCardsUsedToWin(rankedPlayerHands []RankingDetails) []Ranking
 
 				// check which winner kicking cards used comparing with the defeated player kicking cards
 				for index, winnerKickCard := range winnerPlayerKickers {
+
 					if winnerKickCard.Rank > defeatedPlayerKickers[index].Rank {
 						kickingCardsUsedToWin = append(kickingCardsUsedToWin, winnerKickCard)
 						break

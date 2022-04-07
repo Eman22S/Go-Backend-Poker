@@ -140,7 +140,7 @@ function App(props) {
 
 
   const dark_theme = createMuiTheme(theme);
-  
+
   const [DEFAULT_THEME, setDEFAULT_THEME] = useState(dark_theme);
 
   const DEFAULT_NOTIFICATION_VARIANT = "error"; // defaults to error notifications
@@ -227,36 +227,36 @@ function App(props) {
         hasBackgroundImg = true
       }
       console.log("hasBackgroundImg " + hasBackgroundImg);
- 
+
 
 
 
 
       if(ui_settings.backgroundDark){
         tempTheme.palette.background.dark = ui_settings.backgroundDark;
-        
+
       }
       if(ui_settings.backgroundLight){
         tempTheme.palette.background.light =ui_settings.backgroundLight;
-        
+
       }
       if(ui_settings.backgroundDefault){
         tempTheme.palette.background.default = ui_settings.backgroundDefault;
-        
+
       }
       if(ui_settings.backgroundPaper){
-        tempTheme.palette.background.paper = ui_settings.backgroundPaper; 
-        
+        tempTheme.palette.background.paper = ui_settings.backgroundPaper;
+
       }
       if(ui_settings.primaryColor){
         tempTheme.palette.primary.main = ui_settings.primaryColor;
         tempTheme.palette.action.hover = ui_settings.primaryColor+"80";
-        
+
       }
 
       if(ui_settings.selectedColor){
         tempTheme.palette.action.selected = ui_settings.selectedColor;
-        
+
 
 
         tempTheme.overrides.MuiTableRow.root =  {
@@ -276,7 +276,7 @@ function App(props) {
         }
 
 
-        
+
 
 
       }
@@ -284,15 +284,15 @@ function App(props) {
         tempTheme.typography.fontFamily = [ui_settings.fontFamily,].join(',')
       }
 
-      
+
       if(ui_settings.backgroundImg){
         let temp_img_src = DEV_IMAGE_URL + ui_settings.backgroundImg.replace("./","/");
-        theme.backgroundImg.image = temp_img_src; 
+        theme.backgroundImg.image = temp_img_src;
       }
 
 
       if(ui_settings.backgroundRepeat){
-        theme.backgroundImg.repeat = ui_settings.backgroundRepeat; 
+        theme.backgroundImg.repeat = ui_settings.backgroundRepeat;
       }
 
 
@@ -310,7 +310,7 @@ function App(props) {
 
         let customCssObj = JSON.parse(correctJson);
         tempTheme.overrides.MuiCssBaseline['@global'] = customCssObj;
-       
+
       }*/
 
 
@@ -343,7 +343,7 @@ function App(props) {
 
 
       }
-        
+
 
 
 
@@ -357,12 +357,12 @@ function App(props) {
       setDEFAULT_THEME(new_theme);
     }, (()=>{}));
 
-  
-    
+
+
     console.log(theme)
     console.log("--")
     console.log(tempTheme)
-    
+
 
 
     if (is_logged_in() && window.location.pathname !== "/login") {
@@ -371,7 +371,7 @@ function App(props) {
           let data = JSON.parse(response.getData());
           if (data?.has_pending_investigation) {
             showSnackBar("Your account is being investigated!");
-            
+
           }
           if (data?.is_suspended) {
             showSnackBar("Your account has been suspended!");
@@ -382,9 +382,9 @@ function App(props) {
           if (data?.is_closed) {
             showSnackBar("Your account has been deactivated!");
           }
-          
+
           setLocalUser({id: localUser.id, md5: md5(localUser.id), username: localUser.username, last_login: localUser.last_login, ...data});
-          
+
           if(data?.is_suspended || data?.block || data?.is_closed) {
             grpc_client.logout(() => {
               logout();
@@ -464,12 +464,12 @@ function App(props) {
 
   return (
     <React.Fragment
-    
+
     >
-    
+
       <MuiThemeProvider theme={DEFAULT_THEME} >
       <CssBaseline />
-  
+
         <AssetPathsContext.Provider value={assetPaths}>
         <ConfirmProvider
       defaultOptions={{

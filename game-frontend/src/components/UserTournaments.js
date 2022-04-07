@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   background: {
     //backgroundColor: theme.palette.background.paper,
     backgroundImage: `url(${theme.backgroundImg.image})`,
-    backgroundRepeat:  theme.backgroundImg.repeat   
+    backgroundRepeat:  theme.backgroundImg.repeat
   },
   full: {
     color: theme.palette.error.main
@@ -141,7 +141,7 @@ export default function UserTournaments(props) {
   const [tableType, setTableType] = useState(
     select_table_types[0].filter_value
   );
-  
+
   const [entryFee, setEntryFee] = useState(select_entry_fee[0].value)
 
   const [page, setPage] = useState(1);

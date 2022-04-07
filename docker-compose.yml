@@ -16,10 +16,10 @@ services:
       image: grpc_proxy
       network_mode: "host" # linux needs network_mode but not ports
       # ports: # mac and wins need ports but not network_mode
-        # - "8080:8080"  
+        # - "8080:8080"
       volumes:  # need to setup certs folder with certeficate and private key
-          - ~/.poker/certs:/certs 
-    
+          - ~/.poker/certs:/certs
+
     dozzle:
       image: amir20/dozzle:latest
       volumes:

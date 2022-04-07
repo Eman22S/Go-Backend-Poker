@@ -20,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
 const TournamentTemplateLobbyRow = ({ tournamentTemplate, selected, onClick, ...props }) => {
     const classes = useStyles();
 
-    
-    
-    
+
+
+
     /**
      * Format Tournament Template name
      */
@@ -49,7 +49,7 @@ const TournamentTemplateLobbyRow = ({ tournamentTemplate, selected, onClick, ...
                     { tournamentTemplate.name }
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                    { getTournamentTemplateGameType() } 
+                    { getTournamentTemplateGameType() }
                 </StyledTableCell>
                 <StyledTableCell align="center">
                     { table_type_labels[tournamentTemplate.table_type] }
